@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-active{
+    @apply text-black border-b-2 border-mangga-green-400;
+}
+.mangga-button{
+    @apply  rounded-md px-8 py-2;
+}
+.mangga-button-green{
+    @apply bg-mangga-green-300 text-white hover:bg-mangga-green-400 mangga-button;
+}
+.mangga-button-green-outline{
+    @apply text-mangga-green-400 border border-mangga-green-400 hover:bg-mangga-green-400 hover:text-white mangga-button;
+}
+.mangga-button-orange{
+    @apply bg-mangga-orange-300 text-white hover:bg-mangga-orange-400 mangga-button;
+}
