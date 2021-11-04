@@ -12,4 +12,13 @@ class PageController extends Controller
     public function info(){
         return view('landing_page.info');
     }
+    public function prosedur(){
+        return view('landing_page.prosedur');
+    }
+    public function media(){
+        return view('landing_page.media');
+    }
+    public function toko_mangga(){
+        return view('landing_page.toko_mangga');
+    }
 }

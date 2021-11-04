@@ -19,3 +19,6 @@ Auth::routes();
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/info', [PageController::class, 'info'])->name('info');
+Route::get('/prosedur', [PageController::class, 'prosedur'])->name('prosedur');
+Route::get('/media', [PageController::class, 'media'])->name('media');
+Route::get('/toko-mangga', [PageController::class, 'toko_mangga'])->name('toko_mangga');

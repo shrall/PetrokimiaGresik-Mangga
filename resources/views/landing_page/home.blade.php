@@ -98,7 +98,7 @@
                 5</div>
         </div>
     </div>
-    <img src="{{ asset('assets/svg/asset-home-2.svg') }}" alt="" srcset="">
+    <img src="{{ asset('assets/svg/asset-home-2.svg') }}" class="w-screen">
     <div class="text-5xl text-center font-af text-mangga-green-400 mb-12">Ajukan Pertanyaan</div>
     <div class="flex flex-col items-center justify-center">
         <div class="flex flex-col items-center justify-center mb-8">

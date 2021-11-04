@@ -12,12 +12,24 @@
         <a href="{{ route('info') }}"
             class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Info</a>
     @endif
-    <a href="#"
-        class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Prosedur</a>
-    <a href="#"
-        class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Media</a>
-    <a href="#" class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Toko
-        Mangga</a>
+    @if (Route::current()->getName() == 'prosedur')
+        <a href="{{ route('prosedur') }}" class="nav-active">Prosedur</a>
+    @else
+        <a href="{{ route('prosedur') }}"
+            class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Prosedur</a>
+    @endif
+    @if (Route::current()->getName() == 'media')
+        <a href="{{ route('media') }}" class="nav-active">Media</a>
+    @else
+        <a href="{{ route('media') }}"
+            class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Media</a>
+    @endif
+    @if (Route::current()->getName() == 'toko_mangga')
+        <a href="{{ route('toko_mangga') }}" class="nav-active">Toko Mangga</a>
+    @else
+        <a href="{{ route('toko_mangga') }}"
+            class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Toko Mangga</a>
+    @endif
     <a href="#" class="mangga-button-green-outline">Masuk</a>
     <a href="#" class="mangga-button-orange">Daftar</a>
 </div>
