@@ -30,3 +30,6 @@
 .dropdown:hover .dropdown-menu {
   display: block;
 }
+.dropdown-box:hover .dropdown-menu-box {
+  display: block;
+}
