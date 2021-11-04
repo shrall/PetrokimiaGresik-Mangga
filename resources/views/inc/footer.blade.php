@@ -15,7 +15,7 @@
     </div>
     <div class="col-span-12 text-center text-xl">Copyright © 2021 Kemitraan Petrokimia Gresik. All Rights Reserved.</div>
 </footer>
-<footer class="bg-mangga-green-400 flex flex-col items-center justify-center px-12 pt-12 pb-4 font-os text-white">
+<footer class="bg-mangga-green-400 flex flex-col items-center justify-center px-12 pt-12 pb-4 font-os text-white md:hidden">
     <img src="{{asset('assets/svg/mangga-logo-white.svg')}}" class="w-full mb-12">
     <div class="text-xl font-semibold mb-2">Quick Link</div>
     <ul class="text-md text-center mb-4">

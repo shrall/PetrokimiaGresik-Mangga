@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="hidden xl:block">
-        <div class="flex flex-col content-centerx-4g-home-1 bg-left bg-contain bg-no-repeat px-16 font-os mb-12">
+        <div class="grid grid-cols-12 content-center h-vh-90 bg-home-1 bg-left bg-contain bg-no-repeat px-16 font-os mb-12">
             <div class="col-span-7"></div>
             <div class="col-span-5">
                 <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}">
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="text-6xl text-center font-af text-mangga-green-400 mb-12">Program Mangga</div>
-        <div class="flex flex-col items-center px-4 py-8 font-os">
+        <div class="grid grid-cols-12 items-center pl-16 pr-28 py-8 font-os">
             <div class="col-span-3">
                 <img src="{{ asset('assets/img/mangga-gadung.png') }}" alt="" srcset="">
             </div>
@@ -25,7 +25,7 @@
                 a type specimen book.
             </div>
         </div>
-        <div class="flex flex-col items-center px-4 py-8 font-os bg-mangga-green-400">
+        <div class="grid grid-cols-12 items-center pl-28 pr-16 py-8 font-os bg-mangga-green-400">
             <div class="col-span-9 text-white">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 industry's
@@ -37,7 +37,7 @@
                 <img src="{{ asset('assets/img/mangga-makmur.png') }}" alt="" srcset="">
             </div>
         </div>
-        <div class="flex flex-col items-center px-4 py-8 font-os">
+        <div class="grid grid-cols-12 items-center pl-16 pr-28 py-8 font-os">
             <div class="col-span-3">
                 <img src="{{ asset('assets/img/mangga-arumanis.png') }}" alt="" srcset="">
             </div>
@@ -49,7 +49,7 @@
                 a type specimen book.
             </div>
         </div>
-        <div class="flex flex-col items-center px-4font-os bg-light-300 mb-24">
+        <div class="grid grid-cols-12 items-center px-28 py-8 font-os bg-light-300 mb-24">
             <div class="col-span-6">
                 <div class="text-5xl text-mangga-orange-400 font-medium mb-6">AKAD JASA ADMIN</div>
                 <div class="grid grid-cols-2 text-mangga-green-400">
@@ -114,7 +114,7 @@
             <div class="flex flex-col items-center justify-center mb-8">
                 <div onclick="togglePertanyaanAccordion('pertanyaan-1');"
                     class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-xl w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-1" id=""></span>
+                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-1"></span>
                     Bagaimana cara menjadi Mitra Kebanggaan Petrokimia Gresik?
                 </div>
                 <div class="border border-mangga-green-500 px-8 py-4 text-xl w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-1">
@@ -126,7 +126,7 @@
             <div class="flex flex-col items-center justify-center mb-8">
                 <div onclick="togglePertanyaanAccordion('pertanyaan-2');"
                     class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-xl w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-2" id=""></span>
+                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-2"></span>
                     Berapa lamakah proses menjadi Mitra Kebanggan?
                 </div>
                 <div class="border border-mangga-green-500 px-8 py-4 text-xl w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-2">
@@ -138,7 +138,7 @@
             <div class="flex flex-col items-center justify-center mb-8">
                 <div onclick="togglePertanyaanAccordion('pertanyaan-3');"
                     class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-xl w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-3" id=""></span>
+                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-3"></span>
                     Apa saja Persyaratan yang perlu disiapkan?
                 </div>
                 <div class="border border-mangga-green-500 px-8 py-4 text-xl w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-3">
@@ -151,7 +151,7 @@
         </div>
     </div>
     <div class="hidden md:block xl:hidden">
-        <div class="flex flex-col content-centerx-4t-os mb-12">
+        <div class="grid grid-cols-12 content-center px-16 font-os mb-12">
             <div class="col-span-7 bg-home-1 bg-left bg-contain bg-no-repeat h-vh-40"></div>
             <div class="col-span-5 flex flex-col justify-center">
                 <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}">
@@ -162,7 +162,7 @@
             </div>
         </div>
         <div class="text-6xl text-center font-af text-mangga-green-400 mb-12">Program Mangga</div>
-        <div class="flex flex-col items-center px-4 py-8 font-os">
+        <div class="grid grid-cols-12 items-center pl-16 pr-28 py-8 font-os">
             <div class="col-span-3">
                 <img src="{{ asset('assets/img/mangga-gadung.png') }}" alt="" srcset="">
             </div>
@@ -174,7 +174,7 @@
                 a type specimen book.
             </div>
         </div>
-        <div class="flex flex-col items-center px-4 py-8 font-os bg-mangga-green-400">
+        <div class="grid grid-cols-12 items-center pl-28 pr-16 py-8 font-os bg-mangga-green-400">
             <div class="col-span-9 text-white">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 industry's
@@ -186,7 +186,7 @@
                 <img src="{{ asset('assets/img/mangga-makmur.png') }}" alt="" srcset="">
             </div>
         </div>
-        <div class="flex flex-col items-center px-4 py-8 font-os">
+        <div class="grid grid-cols-12 items-center pl-16 pr-28 py-8 font-os">
             <div class="col-span-3">
                 <img src="{{ asset('assets/img/mangga-arumanis.png') }}" alt="" srcset="">
             </div>
@@ -198,7 +198,7 @@
                 a type specimen book.
             </div>
         </div>
-        <div class="flex flex-col items-center px-4font-os bg-light-300 mb-24">
+        <div class="grid grid-cols-12 items-center px-16 py-8 font-os bg-light-300 mb-24">
             <div class="col-span-6">
                 <div class="text-4xl text-mangga-orange-400 font-medium mb-6">AKAD JASA ADMIN</div>
                 <div class="grid grid-cols-2 text-mangga-green-400">
@@ -265,7 +265,7 @@
             <div class="flex flex-col items-center justify-center mb-8">
                 <div onclick="togglePertanyaanAccordion('pertanyaan-1');"
                     class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-xl w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-1" id=""></span>
+                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-1"></span>
                     Bagaimana cara menjadi Mitra Kebanggaan Petrokimia Gresik?
                 </div>
                 <div class="border border-mangga-green-500 px-8 py-4 text-xl w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-1">
@@ -277,7 +277,7 @@
             <div class="flex flex-col items-center justify-center mb-8">
                 <div onclick="togglePertanyaanAccordion('pertanyaan-2');"
                     class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-xl w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-2" id=""></span>
+                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-2"></span>
                     Berapa lamakah proses menjadi Mitra Kebanggan?
                 </div>
                 <div class="border border-mangga-green-500 px-8 py-4 text-xl w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-2">
@@ -289,7 +289,7 @@
             <div class="flex flex-col items-center justify-center mb-8">
                 <div onclick="togglePertanyaanAccordion('pertanyaan-3');"
                     class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-xl w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-3" id=""></span>
+                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-3"></span>
                     Apa saja Persyaratan yang perlu disiapkan?
                 </div>
                 <div class="border border-mangga-green-500 px-8 py-4 text-xl w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-3">
@@ -301,7 +301,7 @@
             <img src="{{ asset('assets/svg/asset-home-3.svg') }}" alt="" srcset="">
         </div>
     </div>
-    <div class="block md:hidden">
+    <div class="sm:block md:hidden xl:hidden">
         <div class="flex flex-col items-center justify-center px-4 font-os mb-12">
             <div class="w-full h-vh-40 bg-home-1 bg-center bg-contain bg-no-repeat"></div>
             <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}">
@@ -406,7 +406,7 @@
             <div class="flex flex-col items-center justify-center mb-8">
                 <div onclick="togglePertanyaanAccordion('pertanyaan-1');"
                     class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-md w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-1" id=""></span>
+                    <span class="fa fa-fw fa-chevron-right accordion-chevron" id=""></span>
                     Bagaimana cara menjadi Mitra Kebanggaan Petrokimia Gresik?
                 </div>
                 <div class="border border-mangga-green-500 px-8 py-4 text-md w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-1">
@@ -418,7 +418,7 @@
             <div class="flex flex-col items-center justify-center mb-8">
                 <div onclick="togglePertanyaanAccordion('pertanyaan-2');"
                     class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-md w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-2" id=""></span>
+                    <span class="fa fa-fw fa-chevron-right accordion-chevron" id=""></span>
                     Berapa lamakah proses menjadi Mitra Kebanggan?
                 </div>
                 <div class="border border-mangga-green-500 px-8 py-4 text-md w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-2">
@@ -430,7 +430,7 @@
             <div class="flex flex-col items-center justify-center mb-8">
                 <div onclick="togglePertanyaanAccordion('pertanyaan-3');"
                     class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-md w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-3" id=""></span>
+                    <span class="fa fa-fw fa-chevron-right accordion-chevron" id=""></span>
                     Apa saja Persyaratan yang perlu disiapkan?
                 </div>
                 <div class="border border-mangga-green-500 px-8 py-4 text-md w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-3">
