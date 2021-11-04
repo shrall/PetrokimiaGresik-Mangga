@@ -1,5 +1,5 @@
 <div class="flex items-center gap-x-4 bg-white rounded-lg px-8 py-12 font-os">
-    <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}" class="w-1/4">
+    <img src="https://image.freepik.com/free-photo/delicious-pasta-meal-black-plate-dinner-dark-background_140725-94451.jpg" class="w-1/4 rounded-lg">
     <div class="flex flex-col gap-y-2 w-full text-lg">
         <div class="flex items-center justify-between">
             <div class="mangga-tag-orange-outline cursor-default">Artikel</div>

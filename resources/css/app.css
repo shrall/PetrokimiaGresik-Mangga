@@ -3,27 +3,30 @@
 @tailwind components;
 @tailwind utilities;
 
-.nav-active{
-    @apply text-black border-b-2 border-mangga-green-400;
+.nav-active {
+  @apply text-black border-b-2 border-mangga-green-400;
 }
-.mangga-button{
-    @apply rounded-md px-8 py-2;
+.mangga-button {
+  @apply rounded-md px-8 py-2;
 }
-.mangga-button-green{
-    @apply bg-mangga-green-300 text-white hover:bg-mangga-green-400 mangga-button;
+.mangga-button-green {
+  @apply bg-mangga-green-300 text-white hover:bg-mangga-green-400 mangga-button;
 }
-.mangga-button-green-outline{
-    @apply text-mangga-green-400 border border-mangga-green-400 hover:bg-mangga-green-400 hover:text-white mangga-button;
+.mangga-button-green-outline {
+  @apply text-mangga-green-400 border border-mangga-green-400 hover:bg-mangga-green-400 hover:text-white mangga-button;
 }
-.mangga-button-orange{
-    @apply bg-mangga-orange-300 text-white hover:bg-mangga-orange-400 mangga-button;
+.mangga-button-orange {
+  @apply bg-mangga-orange-300 text-white hover:bg-mangga-orange-400 mangga-button;
 }
-.mangga-button-orange-outline{
-    @apply text-mangga-orange-400 border border-mangga-orange-400 hover:bg-mangga-orange-400 hover:text-white mangga-button;
+.mangga-button-orange-outline {
+  @apply text-mangga-orange-400 border border-mangga-orange-400 hover:bg-mangga-orange-400 hover:text-white mangga-button;
 }
-.mangga-tag{
-    @apply rounded-md px-12 py-2;
+.mangga-tag {
+  @apply rounded-md px-12 py-2;
 }
-.mangga-tag-orange-outline{
-    @apply text-mangga-orange-400 border border-mangga-orange-400 mangga-tag;
+.mangga-tag-orange-outline {
+  @apply text-mangga-orange-400 border border-mangga-orange-400 mangga-tag;
+}
+.dropdown:hover .dropdown-menu {
+  display: block;
 }
