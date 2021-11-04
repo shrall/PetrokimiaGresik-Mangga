@@ -32,8 +32,8 @@
             class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Toko
             Mangga</a>
     @endif
-    <a href="#" class="mangga-button-green-outline">Masuk</a>
-    <a href="#" class="mangga-button-orange">Daftar</a>
+    <a href="{{route('login')}}" class="mangga-button-green-outline">Masuk</a>
+    <a href="{{route('register')}}" class="mangga-button-orange">Daftar</a>
 </div>
 {{-- mobile --}}
 <div class="font-os px-8 py-4 bg-light-200 text-lg block xl:hidden" id="navbar-mobile">
@@ -47,8 +47,8 @@
         <a href="{{ route('prosedur') }}" class="text-lg text-gray-600 cursor-pointer">Prosedur</a>
         <a href="{{ route('media') }}" class="text-lg text-gray-600 cursor-pointer">Media</a>
         <a href="{{ route('toko_mangga') }}" class="text-lg text-gray-600 cursor-pointer">Toko Mangga</a>
-        <a href="#" class="text-lg text-mangga-green-400 border-b border-gray-600 cursor-pointer">Masuk</a>
-        <a href="#" class="text-lg text-mangga-green-400 border-b border-gray-600 cursor-pointer">Daftar</a>
+        <a href="{{route('login')}}" class="text-lg text-mangga-green-400 border-b border-gray-600 cursor-pointer">Masuk</a>
+        <a href="{{route('register')}}" class="text-lg text-mangga-green-400 border-b border-gray-600 cursor-pointer">Daftar</a>
     </div>
 </div>
 

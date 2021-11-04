@@ -9,6 +9,8 @@ module.exports = {
         "prosedur-3": "url('/assets/img/asset-prosedur-3.png')",
         "prosedur-4": "url('/assets/img/asset-prosedur-4.png')",
         "toko_mangga-1": "url('/assets/img/asset-toko_mangga-1.png')",
+        "sign-in": "url('/assets/svg/sign-in.svg')",
+        "sign-up": "url('/assets/svg/sign-up.svg')",
       },
       fontFamily: {
         "af": ['"Abril Fatface"'],
