@@ -1,10 +1,10 @@
 @extends('layouts.home')
 
 @section('content')
-    <div class="h-vh-80 bg-toko_mangga-1 bg-cover flex items-center justify-center mb-8">
-        <div class="font-af text-white text-6xl">Semua berawal dari sini.</div>
+    <div class="h-vh-40 xl:h-vh-80 bg-toko_mangga-1 bg-cover flex items-center justify-center mb-8">
+        <div class="font-af text-white text-4xl md:text-6xl">Semua berawal dari sini.</div>
     </div>
-    <div class="flex items-center justify-end px-48 mb-8">
+    <div class="flex items-center justify-end px-8 md:px-16 xl:px-48 mb-8">
         <div class="dropdown inline-block relative">
             <button
                 class="bg-white hover:bg-gray-100 text-black shadow-xl font-semibold py-2 px-4 rounded inline-flex items-center">
@@ -25,7 +25,7 @@
             </ul>
         </div>
     </div>
-    <div class="grid grid-cols-3 items-center justify-center gap-x-8 gap-y-6 px-48 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-center justify-center gap-x-8 gap-y-6 px-8 md:px-16 xl:px-48 mb-8">
         @for ($i = 0; $i < 8; $i++)
             @include('landing_page.inc.toko_mangga_card')
         @endfor
