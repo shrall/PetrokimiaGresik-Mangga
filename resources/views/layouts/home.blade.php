@@ -22,7 +22,7 @@
 
 <body>
     @include('inc.navbar')
-    <div class="bg-light-200">
+    <div class="bg-light-200 font-os">
         @yield('content')
     </div>
     @include('inc.footer')
