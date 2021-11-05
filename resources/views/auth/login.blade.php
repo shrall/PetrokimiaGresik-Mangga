@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="w-screen h-screen bg-sign-in bg-cover flex items-center justify-center">
-        <div class="flex flex-col items-start justify-center bg-white rounded-lg w-vw-80 px-8 md:w-vw-60 h-vh-60 md:px-12 xl:w-vw-40 xl:h-vh-80 xl:px-24 py-8">
+        <div class="flex flex-col items-start justify-center bg-white rounded-lg w-vw-80 px-8 md:w-vw-60 h-vh-60 md:px-12 xl:w-vw-40 xl:h-vh-80 xl:px-24 py-8 shadow-xl">
             <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}" class="w-full mb-4">
             <div class="text-xl md:text-3xl font-af text-mangga-green-400">Hai,</div>
             <div class="text-lg md:text-2xl text-mangga-orange-400 mb-8">Silahkan masuk ke akun anda</div>
