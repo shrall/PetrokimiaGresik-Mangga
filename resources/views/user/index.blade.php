@@ -3,20 +3,7 @@
 @section('content')
     <div class="grid grid-cols-12 gap-x-8 pt-4">
         <div class="col-span-3 hidden xl:block border-r-2 border-gray-400">
-            <div class="flex flex-col h-vh-90 gap-y-6 px-8 text-xl">
-                <a href="#" class="bg-mangga-green-300 text-white rounded-lg p-3">
-                    <span class="fa fa-fw fa-user mr-2"></span>Profil
-                </a>
-                <a href="#" class="hover:bg-mangga-green-300 hover:text-white rounded-lg p-3">
-                    <span class="fa fa-fw fa-clipboard-list mr-2"></span>Ajuan Saya
-                </a>
-                <a href="#" class="hover:bg-mangga-green-300 hover:text-white rounded-lg p-3">
-                    <span class="fa fa-fw fa-history mr-2"></span>Riwayat Angsuran
-                </a>
-                <a href="#" class="hover:bg-mangga-green-300 hover:text-white rounded-lg p-3">
-                    <span class="fa fa-fw fa-shopping-bag mr-2"></span>Belanja
-                </a>
-            </div>
+            @include('inc.user_sidebar')
         </div>
         <div class="col-span-4">
             <div class="card flex flex-col px-6 py-8">
@@ -30,7 +17,7 @@
                 <label class="text-gray-400">Nomor Handphone</label>
                 <div class="form-input mb-8">08123456789
                 </div>
-                <a href="#" class="mangga-button-green w-full text-center mb-4">Ganti
+                <a href="{{ route('user.change_password') }}" class="mangga-button-green w-full text-center mb-4">Ganti
                     Password</a>
             </div>
         </div>

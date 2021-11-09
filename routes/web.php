@@ -29,4 +29,8 @@ Route::get('/prosedur', [PageController::class, 'prosedur'])->name('prosedur');
 Route::get('/media', [PageController::class, 'media'])->name('media');
 Route::get('/toko-mangga', [PageController::class, 'toko_mangga'])->name('toko_mangga');
 
-Route::resource('user', UserController::class);
+Route::group(['as' => 'user.', 'prefix' => 'user'], function () {
+    Route::get('/change-password', [UserController::class, 'change_password'])->name('change_password');
+    Route::post('/update-password', [UserController::class, 'update_password'])->name('update_password');
+    Route::resource('user', UserController::class);
+});
