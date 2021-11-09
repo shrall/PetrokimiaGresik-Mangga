@@ -30,7 +30,7 @@
                 </li>
             </ul>
         </div>
-        <div class="col-span-2 bg-white rounded-lg shadow-lg hidden xl:block">
+        <div class="col-span-2 card hidden xl:block">
             <div class="flex items-center justify-between px-8 py-6 border-b border-gray-400 text-2xl">Filter <span
                     class="fa fa-fw fa-filter text-gray-400"></span></div>
             <div class="flex flex-col gap-y-6 p-8 text-xl">

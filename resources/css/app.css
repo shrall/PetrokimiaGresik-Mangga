@@ -7,7 +7,7 @@
   @apply text-black border-b-2 border-mangga-green-400;
 }
 .mangga-button {
-  @apply rounded-md px-8 py-2;
+  @apply rounded-md text-center px-4 py-2;
 }
 .mangga-button-green {
   @apply bg-mangga-green-300 text-white hover:bg-mangga-green-400 mangga-button;
@@ -27,6 +27,14 @@
 .mangga-tag-orange-outline {
   @apply text-mangga-orange-400 border border-mangga-orange-400 mangga-tag;
 }
+
+.card{
+    @apply bg-white rounded-lg shadow-lg;
+}
+.form-input{
+    @apply border-b border-gray-400 w-full text-lg md:text-xl focus:outline-none;
+}
+
 .dropdown:hover .dropdown-menu {
   display: block;
 }

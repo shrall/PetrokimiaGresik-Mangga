@@ -12,35 +12,35 @@
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <input type="email" name="email"
-                    class="border-b border-gray-400 w-full text-lg md:text-2xl focus:outline-none mb-8" placeholder="E-Mail">
-                <input type="text" name=""
-                    class="border-b border-gray-400 w-full text-lg md:text-2xl focus:outline-none mb-8"
+                    class="form-input mb-8" placeholder="E-Mail">
+                <input type="text" name="name"
+                    class="form-input mb-8"
                     placeholder="Nama Lengkap">
                 <input type="number" name=""
-                    class="border-b border-gray-400 w-full text-lg md:text-2xl focus:outline-none mb-8"
+                    class="form-input mb-8"
                     placeholder="Nomor HP">
-                <select name="" class="border-b border-gray-400 w-full text-lg md:text-2xl focus:outline-none mb-8">
+                <select name="" class="form-input mb-8">
                     <option value="">Provinsi</option>
                     <option value="">a</option>
                     <option value="">a</option>
                 </select>
-                <select name="" class="border-b border-gray-400 w-full text-lg md:text-2xl focus:outline-none mb-8">
+                <select name="" class="form-input mb-8">
                     <option value="">Kabupaten/Kota</option>
                     <option value="">a</option>
                     <option value="">a</option>
                 </select>
-                <select name="" class="border-b border-gray-400 w-full text-lg md:text-2xl focus:outline-none mb-8">
+                <select name="" class="form-input mb-8">
                     <option value="">Kecamatan</option>
                     <option value="">a</option>
                     <option value="">a</option>
                 </select>
                 <input type="password" name="password"
-                    class="border-b border-gray-400 w-full text-lg md:text-2xl focus:outline-none mb-12"
+                    class="form-input mb-12"
                     placeholder="Password">
                 <input type="password" name="password_confirmation"
-                    class="border-b border-gray-400 w-full text-lg md:text-2xl focus:outline-none mb-12"
+                    class="form-input mb-12"
                     placeholder="Konfirmasi Password">
-                <button type="submit" class="bg-mangga-green-400 text-white w-full rounded-lg py-2 mb-4">Daftar</button>
+                <button type="submit" class="mangga-button-green w-full mb-4">Daftar</button>
             </form>
             <div class="text-md md:text-lg self-center">Sudah memiliki akun? <a href="{{ route('login') }}"
                     class="text-mangga-green-400">Masuk di sini</a></div>

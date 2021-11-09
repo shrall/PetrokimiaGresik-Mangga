@@ -8,11 +8,11 @@
             <div class="text-lg md:text-2xl text-mangga-orange-400 mb-8">Silahkan masuk ke akun anda</div>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
-                <input type="email" name="email" class="border-b border-gray-400 w-full text-lg md:text-2xl focus:outline-none mb-8"
+                <input type="email" name="email" class="form-input mb-8"
                     placeholder="E-Mail">
                 <input type="password" name="password"
-                    class="border-b border-gray-400 w-full text-lg md:text-2xl focus:outline-none mb-12" placeholder="Password">
-                <button type="submit" class="bg-mangga-green-400 text-white w-full rounded-lg py-2 mb-4">Masuk</button>
+                    class="form-input mb-12" placeholder="Password">
+                <button type="submit" class="mangga-button-green w-full mb-4">Masuk</button>
             </form>
             <div class="text-md md:text-lg self-center">Belum memiliki akun? <a href="{{route('register')}}" class="text-mangga-green-400">Daftar di sini</a></div>
         </div>

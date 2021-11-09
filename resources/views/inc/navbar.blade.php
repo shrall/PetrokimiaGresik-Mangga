@@ -32,8 +32,30 @@
             class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Toko
             Mangga</a>
     @endif
-    <a href="{{route('login')}}" class="mangga-button-green-outline">Masuk</a>
-    <a href="{{route('register')}}" class="mangga-button-orange">Daftar</a>
+    @guest
+        <a href="{{ route('login') }}" class="mangga-button-green-outline">Masuk</a>
+        <a href="{{ route('register') }}" class="mangga-button-orange">Daftar</a>
+    @endguest
+    @auth
+        <div class="flex items-center justify-center gap-x-2 dropdown relative">
+            <a href="#">
+                <div class="text-xl">Achmad Yoga Prasetya</div>
+            </a>
+            <img src="{{ asset('assets/img/asset-toko_mangga-1.png') }}" class="rounded-full w-12 h-12">
+            <span class="fa fa-fw fa-chevron-down"></span>
+            <ul class="dropdown-menu absolute hidden text-black top-12 pt-2 right-0">
+                <li class="flex items-center justify-center">
+                    <a onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();"
+                        class="rounded-t bg-white hover:bg-gray-100 py-2 px-4 whitespace-no-wrap cursor-pointer flex items-center justify-center gap-x-2">
+                        <span class="fa fa-fw fa-power-off"></span>Log out</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+            </ul>
+        </div>
+    @endauth
 </div>
 {{-- mobile --}}
 <div class="font-os px-8 py-4 bg-light-200 text-lg block xl:hidden" id="navbar-mobile">
@@ -47,8 +69,10 @@
         <a href="{{ route('prosedur') }}" class="text-lg text-gray-600 cursor-pointer">Prosedur</a>
         <a href="{{ route('media') }}" class="text-lg text-gray-600 cursor-pointer">Media</a>
         <a href="{{ route('toko_mangga') }}" class="text-lg text-gray-600 cursor-pointer">Toko Mangga</a>
-        <a href="{{route('login')}}" class="text-lg text-mangga-green-400 border-b border-gray-600 cursor-pointer">Masuk</a>
-        <a href="{{route('register')}}" class="text-lg text-mangga-green-400 border-b border-gray-600 cursor-pointer">Daftar</a>
+        <a href="{{ route('login') }}"
+            class="text-lg text-mangga-green-400 border-b border-gray-600 cursor-pointer">Masuk</a>
+        <a href="{{ route('register') }}"
+            class="text-lg text-mangga-green-400 border-b border-gray-600 cursor-pointer">Daftar</a>
     </div>
 </div>
 
@@ -58,7 +82,7 @@
             $('.fa-bars').addClass('fa-times').removeClass('fa-bars');
             $('#navbar-menu-mobile').addClass('flex').removeClass('hidden');
             $('#navbar-mobile').addClass('bg-white').removeClass('bg-light-200');
-        }else if($('.fa-times').length > 0){
+        } else if ($('.fa-times').length > 0) {
             $('.fa-times').addClass('fa-bars').removeClass('fa-times');
             $('#navbar-menu-mobile').addClass('hidden').removeClass('flex');
             $('#navbar-mobile').addClass('bg-light-200').removeClass('bg-white');
