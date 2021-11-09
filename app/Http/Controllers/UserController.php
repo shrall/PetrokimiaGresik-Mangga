@@ -78,7 +78,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view ('user.change_profile');
     }
 
     /**

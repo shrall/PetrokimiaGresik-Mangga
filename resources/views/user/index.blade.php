@@ -25,7 +25,7 @@
             <div class="card flex flex-col px-6 py-8">
                 <div class="flex items-center justify-between">
                     <div class="text-2xl font-bold">Informasi Akun</div>
-                    <a href="#" class="flex items-center justify-center mangga-button-green text-center mb-4">
+                    <a href="{{route('user.edit', 1)}}" class="flex items-center justify-center mangga-button-green text-center mb-4">
                         <span class="fa fa-fw fa-edit mr-2"></span>
                         Ubah Profile
                     </a>

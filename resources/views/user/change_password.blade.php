@@ -45,9 +45,9 @@
                         <span id="password-eye-new-confirmation" onclick="togglePassword('new-confirmation');"
                             class="span fa fa-fw fa-eye text-xl absolute inset-y-0 right-4 cursor-pointer hover:text-gray-500"></span>
                     </div>
-                    <div class="flex items-center justify-center">
-                        <a href="{{route('user.user.index')}}" class="mangga-button-gray">Kembali</a>
-                        <button type="submit" class="mangga-button-green">Simpan</button>
+                    <div class="flex items-center justify-center gap-x-2">
+                        <a href="{{route('user.index')}}" class="mangga-button-gray w-full">Kembali</a>
+                        <button type="submit" class="mangga-button-green w-full">Simpan</button>
                     </div>
                 </div>
             </form>
