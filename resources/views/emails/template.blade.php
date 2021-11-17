@@ -6,5 +6,5 @@ Verifikasi
 @endcomponent
 
 atau juga dapat menyalin link berikut untuk memverifikasi email,<br>
-<a style="color:blue;" href="{{$url ?? 'https://shrall.github.io'}}">{{$url ?? 'https://shrall.github.io'}}</a>
+<a style="color:blue;" href="{{$url ?? 'http://mangga.test'}}">{{$url ?? 'http://mangga.test'}}</a>
 @endcomponent

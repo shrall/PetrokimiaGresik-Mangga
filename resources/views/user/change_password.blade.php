@@ -11,11 +11,11 @@
                 <div class="text-md text-gray-600 mb-4">Informasi akun berupa Nama Lengkap, Email, Nomor Handphone dan Ganti
                     Password</div>
                 <label class="text-gray-400">Nama</label>
-                <input name="name" type="text" class="form-input bg-white mb-8" value="Achmad Yoga Prasetya" disabled>
+                <input name="name" type="text" class="form-input bg-white mb-4" value="Achmad Yoga Prasetya" disabled>
                 <label class="text-gray-400">E-Mail</label>
-                <input name="email" type="email" class="form-input bg-white mb-8" value="achmadygao@gmail.com" disabled>
+                <input name="email" type="email" class="form-input bg-white mb-4" value="achmadygao@gmail.com" disabled>
                 <label class="text-gray-400">Nomor Handphone</label>
-                <input name="phone" type="number" class="form-input bg-white mb-8" value="08123456789" disabled>
+                <input name="phone" type="number" class="form-input bg-white mb-4" value="08123456789" disabled>
             </div>
         </div>
         <div class="col-span-5">
@@ -27,19 +27,19 @@
                         disini
                     </div>
                     <label class="text-gray-400">Password Lama</label>
-                    <div class="relative flex items-center mb-8">
+                    <div class="relative flex items-center mb-4">
                         <input name="current_password" type="password" class="form-input" id="password-old">
                         <span id="password-eye-old" onclick="togglePassword('old');"
                             class="span fa fa-fw fa-eye text-xl absolute inset-y-0 right-4 cursor-pointer hover:text-gray-500"></span>
                     </div>
                     <label class="text-gray-400">Password Baru</label>
-                    <div class="relative flex items-center mb-8">
+                    <div class="relative flex items-center mb-4">
                         <input name="new_password" type="password" class="form-input" id="password-new">
                         <span id="password-eye-new" onclick="togglePassword('new');"
                             class="span fa fa-fw fa-eye text-xl absolute inset-y-0 right-4 cursor-pointer hover:text-gray-500"></span>
                     </div>
                     <label class="text-gray-400">Konfirmasi Password Baru</label>
-                    <div class="relative flex items-center mb-8">
+                    <div class="relative flex items-center mb-4">
                         <input name="new_password_confirmation" type="password" class="form-input"
                             id="password-new-confirmation">
                         <span id="password-eye-new-confirmation" onclick="togglePassword('new-confirmation');"

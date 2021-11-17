@@ -16,18 +16,18 @@
                             Tempat Lahir. Anda juga bisa mengubah informasi personal Anda dengan menekan
                             tombol “Ubah Profile”</div>
                         <label class="text-gray-400">No. KTP</label>
-                        <input name="ktp" type="number" class="form-input bg-white mb-8" value="123812847192837105">
+                        <input name="ktp" type="number" class="form-input bg-white mb-4" value="123812847192837105">
                         <label class="text-gray-400">No. KK</label>
-                        <input name="kk" type="number" class="form-input bg-white mb-8" value="2348720352398472938">
+                        <input name="kk" type="number" class="form-input bg-white mb-4" value="2348720352398472938">
                         <label class="text-gray-400">Jenis Kelamin</label>
-                        <div class="flex items-center gap-x-2">
-                            <input type="radio" name="kelamin" value="laki-laki" id="laki-laki">
+                        <div class="flex items-center gap-x-2 mb-4">
+                            <input type="radio" name="kelamin" value="laki-laki" id="laki-laki" checked>
                             <label for="laki-laki" class="text-gray-700">Laki-laki</label>
                             <input type="radio" name="kelamin" value="wanita">
                             <label for="wanita" class="text-gray-700">Wanita</label>
                         </div>
                         <label class="text-gray-400">Agama</label>
-                        <select name="agama" class="form-input mb-8">
+                        <select name="agama" class="form-input mb-4">
                             <option value="">Muslim</option>
                             <option value="">Kristen</option>
                             <option value="">Katolik</option>
