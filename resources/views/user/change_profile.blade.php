@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="grid grid-cols-12 gap-x-8 pt-4">
+    @include('inc.user_sidebar_mobile')
+    <div class="grid grid-cols-12 gap-x-8 gap-y-4 py-4 px-8 xl:px-0">
         <div class="col-span-3 hidden xl:block border-r-2 border-gray-400">
             @include('inc.user_sidebar')
         </div>
-        <div class="col-span-9">
+        <div class="col-span-12 xl:col-span-9">
             <form action="{{ route('user.update', 1) }}" method="post" enctype="multipart/form-data">
                 <div class="grid grid-cols-12 gap-x-4 card px-6 py-8">
                     <div class="col-span-8 flex flex-col">
@@ -65,9 +66,4 @@
             </form>
         </div>
     </div>
-@endsection
-
-@section('scripts')
-    <script>
-    </script>
 @endsection

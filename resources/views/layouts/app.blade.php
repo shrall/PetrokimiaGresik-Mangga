@@ -28,6 +28,19 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     @yield('scripts')
+    <script>
+        var sidebarOpened = false;
+        function toggleSidebar() {
+            sidebarOpened = !sidebarOpened;
+            if (sidebarOpened) {
+                $('#sidebar-toggle-button').removeClass('fa-chevron-left').addClass('fa-chevron-right');
+                $('#sidebar').removeClass('translate-x-0').addClass('-translate-x-full');
+            } else {
+                $('#sidebar-toggle-button').removeClass('fa-chevron-right').addClass('fa-chevron-left');
+                $('#sidebar').removeClass('-translate-x-full').addClass('translate-x-0');
+            }
+        }
+    </script>
 </body>
 
 </html>

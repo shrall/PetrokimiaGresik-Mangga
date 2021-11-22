@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="grid grid-cols-12 gap-x-8 pt-4">
+    @include('inc.user_sidebar_mobile')
+    <div class="grid grid-cols-12 gap-x-8 gap-y-4 py-4 px-8 xl:px-0">
         <div class="col-span-3 hidden xl:block border-r-2 border-gray-400">
             @include('inc.user_sidebar')
         </div>
-        <div class="col-span-4">
+        <div class="col-span-12 xl:col-span-4">
             <div class="card flex flex-col px-6 py-8">
                 <div class="text-2xl font-bold">Informasi Akun</div>
                 <div class="text-md text-gray-600 mb-4">Informasi akun berupa Nama Lengkap, Email, Nomor Handphone dan Ganti
@@ -21,11 +22,12 @@
                     Password</a>
             </div>
         </div>
-        <div class="col-span-5">
+        <div class="col-span-12 xl:col-span-5">
             <div class="card flex flex-col px-6 py-8">
                 <div class="flex items-center justify-between">
                     <div class="text-2xl font-bold">Informasi Akun</div>
-                    <a href="{{route('user.edit', 1)}}" class="flex items-center justify-center mangga-button-green text-center mb-4">
+                    <a href="{{ route('user.edit', 1) }}"
+                        class="flex items-center justify-center mangga-button-green text-center mb-4">
                         <span class="fa fa-fw fa-edit mr-2"></span>
                         Ubah Profile
                     </a>

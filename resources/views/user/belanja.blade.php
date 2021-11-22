@@ -1,11 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="grid grid-cols-12 gap-x-8 pt-4">
+    @include('inc.user_sidebar_mobile')
+    <div class="fixed mt-8 xl:hidden">
+        <div class="fixed bg-mangga-green-300 rounded-l-full w-12 h-12 right-0 flex items-center justify-center"
+            onclick="openModal('cart-summary');">
+            <span class="fa fa-fw fa-shopping-cart text-white text-xl" id="sidebar-toggle-button"></span>
+        </div>
+    </div>
+    <div class="grid grid-cols-12 gap-x-8 gap-y-4 py-4 px-8 xl:px-0">
         <div class="col-span-3 hidden xl:block border-r-2 border-gray-400">
             @include('inc.user_sidebar')
         </div>
-        <div class="col-span-9">
+        <div class="col-span-12 xl:col-span-9 h-vh-90">
             <div class="px-8 py-6 w-full">
                 <div class="rounded-lg bg-mangga-orange-300 p-4 mb-4">
                     <span class="fa fa-fw fa-info-circle ml-2"></span>
@@ -13,10 +20,17 @@
                     tersedia dari Distributor.
                 </div>
                 <div class="grid grid-cols-12 gap-x-8">
-                    <div class="col-span-9 grid grid-cols-3 gap-4">
+                    <div class="col-span-12 xl:col-span-9 grid grid-cols-3 gap-4">
                         @include('user.inc.belanja_card')
                     </div>
-                    <div class="col-span-3 border-l-2 border-gray-400 px-4 flex flex-col justify-between h-vh-70">
+                    <div class="col-span-12 flex xl:hidden mt-8 items-center justify-end">
+                        <a href="{{ route('user.belanja_list') }}"
+                            class="mangga-button-green w-44 cursor-pointer mt-auto">
+                            Checkout
+                            <span class="fa fa-fw fa-arrow-right ml-2"></span>
+                        </a>
+                    </div>
+                    <div class="col-span-3 border-l-2 border-gray-400 px-4 hidden xl:flex flex-col justify-between h-vh-70">
                         <div class="flex flex-col card px-4 py-2">
                             <div class="flex items-center justify-between py-3">
                                 <span>Pupuk A(1kg)</span>
@@ -43,7 +57,8 @@
                                 <div class="">Rp. 120.000</div>
                             </div>
                         </div>
-                        <a href="{{route('user.belanja_list')}}" class="mangga-button-green w-full cursor-pointer mt-auto">
+                        <a href="{{ route('user.belanja_list') }}"
+                            class="mangga-button-green w-full cursor-pointer mt-auto">
                             Checkout
                             <span class="fa fa-fw fa-arrow-right ml-2"></span>
                         </a>
@@ -77,6 +92,38 @@
             <div class="mangga-button-green w-full cursor-pointer" onclick="closeModal();">
                 Tambahkan ke keranjang
                 <span class="fa fa-fw fa-arrow-right ml-2"></span>
+            </div>
+        </div>
+    </div>
+    <div class="absolute w-screen h-screen hidden items-center justify-center modal" id="cart-summary-modal">
+        <div class="bg-black opacity-50 w-screen h-screen absolute background-modal" onclick="closeModal();"></div>
+        <div class="rounded-lg bg-white px-8 pt-8 pb-6 absolute flex flex-col gap-y-4">
+            <span class="fa fa-fw fa-times text-xl hover:text-red-600 absolute top-4 right-4 cursor-pointer"
+                onclick="closeModal();"></span>
+            <div class="flex flex-col w-vw-50 px-4 py-2">
+                <div class="flex items-center justify-between py-3">
+                    <span>Pupuk A(1kg)</span>
+                    <div>Rp. 40.000 <span class="fa fa-fw fa-times-circle text-red-400 cursor-pointer"></span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between py-3 border-t-2 border-gray-300">
+                    <span>Pupuk A(1kg)</span>
+                    <div>Rp. 40.000 <span class="fa fa-fw fa-times-circle text-red-400 cursor-pointer"></span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between py-3 border-t-2 border-gray-300">
+                    <span>Pupuk A(1kg)</span>
+                    <div>Rp. 40.000 <span class="fa fa-fw fa-times-circle text-red-400 cursor-pointer"></span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between py-3 border-t-2 border-black font-semibold">
+                    <span>Saldo</span>
+                    <div class="">Rp. 40.000.000</div>
+                </div>
+                <div class="flex items-center justify-between py-3 border-t-2 border-mangga-yellow-400 font-semibold">
+                    <span>Total</span>
+                    <div class="">Rp. 120.000</div>
+                </div>
             </div>
         </div>
     </div>

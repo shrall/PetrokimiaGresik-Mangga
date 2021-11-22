@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="grid grid-cols-12 gap-x-8 pt-4">
+    @include('inc.user_sidebar_mobile')
+    <div class="grid grid-cols-12 gap-x-8 gap-y-4 py-4 px-8 xl:px-0">
         <div class="col-span-3 hidden xl:block border-r-2 border-gray-400">
             @include('inc.user_sidebar')
         </div>
-        <div class="col-span-6">
+        <div class="col-span-7 xl:col-span-6">
             <div class="card px-8 py-6 w-full flex flex-col gap-y-4">
                 <div class="text-2xl font-bold"><span class="fa fa-fw fa-map-marker-alt mr-2"></span>Alamat Pengiriman</div>
                 <div class="text-gray-600">
@@ -40,13 +41,14 @@
                 </div>
             </div>
         </div>
-        <div class="col-span-3 flex flex-col gap-y-4 pr-4">
+        <div class="col-span-5 xl:col-span-3 flex flex-col gap-y-4 pr-4">
             <div class="text-gray-600">Silahkan memilih metode pembayaran yang akan digunakan.</div>
             <input class="hidden" type="radio" id="payment-1" checked>
             <label onclick="changePaymentMethod(1);" for="payment-1"
                 class="card flex items-center justify-between px-4 py-8 hover:bg-gray-50 cursor-pointer h-24">
                 <img src="{{ asset('assets/img/midtrans-logo.png') }}" class="w-36">
-                <span class="far fa-fw fa-dot-circle text-mangga-green-400 text-xl payment-circle" id="payment-circle-1"></span>
+                <span class="far fa-fw fa-dot-circle text-mangga-green-400 text-xl payment-circle"
+                    id="payment-circle-1"></span>
             </label>
             <input class="hidden" type="radio" id="payment-2">
             <label onclick="changePaymentMethod(2);" for="payment-2"
@@ -63,7 +65,8 @@
                     <span>Ongkos Kirim</span>
                     <span>Rp. 17.000</span>
                 </div>
-                <div class="text-mangga-green-400 text-2xl font-semibold flex items-center justify-between border-t border-black">
+                <div
+                    class="text-mangga-green-400 text-2xl font-semibold flex items-center justify-between border-t border-black">
                     <span>Total</span>
                     <span>Rp. 367.000</span>
                 </div>
@@ -91,7 +94,8 @@
 
         function changePaymentMethod(order) {
             $('.payment-circle').removeClass('fa-dot-circle').addClass('fa-circle').removeClass('text-mangga-green-400');
-            $('#payment-circle-' + order).addClass('fa-dot-circle').removeClass('fa-circle').addClass('text-mangga-green-400');
+            $('#payment-circle-' + order).addClass('fa-dot-circle').removeClass('fa-circle').addClass(
+                'text-mangga-green-400');
         }
     </script>
 @endsection

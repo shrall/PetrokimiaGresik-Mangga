@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="grid grid-cols-12 gap-x-8 pt-4">
+    @include('inc.user_sidebar_mobile')
+    <div class="grid grid-cols-12 gap-x-8 gap-y-4 py-4 px-8 xl:px-0">
         <div class="col-span-3 hidden xl:block border-r-2 border-gray-400">
             @include('inc.user_sidebar')
         </div>
-        <div class="col-span-4">
+        <div class="col-span-12 xl:col-span-4">
             <div class="card flex flex-col px-6 py-8">
                 <div class="text-2xl font-bold">Informasi Akun</div>
                 <div class="text-md text-gray-600 mb-4">Informasi akun berupa Nama Lengkap, Email, Nomor Handphone dan Ganti
@@ -18,7 +19,7 @@
                 <input name="phone" type="number" class="form-input bg-white mb-4" value="08123456789" disabled>
             </div>
         </div>
-        <div class="col-span-5">
+        <div class="col-span-12 xl:col-span-5">
             <form action="{{ route('user.update_password') }}" method="post">
                 @csrf
                 <div class="card flex flex-col px-6 py-8">
@@ -46,7 +47,7 @@
                             class="span fa fa-fw fa-eye text-xl absolute inset-y-0 right-4 cursor-pointer hover:text-gray-500"></span>
                     </div>
                     <div class="flex items-center justify-center gap-x-2">
-                        <a href="{{route('user.index')}}" class="mangga-button-gray w-full">Kembali</a>
+                        <a href="{{ route('user.index') }}" class="mangga-button-gray w-full">Kembali</a>
                         <button type="submit" class="mangga-button-green w-full">Simpan</button>
                     </div>
                 </div>

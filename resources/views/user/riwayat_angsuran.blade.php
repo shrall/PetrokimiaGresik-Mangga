@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="grid grid-cols-12 gap-x-8 pt-4">
+@include('inc.user_sidebar_mobile')
+<div class="grid grid-cols-12 gap-x-8 gap-y-4 py-4 px-8 xl:px-0">
         <div class="col-span-3 hidden xl:block border-r-2 border-gray-400">
             @include('inc.user_sidebar')
         </div>
-        <div class="col-span-9">
+        <div class="col-span-12 xl:col-span-9 h-screen">
             <div class="card px-8 py-6 w-full">
                 <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
@@ -19,6 +20,78 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>PT. Tani Sukses Raya</td>
+                            <td>2021/10/01 21:32:42</td>
+                            <td>Rp. 2.500.000</td>
+                            <td>3</td>
+                            <td>AN</td>
+                            <td class="text-yellow-500">Process</td>
+                        </tr>
+                        <tr>
+                            <td>PT. Tani Sukses Raya</td>
+                            <td>2021/10/01 21:32:42</td>
+                            <td>Rp. 2.000.000</td>
+                            <td>2</td>
+                            <td>AN</td>
+                            <td class="text-green-500">Approved</td>
+                        </tr>
+                        <tr>
+                            <td>PT. Tani Sukses Raya</td>
+                            <td>2021/10/01 21:32:42</td>
+                            <td>Rp. 2.000.000</td>
+                            <td>1</td>
+                            <td>AN</td>
+                            <td class="text-green-500">Approved</td>
+                        </tr>
+                        <tr>
+                            <td>PT. Tani Sukses Raya</td>
+                            <td>2021/10/01 21:32:42</td>
+                            <td>Rp. 2.500.000</td>
+                            <td>3</td>
+                            <td>AN</td>
+                            <td class="text-yellow-500">Process</td>
+                        </tr>
+                        <tr>
+                            <td>PT. Tani Sukses Raya</td>
+                            <td>2021/10/01 21:32:42</td>
+                            <td>Rp. 2.000.000</td>
+                            <td>2</td>
+                            <td>AN</td>
+                            <td class="text-green-500">Approved</td>
+                        </tr>
+                        <tr>
+                            <td>PT. Tani Sukses Raya</td>
+                            <td>2021/10/01 21:32:42</td>
+                            <td>Rp. 2.000.000</td>
+                            <td>1</td>
+                            <td>AN</td>
+                            <td class="text-green-500">Approved</td>
+                        </tr>
+                        <tr>
+                            <td>PT. Tani Sukses Raya</td>
+                            <td>2021/10/01 21:32:42</td>
+                            <td>Rp. 2.500.000</td>
+                            <td>3</td>
+                            <td>AN</td>
+                            <td class="text-yellow-500">Process</td>
+                        </tr>
+                        <tr>
+                            <td>PT. Tani Sukses Raya</td>
+                            <td>2021/10/01 21:32:42</td>
+                            <td>Rp. 2.000.000</td>
+                            <td>2</td>
+                            <td>AN</td>
+                            <td class="text-green-500">Approved</td>
+                        </tr>
+                        <tr>
+                            <td>PT. Tani Sukses Raya</td>
+                            <td>2021/10/01 21:32:42</td>
+                            <td>Rp. 2.000.000</td>
+                            <td>1</td>
+                            <td>AN</td>
+                            <td class="text-green-500">Approved</td>
+                        </tr>
                         <tr>
                             <td>PT. Tani Sukses Raya</td>
                             <td>2021/10/01 21:32:42</td>
@@ -106,7 +179,6 @@
 
         /*Pagination Buttons*/
         .dataTables_wrapper .dataTables_paginate .paginate_button {
-            color: #fff !important;
             font-weight: 700;
             /*font-bold*/
             border-radius: .25rem;
