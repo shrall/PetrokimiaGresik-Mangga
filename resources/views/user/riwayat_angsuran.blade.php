@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-@include('inc.user_sidebar_mobile')
-<div class="grid grid-cols-12 gap-x-8 gap-y-4 py-4 px-8 xl:px-0">
+    @include('inc.user_sidebar_mobile')
+    <div class="grid grid-cols-12 gap-x-8 gap-y-4 py-4 px-8 xl:px-0">
         <div class="col-span-3 hidden xl:block border-r-2 border-gray-400">
             @include('inc.user_sidebar')
         </div>
         <div class="col-span-12 xl:col-span-9 h-screen">
-            <div class="card px-8 py-6 w-full">
+            <div class="card px-8 py-6 w-full hidden md:block">
                 <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                         <tr>
@@ -44,80 +44,45 @@
                             <td>AN</td>
                             <td class="text-green-500">Approved</td>
                         </tr>
-                        <tr>
-                            <td>PT. Tani Sukses Raya</td>
-                            <td>2021/10/01 21:32:42</td>
-                            <td>Rp. 2.500.000</td>
-                            <td>3</td>
-                            <td>AN</td>
-                            <td class="text-yellow-500">Process</td>
-                        </tr>
-                        <tr>
-                            <td>PT. Tani Sukses Raya</td>
-                            <td>2021/10/01 21:32:42</td>
-                            <td>Rp. 2.000.000</td>
-                            <td>2</td>
-                            <td>AN</td>
-                            <td class="text-green-500">Approved</td>
-                        </tr>
-                        <tr>
-                            <td>PT. Tani Sukses Raya</td>
-                            <td>2021/10/01 21:32:42</td>
-                            <td>Rp. 2.000.000</td>
-                            <td>1</td>
-                            <td>AN</td>
-                            <td class="text-green-500">Approved</td>
-                        </tr>
-                        <tr>
-                            <td>PT. Tani Sukses Raya</td>
-                            <td>2021/10/01 21:32:42</td>
-                            <td>Rp. 2.500.000</td>
-                            <td>3</td>
-                            <td>AN</td>
-                            <td class="text-yellow-500">Process</td>
-                        </tr>
-                        <tr>
-                            <td>PT. Tani Sukses Raya</td>
-                            <td>2021/10/01 21:32:42</td>
-                            <td>Rp. 2.000.000</td>
-                            <td>2</td>
-                            <td>AN</td>
-                            <td class="text-green-500">Approved</td>
-                        </tr>
-                        <tr>
-                            <td>PT. Tani Sukses Raya</td>
-                            <td>2021/10/01 21:32:42</td>
-                            <td>Rp. 2.000.000</td>
-                            <td>1</td>
-                            <td>AN</td>
-                            <td class="text-green-500">Approved</td>
-                        </tr>
-                        <tr>
-                            <td>PT. Tani Sukses Raya</td>
-                            <td>2021/10/01 21:32:42</td>
-                            <td>Rp. 2.500.000</td>
-                            <td>3</td>
-                            <td>AN</td>
-                            <td class="text-yellow-500">Process</td>
-                        </tr>
-                        <tr>
-                            <td>PT. Tani Sukses Raya</td>
-                            <td>2021/10/01 21:32:42</td>
-                            <td>Rp. 2.000.000</td>
-                            <td>2</td>
-                            <td>AN</td>
-                            <td class="text-green-500">Approved</td>
-                        </tr>
-                        <tr>
-                            <td>PT. Tani Sukses Raya</td>
-                            <td>2021/10/01 21:32:42</td>
-                            <td>Rp. 2.000.000</td>
-                            <td>1</td>
-                            <td>AN</td>
-                            <td class="text-green-500">Approved</td>
-                        </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="flex md:hidden flex-col items-center justify-center gap-6">
+                <div class="relative w-full">
+                    <input type="text" class="rounded-full w-full border border-gray-400 pl-6 pr-9 py-2"
+                        placeholder="Search">
+                    <span class="fa fa-fw fa-search absolute right-4 inset-y-0 my-auto h-4"></span>
+                </div>
+                <div class="card flex flex-col items-center justify-center gap-2 w-full p-3">
+                    <div class="flex items-center justify-between w-full">
+                        <div>2021/10/01 21:32:42</div>
+                        <div>3 - AN</div>
+                    </div>
+                    <div class="flex items-center justify-between w-full">
+                        <div class="text-xl">2.500.000</div>
+                        <div class="text-yellow-500">Process</div>
+                    </div>
+                </div>
+                <div class="card flex flex-col items-center justify-center gap-2 w-full p-3">
+                    <div class="flex items-center justify-between w-full">
+                        <div>2021/10/01 21:32:42</div>
+                        <div>2 - AN</div>
+                    </div>
+                    <div class="flex items-center justify-between w-full">
+                        <div class="text-xl">2.000.000</div>
+                        <div class="text-green-500">Approved</div>
+                    </div>
+                </div>
+                <div class="card flex flex-col items-center justify-center gap-2 w-full p-3">
+                    <div class="flex items-center justify-between w-full">
+                        <div>2021/10/01 21:32:42</div>
+                        <div>1 - AN</div>
+                    </div>
+                    <div class="flex items-center justify-between w-full">
+                        <div class="text-xl">2.500.000</div>
+                        <div class="text-green-500">Approved</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

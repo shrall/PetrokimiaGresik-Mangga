@@ -19,8 +19,8 @@
                     Kios Anda telah direkomendasikan oleh CV MEKAR JAYA MANDIRI. Silahkan berbelanja produk yang telah
                     tersedia dari Distributor.
                 </div>
-                <div class="grid grid-cols-12 gap-x-8">
-                    <div class="col-span-12 xl:col-span-9 grid grid-cols-3 gap-4">
+                <div class="grid grid-cols-12 md:gap-x-8">
+                    <div class="col-span-12 xl:col-span-9 grid grid-cols-1 md:grid-cols-3 gap-4">
                         @include('user.inc.belanja_card')
                     </div>
                     <div class="col-span-12 flex xl:hidden mt-8 items-center justify-end">

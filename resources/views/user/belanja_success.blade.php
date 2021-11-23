@@ -21,8 +21,8 @@
 
 <body>
     <div class="bg-light-200 font-os w-screen h-screen flex flex-col items-center justify-center gap-y-2">
-        <img src="{{ asset('assets/svg/belanja-berhasil.svg') }}" alt="" srcset="">
-        <div class="text-3xl">Selamat! Transaksi anda berhasil.</div>
+        <img src="{{ asset('assets/svg/belanja-berhasil.svg') }}" alt="" srcset="" class="w-vw-80 md:w-auto">
+        <div class="text-3xl text-center">Selamat!<br>Transaksi anda berhasil.</div>
         <a href="{{ route('user.index') }}" class="mangga-button-green cursor-pointer">
             Kembali ke Beranda
             <span class="fa fa-fw fa-arrow-right"></span>

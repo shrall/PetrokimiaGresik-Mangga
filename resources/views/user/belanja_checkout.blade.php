@@ -6,7 +6,7 @@
         <div class="col-span-3 hidden xl:block border-r-2 border-gray-400">
             @include('inc.user_sidebar')
         </div>
-        <div class="col-span-7 xl:col-span-6">
+        <div class="col-span-12 md:col-span-7 xl:col-span-6">
             <div class="card px-8 py-6 w-full flex flex-col gap-y-4">
                 <div class="text-2xl font-bold"><span class="fa fa-fw fa-map-marker-alt mr-2"></span>Alamat Pengiriman</div>
                 <div class="text-gray-600">
@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-span-5 xl:col-span-3 flex flex-col gap-y-4 pr-4">
+        <div class="col-span-12 md:col-span-5 xl:col-span-3 flex flex-col gap-y-4 pr-4">
             <div class="text-gray-600">Silahkan memilih metode pembayaran yang akan digunakan.</div>
             <input class="hidden" type="radio" id="payment-1" checked>
             <label onclick="changePaymentMethod(1);" for="payment-1"

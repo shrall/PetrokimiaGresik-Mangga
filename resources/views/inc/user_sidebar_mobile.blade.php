@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-y-6 p-8 text-xl fixed col-span-12 w-vw-40 h-screen bg-light-200 transform -translate-x-full transition duration-200 ease-in-out rounded-xl shadow-xl z-50 xl:hidden"
+<div class="flex flex-col gap-y-6 p-8 text-xl fixed col-span-12 w-vw-80 md:w-vw-40 h-screen bg-light-200 transform -translate-x-full transition duration-200 ease-in-out rounded-xl shadow-xl z-50 xl:hidden"
     id="sidebar">
     <div class="fixed bg-mangga-green-300 rounded-r-full w-12 h-12 -right-12 flex items-center justify-center"
         onclick="toggleSidebar();">
