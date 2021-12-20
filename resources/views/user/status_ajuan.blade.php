@@ -18,7 +18,12 @@
                             class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
                             Login</div>
                     </div>
-                    <span class="fa fa-fw fa-arrow-down xl:fa-arrow-right text-gray-400 text-xl"></span>
+                    <div class="block xl:hidden">
+                        <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                    </div>
+                    <div class="hidden xl:block">
+                        <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                    </div>
                     <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                         <div class="rounded-full bg-gray-400 p-4">
                             <span class="fa fa-fw fa-user-edit text-white text-xl"></span>
@@ -27,7 +32,12 @@
                             class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
                             Lengkapi Data Diri</div>
                     </div>
-                    <span class="fa fa-fw fa-arrow-down xl:fa-arrow-right text-gray-400 text-xl"></span>
+                    <div class="block xl:hidden">
+                        <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                    </div>
+                    <div class="hidden xl:block">
+                        <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                    </div>
                     <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                         <div class="rounded-full bg-mangga-orange-300 p-4">
                             <span class="fa fa-fw fa-user-check text-white text-xl"></span>
@@ -36,7 +46,12 @@
                             class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
                             Validasi Data Diri</div>
                     </div>
-                    <span class="fa fa-fw fa-arrow-down xl:fa-arrow-right text-gray-400 text-xl"></span>
+                    <div class="block xl:hidden">
+                        <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                    </div>
+                    <div class="hidden xl:block">
+                        <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                    </div>
                     <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                         <div class="rounded-full bg-gray-400 p-4">
                             <span class="fa fa-fw fa-building text-white text-xl"></span>
@@ -45,7 +60,12 @@
                             class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
                             Memilih Sektor Usaha</div>
                     </div>
-                    <span class="fa fa-fw fa-arrow-down xl:fa-arrow-right text-gray-400 text-xl"></span>
+                    <div class="block xl:hidden">
+                        <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                    </div>
+                    <div class="hidden xl:block">
+                        <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                    </div>
                     <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                         <div class="rounded-full bg-gray-400 p-4">
                             <span class="fab fa-fw fa-wpforms text-white text-xl"></span>
@@ -54,7 +74,12 @@
                             class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
                             Mengisi Form Pengajuan</div>
                     </div>
-                    <span class="fa fa-fw fa-arrow-down xl:fa-arrow-right text-gray-400 text-xl"></span>
+                    <div class="block xl:hidden">
+                        <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                    </div>
+                    <div class="hidden xl:block">
+                        <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                    </div>
                     <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                         <div class="rounded-full bg-gray-400 p-4">
                             <span class="fa fa-fw fa-check-circle text-white text-xl"></span>
@@ -63,7 +88,12 @@
                             class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
                             Verifikasi</div>
                     </div>
-                    <span class="fa fa-fw fa-arrow-down xl:fa-arrow-right text-gray-400 text-xl"></span>
+                    <div class="block xl:hidden">
+                        <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                    </div>
+                    <div class="hidden xl:block">
+                        <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                    </div>
                     <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                         <div class="rounded-full bg-gray-400 p-4">
                             <span class="fa fa-fw fa-info-circle text-white text-xl"></span>
@@ -72,7 +102,12 @@
                             class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
                             Survey</div>
                     </div>
-                    <span class="fa fa-fw fa-arrow-down xl:fa-arrow-right text-gray-400 text-xl"></span>
+                    <div class="block xl:hidden">
+                        <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                    </div>
+                    <div class="hidden xl:block">
+                        <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                    </div>
                     <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                         <div class="rounded-full bg-gray-400 p-4">
                             <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
