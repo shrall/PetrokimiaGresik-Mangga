@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->integer('status')->default(0);
             $table->string('address')->nullable();
+            $table->timestamp('birth_date')->nullable();
             $table->timestamp('confirmed_date')->nullable();
             $table->integer('blocked_at')->nullable();
             $table->string('registration_ip')->nullable();

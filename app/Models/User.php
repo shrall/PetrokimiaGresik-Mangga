@@ -33,7 +33,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'referral_code',
         'avatar',
         'status',
-        'address',
+        'province',
+        'birth_date',
         'confirmed_date',
         'blocked_at',
         'registration_ip',
@@ -65,4 +66,24 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isUser()
+    {
+        if ($this->user_role == '1') {
+            return true;
+        }
+        return false;
+    }
+    public function province() {
+        return $this->belongsTo(Province::class, 'province_id', 'id');
+    }
+    public function city() {
+        return $this->belongsTo(Regency::class, 'city_id', 'id');
+    }
+    public function district() {
+        return $this->belongsTo(District::class, 'district_id', 'id');
+    }
+    public function role() {
+        return $this->belongsTo(UserRole::class, 'user_role', 'id');
+    }
 }

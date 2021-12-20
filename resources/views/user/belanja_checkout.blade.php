@@ -10,7 +10,7 @@
             <div class="card px-8 py-6 w-full flex flex-col gap-y-4">
                 <div class="text-2xl font-bold"><span class="fa fa-fw fa-map-marker-alt mr-2"></span>Alamat Pengiriman</div>
                 <div class="text-gray-600">
-                    <div>Achmad Yoga Prasetya</div>
+                    <div>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</div>
                     <div>087127172712</div>
                     <div>sholehaja10@gmail.com</div>
                     <div>Perum. ABC DEF, KABUPATEN GRESIK, JAWA TIMUR</div>

@@ -39,7 +39,7 @@
     @auth
         <div class="flex items-center justify-center gap-x-2 dropdown relative">
             <a href="#">
-                <div class="text-xl">Achmad Yoga Prasetya</div>
+                <div class="text-xl">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</div>
             </a>
             <img src="{{ asset('assets/img/asset-toko_mangga-1.png') }}" class="rounded-full w-12 h-12">
             <span class="fa fa-fw fa-chevron-down"></span>

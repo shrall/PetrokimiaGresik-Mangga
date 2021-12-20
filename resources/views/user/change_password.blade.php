@@ -12,11 +12,11 @@
                 <div class="text-md text-gray-600 mb-4">Informasi akun berupa Nama Lengkap, Email, Nomor Handphone dan Ganti
                     Password</div>
                 <label class="text-gray-400">Nama</label>
-                <input name="name" type="text" class="form-input bg-white mb-4" value="Achmad Yoga Prasetya" disabled>
+                <input name="name" type="text" class="form-input bg-white mb-4" value="{{Auth::user()->first_name}} {{Auth::user()->last_name}}" disabled>
                 <label class="text-gray-400">E-Mail</label>
-                <input name="email" type="email" class="form-input bg-white mb-4" value="achmadygao@gmail.com" disabled>
+                <input name="email" type="email" class="form-input bg-white mb-4" value="{{Auth::user()->email}}" disabled>
                 <label class="text-gray-400">Nomor Handphone</label>
-                <input name="phone" type="number" class="form-input bg-white mb-4" value="08123456789" disabled>
+                <input name="phone" type="number" class="form-input bg-white mb-4" value="{{Auth::user()->no_handphone}}" disabled>
             </div>
         </div>
         <div class="col-span-12 xl:col-span-5">

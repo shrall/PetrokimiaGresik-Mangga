@@ -30,17 +30,22 @@ Route::get('/prosedur', [PageController::class, 'prosedur'])->name('prosedur');
 Route::get('/media', [PageController::class, 'media'])->name('media');
 Route::get('/toko-mangga', [PageController::class, 'toko_mangga'])->name('toko_mangga');
 
-Route::get('/user/change-password', [UserController::class, 'change_password'])->name('user.change_password');
-Route::post('/user/update-password', [UserController::class, 'update_password'])->name('user.update_password');
 
-Route::get('/user/create-ajuan', [UserPageController::class, 'create_ajuan'])->name('user.create_ajuan');
-Route::get('/user/status-ajuan', [UserPageController::class, 'status_ajuan'])->name('user.status_ajuan');
+Route::group(['middleware' => ['user'], 'as' => 'user.'], function () {
+    Route::get('/change-password', [UserController::class, 'change_password'])->name('change_password');
+    Route::post('/update-password', [UserController::class, 'update_password'])->name('update_password');
 
-Route::get('/user/riwayat-angsuran', [UserPageController::class, 'riwayat_angsuran'])->name('user.riwayat_angsuran');
+    Route::get('/create-ajuan', [UserPageController::class, 'create_ajuan'])->name('create_ajuan');
+    Route::get('/status-ajuan', [UserPageController::class, 'status_ajuan'])->name('status_ajuan');
 
-Route::get('/user/belanja', [UserPageController::class, 'belanja'])->name('user.belanja');
-Route::get('/user/belanja-list', [UserPageController::class, 'belanja_list'])->name('user.belanja_list');
-Route::get('/user/belanja-checkout', [UserPageController::class, 'belanja_checkout'])->name('user.belanja_checkout');
-Route::get('/user/belanja-success', [UserPageController::class, 'belanja_success'])->name('user.belanja_success');
+    Route::get('/riwayat-angsuran', [UserPageController::class, 'riwayat_angsuran'])->name('riwayat_angsuran');
 
-Route::resource('user', UserController::class);
+    Route::get('/belanja', [UserPageController::class, 'belanja'])->name('belanja');
+    Route::get('/belanja-list', [UserPageController::class, 'belanja_list'])->name('belanja_list');
+    Route::get('/belanja-checkout', [UserPageController::class, 'belanja_checkout'])->name('belanja_checkout');
+    Route::get('/belanja-success', [UserPageController::class, 'belanja_success'])->name('belanja_success');
+});
+
+Route::group(['middleware' => ['user']], function () {
+    Route::resource('user', UserController::class);
+});
