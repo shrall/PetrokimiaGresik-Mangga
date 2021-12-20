@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\District;
+use App\Models\Province;
+use App\Models\Regency;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -50,7 +53,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            // 'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -64,10 +67,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $name = explode(' ', $data['name']);
+        $firstName = $name[0];
+        $lastName = (isset($name[count($name) - 1])) ? $name[count($name) - 1] : '';
         return User::create([
-            'name' => $data['name'],
+            'first_name' => $firstName,
+            'last_name' => $lastName,
             'email' => $data['email'],
+            'no_handphone' => $data['no_handphone'],
+            'province_id' => $data['province'],
+            'city_id' => $data['city'],
+            'district_id' => $data['district'],
             'password' => Hash::make($data['password']),
+            'user_role' => 1
         ]);
+    }
+
+    public function showRegistrationForm()
+    {
+        $provinces = Province::all();
+        $cities = Regency::all();
+        $districts = District::all();
+        return view('auth.register', compact('provinces', 'cities', 'districts'));
     }
 }
