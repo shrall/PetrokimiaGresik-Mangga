@@ -46,6 +46,9 @@
 .form-input{
     @apply border-b border-gray-400 w-full text-lg md:text-xl focus:outline-none disabled:text-gray-400;
 }
+.form-pengajuan-input{
+
+}
 
 .dropdown:hover .dropdown-menu {
   display: block;

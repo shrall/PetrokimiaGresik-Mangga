@@ -41,4 +41,9 @@ class PageController extends Controller
     {
         return view('user.belanja_success');
     }
+
+    public function form_pertanian()
+    {
+        return view('user.form.pertanian');
+    }
 }
