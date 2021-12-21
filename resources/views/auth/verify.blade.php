@@ -21,12 +21,25 @@
 
 <body>
     <div class="bg-light-200 font-os w-screen h-screen flex flex-col items-center justify-center gap-y-2">
-        <img src="{{ asset('assets/svg/belanja-berhasil.svg') }}" alt="" srcset="">
-        <div class="text-3xl">Selamat! Transaksi anda berhasil.</div>
-        <a href="{{ route('user.index') }}" class="mangga-button-green cursor-pointer">
-            Kembali ke Beranda
-            <span class="fa fa-fw fa-arrow-right"></span>
-        </a>
+        <div class="text-5xl text-center font-af text-mangga-green-400 mb-12">Terima kasih telah mendaftar di Mangga!
+        </div>
+        <img src="{{ asset('assets/svg/verifikasi-email.svg') }}" alt="" srcset="">
+        <div class="text-3xl">Cek email yang baru saja didaftarkan untuk menyelesaikan proses verifikasi.</div>
+        <div class="flex items-center justify-center gap-x-4 mt-4">
+            <a href="#" class="mangga-button-transparent-orange cursor-pointer" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <span class="fa fa-fw fa-chevron-left"></span>
+                Logout
+            </a>
+            <a href="#" class="mangga-button-green cursor-pointer" onclick="event.preventDefault(); document.getElementById('resend-form').submit();">
+                Kirim Ulang
+            </a>
+        </div>
+        <form id="resend-form" action="{{ route('verification.resend') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </body>

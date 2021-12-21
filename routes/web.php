@@ -31,7 +31,7 @@ Route::get('/media', [PageController::class, 'media'])->name('media');
 Route::get('/toko-mangga', [PageController::class, 'toko_mangga'])->name('toko_mangga');
 
 
-Route::group(['middleware' => ['user'], 'as' => 'user.'], function () {
+Route::group(['middleware' => ['user', 'verified'], 'as' => 'user.'], function () {
     Route::get('/change-password', [UserController::class, 'change_password'])->name('change_password');
     Route::post('/update-password', [UserController::class, 'update_password'])->name('update_password');
 
@@ -54,7 +54,7 @@ Route::group(['middleware' => ['user'], 'as' => 'user.'], function () {
     Route::get('/form/jasa', [UserPageController::class, 'form_jasa'])->name('form_jasa');
 });
 
-Route::group(['middleware' => ['user']], function () {
+Route::group(['middleware' => ['user', 'verified']], function () {
     Route::resource('user', UserController::class);
 });
 

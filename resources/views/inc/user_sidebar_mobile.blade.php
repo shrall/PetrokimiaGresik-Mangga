@@ -34,11 +34,11 @@
     @endif
     @if (Route::current()->getName() == 'user.belanja' || Route::current()->getName() == 'user.belanja_list' || Route::current()->getName() == 'user.belanja_checkout')
         <a href="{{ route('user.belanja') }}" class="bg-mangga-green-300 text-white rounded-lg p-3">
-            <span class="fa fa-fw fa-history mr-2"></span>Belanja
+            <span class="fa fa-fw fa-shopping-cart mr-2"></span>Belanja
         </a>
     @else
         <a href="{{ route('user.belanja') }}" class="hover:bg-mangga-green-300 hover:text-white rounded-lg p-3">
-            <span class="fa fa-fw fa-history mr-2"></span>Belanja
+            <span class="fa fa-fw fa-shopping-cart mr-2"></span>Belanja
         </a>
     @endif
 </div>
