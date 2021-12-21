@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class="flex items-center justify-end gap-x-4 mt-4">
-                <a href="{{ route('user.belanja_checkout') }}" class="mangga-button-transparent-orange cursor-pointer">
+                <a href="{{ route('user.belanja_list') }}" class="mangga-button-transparent-orange cursor-pointer">
                     <span class="fa fa-fw fa-chevron-left"></span>
                     Kembali
                 </a>

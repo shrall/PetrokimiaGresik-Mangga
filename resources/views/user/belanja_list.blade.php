@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-@include('inc.user_sidebar_mobile')
-<div class="grid grid-cols-12 gap-x-8 gap-y-4 py-4 px-8 xl:px-0">
+    @include('inc.user_sidebar_mobile')
+    <div class="grid grid-cols-12 gap-x-8 gap-y-4 py-4 px-8 xl:px-0">
         <div class="col-span-3 hidden xl:block border-r-2 border-gray-400">
             @include('inc.user_sidebar')
         </div>
@@ -28,7 +28,9 @@
                             </div>
                             <span class="fa fa-fw fa-trash text-2xl text-red-600 hover:text-red-700 cursor-pointer"></span>
                         </div>
-                        <span class="fa fa-fw fa-trash text-2xl text-red-600 hover:text-red-700 cursor-pointer block md:hidden"></span>
+                        <div class="block md:hidden">
+                            <span class="fa fa-fw fa-trash text-2xl text-red-600 hover:text-red-700 cursor-pointer"></span>
+                        </div>
                     </div>
                     <div class="flex items-center justify-between gap-x-4 border-b border-gray-600 py-2">
                         <div class="flex items-center gap-x-4">
@@ -48,7 +50,9 @@
                             </div>
                             <span class="fa fa-fw fa-trash text-2xl text-red-600 hover:text-red-700 cursor-pointer"></span>
                         </div>
-                        <span class="fa fa-fw fa-trash text-2xl text-red-600 hover:text-red-700 cursor-pointer block md:hidden"></span>
+                        <div class="block md:hidden">
+                            <span class="fa fa-fw fa-trash text-2xl text-red-600 hover:text-red-700 cursor-pointer"></span>
+                        </div>
                     </div>
                     <div class="flex items-center justify-between gap-x-4 border-b border-gray-600 py-2">
                         <div class="flex items-center gap-x-4">
@@ -68,7 +72,9 @@
                             </div>
                             <span class="fa fa-fw fa-trash text-2xl text-red-600 hover:text-red-700 cursor-pointer"></span>
                         </div>
-                        <span class="fa fa-fw fa-trash text-2xl text-red-600 hover:text-red-700 cursor-pointer block md:hidden"></span>
+                        <div class="block md:hidden">
+                            <span class="fa fa-fw fa-trash text-2xl text-red-600 hover:text-red-700 cursor-pointer"></span>
+                        </div>
                     </div>
                 </div>
                 <div class="flex items-center justify-end gap-x-4 text-2xl font-semibold">
@@ -77,7 +83,7 @@
                 </div>
             </div>
             <div class="flex items-center justify-end gap-x-4 mt-4">
-                <a href="{{ route('user.belanja_list') }}" class="mangga-button-transparent-orange cursor-pointer">
+                <a href="{{ route('user.belanja') }}" class="mangga-button-transparent-orange cursor-pointer">
                     <span class="fa fa-fw fa-chevron-left"></span>
                     Kembali
                 </a>
