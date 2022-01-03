@@ -24,4 +24,34 @@ class PageController extends Controller
     public function faq(){
         return view('landing_page.faq');
     }
+    public function tentang(){
+        return view('landing_page.tentang');
+    }
+    public function mangga(){
+        return view('landing_page.mangga');
+    }
+    public function mangga_makmur(){
+        return view('landing_page.mangga_makmur');
+    }
+    public function mangga_gadung(){
+        return view('landing_page.mangga_gadung');
+    }
+    public function mangga_golek(){
+        return view('landing_page.mangga_golek');
+    }
+    public function mangga_muda(){
+        return view('landing_page.mangga_muda');
+    }
+    public function mangga_madu(){
+        return view('landing_page.mangga_madu');
+    }
+    public function landasan(){
+        return view('landing_page.landasan');
+    }
+    public function sebaran(){
+        return view('landing_page.sebaran');
+    }
+    public function alur(){
+        return view('landing_page.alur');
+    }
 }

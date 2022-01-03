@@ -30,6 +30,18 @@ Route::get('/prosedur', [PageController::class, 'prosedur'])->name('prosedur');
 Route::get('/media', [PageController::class, 'media'])->name('media');
 Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 Route::get('/toko-mangga', [PageController::class, 'toko_mangga'])->name('toko_mangga');
+Route::group(['as' => 'profil.'], function () {
+    Route::get('/tentang', [PageController::class, 'tentang'])->name('tentang');
+    Route::get('/mangga', [PageController::class, 'mangga'])->name('mangga');
+    Route::get('/mangga-makmur', [PageController::class, 'mangga_makmur'])->name('mangga_makmur');
+    Route::get('/mangga-gadung', [PageController::class, 'mangga_gadung'])->name('mangga_gadung');
+    Route::get('/mangga-golek', [PageController::class, 'mangga_golek'])->name('mangga_golek');
+    Route::get('/mangga-muda', [PageController::class, 'mangga_muda'])->name('mangga_muda');
+    Route::get('/mangga-madu', [PageController::class, 'mangga_madu'])->name('mangga_madu');
+    Route::get('/landasan', [PageController::class, 'landasan'])->name('landasan');
+    Route::get('/sebaran', [PageController::class, 'sebaran'])->name('sebaran');
+    Route::get('/alur', [PageController::class, 'alur'])->name('alur');
+});
 
 
 Route::group(['middleware' => ['user', 'verified'], 'as' => 'user.'], function () {

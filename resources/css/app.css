@@ -50,7 +50,7 @@
 
 }
 
-.dropdown:hover .dropdown-menu {
+.dropdown:hover .dropdown-menu, .dropdown-menu:hover {
   display: block;
 }
 .dropdown-box:hover .dropdown-menu-box {
