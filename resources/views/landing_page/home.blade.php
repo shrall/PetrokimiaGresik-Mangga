@@ -76,7 +76,7 @@
             <span class="mb-12">Alur</span> <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}"
                 class="w-96 ml-4">
         </div>
-        <div class="grid grid-cols-5 items-center gap-4 px-28 mb-24">
+        <div class="grid grid-cols-5 items-center gap-4 px-28 pb-24">
             <div class="flex flex-col text-white text-2xl">
                 <div class="flex items-center justify-center py-10 bg-mangga-orange-300">Registrasi</div>
                 <div
@@ -107,47 +107,6 @@
                     class="flex items-center justify-center py-16 border border-mangga-orange-300 text-7xl font-af text-mangga-orange-400">
                     5</div>
             </div>
-        </div>
-        <img src="{{ asset('assets/svg/asset-home-2.svg') }}" class="w-screen">
-        <div class="text-5xl text-center font-af text-mangga-green-400 mb-12">Ajukan Pertanyaan</div>
-        <div class="flex flex-col items-center justify-center">
-            <div class="flex flex-col items-center justify-center mb-8">
-                <div onclick="togglePertanyaanAccordion('pertanyaan-1');"
-                    class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-xl w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-1"></span>
-                    Bagaimana cara menjadi Mitra Kebanggaan Petrokimia Gresik?
-                </div>
-                <div class="border border-mangga-green-500 px-8 py-4 text-xl w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-1">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                </div>
-            </div>
-            <div class="flex flex-col items-center justify-center mb-8">
-                <div onclick="togglePertanyaanAccordion('pertanyaan-2');"
-                    class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-xl w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-2"></span>
-                    Berapa lamakah proses menjadi Mitra Kebanggan?
-                </div>
-                <div class="border border-mangga-green-500 px-8 py-4 text-xl w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-2">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                </div>
-            </div>
-            <div class="flex flex-col items-center justify-center mb-8">
-                <div onclick="togglePertanyaanAccordion('pertanyaan-3');"
-                    class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-xl w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-3"></span>
-                    Apa saja Persyaratan yang perlu disiapkan?
-                </div>
-                <div class="border border-mangga-green-500 px-8 py-4 text-xl w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-3">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                </div>
-            </div>
-            <img src="{{ asset('assets/svg/asset-home-3.svg') }}" alt="" srcset="">
         </div>
     </div>
     <div class="hidden md:block xl:hidden">
@@ -223,7 +182,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex items-center content-center justify-center text-mangga-green-300 font-af text-8xl mb-12">
+        <div class="flex items-center content-center justify-center text-mangga-green-300 font-af text-8xl pb-12">
             <span class="mb-12">Alur</span> <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}"
                 class="w-96 ml-4">
         </div>
@@ -258,47 +217,6 @@
                     class="flex items-center justify-center py-8 border border-mangga-orange-300 text-4xl font-af text-mangga-orange-400">
                     5</div>
             </div>
-        </div>
-        <img src="{{ asset('assets/svg/asset-home-2.svg') }}" class="w-screen">
-        <div class="text-5xl text-center font-af text-mangga-green-400 mb-12">Ajukan Pertanyaan</div>
-        <div class="flex flex-col items-center justify-center">
-            <div class="flex flex-col items-center justify-center mb-8">
-                <div onclick="togglePertanyaanAccordion('pertanyaan-1');"
-                    class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-xl w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-1"></span>
-                    Bagaimana cara menjadi Mitra Kebanggaan Petrokimia Gresik?
-                </div>
-                <div class="border border-mangga-green-500 px-8 py-4 text-xl w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-1">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                </div>
-            </div>
-            <div class="flex flex-col items-center justify-center mb-8">
-                <div onclick="togglePertanyaanAccordion('pertanyaan-2');"
-                    class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-xl w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-2"></span>
-                    Berapa lamakah proses menjadi Mitra Kebanggan?
-                </div>
-                <div class="border border-mangga-green-500 px-8 py-4 text-xl w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-2">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                </div>
-            </div>
-            <div class="flex flex-col items-center justify-center mb-8">
-                <div onclick="togglePertanyaanAccordion('pertanyaan-3');"
-                    class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-xl w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron chevron-pertanyaan-3"></span>
-                    Apa saja Persyaratan yang perlu disiapkan?
-                </div>
-                <div class="border border-mangga-green-500 px-8 py-4 text-xl w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-3">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                </div>
-            </div>
-            <img src="{{ asset('assets/svg/asset-home-3.svg') }}" alt="" srcset="">
         </div>
     </div>
     <div class="sm:block md:hidden xl:hidden">
@@ -368,7 +286,7 @@
             <span class="mb-6">Alur</span> <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}"
                 class="w-52 ml-4">
         </div>
-        <div class="grid grid-cols-1 items-center gap-4 px-28 mb-24">
+        <div class="grid grid-cols-1 items-center gap-4 px-28 pb-12">
             <div class="flex flex-col text-white text-xl">
                 <div class="flex items-center justify-center py-4 bg-mangga-orange-300">Registrasi</div>
                 <div
@@ -399,47 +317,6 @@
                     class="flex items-center justify-center py-8 border border-mangga-orange-300 text-4xl font-af text-mangga-orange-400">
                     5</div>
             </div>
-        </div>
-        <img src="{{ asset('assets/svg/asset-home-2.svg') }}" class="w-screen">
-        <div class="text-5xl text-center font-af text-mangga-green-400 mb-12">Ajukan Pertanyaan</div>
-        <div class="flex flex-col items-center justify-center">
-            <div class="flex flex-col items-center justify-center mb-8">
-                <div onclick="togglePertanyaanAccordion('pertanyaan-1');"
-                    class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-md w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron" id=""></span>
-                    Bagaimana cara menjadi Mitra Kebanggaan Petrokimia Gresik?
-                </div>
-                <div class="border border-mangga-green-500 px-8 py-4 text-md w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-1">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                </div>
-            </div>
-            <div class="flex flex-col items-center justify-center mb-8">
-                <div onclick="togglePertanyaanAccordion('pertanyaan-2');"
-                    class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-md w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron" id=""></span>
-                    Berapa lamakah proses menjadi Mitra Kebanggan?
-                </div>
-                <div class="border border-mangga-green-500 px-8 py-4 text-md w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-2">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                </div>
-            </div>
-            <div class="flex flex-col items-center justify-center mb-8">
-                <div onclick="togglePertanyaanAccordion('pertanyaan-3');"
-                    class="border border-mangga-green-500 bg-light-400 flex items-center gap-x-2 px-8 py-4 text-md w-vw-55 cursor-pointer">
-                    <span class="fa fa-fw fa-chevron-right accordion-chevron" id=""></span>
-                    Apa saja Persyaratan yang perlu disiapkan?
-                </div>
-                <div class="border border-mangga-green-500 px-8 py-4 text-md w-vw-55 cursor-pointer hidden accordion-pertanyaan pertanyaan-3">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                </div>
-            </div>
-            <img src="{{ asset('assets/svg/asset-home-3.svg') }}" alt="" srcset="">
         </div>
     </div>
 @endsection

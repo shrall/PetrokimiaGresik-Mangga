@@ -21,4 +21,7 @@ class PageController extends Controller
     public function toko_mangga(){
         return view('landing_page.toko_mangga');
     }
+    public function faq(){
+        return view('landing_page.faq');
+    }
 }
