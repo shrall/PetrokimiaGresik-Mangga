@@ -7,7 +7,8 @@
         <div class="flex items-center justify-center gap-x-2 dropdown">
             <a href="{{ route('home') }}" class="nav-active">Profil</a>
             <div class="dropdown-menu absolute hidden top-12 w-128 h-12"></div>
-            <div class="dropdown-menu absolute hidden text-white top-24 right-0 w-screen bg-mangga-green-300" style="z-index: 99999;">
+            <div class="dropdown-menu absolute hidden text-white top-24 right-0 w-screen bg-mangga-green-300"
+                style="z-index: 99999;">
                 <div class="grid grid-cols-2 px-24 py-12">
                     <div class="flex flex-col gap-y-8 text-2xl">
                         <a href="{{ route('profil.tentang') }}" class="hover:text-gray-200">Tentang Mangga</a>
@@ -28,8 +29,31 @@
             </div>
         </div>
     @else
-        <a href="{{ route('home') }}"
-            class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Profil</a>
+        <div class="flex items-center justify-center gap-x-2 dropdown">
+            <a href="{{ route('home') }}"
+                class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Profil</a>
+            <div class="dropdown-menu absolute hidden top-12 w-128 h-12"></div>
+            <div class="dropdown-menu absolute hidden text-white top-24 right-0 w-screen bg-mangga-green-300"
+                style="z-index: 99999;">
+                <div class="grid grid-cols-2 px-24 py-12">
+                    <div class="flex flex-col gap-y-8 text-2xl">
+                        <a href="{{ route('profil.tentang') }}" class="hover:text-gray-200">Tentang Mangga</a>
+                        <a href="{{ route('profil.landasan') }}" class="hover:text-gray-200">Landasan Mangga</a>
+                        <a href="{{ route('profil.sebaran') }}" class="hover:text-gray-200">Sebaran Mangga</a>
+                        <a href="{{ route('profil.alur') }}" class="hover:text-gray-200">Alur dan Prosedur</a>
+                    </div>
+                    <div class="flex flex-col gap-y-4 text-xl">
+                        <div class="text-2xl py-2 border-b-2 border-light-200">Program Mangga</div>
+                        <a href="{{ route('profil.mangga') }}" class="hover:text-gray-200">Mangga</a>
+                        <a href="{{ route('profil.mangga_gadung') }}" class="hover:text-gray-200">Mangga Gadung</a>
+                        <a href="{{ route('profil.mangga_muda') }}" class="hover:text-gray-200">Mangga Muda</a>
+                        <a href="{{ route('profil.mangga_makmur') }}" class="hover:text-gray-200">Mangga Makmur</a>
+                        <a href="{{ route('profil.mangga_madu') }}" class="hover:text-gray-200">Mangga Madu</a>
+                        <a href="{{ route('profil.mangga_golek') }}" class="hover:text-gray-200">Mangga Golek</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     @endif
     @if (Route::current()->getName() == 'media')
         <a href="{{ route('media') }}" class="nav-active">Media</a>
@@ -64,7 +88,7 @@
             <ul class="dropdown-menu absolute hidden text-black top-12 pt-2 right-0">
                 <li class="flex items-center justify-center">
                     <a onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();"
+                                document.getElementById('logout-form').submit();"
                         class="rounded-t bg-white hover:bg-gray-100 py-2 px-4 whitespace-no-wrap cursor-pointer flex items-center justify-center gap-x-2">
                         <span class="fa fa-fw fa-power-off"></span>Log out</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
