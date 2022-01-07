@@ -24,6 +24,10 @@ Route::get('/template', function () {
     return new TemplateMail();
 });
 
+Route::get('/proposal', function(){
+    return view('proposal');
+});
+
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/info', [PageController::class, 'info'])->name('info');
 Route::get('/prosedur', [PageController::class, 'prosedur'])->name('prosedur');
