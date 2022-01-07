@@ -5,32 +5,90 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 
-    {{-- Font Awesome --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .text-center {
+            text-align: center;
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .py-12 {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .px-16 {
+            padding-left: 4rem;
+            padding-right: 4rem;
+        }
+
+        .border-2 {
+            border-width: 2px;
+        }
+
+        .border-black {
+            border-color: #000000;
+        }
+
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .mb-12 {
+            margin-bottom: 3rem;
+        }
+
+        .mb-8 {
+            margin-bottom: 2rem;
+        }
+
+        .mt-2 {
+            margin-top: 0.5rem;
+        }
+
+        .text-5xl {
+            font-size: 3rem;
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        .text-4xl {
+            font-size: 2.25rem;
+        }
+
+    </style>
 </head>
 
-<body class="px-16 py-12 bg-cover bg-bottom" style="background-image: url(http://mangga.test/assets/img/proposal-cover.jpg);">
-    <div class="flex items-center justify-between mb-4">
-        <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}" class="w-64">
-        <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}" class="w-64">
-    </div>
+<body class="px-16 py-14"
+    style="background-image: url(http://mangga.test/assets/img/proposal-cover.jpg); background-position: bottom; background-size: cover; font-family: Arial;">
+    <table style="width: 100%;" class="mb-4">
+        <tr>
+            <td><img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}" style="width: 16rem;"></td>
+            <td style="text-align: end;"><img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}"
+                    style="width: 16rem;"></td>
+        </tr>
+    </table>
     <div class="text-center text-2xl">
         Jl. Jenderal Ahmad Yani Gresik (61119)
     </div>
@@ -42,79 +100,88 @@
             class="text-blue-600 underline">mangga@petrokimia-gresik.com</a>
     </div>
     <hr class="bg-black mt-2 mb-8">
-    <div class="border-2 border-black px-6 py-4 mb-12">
+    <div class="border-2 border-black px-6 py-4 mb-12" style="border: 2px solid black;">
         <div class="text-5xl text-center font-bold">PROPOSAL</div>
         <div class="text-4xl text-center font-bold">PROGRAM PENDANAAN UMK</div>
         <div class="text-4xl text-center font-bold">(USAHA MIKRO & KECIL) </div>
-        <div class="mt-4 mb-8 grid grid-cols-12 items-center justify-center text-2xl">
-            <div class="col-span-4"></div>
-            <div class="col-span-2">Nomor</div>
-            <div class="col-span-4">: 0888888888888</div>
-            <div class="col-span-2"></div>
-            <div class="col-span-4"></div>
-            <div class="col-span-2">Tanggal</div>
-            <div class="col-span-4">: 27 / Januari / 2022</div>
-            <div class="col-span-2"></div>
-            <div class="col-span-4"></div>
-            <div class="col-span-2">Tahap</div>
-            <div class="col-span-4">: 0888888888888</div>
-            <div class="col-span-2"></div>
-            <div class="col-span-4"></div>
-            <div class="col-span-2">Paraf</div>
-            <div class="col-span-4">: 0888888888888</div>
-            <div class="col-span-2"></div>
-        </div>
-        <div class="mb-32 grid grid-cols-12 items-center justify-center text-2xl font-bold">
-            <div class="col-span-2"></div>
-            <div class="col-span-4">NAMA PERUSAHAAN</div>
-            <div class="col-span-6">: PT. Fast Retail Indonesia</div>
-            <div class="col-span-2"></div>
-            <div class="col-span-4">PENANGGUNG JAWAB</div>
-            <div class="col-span-6">: Muhammad Bagus</div>
-            <div class="col-span-2"></div>
-            <div class="col-span-4">ALAMAT</div>
-            <div class="col-span-4">: Jl. Perkunisan Amparan No. 27C</div>
-            <div class="col-span-1">RT: 002</div>
-            <div class="col-span-1">RW: 003</div>
-            <div class="col-span-3"></div>
-            <div class="col-span-3">DESA / KELURAHAN</div>
-            <div class="col-span-6">: Muhammad Bagus</div>
-            <div class="col-span-3"></div>
-            <div class="col-span-3">KECAMATAN</div>
-            <div class="col-span-6">: Muhammad Bagus</div>
-            <div class="col-span-3"></div>
-            <div class="col-span-3">KAB / KODYA</div>
-            <div class="col-span-6">: Muhammad Bagus</div>
-            <div class="col-span-2"></div>
-            <div class="col-span-4">TELEPON / HP / FAX</div>
-            <div class="col-span-6">: PT. Fast Retail Indonesia</div>
-            <div class="col-span-2"></div>
-            <div class="col-span-4">SEKTOR USAHA</div>
-            <div class="col-span-6">: PT. Fast Retail Indonesia</div>
-            <div class="col-span-2"></div>
-            <div class="col-span-4">KOMODITAS</div>
-            <div class="col-span-6">: PT. Fast Retail Indonesia</div>
-        </div>
+        <table style="margin-left: auto; margin-right: auto; font-size: 1.25rem; margin-bottom: 6rem;"
+            class="mt-2">
+            <tr>
+                <td>Nomor</td>
+                <td>: 08888888888888</td>
+            </tr>
+            <tr>
+                <td>Tanggal</td>
+                <td>: 24/Januari/2022</td>
+            </tr>
+            <tr>
+                <td>Tahap</td>
+                <td>: Pertama</td>
+            </tr>
+            <tr>
+                <td>Paraf</td>
+                <td>: Petrokimia Gresik</td>
+            </tr>
+        </table>
+        <table style="font-size: 1.25rem; margin-bottom: 4rem;" class="font-bold">
+            <tr>
+                <td>NAMA PERUSAHAAN</td>
+                <td>: PT. Fast Retail Indonesia</td>
+            </tr>
+            <tr>
+                <td>PENANGGUNG JAWAB</td>
+                <td>: Budi Cahyono Agusetya</td>
+            </tr>
+            <tr>
+                <td>ALAMAT</td>
+                <td>: Jl. Puncak Permai Asri No. 127A RT: 002 RW: 018</td>
+            </tr>
+            <tr>
+                <td style="padding-left: 1rem;">DESA / KELURAHAN</td>
+                <td>: Kintamani</td>
+            </tr>
+            <tr>
+                <td style="padding-left: 1rem;">KECAMATAN</td>
+                <td>: Kilang</td>
+            </tr>
+            <tr>
+                <td style="padding-left: 1rem;">KAB / KODYA</td>
+                <td>: Desamasa</td>
+            </tr>
+            <tr>
+                <td>TELEPON / HP / FAX</td>
+                <td>: 08123213213</td>
+            </tr>
+            <tr>
+                <td>SEKTOR USAHA</td>
+                <td>: Industri</td>
+            </tr>
+            <tr>
+                <td>KOMODITAS</td>
+                <td>: Tekstil</td>
+            </tr>
+        </table>
     </div>
-    <div class="text-center text-3xl font-bold">PERSYARATAN YANG HARUS DILAMPIRKAN</div>
-    <div class="grid grid-cols-12 items-center justify-center text-2xl mb-48">
-        <div class="col-span-2"></div>
-        <div class="col-span-4 font-bold">1 (Satu) LEMBAR FOTO COPY</div>
-        <div class="col-span-6"></div>
-        <div class="col-span-2"></div>
-        <div class="col-span-4">- Kartu Tanda Penduduk (KTP) </div>
-        <div class="col-span-4">- Kartu Susunan Keluarga (KSK)</div>
-        <div class="col-span-2"></div>
-        <div class="col-span-2"></div>
-        <div class="col-span-4">- Surat Tanah (SHM)</div>
-        <div class="col-span-4">- SIUP & TDP / IU & NIB</div>
-        <div class="col-span-2"></div>
-        <div class="col-span-2"></div>
-        <div class="col-span-4">- Rekening Bank BNI-46</div>
-        <div class="col-span-4">- Dan lain-lain sesuai kebutuhan</div>
-        <div class="col-span-2"></div>
-    </div>
-    <div class="w-full flex items-center justify-end text-white font-bold">
+    <div class="text-center text-3xl font-bold" style="font-size: 1.5rem; margin-bottom: 1.4rem;">PERSYARATAN YANG HARUS DILAMPIRKAN</div>
+    <table style="font-size: 1.25rem; margin-bottom: 12rem; margin-left: auto; margin-right: auto;">
+        <tr class="font-bold">
+            <td>1 (Satu) LEMBAR FOTO COPY</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 1.2rem;">- Kartu Tanda Penduduk (KTP)</td>
+            <td style="padding-left: 1.2rem;">- Kartu Susunan Keluarga (KSK)</td>
+        </tr>
+        <tr>
+            <td style="padding-left: 1.2rem;">- Surat Tanah (SHM)</td>
+            <td style="padding-left: 1.2rem;">- SIUP & TDP / IU & NIB</td>
+        </tr>
+        <tr>
+            <td style="padding-left: 1.2rem;">- Rekening Bank BNI-46</td>
+            <td style="padding-left: 1.2rem;">- Dan lain-lain sesuai kebutuhan</td>
+        </tr>
+    </table>
+    <div class="font-bold" style="color: #ffffff; text-align: right; width: 100%; font-size: 1rem;">
         FM-69-0001
     </div>
 </body>

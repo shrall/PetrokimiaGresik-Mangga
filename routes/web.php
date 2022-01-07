@@ -27,6 +27,7 @@ Route::get('/template', function () {
 Route::get('/proposal', function(){
     return view('proposal');
 });
+Route::get('/proposal/download', [PageController::class, 'checkPDF']);
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/info', [PageController::class, 'info'])->name('info');
