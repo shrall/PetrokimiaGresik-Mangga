@@ -3,15 +3,15 @@
 @section('content')
     <div class="flex flex-col gap-y-4 py-4 px-8">
         <div class="text-6xl font-af text-mangga-green-400 mb-8">Sebaran Mangga</div>
-        <div class="grid grid-cols-12 gap-12">
-            <div class="col-span-3 flex items-end justify-center text-5xl font-af text-mangga-green-400">Jawa Timur</div>
-            <div class="col-span-9 row">
+        <div class="grid grid-cols-12 gap-y-4 md:gap-y-0 md:gap-12">
+            <div class="col-span-12 md:col-span-3 flex items-end justify-center text-5xl font-af text-mangga-green-400">Jawa Timur</div>
+            <div class="col-span-12 md:col-span-9 row">
                 <div class="col-12 p-0">
-                    <div id="chart-east"></div>
+                    <div id="chart-east" class="h-vh-30 md:h-vh-50"></div>
                 </div>
             </div>
-            <div class="col-span-3"></div>
-            <div class="col-span-9 grid grid-cols-3 gap-x-4">
+            <div class="hidden md:block col-span-3"></div>
+            <div class="col-span-12 md:col-span-9 grid grid-cols-3 gap-x-4">
                 <div class="flex flex-col items-center justify-center gap-y-2">
                     <div class="relative">
                         <img src="{{ asset('assets/svg/mangga-yellow.svg') }}" class="absolute -right-2 bottom-0 w-10">
@@ -37,23 +37,50 @@
                     <div>Lorem Ipsum</div>
                 </div>
             </div>
-            <div class="col-span-9 row">
+            <div class="col-span-12 md:col-span-3 flex md:hidden items-end justify-center text-5xl font-af text-mangga-green-400">Jawa Tengah</div>
+            <div class="col-span-12 md:col-span-9 row">
                 <div class="col-12 p-0">
-                    <div id="chart-central"></div>
+                    <div id="chart-central" class="h-vh-30 md:h-vh-50"></div>
                 </div>
             </div>
-            <div class="col-span-3 flex flex-col justify-center">
-                <div class="border-b-4 border-mangga-green-400 mt-24">
+            <div class="col-span-12 md:col-span-9 grid md:hidden grid-cols-3 gap-x-4">
+                <div class="flex flex-col items-center justify-center gap-y-2">
+                    <div class="relative">
+                        <img src="{{ asset('assets/svg/mangga-yellow.svg') }}" class="absolute -right-2 bottom-0 w-10">
+                        <img src="{{ asset('assets/img/stock.jpg') }}" class="rounded-full w-44">
+                    </div>
+                    <div class="font-bold">Lorem Ipsum</div>
+                    <div>Lorem Ipsum</div>
+                </div>
+                <div class="flex flex-col items-center justify-center gap-y-2">
+                    <div class="relative">
+                        <img src="{{ asset('assets/svg/mangga-orange.svg') }}" class="absolute -right-2 bottom-0 w-10">
+                        <img src="{{ asset('assets/img/stock.jpg') }}" class="rounded-full w-44">
+                    </div>
+                    <div class="font-bold">Lorem Ipsum</div>
+                    <div>Lorem Ipsum</div>
+                </div>
+                <div class="flex flex-col items-center justify-center gap-y-2">
+                    <div class="relative">
+                        <img src="{{ asset('assets/svg/mangga-green.svg') }}" class="absolute -right-2 bottom-0 w-10">
+                        <img src="{{ asset('assets/img/stock.jpg') }}" class="rounded-full w-44">
+                    </div>
+                    <div class="font-bold">Lorem Ipsum</div>
+                    <div>Lorem Ipsum</div>
+                </div>
+            </div>
+            <div class="col-span-12 md:col-span-3 flex flex-col justify-center">
+                <div class="border-b-4 border-mangga-green-400 md:mt-24">
                     Mitra Kebanggaan telah tersebar di berbagai Provinsi Pulau Jawa diantaranya Provinsi Jatim terdapat
                     <span class="font-bold">499</span>
                     Mangga, Provinsi Jateng terdapat <span class="font-bold">131</span> Mangga dan Pada Provinsi D.I.Y
                     terdapat <span class="font-bold">3</span> Mangga
                 </div>
-                <div class="text-5xl font-af text-mangga-green-400 mt-auto">
+                <div class="text-5xl font-af text-mangga-green-400 mt-auto hidden md:block">
                     Jawa Tengah
                 </div>
             </div>
-            <div class="col-span-9 grid grid-cols-3 gap-x-4">
+            <div class="col-span-12 md:col-span-9 hidden md:grid grid-cols-3 gap-x-4">
                 <div class="flex flex-col items-center justify-center gap-y-2">
                     <div class="relative">
                         <img src="{{ asset('assets/svg/mangga-yellow.svg') }}" class="absolute -right-2 bottom-0 w-10">
@@ -95,7 +122,7 @@
                 type: 'maps/eastjava',
                 renderAt: 'chart-east',
                 width: '100%',
-                height: '40%',
+                height: '100%',
                 dataFormat: 'json',
                 dataSource: {
                     "chart": {
@@ -472,7 +499,7 @@
                 type: 'maps/centraljava',
                 renderAt: 'chart-central',
                 width: '100%',
-                height: '30%',
+                height: '100%',
                 dataFormat: 'json',
                 dataSource: {
                     "chart": {

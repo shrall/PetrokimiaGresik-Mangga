@@ -27,15 +27,6 @@ class Regency extends Model
     protected $table = 'regencies';
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'province_id'
-    ];
-
-    /**
      * Regency belongs to Province.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

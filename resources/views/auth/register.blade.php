@@ -2,7 +2,7 @@
 
 @section('content')
     <div
-        class="w-screen h-screen bg-sign-up bg-cover flex flex-col xl:grid xl:grid-cols-2 gap-x-4 xl:items-center xl:justify-center">
+        class="w-full h-screen bg-sign-up bg-cover flex flex-col xl:grid xl:grid-cols-2 gap-x-4 xl:items-center xl:justify-center">
         <div class="my-12 xl:col-span-1 self-start xl:mt-24 xl:mb-0 px-16">
             <div class="text-4xl xl:text-6xl text-mangga-green-600 font-af">SELAMAT DATANG.</div>
             <div class="text-lg xl:text-2xl text-gray-600 font-os">Silahkan lengkapi daftar diri untuk mendaftar ke Mangga.
@@ -16,20 +16,19 @@
                 <input type="email" name="email" class="form-input mb-8" placeholder="E-Mail">
                 <input type="text" name="name" class="form-input mb-8" placeholder="Nama Lengkap">
                 <input type="number" name="no_handphone" class="form-input mb-8" placeholder="Nomor HP">
-                <select name="province" class="form-input mb-8">
+                <select name="province" class="form-input mb-8" id="province">
                     @foreach ($provinces as $province)
-                        <option value={{$province->id}}>{{$province->name}}</option>
+                        <option value={{ $province->id }}>{{ $province->name }}</option>
                     @endforeach
                 </select>
-                <select name="city" class="form-input mb-8">
-                    @foreach ($cities as $city)
-                        <option value={{$city->id}}>{{$city->name}}</option>
-                    @endforeach
+                <select name="city" class="form-input mb-8" id="city" disabled>
+                    <option value="">Kota/Kabupaten</option>
                 </select>
-                <select name="district" class="form-input mb-8">
-                    @foreach ($districts as $district)
-                        <option value={{$district->id}}>{{$district->name}}</option>
-                    @endforeach
+                <select name="district" class="form-input mb-8" id="district" disabled>
+                    <option value="">Kecamatan</option>
+                </select>
+                <select name="village" class="form-input mb-8" id="village" disabled>
+                    <option value="">Desa/Kelurahan</option>
                 </select>
                 <input type="password" name="password" class="form-input mb-12" placeholder="Password">
                 <input type="password" name="password_confirmation" class="form-input mb-12"
@@ -40,4 +39,50 @@
                     class="text-mangga-green-400">Masuk di sini</a></div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        var provinces = @json($provinces);
+        var cities = @json($cities);
+        var districts = @json($districts);
+        var villages = @json($villages);
+
+        $('#province').on('change', function(e) {
+            $('#city').html(null);
+            $('#district').html('<option value="">Kecamatan</option>');
+            $("#district").prop("disabled", true);
+            $('#village').html('<option value="">Desa/Kelurahan</option>');
+            $("#village").prop("disabled", true);
+            let obj = cities.filter(function(obj) {
+                return obj.province_id === $('#province').val();
+            });
+            obj.forEach(element => {
+                $('#city').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+            $("#city").prop("disabled", false);
+        });
+        $('#city').on('change', function(e) {
+            $('#district').html(null);
+            $('#village').html('<option value="">Desa/Kelurahan</option>');
+            $("#village").prop("disabled", true);
+            let obj = districts.filter(function(obj) {
+                return obj.regency_id === $('#city').val();
+            });
+            obj.forEach(element => {
+                $('#district').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+            $("#district").prop("disabled", false);
+        });
+        $('#district').on('change', function(e) {
+            $('#village').html(null);
+            let obj = villages.filter(function(obj) {
+                return obj.district_id === $('#district').val();
+            });
+            obj.forEach(element => {
+                $('#village').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+            $("#village").prop("disabled", false);
+        });
+    </script>
 @endsection

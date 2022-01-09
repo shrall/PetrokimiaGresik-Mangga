@@ -27,15 +27,6 @@ class Village extends Model
      */
     protected $table = 'villages';
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'district_id'
-    ];
-
 	/**
      * Village belongs to District.
      *

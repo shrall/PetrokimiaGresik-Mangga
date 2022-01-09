@@ -29,15 +29,6 @@ class District extends Model
     protected $table = 'districts';
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'regency_id'
-    ];
-
-    /**
      * District belongs to Regency.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

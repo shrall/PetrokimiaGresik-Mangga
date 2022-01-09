@@ -1,4 +1,4 @@
-<div class="col-span-3 2xl:col-span-2 border-r border-gray-400">
+<div class="col-span-3 2xl:col-span-2 border-r border-gray-400 hidden md:block">
     <div class="flex items-center justify-between px-8 py-2 text-2xl font-bold">Mangga</div>
     <div class="flex flex-col gap-y-2 p-8 text-xl">
         <a href="{{ route('profil.tentang') }}" class="cursor-pointer @if (Route::current()->getName() == 'profil.tentang') bg-mangga-green-400 text-white @else hover:bg-mangga-green-400 hover:text-white @endif  rounded-lg p-3">

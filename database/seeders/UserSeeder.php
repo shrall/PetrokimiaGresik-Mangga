@@ -28,7 +28,8 @@ class UserSeeder extends Seeder
         $user->status = 0;
         $user->province_id = 35;
         $user->city_id = 3578;
-        $user->district_id = 3518010;
+        $user->district_id = 3578170;
+        $user->village_id = 3578170005;
         $user->save();
     }
 }

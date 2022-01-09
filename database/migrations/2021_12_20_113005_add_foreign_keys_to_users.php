@@ -22,6 +22,8 @@ class AddForeignKeysToUsers extends Migration
             $table->foreign('city_id')->references('id')->on('regencies')->onDelete('cascade');
             $table->char('district_id', 7)->after('city_id');
             $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade');
+            $table->char('village_id', 10)->after('district_id');
+            $table->foreign('village_id')->references('id')->on('villages')->onDelete('cascade');
         });
     }
 

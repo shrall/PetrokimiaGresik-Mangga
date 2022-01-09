@@ -88,7 +88,7 @@
             <ul class="dropdown-menu absolute hidden text-black top-12 pt-2 right-0">
                 <li class="flex items-center justify-center">
                     <a onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();"
+                                        document.getElementById('logout-form').submit();"
                         class="rounded-t bg-white hover:bg-gray-100 py-2 px-4 whitespace-no-wrap cursor-pointer flex items-center justify-center gap-x-2">
                         <span class="fa fa-fw fa-power-off"></span>Log out</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -107,6 +107,23 @@
     </div>
     <div class="hidden flex-col gap-y-8 font-medium" id="navbar-menu-mobile">
         <a href="{{ route('home') }}" class="text-lg text-gray-600 cursor-pointer">Profil</a>
+        <a href="{{ route('profil.tentang') }}" class="text-lg text-gray-600 cursor-pointer pl-2">Tentang Mangga</a>
+        <a href="{{ route('profil.landasan') }}" class="text-lg text-gray-600 cursor-pointer pl-2">Landasan
+            Mangga</a>
+        <a href="{{ route('profil.sebaran') }}" class="text-lg text-gray-600 cursor-pointer pl-2">Sebaran Mangga</a>
+        <a href="{{ route('profil.alur') }}" class="text-lg text-gray-600 cursor-pointer pl-2">Alur dan Prosedur</a>
+        <hr>
+        <a href="#" class="text-lg text-gray-600 cursor-pointer">Program Mangga</a>
+        <a href="{{ route('profil.mangga') }}" class="text-lg text-gray-600 cursor-pointer pl-2">Mangga</a>
+        <a href="{{ route('profil.mangga_gadung') }}" class="text-lg text-gray-600 cursor-pointer pl-2">Mangga
+            Gadung</a>
+        <a href="{{ route('profil.mangga_muda') }}" class="text-lg text-gray-600 cursor-pointer pl-2">Mangga Muda</a>
+        <a href="{{ route('profil.mangga_makmur') }}" class="text-lg text-gray-600 cursor-pointer pl-2">Mangga
+            Makmur</a>
+        <a href="{{ route('profil.mangga_madu') }}" class="text-lg text-gray-600 cursor-pointer pl-2">Mangga Madu</a>
+        <a href="{{ route('profil.mangga_golek') }}" class="text-lg text-gray-600 cursor-pointer pl-2">Mangga
+            Golek</a>
+        <hr>
         <a href="{{ route('media') }}" class="text-lg text-gray-600 cursor-pointer">Media</a>
         <a href="{{ route('faq') }}" class="text-lg text-gray-600 cursor-pointer">FAQ</a>
         <a href="{{ route('toko_mangga') }}" class="text-lg text-gray-600 cursor-pointer">Toko Mangga</a>

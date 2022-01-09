@@ -8,6 +8,7 @@ use App\Models\Province;
 use App\Models\Regency;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Village;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -78,6 +79,7 @@ class RegisterController extends Controller
             'province_id' => $data['province'],
             'city_id' => $data['city'],
             'district_id' => $data['district'],
+            'village_id' => $data['village'],
             'password' => Hash::make($data['password']),
             'user_role' => 1
         ]);
@@ -88,6 +90,7 @@ class RegisterController extends Controller
         $provinces = Province::all();
         $cities = Regency::all();
         $districts = District::all();
-        return view('auth.register', compact('provinces', 'cities', 'districts'));
+        $villages = Village::all();
+        return view('auth.register', compact('provinces', 'cities', 'districts', 'villages'));
     }
 }
