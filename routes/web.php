@@ -63,13 +63,7 @@ Route::group(['middleware' => ['user', 'verified'], 'as' => 'user.'], function (
     Route::get('/belanja-checkout', [UserPageController::class, 'belanja_checkout'])->name('belanja_checkout');
     Route::get('/belanja-success', [UserPageController::class, 'belanja_success'])->name('belanja_success');
 
-    Route::get('/form/pertanian', [UserPageController::class, 'form_pertanian'])->name('form_pertanian');
-    Route::get('/form/perikanan', [UserPageController::class, 'form_perikanan'])->name('form_perikanan');
-    Route::get('/form/perkebunan', [UserPageController::class, 'form_perkebunan'])->name('form_perkebunan');
-    Route::get('/form/peternakan', [UserPageController::class, 'form_peternakan'])->name('form_peternakan');
-    Route::get('/form/perdagangan', [UserPageController::class, 'form_perdagangan'])->name('form_perdagangan');
-    Route::get('/form/industri', [UserPageController::class, 'form_industri'])->name('form_industri');
-    Route::get('/form/jasa', [UserPageController::class, 'form_jasa'])->name('form_jasa');
+    Route::get('/form/mangga', [UserPageController::class, 'form_mangga'])->name('form_mangga');
 });
 
 Route::group(['middleware' => ['user', 'verified']], function () {
