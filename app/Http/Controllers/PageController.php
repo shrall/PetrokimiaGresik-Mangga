@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\District;
+use App\Models\Province;
+use App\Models\Regency;
+use App\Models\Sector;
+use App\Models\Subsector;
+use App\Models\Village;
 use Illuminate\Http\Request;
 use \PDF;
 
@@ -79,5 +85,25 @@ class PageController extends Controller
         ->setOption('margin-left', '0mm')
         ->setOption('page-size', 'A4');
         return $pdf->stream('proposal.pdf');
+    }
+
+    //mangga muda
+    public function mangga_muda_register()
+    {
+        $provinces = Province::all();
+        $cities = Regency::all();
+        $districts = District::all();
+        $villages = Village::all();
+        return view('mangga_muda.register', compact('provinces', 'cities', 'districts', 'villages'));
+    }
+
+    public function mangga_muda_login()
+    {
+        return view('mangga_muda.login');
+    }
+
+    public function mangga_muda_home()
+    {
+        return view('mangga_muda.landing_page');
     }
 }

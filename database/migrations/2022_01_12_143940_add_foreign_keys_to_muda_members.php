@@ -14,8 +14,8 @@ class AddForeignKeysToMudaMembers extends Migration
     public function up()
     {
         Schema::table('muda_members', function (Blueprint $table) {
-            $table->unsignedBigInteger('muda')->index()->after('name');
-            $table->foreign('muda')->references('id')->on('mudas')->onDelete('cascade');
+            $table->unsignedBigInteger('muda_id')->index()->after('name');
+            $table->foreign('muda_id')->references('id')->on('mudas')->onDelete('cascade');
         });
     }
 

@@ -15,6 +15,7 @@ class Business extends Model
         'type',
         'asset_value',
         'postal_code',
+        'status',
         'province_id',
         'city_id',
         'district_id',
@@ -50,5 +51,9 @@ class Business extends Model
     }
     public function user() {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+    public function muda()
+    {
+        return $this->hasOne(Muda::class, 'business_id', 'id');
     }
 }

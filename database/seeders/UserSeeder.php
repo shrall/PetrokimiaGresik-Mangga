@@ -48,5 +48,23 @@ class UserSeeder extends Seeder
         $user->district_id = 3578170;
         $user->village_id = 3578170005;
         $user->save();
+
+        $user = new User();
+        $user->first_name = 'Andi';
+        $user->last_name = 'Budiyanto';
+        $user->email = 'usermuda@mangga.com';
+        $user->password = Hash::make('wars1234');
+        $user->email_verified_at = '2021-05-20 17:33:03';
+        $user->no_handphone = '08123456789';
+        $user->identity_id = '123456789';
+        $user->fam_card_code = '8123456789';
+        $user->user_role = 1;
+        $user->status = 0;
+        $user->province_id = 35;
+        $user->city_id = 3578;
+        $user->district_id = 3578170;
+        $user->village_id = 3578170005;
+        $user->referral_code = 'mamud';
+        $user->save();
     }
 }

@@ -56,7 +56,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        'rebusinesse_token',
     ];
 
     /**
@@ -122,5 +122,9 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function role() {
         return $this->belongsTo(UserRole::class, 'user_role', 'id');
+    }
+    public function businesses()
+    {
+        return $this->hasMany(Business::class, 'user_id', 'id');
     }
 }

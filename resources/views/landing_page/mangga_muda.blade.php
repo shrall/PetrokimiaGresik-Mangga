@@ -28,7 +28,7 @@
             </div>
             <div class="grid grid-cols-12 md:gap-x-12 mb-4">
                 <div class="col-span-12 md:col-span-7 flex flex-col gap-y-4">
-                    <img src="{{ asset('assets/img/mangga-gadung.png') }}" class="w-48">
+                    <img src="{{ asset('assets/svg/mangga-muda-agrosociopreneur.svg') }}" class="w-48">
                     <div class="font-bold">Kategori :</div>
                     <div><span class="font-bold">On farm</span> (lahan pertanian atau terkait dengan
                         budidaya).<br>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="col-span-12 md:col-span-5 flex flex-col gap-y-4">
-                    <img src="{{ asset('assets/img/mangga-gadung.png') }}" class="w-48">
+                    <img src="{{ asset('assets/svg/mangga-muda-creativesocipreneur.svg') }}" class="w-48">
                     <div class="font-bold">Kategori :</div>
                     <ul class="list-disc text-lg ml-5 mb-4">
                         <li>Content Creator</li>

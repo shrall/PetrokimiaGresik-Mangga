@@ -9,10 +9,7 @@ use App\Models\Regency;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Village;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -68,25 +65,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-
-    public function register(Request $request)
-    {
-        $this->validator($request->all())->validate();
-
-        event(new Registered($user = $this->create($request->all(), $request->ip())));
-
-        $this->guard()->login($user);
-
-        if ($response = $this->registered($request, $user)) {
-            return $response;
-        }
-
-        return $request->wantsJson()
-                    ? new JsonResponse([], 201)
-                    : redirect($this->redirectPath());
-    }
-
-    protected function create(array $data, String $ip)
+    protected function create(array $data)
     {
         $name = explode(' ', $data['name']);
         $firstName = $name[0];
@@ -102,7 +81,8 @@ class RegisterController extends Controller
             'village_id' => $data['village'],
             'password' => Hash::make($data['password']),
             'user_role' => 1,
-            'registration_ip' => request()->ip()
+            'registration_ip' => request()->ip(),
+            'referral_code' => $data['referral_code']
         ]);
     }
 

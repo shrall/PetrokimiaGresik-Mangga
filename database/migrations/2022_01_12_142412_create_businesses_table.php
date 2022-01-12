@@ -18,9 +18,10 @@ class CreateBusinessesTable extends Migration
             $table->string('name');
             $table->text('logo');
             $table->text('address');
-            $table->integer('type')->comment('Mangga = 0 Muda = 1');
+            $table->string('type');
             $table->integer('asset_value');
             $table->integer('postal_code');
+            $table->integer('status');
             $table->timestamps();
         });
     }

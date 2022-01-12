@@ -3,6 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\District;
+use App\Models\Province;
+use App\Models\Regency;
+use App\Models\Sector;
+use App\Models\Subsector;
+use App\Models\Village;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -49,6 +55,12 @@ class PageController extends Controller
 
     public function form_mangga_muda()
     {
-        return view('user.form.mangga_muda');
+        $sectors = Sector::all();
+        $subsectors = Subsector::all();
+        $provinces = Province::all();
+        $cities = Regency::all();
+        $districts = District::all();
+        $villages = Village::all();
+        return view('user.form.mangga_muda', compact('provinces', 'cities', 'districts', 'villages', 'sectors', 'subsectors'));
     }
 }

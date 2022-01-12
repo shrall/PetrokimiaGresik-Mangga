@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PageController as AdminPageController;
+use App\Http\Controllers\MudaController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\User\PageController as UserPageController;
 use App\Http\Controllers\UserController;
@@ -31,6 +32,9 @@ Route::get('/proposal', function(){
 Route::get('/proposal/download', [PageController::class, 'checkPDF']);
 
 Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/mangga-muda/register', [PageController::class, 'mangga_muda_register'])->name('mangga_muda.register');
+Route::get('/mangga-muda/login', [PageController::class, 'mangga_muda_login'])->name('mangga_muda.login');
+Route::get('/mangga-muda/home', [PageController::class, 'mangga_muda_home'])->name('mangga_muda.home');
 Route::get('/info', [PageController::class, 'info'])->name('info');
 Route::get('/prosedur', [PageController::class, 'prosedur'])->name('prosedur');
 Route::get('/media', [PageController::class, 'media'])->name('media');
@@ -66,6 +70,7 @@ Route::group(['middleware' => ['user', 'verified'], 'as' => 'user.'], function (
 
     Route::get('/form/mangga', [UserPageController::class, 'form_mangga'])->name('form_mangga');
     Route::get('/form/mangga_muda', [UserPageController::class, 'form_mangga_muda'])->name('form_mangga_muda');
+    Route::resource('muda', MudaController::class);
 });
 
 Route::group(['middleware' => ['user', 'verified']], function () {

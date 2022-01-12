@@ -73,7 +73,8 @@ class RegisterController extends Controller
             'district_id' => $data['district'],
             'village_id' => $data['village'],
             'password' => Hash::make($data['password']),
-            'user_role' => 1
+            'user_role' => 1,
+            // 'registration_ip' => request()->ip()
         ]);
     }
 }

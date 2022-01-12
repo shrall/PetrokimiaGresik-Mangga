@@ -6,6 +6,7 @@ use App\Helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\UserLog;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -48,6 +49,10 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         Helper::userlog($request, 'User Login', '');
+        $user->update([
+            'last_login_time' => Carbon::now(),
+            'last_login_ip' => request()->ip()
+        ]);
     }
     public function logout(Request $request)
     {

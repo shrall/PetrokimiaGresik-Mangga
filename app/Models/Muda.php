@@ -25,7 +25,7 @@ class Muda extends Model
         'market_position',
         'production_strategy',
         'organization_structure',
-        'achievement',
+        'target_plan',
         'finance',
         'finance_attachment',
         'business_id'
@@ -37,5 +37,9 @@ class Muda extends Model
     public function members()
     {
         return $this->hasMany(MudaMember::class, 'muda_id', 'id');
+    }
+    public function reports()
+    {
+        return $this->hasMany(MudaReport::class, 'muda_id', 'id');
     }
 }

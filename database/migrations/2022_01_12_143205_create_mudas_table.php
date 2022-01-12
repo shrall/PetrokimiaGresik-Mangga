@@ -31,7 +31,7 @@ class CreateMudasTable extends Migration
             $table->text('market_position');
             $table->text('production_strategy');
             $table->text('organization_structure');
-            $table->text('achievement');
+            $table->text('target_plan');
             $table->text('finance');
             $table->text('finance_attachment');
             $table->timestamps();

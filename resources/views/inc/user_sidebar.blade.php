@@ -9,30 +9,47 @@
         </a>
     @endif
     @if (Route::current()->getName() == 'user.create_ajuan' || Route::current()->getName() == 'user.status_ajuan')
-        <a href="{{route('user.create_ajuan')}}" class="bg-mangga-green-300 text-white rounded-lg p-3">
-            <span class="fa fa-fw fa-clipboard-list mr-2"></span>Ajuan Saya
-        </a>
+        @if (Auth::user()->businesses)
+            <a href="{{ route('user.status_ajuan') }}" class="bg-mangga-green-300 text-white rounded-lg p-3">
+                <span class="fa fa-fw fa-clipboard-list mr-2"></span>Ajuan Saya
+            </a>
+        @else
+            <a href="{{ route('user.create_ajuan') }}" class="bg-mangga-green-300 text-white rounded-lg p-3">
+                <span class="fa fa-fw fa-clipboard-list mr-2"></span>Ajuan Saya
+            </a>
+        @endif
     @else
-        <a href="{{route('user.create_ajuan')}}" class="hover:bg-mangga-green-300 hover:text-white rounded-lg p-3">
-            <span class="fa fa-fw fa-clipboard-list mr-2"></span>Ajuan Saya
-        </a>
+        @if (Auth::user()->businesses)
+            <a href="{{ route('user.status_ajuan') }}"
+                class="hover:bg-mangga-green-300 hover:text-white rounded-lg p-3">
+                <span class="fa fa-fw fa-clipboard-list mr-2"></span>Ajuan Saya
+            </a>
+        @else
+            <a href="{{ route('user.create_ajuan') }}"
+                class="hover:bg-mangga-green-300 hover:text-white rounded-lg p-3">
+                <span class="fa fa-fw fa-clipboard-list mr-2"></span>Ajuan Saya
+            </a>
+        @endif
     @endif
-    @if (Route::current()->getName() == 'user.riwayat_angsuran')
-        <a href="{{route('user.riwayat_angsuran')}}" class="bg-mangga-green-300 text-white rounded-lg p-3">
-            <span class="fa fa-fw fa-history mr-2"></span>Riwayat Angsuran
-        </a>
-    @else
-        <a href="{{route('user.riwayat_angsuran')}}" class="hover:bg-mangga-green-300 hover:text-white rounded-lg p-3">
-            <span class="fa fa-fw fa-history mr-2"></span>Riwayat Angsuran
-        </a>
-    @endif
-    @if (Route::current()->getName() == 'user.belanja' || Route::current()->getName() == 'user.belanja_list' || Route::current()->getName() == 'user.belanja_checkout')
-        <a href="{{route('user.belanja')}}" class="bg-mangga-green-300 text-white rounded-lg p-3">
-            <span class="fa fa-fw fa-shopping-cart mr-2"></span>Belanja
-        </a>
-    @else
-        <a href="{{route('user.belanja')}}" class="hover:bg-mangga-green-300 hover:text-white rounded-lg p-3">
-            <span class="fa fa-fw fa-shopping-cart mr-2"></span>Belanja
-        </a>
+    @if (Auth::user()->referral_code != 'mamud')
+        @if (Route::current()->getName() == 'user.riwayat_angsuran')
+            <a href="{{ route('user.riwayat_angsuran') }}" class="bg-mangga-green-300 text-white rounded-lg p-3">
+                <span class="fa fa-fw fa-history mr-2"></span>Riwayat Angsuran
+            </a>
+        @else
+            <a href="{{ route('user.riwayat_angsuran') }}"
+                class="hover:bg-mangga-green-300 hover:text-white rounded-lg p-3">
+                <span class="fa fa-fw fa-history mr-2"></span>Riwayat Angsuran
+            </a>
+        @endif
+        @if (Route::current()->getName() == 'user.belanja' || Route::current()->getName() == 'user.belanja_list' || Route::current()->getName() == 'user.belanja_checkout')
+            <a href="{{ route('user.belanja') }}" class="bg-mangga-green-300 text-white rounded-lg p-3">
+                <span class="fa fa-fw fa-shopping-cart mr-2"></span>Belanja
+            </a>
+        @else
+            <a href="{{ route('user.belanja') }}" class="hover:bg-mangga-green-300 hover:text-white rounded-lg p-3">
+                <span class="fa fa-fw fa-shopping-cart mr-2"></span>Belanja
+            </a>
+        @endif
     @endif
 </div>
