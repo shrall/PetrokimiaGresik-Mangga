@@ -16,4 +16,8 @@ class UserLog extends Model
         'path',
         'ip',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'creator_id', 'id');
+    }
 }

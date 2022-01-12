@@ -70,11 +70,44 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function isUser()
     {
-        if ($this->user_role == '1') {
+        if ($this->user_role == 1) {
             return true;
         }
         return false;
     }
+
+    public function isSuperadmin()
+    {
+        if ($this->user_role == 2) {
+            return true;
+        }
+        return false;
+    }
+
+    public function isPimpinan()
+    {
+        if ($this->user_role == 3) {
+            return true;
+        }
+        return false;
+    }
+
+    public function isSupervisor()
+    {
+        if ($this->user_role == 4) {
+            return true;
+        }
+        return false;
+    }
+
+    public function isSurveyor()
+    {
+        if ($this->user_role == 5) {
+            return true;
+        }
+        return false;
+    }
+
     public function province() {
         return $this->belongsTo(Province::class, 'province_id', 'id');
     }
@@ -83,6 +116,9 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function district() {
         return $this->belongsTo(District::class, 'district_id', 'id');
+    }
+    public function village() {
+        return $this->belongsTo(Village::class, 'village_id', 'id');
     }
     public function role() {
         return $this->belongsTo(UserRole::class, 'user_role', 'id');

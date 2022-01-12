@@ -20,5 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(IndoRegionVillageSeeder::class);
         $this->call(UserRoleSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(SectorSeeder::class);
+        $this->call(SubsectorSeeder::class);
     }
 }

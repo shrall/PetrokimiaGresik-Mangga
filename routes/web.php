@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\User\PageController as UserPageController;
 use App\Http\Controllers\UserController;
@@ -69,6 +70,12 @@ Route::group(['middleware' => ['user', 'verified'], 'as' => 'user.'], function (
 
 Route::group(['middleware' => ['user', 'verified']], function () {
     Route::resource('user', UserController::class);
+});
+
+Route::group(['middleware' => ['admin', 'verified'], 'as' => 'admin.'], function () {
+    Route::get('/dashboard', [AdminPageController::class, 'dashboard'])->name('dashboard');
+    Route::get('/program', [AdminPageController::class, 'program'])->name('program');
+    Route::get('/program/mangga_muda', [AdminPageController::class, 'mangga_muda'])->name('program.mangga_muda');
 });
 
 Route::get('/eee', function () {
