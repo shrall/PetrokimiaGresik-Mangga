@@ -74,6 +74,7 @@ class RegisterController extends Controller
             'village_id' => $data['village'],
             'password' => Hash::make($data['password']),
             'user_role' => 1,
+            'referral_code' => $data['referral_code'] ?? ''
             // 'registration_ip' => request()->ip()
         ]);
     }

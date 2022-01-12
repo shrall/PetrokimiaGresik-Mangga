@@ -82,7 +82,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'user_role' => 1,
             'registration_ip' => request()->ip(),
-            'referral_code' => $data['referral_code']
+            'referral_code' => $data['referral_code'] ?? ''
         ]);
     }
 
