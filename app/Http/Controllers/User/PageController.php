@@ -46,4 +46,9 @@ class PageController extends Controller
     {
         return view('user.form.mangga');
     }
+
+    public function form_mangga_muda()
+    {
+        return view('user.form.mangga_muda');
+    }
 }

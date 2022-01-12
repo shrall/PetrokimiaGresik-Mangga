@@ -64,6 +64,7 @@ Route::group(['middleware' => ['user', 'verified'], 'as' => 'user.'], function (
     Route::get('/belanja-success', [UserPageController::class, 'belanja_success'])->name('belanja_success');
 
     Route::get('/form/mangga', [UserPageController::class, 'form_mangga'])->name('form_mangga');
+    Route::get('/form/mangga_muda', [UserPageController::class, 'form_mangga_muda'])->name('form_mangga_muda');
 });
 
 Route::group(['middleware' => ['user', 'verified']], function () {

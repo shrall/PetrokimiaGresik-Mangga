@@ -17,9 +17,9 @@
     @yield('head')
 </head>
 
-<body>
+<body class="bg-light-200">
     @yield('modals')
-    <div class="bg-light-200 font-os w-screen h-screen px-32 py-20">
+    <div class="font-os w-full h-full px-32 py-20">
         @yield('content')
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
