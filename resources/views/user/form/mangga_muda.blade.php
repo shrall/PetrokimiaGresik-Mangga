@@ -12,6 +12,16 @@
                 <div class="font-bold text-xl" id="steps-title">Data Pengajuan</div>
             </div>
         </div>
+        @if ($errors->any())
+            <div class="grid grid-cols-4 gap-2">
+                @foreach ($errors->all() as $error)
+                    <div class="rounded-lg bg-red-500 w-full p-4 mb-4 text-white">
+                        <span class="fa fa-fw fa-info-circle ml-2"></span>
+                        {{ $error }}
+                    </div>
+                @endforeach
+            </div>
+        @endif
         <div class="text-4xl font-bold mb-2" id="form-title">Pengajuan Proposal Program Mangga Muda</div>
         <div class="text-xl text-gray-600 mb-6" id="form-description">Harap mengisi data-data kondisi usaha sebagai bahan
             evaluasi agar proposal dapat diajukan.
@@ -27,7 +37,8 @@
                     onkeyup="updateMembers();">
             </div>
             <div class="" id="member-input-list">
-                <input type="text" name="member_name[1]" class="form-pengajuan-input" placeholder="Nama Anggota 1*" required>
+                <input type="text" name="member_name[1]" class="form-pengajuan-input" placeholder="Nama Anggota 1*"
+                    required>
             </div>
             <div class="">
                 <label class="font-bold">Logo Usaha*</label>
@@ -209,16 +220,16 @@
                 <input type="number" name="outflow_subtotal[1]" class="form-pengajuan-input" style="margin-bottom: 4rem;"
                     placeholder="Sub Total Pengeluaran*" required>
                 <input type="number" name="difference[1]" class="form-pengajuan-input" placeholder="Selisih Kas*" required>
-                <input type="number" name="difference_start[1]" class="form-pengajuan-input" placeholder="Selisih Kas Awal*"
-                    required>
+                <input type="number" name="difference_start[1]" class="form-pengajuan-input"
+                    placeholder="Selisih Kas Awal*" required>
                 <input type="number" name="difference_end[1]" class="form-pengajuan-input" placeholder="Selisih Kas Akhir*"
                     required>
             </div>
             <div class="">
                 <label class="text-gray-600 font-bold text-xl">BULAN 2</label><br>
                 <label class="text-gray-600 font-bold">Penerimaan</label>
-                <input type="number" name="inflow_sales[2]" class="form-pengajuan-input" placeholder="Penerimaan Penjualan*"
-                    required>
+                <input type="number" name="inflow_sales[2]" class="form-pengajuan-input"
+                    placeholder="Penerimaan Penjualan*" required>
                 <input type="number" name="inflow_loan[2]" class="form-pengajuan-input" placeholder="Penerimaan Pinjaman*"
                     required>
                 <input type="number" name="inflow_subtotal[2]" class="form-pengajuan-input"
@@ -239,8 +250,8 @@
                 <input type="number" name="outflow_subtotal[2]" class="form-pengajuan-input" style="margin-bottom: 4rem;"
                     placeholder="Sub Total Pengeluaran*" required>
                 <input type="number" name="difference[2]" class="form-pengajuan-input" placeholder="Selisih Kas*" required>
-                <input type="number" name="difference_start[2]" class="form-pengajuan-input" placeholder="Selisih Kas Awal*"
-                    required>
+                <input type="number" name="difference_start[2]" class="form-pengajuan-input"
+                    placeholder="Selisih Kas Awal*" required>
                 <input type="number" name="difference_end[2]" class="form-pengajuan-input" placeholder="Selisih Kas Akhir*"
                     required>
             </div>
@@ -249,8 +260,8 @@
             <div class="">
                 <label class="text-gray-600 font-bold text-xl">BULAN 3</label><br>
                 <label class="text-gray-600 font-bold">Penerimaan</label>
-                <input type="number" name="inflow_sales[3]" class="form-pengajuan-input" placeholder="Penerimaan Penjualan*"
-                    required>
+                <input type="number" name="inflow_sales[3]" class="form-pengajuan-input"
+                    placeholder="Penerimaan Penjualan*" required>
                 <input type="number" name="inflow_loan[3]" class="form-pengajuan-input" placeholder="Penerimaan Pinjaman*"
                     required>
                 <input type="number" name="inflow_subtotal[3]" class="form-pengajuan-input"
@@ -271,16 +282,16 @@
                 <input type="number" name="outflow_subtotal[3]" class="form-pengajuan-input" style="margin-bottom: 4rem;"
                     placeholder="Sub Total Pengeluaran*" required>
                 <input type="number" name="difference[3]" class="form-pengajuan-input" placeholder="Selisih Kas*" required>
-                <input type="number" name="difference_start[3]" class="form-pengajuan-input" placeholder="Selisih Kas Awal*"
-                    required>
+                <input type="number" name="difference_start[3]" class="form-pengajuan-input"
+                    placeholder="Selisih Kas Awal*" required>
                 <input type="number" name="difference_end[3]" class="form-pengajuan-input" placeholder="Selisih Kas Akhir*"
                     required>
             </div>
             <div class="">
                 <label class="text-gray-600 font-bold text-xl">BULAN 4</label><br>
                 <label class="text-gray-600 font-bold">Penerimaan</label>
-                <input type="number" name="inflow_sales[4]" class="form-pengajuan-input" placeholder="Penerimaan Penjualan*"
-                    required>
+                <input type="number" name="inflow_sales[4]" class="form-pengajuan-input"
+                    placeholder="Penerimaan Penjualan*" required>
                 <input type="number" name="inflow_loan[4]" class="form-pengajuan-input" placeholder="Penerimaan Pinjaman*"
                     required>
                 <input type="number" name="inflow_subtotal[4]" class="form-pengajuan-input"
@@ -301,8 +312,8 @@
                 <input type="number" name="outflow_subtotal[4]" class="form-pengajuan-input" style="margin-bottom: 4rem;"
                     placeholder="Sub Total Pengeluaran*" required>
                 <input type="number" name="difference[4]" class="form-pengajuan-input" placeholder="Selisih Kas*" required>
-                <input type="number" name="difference_start[4]" class="form-pengajuan-input" placeholder="Selisih Kas Awal*"
-                    required>
+                <input type="number" name="difference_start[4]" class="form-pengajuan-input"
+                    placeholder="Selisih Kas Awal*" required>
                 <input type="number" name="difference_end[4]" class="form-pengajuan-input" placeholder="Selisih Kas Akhir*"
                     required>
             </div>
@@ -311,8 +322,8 @@
             <div class="">
                 <label class="text-gray-600 font-bold text-xl">BULAN 5</label><br>
                 <label class="text-gray-600 font-bold">Penerimaan</label>
-                <input type="number" name="inflow_sales[5]" class="form-pengajuan-input" placeholder="Penerimaan Penjualan*"
-                    required>
+                <input type="number" name="inflow_sales[5]" class="form-pengajuan-input"
+                    placeholder="Penerimaan Penjualan*" required>
                 <input type="number" name="inflow_loan[5]" class="form-pengajuan-input" placeholder="Penerimaan Pinjaman*"
                     required>
                 <input type="number" name="inflow_subtotal[5]" class="form-pengajuan-input"
@@ -333,16 +344,16 @@
                 <input type="number" name="outflow_subtotal[5]" class="form-pengajuan-input" style="margin-bottom: 4rem;"
                     placeholder="Sub Total Pengeluaran*" required>
                 <input type="number" name="difference[5]" class="form-pengajuan-input" placeholder="Selisih Kas*" required>
-                <input type="number" name="difference_start[5]" class="form-pengajuan-input" placeholder="Selisih Kas Awal*"
-                    required>
+                <input type="number" name="difference_start[5]" class="form-pengajuan-input"
+                    placeholder="Selisih Kas Awal*" required>
                 <input type="number" name="difference_end[5]" class="form-pengajuan-input" placeholder="Selisih Kas Akhir*"
                     required>
             </div>
             <div class="">
                 <label class="text-gray-600 font-bold text-xl">BULAN 6</label><br>
                 <label class="text-gray-600 font-bold">Penerimaan</label>
-                <input type="number" name="inflow_sales[6]" class="form-pengajuan-input" placeholder="Penerimaan Penjualan*"
-                    required>
+                <input type="number" name="inflow_sales[6]" class="form-pengajuan-input"
+                    placeholder="Penerimaan Penjualan*" required>
                 <input type="number" name="inflow_loan[6]" class="form-pengajuan-input" placeholder="Penerimaan Pinjaman*"
                     required>
                 <input type="number" name="inflow_subtotal[6]" class="form-pengajuan-input"
@@ -363,8 +374,8 @@
                 <input type="number" name="outflow_subtotal[6]" class="form-pengajuan-input" style="margin-bottom: 4rem;"
                     placeholder="Sub Total Pengeluaran*" required>
                 <input type="number" name="difference[6]" class="form-pengajuan-input" placeholder="Selisih Kas*" required>
-                <input type="number" name="difference_start[6]" class="form-pengajuan-input" placeholder="Selisih Kas Awal*"
-                    required>
+                <input type="number" name="difference_start[6]" class="form-pengajuan-input"
+                    placeholder="Selisih Kas Awal*" required>
                 <input type="number" name="difference_end[6]" class="form-pengajuan-input" placeholder="Selisih Kas Akhir*"
                     required>
             </div>

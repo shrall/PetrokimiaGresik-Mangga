@@ -54,6 +54,27 @@ class MudaController extends Controller
             "district_id" => 'required',
             "village_id" => 'required',
             "postal_code" => 'required',
+            "business_title" => 'required',
+            "leader_name" => 'required',
+            "university" => 'required',
+            "faculty" => 'required',
+            "member_count" => 'required',
+            "prospect" => 'required',
+            "target" => 'required',
+            "needs" => 'required',
+            "growth_plan" => 'required',
+            "utilization_plan" => 'required',
+            "return_plan" => 'required',
+            "description" => 'required',
+            "market_share" => 'required',
+            "market_position" => 'required',
+            "production_strategy" => 'required',
+            "organization_structure" => 'required',
+            "finance_attachment" => 'required',
+            "target_plan" => 'required',
+            "finance" => 'required',
+            "member_name" => 'required',
+            "inflow_sales" => 'required'
         ]);
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator);
