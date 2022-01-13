@@ -22,11 +22,16 @@
 
 <body>
     @yield('modals')
-    @if (Auth::user()->referral_code == 'mamud')
-        @include('inc.muda_navbar')
-    @else
+    @auth
+        @if (Auth::user()->referral_code == 'mamud')
+            @include('inc.muda_navbar')
+        @else
+            @include('inc.navbar')
+        @endif
+    @endauth
+    @guest
         @include('inc.navbar')
-    @endif
+    @endguest
     <div class="bg-light-200 font-os">
         @yield('content')
     </div>

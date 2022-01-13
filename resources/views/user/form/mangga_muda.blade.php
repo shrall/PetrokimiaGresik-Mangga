@@ -185,7 +185,7 @@
         </div>
         <div class="grid-cols-2 gap-x-8 form-step hidden" id="arus-kas-8">
             <div class="">
-                <label class="text-gray-600 font-bold text-xl">BULAN 1</label>
+                <label class="text-gray-600 font-bold text-xl">BULAN 1</label><br>
                 <label class="text-gray-600 font-bold">Penerimaan</label>
                 <input type="number" name="inflow_sales[1]" class="form-pengajuan-input" placeholder="Penerimaan Penjualan*"
                     required>
@@ -215,7 +215,7 @@
                     required>
             </div>
             <div class="">
-                <label class="text-gray-600 font-bold text-xl">BULAN 2</label>
+                <label class="text-gray-600 font-bold text-xl">BULAN 2</label><br>
                 <label class="text-gray-600 font-bold">Penerimaan</label>
                 <input type="number" name="inflow_sales[2]" class="form-pengajuan-input" placeholder="Penerimaan Penjualan*"
                     required>
@@ -247,7 +247,7 @@
         </div>
         <div class="grid-cols-2 gap-x-8 form-step hidden" id="arus-kas-9">
             <div class="">
-                <label class="text-gray-600 font-bold text-xl">BULAN 3</label>
+                <label class="text-gray-600 font-bold text-xl">BULAN 3</label><br>
                 <label class="text-gray-600 font-bold">Penerimaan</label>
                 <input type="number" name="inflow_sales[3]" class="form-pengajuan-input" placeholder="Penerimaan Penjualan*"
                     required>
@@ -277,7 +277,7 @@
                     required>
             </div>
             <div class="">
-                <label class="text-gray-600 font-bold text-xl">BULAN 4</label>
+                <label class="text-gray-600 font-bold text-xl">BULAN 4</label><br>
                 <label class="text-gray-600 font-bold">Penerimaan</label>
                 <input type="number" name="inflow_sales[4]" class="form-pengajuan-input" placeholder="Penerimaan Penjualan*"
                     required>
@@ -309,7 +309,7 @@
         </div>
         <div class="grid-cols-2 gap-x-8 form-step hidden" id="arus-kas-10">
             <div class="">
-                <label class="text-gray-600 font-bold text-xl">BULAN 5</label>
+                <label class="text-gray-600 font-bold text-xl">BULAN 5</label><br>
                 <label class="text-gray-600 font-bold">Penerimaan</label>
                 <input type="number" name="inflow_sales[5]" class="form-pengajuan-input" placeholder="Penerimaan Penjualan*"
                     required>
@@ -339,7 +339,7 @@
                     required>
             </div>
             <div class="">
-                <label class="text-gray-600 font-bold text-xl">BULAN 6</label>
+                <label class="text-gray-600 font-bold text-xl">BULAN 6</label><br>
                 <label class="text-gray-600 font-bold">Penerimaan</label>
                 <input type="number" name="inflow_sales[6]" class="form-pengajuan-input" placeholder="Penerimaan Penjualan*"
                     required>
