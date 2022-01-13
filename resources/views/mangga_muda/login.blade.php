@@ -7,6 +7,14 @@
         </div>
         <div class="col-span-1 flex flex-col items-start justify-center bg-gray-100 h-screen px-12 py-4">
             <div class="text-xl md:text-5xl font-af text-mangga-green-300 mb-4">Masuk.</div>
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="rounded-lg bg-red-500 w-full p-4 mb-4 text-white">
+                        <span class="fa fa-fw fa-info-circle ml-2"></span>
+                        {{$error}}
+                    </div>
+                @endforeach
+            @endif
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <input type="email" name="email" class="form-pengajuan-input mb-8"

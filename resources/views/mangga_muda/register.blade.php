@@ -1,10 +1,17 @@
 @extends('layouts.muda')
 
 @section('content')
-    <div
-        class="w-full h-screen bg-sign-up bg-cover flex flex-col xl:grid xl:grid-cols-2 xl:items-center xl:justify-center">
-        <div class="col-span-1 flex flex-col items-start justify-center bg-gray-100 h-screen px-12 py-4">
+    <div class="w-full h-full bg-sign-up bg-cover flex flex-col xl:grid xl:grid-cols-2 xl:items-center xl:justify-center">
+        <div class="col-span-1 flex flex-col items-start justify-center bg-gray-100 h-full px-12 py-4">
             <div class="text-xl md:text-5xl font-af text-mangga-green-300 mb-4">Daftar Sekarang.</div>
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="rounded-lg bg-red-500 w-full p-4 mb-4 text-white">
+                        <span class="fa fa-fw fa-info-circle ml-2"></span>
+                        {{$error}}
+                    </div>
+                @endforeach
+            @endif
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <input type="text" name="name" class="form-pengajuan-input mb-8" placeholder="Nama Ketua">
@@ -33,7 +40,7 @@
             <div class="text-md md:text-lg self-center">Sudah memiliki akun? <a href="{{ route('mangga_muda.login') }}"
                     class="text-mangga-green-400">Masuk di sini</a></div>
         </div>
-        <div class="col-span-1 w-full h-screen bg-right bg-cover bg-register-muda">
+        <div class="col-span-1 w-full h-full bg-right bg-cover bg-register-muda">
         </div>
     </div>
 @endsection
