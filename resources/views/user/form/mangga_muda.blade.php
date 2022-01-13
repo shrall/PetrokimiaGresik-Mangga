@@ -12,16 +12,6 @@
                 <div class="font-bold text-xl" id="steps-title">Data Pengajuan</div>
             </div>
         </div>
-        @if ($errors->any())
-            <div class="grid grid-cols-4 gap-2">
-                @foreach ($errors->all() as $error)
-                    <div class="rounded-lg bg-red-500 w-full p-4 mb-4 text-white">
-                        <span class="fa fa-fw fa-info-circle ml-2"></span>
-                        {{ $error }}
-                    </div>
-                @endforeach
-            </div>
-        @endif
         <div class="text-4xl font-bold mb-2" id="form-title">Pengajuan Proposal Program Mangga Muda</div>
         <div class="text-xl text-gray-600 mb-6" id="form-description">Harap mengisi data-data kondisi usaha sebagai bahan
             evaluasi agar proposal dapat diajukan.
@@ -550,19 +540,26 @@
 @endsection
 
 @section('modals')
-    <div class="absolute w-screen h-screen hidden items-center justify-center modal">
-        <div class="bg-black opasubsector-50 w-screen h-screen absolute background-modal"></div>
-        <div class="rounded-lg bg-white px-8 py-6 absolute flex flex-col gap-y-2">
-            <div class="flex items-center justify-center w-full">
-                <div class="text-2xl font-bold">Peringatan</div>
+    @if ($errors->any())
+        <div class="absolute w-full h-full items-center flex justify-center modal">
+            <div class="bg-black opacity-50 w-full absolute background-modal" style="height: 75rem;" onclick="closeModal();"></div>
+            <div class="rounded-lg bg-white px-8 py-6 absolute flex flex-col gap-y-2">
+                <span class="fa fa-fw fa-times text-xl hover:text-red-600 absolute top-4 right-4 cursor-pointer"
+                    onclick="closeModal();"></span>
+                <div class="flex items-center justify-center w-full">
+                    <div class="text-2xl font-bold">Pengisian Form Belum Lengkap</div>
+                </div>
+                <hr>
+                <div class="text-xl py-2 text-center">Silahkan memeriksa kembali field yang belum terisi:</div>
+                <div class="grid grid-cols-4 gap-2">
+                    @foreach ($errors->all() as $error)
+                        <div>{{ $error }}</div>
+                    @endforeach
+                </div>
+                <a href="#" onclick="closeModal();" class="mangga-button-green w-full cursor-pointer">
+                    Ok
+                </a>
             </div>
-            <hr>
-            <div class="text-xl py-2 text-center">Anda belum melengkapi data diri.<br>Silahkan edit informasi personal anda
-                agar dapat membuat pengajuan.</div>
-            <a href="{{ route('user.edit', Auth::id()) }}" class="mangga-button-green w-full cursor-pointer">
-                Edit Informasi Personal
-                <span class="fa fa-fw fa-arrow-right ml-2"></span>
-            </a>
         </div>
-    </div>
+    @endif
 @endsection
