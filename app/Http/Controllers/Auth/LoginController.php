@@ -57,6 +57,10 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Helper::userlog($request, 'User Logout', '');
+        $mamud = false;
+        if (Auth::user()->referral_code == 'mamud') {
+            $mamud = true;
+        }
         $this->guard()->logout();
 
         $request->session()->invalidate();
@@ -66,9 +70,14 @@ class LoginController extends Controller
         if ($response = $this->loggedOut($request)) {
             return $response;
         }
-
-        return $request->wantsJson()
-            ? new JsonResponse([], 204)
-            : redirect('/');
+        if ($mamud) {
+            return $request->wantsJson()
+                ? new JsonResponse([], 204)
+                : redirect('/mangga-muda/home');
+        } else {
+            return $request->wantsJson()
+                ? new JsonResponse([], 204)
+                : redirect('/');
+        }
     }
 }

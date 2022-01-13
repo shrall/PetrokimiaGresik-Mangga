@@ -1,15 +1,24 @@
 {{-- desktop --}}
 <div class="items-center gap-x-4 font-os px-8 py-4 bg-light-200 text-lg hidden xl:grid grid-cols-12" id="navbar-desktop">
-    <a href="{{ route('home') }}" class="col-span-3">
+    <a href="{{ route('mangga_muda.home') }}" class="col-span-3">
         <img src="{{ asset('assets/svg/mangga-logo-mini.svg') }}" width="30px">
     </a>
     <div class="flex items-center justify-center gap-x-8 col-span-6">
-        <a href="#beranda"
-            class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Beranda</a>
-        <a href="#tentang"
-            class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Tentang</a>
-        <a href="#timeline"
-            class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Timeline</a>
+        @if (Route::current()->getName() != 'mangga_muda.home')
+            <a href="{{ route('mangga_muda.home') }}#"
+                class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Beranda</a>
+            <a href="{{ route('mangga_muda.home') }}"
+                class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Tentang</a>
+            <a href="{{ route('mangga_muda.home') }}"
+                class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Timeline</a>
+        @else
+            <a href="#beranda"
+                class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Beranda</a>
+            <a href="#tentang"
+                class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Tentang</a>
+            <a href="#timeline"
+                class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Timeline</a>
+        @endif
     </div>
     @guest
         <div class="flex items-center justify-end gap-x-2 col-span-3">
@@ -27,7 +36,7 @@
             <ul class="dropdown-menu absolute hidden text-black top-12 pt-2 right-0">
                 <li class="flex items-center justify-center">
                     <a onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();"
+                                                                    document.getElementById('logout-form').submit();"
                         class="rounded-t bg-white hover:bg-gray-100 py-2 px-4 whitespace-no-wrap cursor-pointer flex items-center justify-center gap-x-2">
                         <span class="fa fa-fw fa-power-off"></span>Log out</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

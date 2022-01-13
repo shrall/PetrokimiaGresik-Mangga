@@ -30,7 +30,7 @@
                 <input type="hidden" name="referral_code" value="mamud">
                 <button type="submit" class="mangga-button-green w-full mb-4">Daftar</button>
             </form>
-            <div class="text-md md:text-lg self-center">Sudah memiliki akun? <a href="{{ route('login') }}"
+            <div class="text-md md:text-lg self-center">Sudah memiliki akun? <a href="{{ route('mangga_muda.login') }}"
                     class="text-mangga-green-400">Masuk di sini</a></div>
         </div>
         <div class="col-span-1 w-full h-screen bg-right bg-cover bg-register-muda">

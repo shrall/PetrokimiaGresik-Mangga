@@ -22,7 +22,11 @@
 
 <body>
     @yield('modals')
-    @include('inc.navbar')
+    @if (Auth::user()->referral_code == 'mamud')
+        @include('inc.muda_navbar')
+    @else
+        @include('inc.navbar')
+    @endif
     <div class="bg-light-200 font-os">
         @yield('content')
     </div>
@@ -30,6 +34,7 @@
     @yield('scripts')
     <script>
         var sidebarOpened = false;
+
         function toggleSidebar() {
             sidebarOpened = !sidebarOpened;
             if (sidebarOpened) {

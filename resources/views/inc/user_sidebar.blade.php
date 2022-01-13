@@ -9,7 +9,7 @@
         </a>
     @endif
     @if (Route::current()->getName() == 'user.create_ajuan' || Route::current()->getName() == 'user.status_ajuan')
-        @if (Auth::user()->businesses)
+        @if (count(Auth::user()->businesses) > 0)
             <a href="{{ route('user.status_ajuan') }}" class="bg-mangga-green-300 text-white rounded-lg p-3">
                 <span class="fa fa-fw fa-clipboard-list mr-2"></span>Ajuan Saya
             </a>
@@ -19,7 +19,7 @@
             </a>
         @endif
     @else
-        @if (Auth::user()->businesses)
+        @if (count(Auth::user()->businesses) > 0)
             <a href="{{ route('user.status_ajuan') }}"
                 class="hover:bg-mangga-green-300 hover:text-white rounded-lg p-3">
                 <span class="fa fa-fw fa-clipboard-list mr-2"></span>Ajuan Saya
