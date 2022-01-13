@@ -8,6 +8,8 @@ use App\Models\MudaMember;
 use App\Models\MudaReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class MudaController extends Controller
 {
@@ -39,6 +41,23 @@ class MudaController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'logo' => 'required',
+            "sector_id" => 'required',
+            "subsector_id" => 'required',
+            "type" => 'required',
+            "asset_value" => 'required',
+            "address" => 'required',
+            "province_id" => 'required',
+            "city_id" => 'required',
+            "district_id" => 'required',
+            "village_id" => 'required',
+            "postal_code" => 'required',
+        ]);
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator);
+        }
         $logo = 'mangga-muda-' . time() . '-' . $request['logo']->getClientOriginalName();
         $request->logo->move(public_path('uploads/mangga/logos'), $logo);
 
@@ -90,7 +109,7 @@ class MudaController extends Controller
             "business_id" => $business->id,
         ]);
 
-        foreach ($request->member_name_ as $key => $value) {
+        foreach ($request->member_name as $key => $value) {
             MudaMember::create([
                 'name' => $value,
                 "muda_id" => $muda->id,
