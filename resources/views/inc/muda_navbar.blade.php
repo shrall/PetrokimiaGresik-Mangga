@@ -49,7 +49,9 @@
 {{-- mobile --}}
 <div class="font-os px-8 py-4 bg-light-200 text-lg block xl:hidden" id="navbar-mobile">
     <div class="flex items-center gap-x-4 font-os text-lg mb-4">
-        <img src="{{ asset('assets/svg/mangga-logo-mini.svg') }}" width="40px" class="mr-auto">
+        <a href="{{ route('mangga_muda.home') }}" class="mr-auto">
+        <img src="{{ asset('assets/svg/mangga-logo-mini.svg') }}" width="40px">
+        </a>
         <span class="fa fa-fw fa-bars text-3xl" onclick="toggleNavbarMobile();"></span>
     </div>
     <div class="hidden flex-col gap-y-8 font-medium" id="navbar-menu-mobile">

@@ -41,6 +41,59 @@ class MudaController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            'name.required' => 'Nama Bisnis',
+            'logo.required' => 'Logo Bisnis',
+            "sector.required" => 'Sektor Bisnis',
+            "subsector.required" => 'Sub Sektor Bisnis',
+            "type.required" => 'Jenis Usaha',
+            "asset_value.required" => 'Nilai Asset Usaha',
+            "address.required" => 'Alamat Usaha',
+            "province.required" => 'Provinsi Usaha',
+            "city.required" => 'Kota Usaha',
+            "district.required" => 'Kecamatan Usaha',
+            "village.required" => 'Desa Usaha',
+            "postal_code.required" => 'Kode Pos Usaha',
+            "business_title.required" => 'Judul Usaha',
+            "leader_name.required" => 'Nama Ketua',
+            "university.required" => 'Asal Universitas',
+            "faculty.required" => 'Fakultas',
+            "member_count.required" => 'Jumlah Anggota',
+            "prospect.required" => 'Prospek Pengembangan Usaha',
+            "target.required" => 'Nilai Target Penjualan',
+            "needs.required" => 'Kebutuhan dan Sumber Daya',
+            "growth_plan.required" => 'Rencana Pengembangan Usaha',
+            "utilization_plan.required" => 'Rencana Penggunaan Dana',
+            "return_plan.required" => 'Rencana Pengembalian Dana',
+            "description.required" => 'Deskripsi Usaha',
+            "market_share.required" => 'Pangsa Pasar Produk',
+            "market_position.required" => 'Peta Positioning',
+            "production_strategy.required" => 'Strategi Produksi',
+            "organization_structure.required" => 'Struktur Organisasi',
+            "finance_attachment.required" => 'Struktur Pendanaan',
+            "target_plan.required" => 'Rencana Untuk Mencapai Target',
+            "finance.required" => 'Analisis Investasi dan Rencana Cashflow',
+        ];
+
+        foreach ($request->member_name as $key => $value) {
+            $messages["member_name.$key.required"] = "Nama Member {$key}";
+        }
+        foreach ($request->inflow_sales as $key => $value) {
+            $messages["inflow_sales.$key.required"] = "Penerimaan Penjualan {$key}";
+            $messages["inflow_loan.$key.required"] = "Penerimaan Pinjaman {$key}";
+            $messages["inflow_subtotal.$key.required"] = "Subtotal Penerimaan {$key}";
+            $messages["outflow_investment.$key.required"] = "Pembelian Aset (Investasi) {$key}";
+            $messages["outflow_ingredient.$key.required"] = "Pembelian Bahan Baku {$key}";
+            $messages["outflow_production.$key.required"] = "Biaya Produksi {$key}";
+            $messages["outflow_maintenance.$key.required"] = "Biaya Pemeliharaan {$key}";
+            $messages["outflow_admin.$key.required"] = "Biaya Administrasi {$key}";
+            $messages["outflow_installments.$key.required"] = "Angsuran Pokok {$key}";
+            $messages["outflow_subtotal.$key.required"] = "Subtotal Pengeluaran {$key}";
+            $messages["difference.$key.required"] = "Selisih Kas {$key}";
+            $messages["difference_start.$key.required"] = "Selisih Kas Awal {$key}";
+            $messages["difference_end.$key.required"] = "Selisih Kas Akhir {$key}";
+        }
+
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'logo' => 'required',
@@ -73,43 +126,35 @@ class MudaController extends Controller
             "finance_attachment" => 'required',
             "target_plan" => 'required',
             "finance" => 'required',
-            "member_name" => 'required',
-            "inflow_sales" => 'required'
-        ], $messages = [
-            'name.required' => 'name',
-            'logo.required' => 'logo',
-            "sector.required" => 'sector',
-            "subsector.required" => 'subsector',
-            "type.required" => 'type',
-            "asset_value.required" => 'asset_value',
-            "address.required" => 'address',
-            "province.required" => 'province',
-            "city.required" => 'city',
-            "district.required" => 'district',
-            "village.required" => 'village',
-            "postal_code.required" => 'postal_code',
-            "business_title.required" => 'business_title',
-            "leader_name.required" => 'leader_name',
-            "university.required" => 'university',
-            "faculty.required" => 'faculty',
-            "member_count.required" => 'member_count',
-            "prospect.required" => 'prospect',
-            "target.required" => 'target',
-            "needs.required" => 'needs',
-            "growth_plan.required" => 'growth_plan',
-            "utilization_plan.required" => 'utilization_plan',
-            "return_plan.required" => 'return_plan',
-            "description.required" => 'description',
-            "market_share.required" => 'market_share',
-            "market_position.required" => 'market_position',
-            "production_strategy.required" => 'production_strategy',
-            "organization_structure.required" => 'organization_structure',
-            "finance_attachment.required" => 'finance_attachment',
-            "target_plan.required" => 'target_plan',
-            "finance.required" => 'finance',
-            "member_name.required" => 'member_name',
-            "inflow_sales.required" => 'inflow_sales',
-        ]);
+            "member_name" => 'required|array|min:' . $request->member_count,
+            "inflow_sales" => 'required|array|min:6',
+            'inflow_loan' => 'required|array|min:6',
+            'inflow_subtotal' => 'required|array|min:6',
+            'outflow_investment' => 'required|array|min:6',
+            'outflow_ingredient' => 'required|array|min:6',
+            'outflow_production' => 'required|array|min:6',
+            'outflow_maintenance' => 'required|array|min:6',
+            'outflow_admin' => 'required|array|min:6',
+            'outflow_installments' => 'required|array|min:6',
+            'outflow_subtotal' => 'required|array|min:6',
+            'difference' => 'required|array|min:6',
+            'difference_start' => 'required|array|min:6',
+            'difference_end' => 'required|array|min:6',
+            "member_name.*" => 'required',
+            "inflow_sales.*" => 'required',
+            'inflow_loan.*' => 'required',
+            'inflow_subtotal.*' => 'required',
+            'outflow_investment.*' => 'required',
+            'outflow_ingredient.*' => 'required',
+            'outflow_production.*' => 'required',
+            'outflow_maintenance.*' => 'required',
+            'outflow_admin.*' => 'required',
+            'outflow_installments.*' => 'required',
+            'outflow_subtotal.*' => 'required',
+            'difference.*' => 'required',
+            'difference_start.*' => 'required',
+            'difference_end.*' => 'required',
+        ], $messages);
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator);
         }

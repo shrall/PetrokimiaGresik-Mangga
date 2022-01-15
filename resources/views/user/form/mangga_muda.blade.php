@@ -547,11 +547,11 @@
                 <span class="fa fa-fw fa-times text-xl hover:text-red-600 absolute top-4 right-4 cursor-pointer"
                     onclick="closeModal();"></span>
                 <div class="flex items-center justify-center w-full">
-                    <div class="text-2xl font-bold">Pengisian Form Belum Lengkap</div>
+                    <div class="text-2xl font-bold text-mangga-red-300">Pengisian Form Belum Lengkap</div>
                 </div>
                 <hr>
                 <div class="text-xl py-2 text-center">Silahkan memeriksa kembali field yang belum terisi:</div>
-                <div class="grid grid-cols-4 gap-2">
+                <div class="grid grid-cols-5 gap-2">
                     @foreach ($errors->all() as $error)
                         <div>{{ $error }}</div>
                     @endforeach
