@@ -65,7 +65,7 @@
                             <td>{{ $business->utama->user_name }}</td>
                             <td>Mangga</td>
                         @elseif ($business->mangga_type == 2)
-                            <td>{{ $business->muda->user_name }}</td>
+                            <td>{{ $business->muda->leader_name }}</td>
                             <td>Mangga Muda</td>
                         @endif
                         @if ($business->status == 1)
@@ -79,11 +79,19 @@
                         @elseif ($business->status == 0)
                             <td><span class="fa fa-fw fa-times text-mangga-red-300"></span>Ditolak</td>
                         @endif
-                        <td class="flex items-center justify-center">
-                            <a href="{{ route('admin.program.utama', $business->id) }}"
-                                class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span> Lihat
-                                Detail</a>
-                        </td>
+                        @if ($business->mangga_type == 1)
+                            <td class="flex items-center justify-center">
+                                <a href="{{ route('admin.program.utama', $business->id) }}"
+                                    class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span> Lihat
+                                    Detail</a>
+                            </td>
+                        @elseif ($business->mangga_type == 2)
+                            <td class="flex items-center justify-center">
+                                <a href="{{ route('admin.program.muda', $business->id) }}"
+                                    class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span> Lihat
+                                    Detail</a>
+                            </td>
+                        @endif
                     </tr>
                 @endforeach
             </tbody>

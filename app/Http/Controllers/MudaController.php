@@ -188,7 +188,7 @@ class MudaController extends Controller
             "district_id" => $request->district,
             "village_id" => $request->village,
             "postal_code" => $request->postal_code,
-            "status" => 1,
+            "status" => 2,
             "user_id" => Auth::id()
         ]);
         $muda = Muda::create([

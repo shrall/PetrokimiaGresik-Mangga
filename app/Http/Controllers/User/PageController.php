@@ -26,10 +26,10 @@ class PageController extends Controller
     public function status_ajuan()
     {
         if (Auth::user()->referral_code != 'mamud') {
-            $utama = Auth::user()->businesses->whereBetween('status', [1, 2])->first()->utama;
+            $utama = Auth::user()->businesses->last()->utama;
             return view('user.status_ajuan', compact('utama'));
         } else {
-            $muda = Auth::user()->businesses->whereBetween('status', [1, 2])->first()->muda;
+            $muda = Auth::user()->businesses->last()->muda;
             return view('user.status_ajuan', compact('muda'));
         }
     }

@@ -102,11 +102,10 @@
         <div class="font-bold text-center text-xl" style="margin-bottom: 3rem;">Nama Usaha: {{ $muda->business->name }}
         </div>
         <div class="text-center" style="height: 20%; margin-bottom: 7rem;">
-            <img src="{{ asset('uploads/mangga/logos/' . Auth::user()->businesses[0]->logo) }}" style="height: 100%;">
+            <img src="{{ asset('uploads/mangga/logos/' . $muda->business->logo) }}" style="height: 100%;">
         </div>
         <div style="height: 40%">
-            <table style="margin-left: auto; margin-right: auto; font-size: 1.25rem;"
-                class="mt-2">
+            <table style="margin-left: auto; margin-right: auto; font-size: 1.25rem;" class="mt-2">
                 <tr>
                     <td>Judul Usaha</td>
                     <td>: {{ $muda->business_title }}</td>
@@ -135,6 +134,104 @@
         <div class="text-xl text-center">{{ $muda->business->city->name }}</div>
         <div class="text-xl text-center">{{ date('Y') }}</div>
     </div>
+    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 16rem;"></td>
+                <td style="text-align: end;"><img src="{{ asset('assets/img/mangga-muda.png') }}"
+                        style="width: 16rem;">
+                </td>
+            </tr>
+        </table>
+        <div class="font-bold" style="font-size: 1.25rem;" class="mb-4">1. Executive Resume</div>
+        <div style="font-size: 1.1rem;" class="mb-4">Berisi rangkuman isi business, antara lain: profil
+            perusahan atau usaha, jenis sektor usaha, nilai
+            penjualan per bulan/tahun saat ini, nilai aset perusahaan atau usaha 6 bulan terakhir, prospek
+            pengembangan usaha, rencana pengembangan usaha, proyeksi/nilai target penjualan,
+            kebutuhan dan sumber dana, rencana penggunaan dana, dan rencana pengembalian dana
+            sesuai tenor pinjaman.</div>
+        <hr>
+        <div style="font-size: 1.1rem;" class="mb-4">{{$muda->prospect}}</div>
+    </div>
+    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 16rem;"></td>
+                <td style="text-align: end;"><img src="{{ asset('assets/img/mangga-muda.png') }}"
+                        style="width: 16rem;">
+                </td>
+            </tr>
+        </table>
+        <div class="font-bold" style="font-size: 1.25rem;" class="mb-4">2. Analisa Ide</div>
+        <div style="font-size: 1.1rem;" class="mb-4">Tuliskan deskripsi produk/usaha/jasa yang anda kembangkan. Termasuk keunggulan, ide,
+            diferensiasi dan keunikan serta potensi pertumbuhan dan resikonya.</div>
+        <hr>
+        <div style="font-size: 1.1rem;" class="mb-4">{{$muda->description}}</div>
+    </div>
+    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 16rem;"></td>
+                <td style="text-align: end;"><img src="{{ asset('assets/img/mangga-muda.png') }}"
+                        style="width: 16rem;">
+                </td>
+            </tr>
+        </table>
+        <div class="font-bold" style="font-size: 1.25rem;" class="mb-4">3. Analisa Pemasaran</div>
+        <div style="font-size: 1.1rem;" class="mb-4">Jelaskan pangsa pasar produk atau jasa anda saat ini. Disertai dengan data-data yang
+            mendukung, misalnya kegiatan pengembangan pemasaran, konsep STP, 4P dan peta
+            positioning, kegiatan promosi, strategi penetapan harga, market share, analisis pesaing, trend
+            perkembangan pasar dll.</div>
+        <hr>
+        <div style="font-size: 1.1rem;" class="mb-4">{{$muda->market_share}}</div>
+    </div>
+    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 16rem;"></td>
+                <td style="text-align: end;"><img src="{{ asset('assets/img/mangga-muda.png') }}"
+                        style="width: 16rem;">
+                </td>
+            </tr>
+        </table>
+        <div class="font-bold" style="font-size: 1.25rem;" class="mb-4">4. Analisa Operasional</div>
+        <div style="font-size: 1.1rem;" class="mb-4">Jelaskan strategi produksi (bila barang) atau pola pelayanan (jasa) usaha anda. Misalnya strategi
+            pemilihan komponen biaya produksi dan teknologi proses, desain struktur organisasi, serta
+            analisa kebutuhan SDM dan desain kompetensi.</div>
+        <hr>
+        <div style="font-size: 1.1rem;" class="mb-4">{{$muda->production_strategy}}</div>
+    </div>
+    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 16rem;"></td>
+                <td style="text-align: end;"><img src="{{ asset('assets/img/mangga-muda.png') }}"
+                        style="width: 16rem;">
+                </td>
+            </tr>
+        </table>
+        <div class="font-bold" style="font-size: 1.25rem;" class="mb-4">5. Target Usaha</div>
+        <div style="font-size: 1.1rem;" class="mb-4">Tuliskan pencapaian perkembangan usaha anda (omzet, asset, cashflow) dalam skala waktu
+            sekaligus strategi produksi, pemasaran dan keuangan untuk mencapai target tersebut (atau
+            strategi pengembangan usaha termasuk pola pembiayaannya).</div>
+        <hr>
+        <div style="font-size: 1.1rem;" class="mb-4">{{$muda->target_plan}}</div>
+    </div>
+    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 16rem;"></td>
+                <td style="text-align: end;"><img src="{{ asset('assets/img/mangga-muda.png') }}"
+                        style="width: 16rem;">
+                </td>
+            </tr>
+        </table>
+        <div class="font-bold" style="font-size: 1.25rem;" class="mb-4">6. Analisa Keuangan</div>
+        <div style="font-size: 1.1rem;" class="mb-4">Lampirkan analisis investasi, rencana cashflow, estimasi rugi laba, laporan rugi laba dan hal-hal
+            lain yang mendukung usaha anda misalnya struktur pendanaan</div>
+        <hr>
+        <div style="font-size: 1.1rem;" class="mb-4">{{$muda->prospect}}</div>
+    </div>
     <div class="px-16 py-14" style="height: 1220px;">
         <table style="width: 100%;">
             <tr>
@@ -144,7 +241,215 @@
                 </td>
             </tr>
         </table>
-        <div class="text-xl text-center">{{ date('Y') }}</div>
+        <div class="font-bold" style="font-size: 1.25rem;" class="mb-8">7. Arus Kas (Cash-Flow) 6 Bulan Terakhir</div>
+        <div class="text-center font-bold" style="font-size:1.15rem;">{{$muda->business->name}}</div>
+        <div class="text-center" style="font-size: 1.15rem;">Tahun {{$muda->created_at->format('Y')}}</div>
+        <table class="" style="width: 100%; border: solid 1px gray;">
+            <tr class="font-bold">
+                <td class="" style="border: solid 1px gray;" width="20%">Bulan ke-</td>
+                <td class="text-center" style="border: solid 1px gray;">1</td>
+                <td class="text-center" style="border: solid 1px gray;">2</td>
+                <td class="text-center" style="border: solid 1px gray;">3</td>
+                <td class="text-center" style="border: solid 1px gray;">4</td>
+                <td class="text-center" style="border: solid 1px gray;">5</td>
+                <td class="text-center" style="border: solid 1px gray;">6</td>
+            </tr>
+            <tr>
+                <td class="" style="border: solid 1px gray;">Penerimaan Penjualan</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[0]->inflow_sales, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[1]->inflow_sales, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[2]->inflow_sales, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[3]->inflow_sales, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[4]->inflow_sales, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[5]->inflow_sales, 0, ',', '.') }}</td>
+            </tr>
+            <tr>
+                <td class="" style="border: solid 1px gray;">Penerimaan Pinjaman</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[0]->inflow_loan, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[1]->inflow_loan, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[2]->inflow_loan, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[3]->inflow_loan, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[4]->inflow_loan, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[5]->inflow_loan, 0, ',', '.') }}</td>
+            </tr>
+            <tr class="font-bold">
+                <td class="" style="border: solid 1px gray;">Subtotal Penerimaan</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[0]->inflow_subtotal, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[1]->inflow_subtotal, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[2]->inflow_subtotal, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[3]->inflow_subtotal, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[4]->inflow_subtotal, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[5]->inflow_subtotal, 0, ',', '.') }}</td>
+            </tr>
+            <tr>
+                <td class="" style="border: solid 1px gray;">Pembelian Asset (Investasi)</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[0]->outflow_investment, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[1]->outflow_investment, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[2]->outflow_investment, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[3]->outflow_investment, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[4]->outflow_investment, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[5]->outflow_investment, 0, ',', '.') }}</td>
+            </tr>
+            <tr>
+                <td class="" style="border: solid 1px gray;">Pembelian Bahan Baku</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[0]->outflow_ingredient, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[1]->outflow_ingredient, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[2]->outflow_ingredient, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[3]->outflow_ingredient, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[4]->outflow_ingredient, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[5]->outflow_ingredient, 0, ',', '.') }}</td>
+            </tr>
+            <tr>
+                <td class="" style="border: solid 1px gray;">Biaya Produksi Lain-lain</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[0]->outflow_production, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[1]->outflow_production, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[2]->outflow_production, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[3]->outflow_production, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[4]->outflow_production, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[5]->outflow_production, 0, ',', '.') }}</td>
+            </tr>
+            <tr>
+                <td class="" style="border: solid 1px gray;">Biaya Pemeliharaan</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[0]->outflow_maintenance, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[1]->outflow_maintenance, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[2]->outflow_maintenance, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[3]->outflow_maintenance, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[4]->outflow_maintenance, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[5]->outflow_maintenance, 0, ',', '.') }}</td>
+            </tr>
+            <tr>
+                <td class="" style="border: solid 1px gray;">Biaya Administrasi Lain-lain</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[0]->outflow_admin, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[1]->outflow_admin, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[2]->outflow_admin, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[3]->outflow_admin, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[4]->outflow_admin, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[5]->outflow_admin, 0, ',', '.') }}</td>
+            </tr>
+            <tr>
+                <td class="" style="border: solid 1px gray;">Angsuran Pokok</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[0]->outflow_installments, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[1]->outflow_installments, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[2]->outflow_installments, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[3]->outflow_installments, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[4]->outflow_installments, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[5]->outflow_installments, 0, ',', '.') }}</td>
+            </tr>
+            <tr class="font-bold">
+                <td class="" style="border: solid 1px gray;">Sub Total Pengeluaran</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[0]->outflow_subtotal, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[1]->outflow_subtotal, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[2]->outflow_subtotal, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[3]->outflow_subtotal, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[4]->outflow_subtotal, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[5]->outflow_subtotal, 0, ',', '.') }}</td>
+            </tr>
+            <tr class="font-bold">
+                <td class="" style="border: solid 1px gray;">Selisih Kas</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[0]->difference, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[1]->difference, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[2]->difference, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[3]->difference, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[4]->difference, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[5]->difference, 0, ',', '.') }}</td>
+            </tr>
+            <tr class="font-bold">
+                <td class="" style="border: solid 1px gray;">Selisih Kas Awal</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[0]->difference_start, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[1]->difference_start, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[2]->difference_start, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[3]->difference_start, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[4]->difference_start, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[5]->difference_start, 0, ',', '.') }}</td>
+            </tr>
+            <tr class="font-bold">
+                <td class="" style="border: solid 1px gray;">Selisih Kas Akhir</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[0]->difference_end, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[1]->difference_end, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[2]->difference_end, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[3]->difference_end, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[4]->difference_end, 0, ',', '.') }}</td>
+                <td class="" style="border: solid 1px gray;">
+                    Rp. {{ number_format($muda->reports[5]->difference_end, 0, ',', '.') }}</td>
+            </tr>
+        </table>
     </div>
 </body>
 

@@ -26,7 +26,22 @@
                     class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
                     Submit Form Pengajuan</div>
             </div>
-            @if (Auth::user()->referral_code != 'mamud')
+            <div class="block xl:hidden">
+                <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+            </div>
+            <div class="hidden xl:block">
+                <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+            </div>
+            <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                <div class="rounded-full @if ($utama->business->status == 2) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                    <span class="fa fa-fw fa-signature text-white text-xl"></span>
+                </div>
+                <div
+                    class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                    Memberi TTD Form Pengajuan
+                </div>
+            </div>
+            @if (!$utama->business->rejected_at)
                 <div class="block xl:hidden">
                     <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
                 </div>
@@ -34,43 +49,43 @@
                     <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                 </div>
                 <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                    <div class="rounded-full @if ($utama->business->status == 2) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
-                        <span class="fa fa-fw fa-signature text-white text-xl"></span>
+                    <div class="rounded-full @if ($utama->business->status == 3) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                        <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
                     </div>
                     <div
                         class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                        Memberi TTD Form Pengajuan
+                        Pengajuan Diapprove Surveyor</div>
+                </div>
+                <div class="block xl:hidden">
+                    <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                </div>
+                <div class="hidden xl:block">
+                    <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                </div>
+                <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                    <div class="rounded-full @if ($utama->business->status == 4) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                        <span class="fa fa-fw fa-check-double text-white text-xl"></span>
                     </div>
+                    <div
+                        class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                        Pengajuan Diapprove Pimpinan</div>
+                </div>
+            @else
+                <div class="block xl:hidden">
+                    <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                </div>
+                <div class="hidden xl:block">
+                    <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                </div>
+                <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                    <div class="rounded-full bg-mangga-red-300 p-4">
+                        <span class="fa fa-fw fa-times text-white text-xl"></span>
+                    </div>
+                    <div
+                        class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                        Pengajuan Ditolak</div>
                 </div>
             @endif
-            <div class="block xl:hidden">
-                <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
-            </div>
-            <div class="hidden xl:block">
-                <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
-            </div>
-            <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                <div class="rounded-full @if ($utama->business->status == 3) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
-                    <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
-                </div>
-                <div
-                    class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                    Pengajuan Diapprove Surveyor</div>
-            </div>
-            <div class="block xl:hidden">
-                <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
-            </div>
-            <div class="hidden xl:block">
-                <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
-            </div>
-            <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                <div class="rounded-full @if ($utama->business->status == 4) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
-                    <span class="fa fa-fw fa-check-double text-white text-xl"></span>
-                </div>
-                <div
-                    class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                    Pengajuan Diapprove Pimpinan</div>
-            </div>
         </div>
         <form action="{{ route('admin.utama.ttd', $utama->id) }}" method="post" enctype="multipart/form-data"
             class="flex flex-col items-center justify-center gap-y-2">

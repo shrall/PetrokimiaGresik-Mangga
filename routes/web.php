@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\MudaController as AdminMudaController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\UtamaController as AdminUtamaController;
 use App\Http\Controllers\MudaController;
@@ -90,14 +91,19 @@ Route::group(['middleware' => ['admin'], 'as' => 'admin.', 'prefix' => 'admin'],
     Route::get('/dashboard', [AdminPageController::class, 'dashboard'])->name('dashboard');
     Route::get('/program', [AdminPageController::class, 'program'])->name('program');
     Route::get('/program/utama/{business}', [AdminPageController::class, 'mangga_utama'])->name('program.utama');
-    Route::get('/program/business/{business}', [AdminPageController::class, 'mangga_business'])->name('program.business');
     Route::resource('utama', AdminUtamaController::class);
     Route::patch('/utama/{utama}/ttd', [AdminUtamaController::class, 'ttd'])->name('utama.ttd');
     Route::get('/utama/{utama}/approvesurveyor', [AdminUtamaController::class, 'approve_surveyor'])->name('utama.approve_surveyor');
     Route::get('/utama/{utama}/approvepimpinan', [AdminUtamaController::class, 'approve_pimpinan'])->name('utama.approve_pimpinan');
     Route::get('/utama/{utama}/reject', [AdminUtamaController::class, 'reject'])->name('utama.reject');
-    Route::get('/utama/{utama}/preview', [AdminUtamaController::class, 'preview'])->name('utama.preview');
     Route::get('/utama/{utama}/download', [AdminUtamaController::class, 'download'])->name('utama.download');
+    
+    Route::get('/program/muda/{business}', [AdminPageController::class, 'mangga_muda'])->name('program.muda');
+    Route::resource('muda', AdminMudaController::class);
+    Route::get('/muda/{muda}/approvesurveyor', [AdminMudaController::class, 'approve_surveyor'])->name('muda.approve_surveyor');
+    Route::get('/muda/{muda}/approvepimpinan', [AdminMudaController::class, 'approve_pimpinan'])->name('muda.approve_pimpinan');
+    Route::get('/muda/{muda}/reject', [AdminMudaController::class, 'reject'])->name('muda.reject');
+    Route::get('/muda/{muda}/download', [AdminMudaController::class, 'download'])->name('muda.download');
 });
 
 Route::get('/eee', function () {

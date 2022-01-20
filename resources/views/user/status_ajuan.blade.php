@@ -7,7 +7,7 @@
             @include('inc.user_sidebar')
         </div>
         <div class="col-span-12 xl:col-span-9 h-full">
-            <div class="flex flex-col card items-center justify-center gap-y-4 px-8 py-6">
+            <div class="flex flex-col card items-center justify-center gap-y-4 px-8 py-6 mb-4">
                 <div class="text-2xl font-bold mb-8">Status Pengajuan</div>
                 <div class="flex flex-col xl:flex-row items-center justify-center gap-x-2">
                     <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
@@ -24,15 +24,15 @@
                     <div class="hidden xl:block">
                         <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                     </div>
-                    <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                        <div class="rounded-full @if (Auth::user()->businesses[0]->status == 1) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
-                            <span class="fa fa-fw fa-user-check text-white text-xl"></span>
-                        </div>
-                        <div
-                            class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                            Submit Form Pengajuan</div>
-                    </div>
                     @if (Auth::user()->referral_code != 'mamud')
+                        <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                            <div class="rounded-full @if (Auth::user()->businesses[0]->status == 1) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                                <span class="fa fa-fw fa-user-check text-white text-xl"></span>
+                            </div>
+                            <div
+                                class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                Submit Form Pengajuan</div>
+                        </div>
                         <div class="block xl:hidden">
                             <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
                         </div>
@@ -48,57 +48,86 @@
                                 Memberi TTD Form Pengajuan
                             </div>
                         </div>
+                    @else
+                        <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                            <div class="rounded-full @if (Auth::user()->businesses[0]->status == 2) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                                <span class="fa fa-fw fa-user-check text-white text-xl"></span>
+                            </div>
+                            <div
+                                class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                Submit Form Pengajuan</div>
+                        </div>
                     @endif
-                    <div class="block xl:hidden">
-                        <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
-                    </div>
-                    <div class="hidden xl:block">
-                        <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
-                    </div>
-                    <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                        <div class="rounded-full @if (Auth::user()->businesses[0]->status == 3) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
-                            <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
+                    @if (!Auth::user()->businesses->last()->rejected_at)
+                        <div class="block xl:hidden">
+                            <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
                         </div>
-                        <div
-                            class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                            Pengajuan Diapprove Surveyor</div>
-                    </div>
-                    <div class="block xl:hidden">
-                        <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
-                    </div>
-                    <div class="hidden xl:block">
-                        <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
-                    </div>
-                    <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                        <div class="rounded-full @if (Auth::user()->businesses[0]->status == 4) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
-                            <span class="fa fa-fw fa-check-double text-white text-xl"></span>
+                        <div class="hidden xl:block">
+                            <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                         </div>
-                        <div
-                            class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                            Pengajuan Diapprove Pimpinan</div>
-                    </div>
+                        <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                            <div class="rounded-full @if (Auth::user()->businesses[0]->status == 3) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                                <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
+                            </div>
+                            <div
+                                class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                Pengajuan Diapprove Surveyor</div>
+                        </div>
+                        <div class="block xl:hidden">
+                            <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                        </div>
+                        <div class="hidden xl:block">
+                            <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                        </div>
+                        <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                            <div class="rounded-full @if (Auth::user()->businesses[0]->status == 4) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                                <span class="fa fa-fw fa-check-double text-white text-xl"></span>
+                            </div>
+                            <div
+                                class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                Pengajuan Diapprove Pimpinan</div>
+                        </div>
+                    @else
+                        <div class="block xl:hidden">
+                            <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                        </div>
+                        <div class="hidden xl:block">
+                            <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                        </div>
+                        <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                            <div class="rounded-full bg-mangga-red-300 p-4">
+                                <span class="fa fa-fw fa-times text-white text-xl"></span>
+                            </div>
+                            <div
+                                class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                Pengajuan Ditolak</div>
+                        </div>
+                    @endif
                 </div>
-                <form action="{{ route('user.utama.ttd', $utama->id) }}" method="post" enctype="multipart/form-data"
-                    class="flex flex-col items-center justify-center gap-y-2">
-                    @csrf
-                    @method('PATCH')
-                    <label for="complete-form" class="font-bold">Upload Form Yang
-                        Sudah Di Tanda Tangani</label>
-                    <a target="blank" href="{{ asset('uploads/mangga/complete_form/' . $utama->complete_form) }}">
-                        <span class="fa fa-fw fa-file-pdf"></span>
-                        <span class="underline">{{ $utama->complete_form }}</span>
-                    </a>
-                    <input type="file" name="complete_form" id="complete-form" required>
-                    <button type="submit" class="mangga-button-green cursor-pointer">Submit</button>
-                </form>
+                @if (Auth::user()->referral_code != 'mamud')
+                    <form action="{{ route('user.utama.ttd', $utama->id) }}" method="post" enctype="multipart/form-data"
+                        class="flex flex-col items-center justify-center gap-y-2">
+                        @csrf
+                        @method('PATCH')
+                        <label for="complete-form" class="font-bold">Upload Form Yang
+                            Sudah Di Tanda Tangani</label>
+                        <a target="blank" href="{{ asset('uploads/mangga/complete_form/' . $utama->complete_form) }}">
+                            <span class="fa fa-fw fa-file-pdf"></span>
+                            <span class="underline">{{ $utama->complete_form }}</span>
+                        </a>
+                        <input type="file" name="complete_form" id="complete-form" required>
+                        <button type="submit" class="mangga-button-green cursor-pointer">Submit</button>
+                    </form>
+                @endif
             </div>
             @if (Auth::user()->referral_code == 'mamud')
-                <div class="flex items-center justify-end my-4">
-                    <a href="{{ route('user.muda.download', $muda->first()->id) }}" class="text-lg hover:text-gray-700">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="text-2xl font-bold">Detail Pengajuan</div>
+                    <a target="blank" href="{{ route('user.muda.download', $muda->id) }}"
+                        class="text-lg hover:text-gray-700">
                         <span class="fa fa-fw fa-file-download"></span>Preview Proposal Pengajuan
                     </a>
                 </div>
-                <div class="text-2xl font-bold mb-8">Detail Pengajuan</div>
                 <div class="card px-8 py-6 flex flex-col gap-y-4">
                     <div class="text-xl font-bold">Data Pengajuan</div>
                     <div class="grid grid-cols-3 gap-x-4">
@@ -192,207 +221,208 @@
                         <tr>
                             <td class="border border-gray-600">Penerimaan Penjualan</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[0]->inflow_sales }}</td>
+                                Rp. {{ number_format($muda->reports[0]->inflow_sales, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[1]->inflow_sales }}</td>
+                                Rp. {{ number_format($muda->reports[1]->inflow_sales, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[2]->inflow_sales }}</td>
+                                Rp. {{ number_format($muda->reports[2]->inflow_sales, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[3]->inflow_sales }}</td>
+                                Rp. {{ number_format($muda->reports[3]->inflow_sales, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[4]->inflow_sales }}</td>
+                                Rp. {{ number_format($muda->reports[4]->inflow_sales, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[5]->inflow_sales }}</td>
+                                Rp. {{ number_format($muda->reports[5]->inflow_sales, 0, ',', '.') }}</td>
                         </tr>
                         <tr>
                             <td class="border border-gray-600">Penerimaan Pinjaman</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[0]->inflow_loan }}</td>
+                                Rp. {{ number_format($muda->reports[0]->inflow_loan, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[1]->inflow_loan }}</td>
+                                Rp. {{ number_format($muda->reports[1]->inflow_loan, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[2]->inflow_loan }}</td>
+                                Rp. {{ number_format($muda->reports[2]->inflow_loan, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[3]->inflow_loan }}</td>
+                                Rp. {{ number_format($muda->reports[3]->inflow_loan, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[4]->inflow_loan }}</td>
+                                Rp. {{ number_format($muda->reports[4]->inflow_loan, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[5]->inflow_loan }}</td>
+                                Rp. {{ number_format($muda->reports[5]->inflow_loan, 0, ',', '.') }}</td>
                         </tr>
                         <tr class="font-bold">
                             <td class="border border-gray-600">Subtotal Penerimaan</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[0]->inflow_subtotal }}</td>
+                                Rp. {{ number_format($muda->reports[0]->inflow_subtotal, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[1]->inflow_subtotal }}</td>
+                                Rp. {{ number_format($muda->reports[1]->inflow_subtotal, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[2]->inflow_subtotal }}</td>
+                                Rp. {{ number_format($muda->reports[2]->inflow_subtotal, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[3]->inflow_subtotal }}</td>
+                                Rp. {{ number_format($muda->reports[3]->inflow_subtotal, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[4]->inflow_subtotal }}</td>
+                                Rp. {{ number_format($muda->reports[4]->inflow_subtotal, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[5]->inflow_subtotal }}</td>
+                                Rp. {{ number_format($muda->reports[5]->inflow_subtotal, 0, ',', '.') }}</td>
                         </tr>
                         <tr>
                             <td class="border border-gray-600">Pembelian Asset (Investasi)</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[0]->outflow_investment }}</td>
+                                Rp. {{ number_format($muda->reports[0]->outflow_investment, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[1]->outflow_investment }}</td>
+                                Rp. {{ number_format($muda->reports[1]->outflow_investment, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[2]->outflow_investment }}</td>
+                                Rp. {{ number_format($muda->reports[2]->outflow_investment, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[3]->outflow_investment }}</td>
+                                Rp. {{ number_format($muda->reports[3]->outflow_investment, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[4]->outflow_investment }}</td>
+                                Rp. {{ number_format($muda->reports[4]->outflow_investment, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[5]->outflow_investment }}</td>
+                                Rp. {{ number_format($muda->reports[5]->outflow_investment, 0, ',', '.') }}</td>
                         </tr>
                         <tr>
                             <td class="border border-gray-600">Pembelian Bahan Baku</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[0]->outflow_ingredient }}</td>
+                                Rp. {{ number_format($muda->reports[0]->outflow_ingredient, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[1]->outflow_ingredient }}</td>
+                                Rp. {{ number_format($muda->reports[1]->outflow_ingredient, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[2]->outflow_ingredient }}</td>
+                                Rp. {{ number_format($muda->reports[2]->outflow_ingredient, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[3]->outflow_ingredient }}</td>
+                                Rp. {{ number_format($muda->reports[3]->outflow_ingredient, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[4]->outflow_ingredient }}</td>
+                                Rp. {{ number_format($muda->reports[4]->outflow_ingredient, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[5]->outflow_ingredient }}</td>
+                                Rp. {{ number_format($muda->reports[5]->outflow_ingredient, 0, ',', '.') }}</td>
                         </tr>
                         <tr>
                             <td class="border border-gray-600">Biaya Produksi Lain-lain</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[0]->outflow_production }}</td>
+                                Rp. {{ number_format($muda->reports[0]->outflow_production, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[1]->outflow_production }}</td>
+                                Rp. {{ number_format($muda->reports[1]->outflow_production, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[2]->outflow_production }}</td>
+                                Rp. {{ number_format($muda->reports[2]->outflow_production, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[3]->outflow_production }}</td>
+                                Rp. {{ number_format($muda->reports[3]->outflow_production, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[4]->outflow_production }}</td>
+                                Rp. {{ number_format($muda->reports[4]->outflow_production, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[5]->outflow_production }}</td>
+                                Rp. {{ number_format($muda->reports[5]->outflow_production, 0, ',', '.') }}</td>
                         </tr>
                         <tr>
                             <td class="border border-gray-600">Biaya Pemeliharaan</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[0]->outflow_maintenance }}</td>
+                                Rp. {{ number_format($muda->reports[0]->outflow_maintenance, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[1]->outflow_maintenance }}</td>
+                                Rp. {{ number_format($muda->reports[1]->outflow_maintenance, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[2]->outflow_maintenance }}</td>
+                                Rp. {{ number_format($muda->reports[2]->outflow_maintenance, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[3]->outflow_maintenance }}</td>
+                                Rp. {{ number_format($muda->reports[3]->outflow_maintenance, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[4]->outflow_maintenance }}</td>
+                                Rp. {{ number_format($muda->reports[4]->outflow_maintenance, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[5]->outflow_maintenance }}</td>
+                                Rp. {{ number_format($muda->reports[5]->outflow_maintenance, 0, ',', '.') }}</td>
                         </tr>
                         <tr>
                             <td class="border border-gray-600">Biaya Administrasi Lain-lain</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[0]->outflow_admin }}</td>
+                                Rp. {{ number_format($muda->reports[0]->outflow_admin, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[1]->outflow_admin }}</td>
+                                Rp. {{ number_format($muda->reports[1]->outflow_admin, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[2]->outflow_admin }}</td>
+                                Rp. {{ number_format($muda->reports[2]->outflow_admin, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[3]->outflow_admin }}</td>
+                                Rp. {{ number_format($muda->reports[3]->outflow_admin, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[4]->outflow_admin }}</td>
+                                Rp. {{ number_format($muda->reports[4]->outflow_admin, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[5]->outflow_admin }}</td>
+                                Rp. {{ number_format($muda->reports[5]->outflow_admin, 0, ',', '.') }}</td>
                         </tr>
                         <tr>
                             <td class="border border-gray-600">Angsuran Pokok</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[0]->outflow_installments }}</td>
+                                Rp. {{ number_format($muda->reports[0]->outflow_installments, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[1]->outflow_installments }}</td>
+                                Rp. {{ number_format($muda->reports[1]->outflow_installments, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[2]->outflow_installments }}</td>
+                                Rp. {{ number_format($muda->reports[2]->outflow_installments, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[3]->outflow_installments }}</td>
+                                Rp. {{ number_format($muda->reports[3]->outflow_installments, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[4]->outflow_installments }}</td>
+                                Rp. {{ number_format($muda->reports[4]->outflow_installments, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[5]->outflow_installments }}</td>
+                                Rp. {{ number_format($muda->reports[5]->outflow_installments, 0, ',', '.') }}</td>
                         </tr>
                         <tr class="font-bold">
                             <td class="border border-gray-600">Sub Total Pengeluaran</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[0]->outflow_subtotal }}</td>
+                                Rp. {{ number_format($muda->reports[0]->outflow_subtotal, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[1]->outflow_subtotal }}</td>
+                                Rp. {{ number_format($muda->reports[1]->outflow_subtotal, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[2]->outflow_subtotal }}</td>
+                                Rp. {{ number_format($muda->reports[2]->outflow_subtotal, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[3]->outflow_subtotal }}</td>
+                                Rp. {{ number_format($muda->reports[3]->outflow_subtotal, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[4]->outflow_subtotal }}</td>
+                                Rp. {{ number_format($muda->reports[4]->outflow_subtotal, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[5]->outflow_subtotal }}</td>
+                                Rp. {{ number_format($muda->reports[5]->outflow_subtotal, 0, ',', '.') }}</td>
                         </tr>
                         <tr class="font-bold">
                             <td class="border border-gray-600">Selisih Kas</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[0]->difference }}</td>
+                                Rp. {{ number_format($muda->reports[0]->difference, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[1]->difference }}</td>
+                                Rp. {{ number_format($muda->reports[1]->difference, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[2]->difference }}</td>
+                                Rp. {{ number_format($muda->reports[2]->difference, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[3]->difference }}</td>
+                                Rp. {{ number_format($muda->reports[3]->difference, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[4]->difference }}</td>
+                                Rp. {{ number_format($muda->reports[4]->difference, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[5]->difference }}</td>
+                                Rp. {{ number_format($muda->reports[5]->difference, 0, ',', '.') }}</td>
                         </tr>
                         <tr class="font-bold">
                             <td class="border border-gray-600">Selisih Kas Awal</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[0]->difference_start }}</td>
+                                Rp. {{ number_format($muda->reports[0]->difference_start, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[1]->difference_start }}</td>
+                                Rp. {{ number_format($muda->reports[1]->difference_start, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[2]->difference_start }}</td>
+                                Rp. {{ number_format($muda->reports[2]->difference_start, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[3]->difference_start }}</td>
+                                Rp. {{ number_format($muda->reports[3]->difference_start, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[4]->difference_start }}</td>
+                                Rp. {{ number_format($muda->reports[4]->difference_start, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[5]->difference_start }}</td>
+                                Rp. {{ number_format($muda->reports[5]->difference_start, 0, ',', '.') }}</td>
                         </tr>
                         <tr class="font-bold">
                             <td class="border border-gray-600">Selisih Kas Akhir</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[0]->difference_end }}</td>
+                                Rp. {{ number_format($muda->reports[0]->difference_end, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[1]->difference_end }}</td>
+                                Rp. {{ number_format($muda->reports[1]->difference_end, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[2]->difference_end }}</td>
+                                Rp. {{ number_format($muda->reports[2]->difference_end, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[3]->difference_end }}</td>
+                                Rp. {{ number_format($muda->reports[3]->difference_end, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[4]->difference_end }}</td>
+                                Rp. {{ number_format($muda->reports[4]->difference_end, 0, ',', '.') }}</td>
                             <td class="border border-gray-600">
-                                {{ $muda->reports[5]->difference_end }}</td>
+                                Rp. {{ number_format($muda->reports[5]->difference_end, 0, ',', '.') }}</td>
                         </tr>
                     </table>
                 </div>
             @else
-            <div class="flex items-center justify-between mb-4">
-                <div class="text-2xl font-bold">Detail Pengajuan</div>
-                <a target="blank" href="{{ route('user.utama.download', $utama->id) }}" class="text-lg hover:text-gray-700">
-                    <span class="fa fa-fw fa-file-download"></span>Preview Proposal Pengajuan
-                </a>
-            </div>
+                <div class="flex items-center justify-between mb-4">
+                    <div class="text-2xl font-bold">Detail Pengajuan</div>
+                    <a target="blank" href="{{ route('user.utama.download', $utama->id) }}"
+                        class="text-lg hover:text-gray-700">
+                        <span class="fa fa-fw fa-file-download"></span>Preview Proposal Pengajuan
+                    </a>
+                </div>
                 <div class="card px-8 py-6 flex flex-col gap-y-4">
                     <div class="text-xl font-bold underline">Mitra Binaan</div>
                     <div class="grid grid-cols-2 gap-x-8 gap-y-2">
