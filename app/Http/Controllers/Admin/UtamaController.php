@@ -8,6 +8,7 @@ use App\Models\Utama;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use \PDF;
 
 class UtamaController extends Controller
 {
@@ -126,7 +127,7 @@ class UtamaController extends Controller
 
             ]);
             BusinessLog::create([
-                'description' => 'Approved (Surveyor) oleh ' . Auth::user()->first_name . ' ' . Auth::user()->last_name,
+                'description' => 'Disetujui (Surveyor) oleh ' . Auth::user()->first_name . ' ' . Auth::user()->last_name,
                 'business_id' => $utama->business->id,
                 'admin_id' => Auth::user()->id
             ]);
@@ -142,7 +143,7 @@ class UtamaController extends Controller
                 'approved_by_pimpinan_at' => Carbon::now(),
             ]);
             BusinessLog::create([
-                'description' => 'Approved (Pimpinan) oleh ' . Auth::user()->first_name . ' ' . Auth::user()->last_name,
+                'description' => 'Disetujui (Pimpinan) oleh ' . Auth::user()->first_name . ' ' . Auth::user()->last_name,
                 'business_id' => $utama->business->id,
                 'admin_id' => Auth::user()->id
             ]);
@@ -157,7 +158,7 @@ class UtamaController extends Controller
             'rejected_at' => Carbon::now(),
         ]);
         BusinessLog::create([
-            'description' => 'Rejected oleh ' . Auth::user()->first_name . ' ' . Auth::user()->last_name,
+            'description' => 'Ditolak oleh ' . Auth::user()->first_name . ' ' . Auth::user()->last_name,
             'business_id' => $utama->business->id,
             'admin_id' => Auth::user()->id
         ]);

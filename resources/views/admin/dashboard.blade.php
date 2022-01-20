@@ -6,7 +6,7 @@
             <div class="flex items-center justify-evenly gap-x-4 p-4">
                 <div class="flex flex-col gap-y-2">
                     <div class="text-5xl text-mangga-green-500 font-bold">
-                        4012
+                        {{count($businesses)}}
                     </div>
                     Ajuan
                 </div>
@@ -19,7 +19,7 @@
             <div class="flex items-center justify-evenly gap-x-4 p-4">
                 <div class="flex flex-col gap-y-2">
                     <div class="text-5xl text-mangga-green-500 font-bold">
-                        12388
+                        #
                     </div>
                     UMKM
                 </div>
@@ -32,7 +32,7 @@
             <div class="flex items-center justify-evenly gap-x-4 p-4">
                 <div class="flex flex-col gap-y-2">
                     <div class="text-5xl text-mangga-green-500 font-bold">
-                        4012
+                        {{count($users)}}
                     </div>
                     Pengguna
                 </div>

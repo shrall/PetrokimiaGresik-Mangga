@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="flex flex-col card items-center justify-center gap-y-4 px-8 py-6">
+    <div class="flex flex-col card items-center justify-center gap-y-4 px-8 py-6 mb-4">
         <div class="text-2xl font-bold mb-8">Status Pengajuan</div>
         <div class="flex flex-col xl:flex-row items-center justify-center gap-x-2">
             <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
@@ -88,64 +88,64 @@
         @if (Auth::user()->user_role == 2)
             <div class="flex items-center justify-center gap-x-4">
                 <a href="{{ route('admin.utama.approve_surveyor', $utama->id) }}"
-                    class="mangga-button-green cursor-pointer">Approve as Surveyor
+                    class="mangga-button-green cursor-pointer">Setujui (Surveyor)
                 </a>
                 <a href="{{ route('admin.utama.approve_pimpinan', $utama->id) }}"
-                    class="mangga-button-green cursor-pointer">Approve as Pimpinan
+                    class="mangga-button-green cursor-pointer">Setujui (Pimpinan)
                 </a>
-                <a href="{{ route('admin.utama.reject', $utama->id) }}" class="mangga-button-red cursor-pointer">Reject
+                <a href="{{ route('admin.utama.reject', $utama->id) }}" class="mangga-button-red cursor-pointer">Tolak
                 </a>
             </div>
         @elseif (Auth::user()->user_role == 3)
             @if ($utama->business->status == 2)
                 <div class="flex items-center justify-center gap-x-4">
                     <a href="{{ route('admin.utama.approve_surveyor', $utama->id) }}"
-                        class="mangga-button-green cursor-pointer">Approve as Surveyor
+                        class="mangga-button-green cursor-pointer">Setujui
                     </a>
-                    <a href="{{ route('admin.utama.reject', $utama->id) }}"
-                        class="mangga-button-red cursor-pointer">Reject
+                    <a href="{{ route('admin.utama.reject', $utama->id) }}" class="mangga-button-red cursor-pointer">Tolak
                     </a>
                 </div>
             @endif
         @elseif (Auth::user()->user_role == 4)
-            @if ($utama->business->status == 2)
+            @if ($utama->business->status == 3)
                 <div class="flex items-center justify-center gap-x-4">
                     <a href="{{ route('admin.utama.approve_pimpinan', $utama->id) }}"
-                        class="mangga-button-green cursor-pointer">Approve as Pimpinan
+                        class="mangga-button-green cursor-pointer">Setujui
                     </a>
-                    <a href="{{ route('admin.utama.reject', $utama->id) }}"
-                        class="mangga-button-red cursor-pointer">Reject
+                    <a href="{{ route('admin.utama.reject', $utama->id) }}" class="mangga-button-red cursor-pointer">Tolak
                     </a>
                 </div>
             @endif
         @endif
     </div>
-    <div class="card bg-white px-8 py-6 my-4">
-        <div class="text-2xl font-bold mb-2">Log Pengajuan</div>
-        <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-            <thead>
-                <tr>
-                    <th data-priority="1">No.</th>
-                    <th data-priority="2">Deskripsi</th>
-                    <th data-priority="3">Nama Admin</th>
-                    <th data-priority="4">Waktu</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($utama->business->logs as $log)
+    @if (Auth::user()->user_role == 2)
+        <div class="card bg-white px-8 py-6 mb-4">
+            <div class="text-2xl font-bold mb-2">Log Pengajuan</div>
+            <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                <thead>
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $log->description }}</td>
-                        <td>{{ $log->admin->first_name . ' ' . $log->admin->last_name }}</td>
-                        <td>{{ $log->created_at->format('d/m/Y H:i:s') }}</td>
+                        <th data-priority="1">No.</th>
+                        <th data-priority="2">Deskripsi</th>
+                        <th data-priority="3">Nama Admin</th>
+                        <th data-priority="4">Waktu</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-    <div class="text-2xl font-bold mb-4">Detail Pengajuan</div>
-    <div class="flex items-center justify-end mb-4">
-        <a href="{{ route('user.utama.download', $utama->id) }}" class="text-lg hover:text-gray-700">
+                </thead>
+                <tbody>
+                    @foreach ($utama->business->logs as $log)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $log->description }}</td>
+                            <td>{{ $log->admin->first_name . ' ' . $log->admin->last_name }}</td>
+                            <td>{{ $log->created_at->format('d/m/Y H:i:s') }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    @endif
+    <div class="flex items-center justify-between mb-4">
+        <div class="text-2xl font-bold">Detail Pengajuan</div>
+        <a target="blank" href="{{ route('admin.utama.download', $utama->id) }}" class="text-lg hover:text-gray-700">
             <span class="fa fa-fw fa-file-download"></span>Preview Proposal Pengajuan
         </a>
     </div>
@@ -158,8 +158,8 @@
             </div>
             <div class="flex flex-col">
                 <span class="text-gray-600">Tanggal Penerimaan</span>
-                @if ($utama->approved_by_surveyor_at)
-                    <span>{{ $utama->approved_by_surveyor_at->format('d/m/Y') }}</span>
+                @if ($utama->Setujuid_by_surveyor_at)
+                    <span>{{ $utama->Setujuid_by_surveyor_at->format('d/m/Y') }}</span>
                 @else -
                 @endif
             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Business;
 use App\Models\Muda;
+use App\Models\User;
 use App\Models\Utama;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class PageController extends Controller
 {
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $businesses = Business::all();
+        $users = User::all();
+        return view('admin.dashboard', compact('businesses', 'users'));
     }
     public function program()
     {

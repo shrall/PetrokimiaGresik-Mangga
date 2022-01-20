@@ -51,7 +51,8 @@
                     <th data-priority="3">Tanggal Pengajuan</th>
                     <th data-priority="4">Pemilik Usaha</th>
                     <th data-priority="5">Program</th>
-                    <th data-priority="6">Action</th>
+                    <th data-priority="6">Status</th>
+                    <th data-priority="7">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -67,9 +68,21 @@
                             <td>{{ $business->muda->user_name }}</td>
                             <td>Mangga Muda</td>
                         @endif
+                        @if ($business->status == 1)
+                            <td><span class="fa fa-fw fa-clock text-mangga-orange-400"></span>Belum Upload Ulang Form</td>
+                        @elseif ($business->status == 2)
+                            <td><span class="fa fa-fw fa-clock text-mangga-orange-400"></span>Belum Disetujui Surveyor</td>
+                        @elseif ($business->status == 3)
+                            <td><span class="fa fa-fw fa-clock text-mangga-orange-400"></span>Belum Disetujui Pimpinan</td>
+                        @elseif ($business->status == 4)
+                            <td><span class="fa fa-fw fa-check text-mangga-green-400"></span> Sudah Disetujui Pimpinan</td>
+                        @elseif ($business->status == 0)
+                            <td><span class="fa fa-fw fa-times text-mangga-red-300"></span>Ditolak</td>
+                        @endif
                         <td class="flex items-center justify-center">
-                            <a href="{{route('admin.program.utama', $business->id)}}"
-                                class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span> Lihat Detail</a>
+                            <a href="{{ route('admin.program.utama', $business->id) }}"
+                                class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span> Lihat
+                                Detail</a>
                         </td>
                     </tr>
                 @endforeach

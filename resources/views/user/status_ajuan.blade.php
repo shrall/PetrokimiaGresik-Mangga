@@ -387,12 +387,12 @@
                     </table>
                 </div>
             @else
-                <div class="flex items-center justify-end my-4">
-                    <a href="{{ route('user.utama.download', $utama->id) }}" class="text-lg hover:text-gray-700">
-                        <span class="fa fa-fw fa-file-download"></span>Preview Proposal Pengajuan
-                    </a>
-                </div>
-                <div class="text-2xl font-bold mb-4">Detail Pengajuan</div>
+            <div class="flex items-center justify-between mb-4">
+                <div class="text-2xl font-bold">Detail Pengajuan</div>
+                <a target="blank" href="{{ route('user.utama.download', $utama->id) }}" class="text-lg hover:text-gray-700">
+                    <span class="fa fa-fw fa-file-download"></span>Preview Proposal Pengajuan
+                </a>
+            </div>
                 <div class="card px-8 py-6 flex flex-col gap-y-4">
                     <div class="text-xl font-bold underline">Mitra Binaan</div>
                     <div class="grid grid-cols-2 gap-x-8 gap-y-2">
