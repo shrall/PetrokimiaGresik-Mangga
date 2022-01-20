@@ -16,7 +16,7 @@
                 <label class="text-gray-400">E-Mail</label>
                 <input name="email" type="email" class="form-input bg-white mb-4" value="{{Auth::user()->email}}" disabled>
                 <label class="text-gray-400">Nomor Handphone</label>
-                <input name="phone" type="number" class="form-input bg-white mb-4" value="{{Auth::user()->no_handphone}}" disabled>
+                <input name="phone" type="number" class="form-input bg-white mb-4" value="{{Auth::user()->handphone}}" disabled>
             </div>
         </div>
         <div class="col-span-12 xl:col-span-5">

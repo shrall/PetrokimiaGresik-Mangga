@@ -15,6 +15,7 @@ class Business extends Model
         'logo',
         'address',
         'type',
+        'mangga_type',
         'asset_value',
         'postal_code',
         'status',
@@ -25,9 +26,8 @@ class Business extends Model
         'sector_id',
         'subsector_id',
         'approved_by_surveyor_at',
-        'rejected_by_surveyor_at',
         'approved_by_pimpinan_at',
-        'rejected_by_surveyor_at',
+        'rejected_at',
         'user_id'
     ];
 

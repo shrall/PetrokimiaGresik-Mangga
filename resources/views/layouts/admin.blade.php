@@ -22,36 +22,40 @@
     @yield('modals')
     <div class="bg-light-200 font-os">
         <div class="grid grid-cols-12">
-            <div class="col-span-2 flex flex-col gap-y-4 w-full min-h-screen bg-mangga-green-500 text-white p-4">
-                <a href="{{ route('home') }}">
-                    <img src="{{ asset('assets/svg/mangga-logo-white.svg') }}" class="w-9/10 mx-auto"></a>
-                <hr>
-                <div class="flex items-center gap-x-2">
-                    <img src="{{ asset('assets/img/asset-toko_mangga-1.png') }}" class="rounded-full w-12 h-12">
-                    <a href="#">
-                        <div class="text-xl">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
-                        </div>
-                    </a>
-                </div>
-                <hr>
-                <div class="flex items-center gap-x-2 hover:text-gray-100 cursor-pointer">
-                    <span class="fa fa-fw fa-home text-3xl"></span>
-                    <a href="{{ route('admin.dashboard') }}">
-                        <div class="text-xl">Beranda</div>
-                    </a>
-                </div>
-                <div class="flex items-center gap-x-2 hover:text-gray-100 cursor-pointer">
-                    <span class="fa fa-fw fa-briefcase text-3xl"></span>
-                    <a href="{{ route('admin.program') }}">
-                        <div class="text-xl">Program Mangga</div>
-                    </a>
-                </div>
-                <div class="flex items-center gap-x-2 hover:text-gray-100 cursor-pointer mt-auto" onclick="event.preventDefault();
+            <div class="col-span-2 bg-mangga-green-500 text-white relative">
+                <div class="flex flex-col gap-y-4 w-2/12 min-h-screen p-4 fixed">
+                    <div class="flex items-center">
+                    <a href="{{ route('home') }}">
+                        <img src="{{ asset('assets/svg/mangga-logo-white.svg') }}" class="w-9/10 mx-auto"></a>
+                    </div>
+                    <hr>
+                    <div class="flex items-center gap-x-2">
+                        <img src="{{ asset('assets/img/stock.jpg') }}" class="rounded-full w-12 h-12">
+                        <a href="#">
+                            <div class="text-xl">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                            </div>
+                        </a>
+                    </div>
+                    <hr>
+                    <div class="flex items-center gap-x-2 hover:text-gray-100 cursor-pointer">
+                        <span class="fa fa-fw fa-home text-3xl"></span>
+                        <a href="{{ route('admin.dashboard') }}">
+                            <div class="text-xl">Beranda</div>
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-x-2 hover:text-gray-100 cursor-pointer">
+                        <span class="fa fa-fw fa-briefcase text-3xl"></span>
+                        <a href="{{ route('admin.program') }}">
+                            <div class="text-xl">Program Mangga</div>
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-x-2 hover:text-gray-100 cursor-pointer mt-auto" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
-                    <span class="fa fa-fw fa-sign-out-alt text-3xl"></span>
-                    <a href="#">
-                        <div class="text-xl">Logout</div>
-                    </a>
+                        <span class="fa fa-fw fa-sign-out-alt text-3xl"></span>
+                        <a href="#">
+                            <div class="text-xl">Logout</div>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="col-span-10 p-4">

@@ -20,7 +20,7 @@ class RegisterController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'no_handphone' => 'required|numeric',
+            'handphone' => 'required|numeric',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'province' => 'required|exists:provinces,id',
@@ -67,7 +67,7 @@ class RegisterController extends Controller
             'first_name' => $firstName,
             'last_name' => $lastName,
             'email' => $data['email'],
-            'no_handphone' => $data['no_handphone'],
+            'handphone' => $data['handphone'],
             'province_id' => $data['province'],
             'city_id' => $data['city'],
             'district_id' => $data['district'],

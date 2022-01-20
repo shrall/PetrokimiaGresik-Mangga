@@ -23,9 +23,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('auth_key')->nullable();
             $table->timestamp('key_expired')->nullable();
-            $table->string('no_handphone')->nullable();
-            $table->string('identity_id')->nullable();
-            $table->string('fam_card_code')->nullable();
+            $table->string('handphone')->nullable();
+            $table->string('ktp_code')->nullable();
+            $table->string('kk_code')->nullable();
             $table->string('profession')->nullable();
             $table->enum('education', ['0', '1', '2', '3', '4', '5', '6', '7', '8'])->default('0')->comment('Tidak Sekolah = 0 Tidak Tamat SD = 1 SD = 2 SMP = 3 SMA/K = 4 Diploma = 5 D4/S1 = 6 S2 = 7 S3 = 8')->nullable();
             $table->string('heir')->nullable();

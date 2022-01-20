@@ -15,7 +15,7 @@
                 @csrf
                 <input type="email" name="email" class="form-input mb-8" placeholder="E-Mail">
                 <input type="text" name="name" class="form-input mb-8" placeholder="Nama Lengkap">
-                <input type="number" name="no_handphone" class="form-input mb-8" placeholder="Nomor HP">
+                <input type="number" name="handphone" class="form-input mb-8" placeholder="Nomor HP">
                 <select name="province" class="form-input mb-8" id="province">
                     @foreach ($provinces as $province)
                         <option value={{ $province->id }}>{{ $province->name }}</option>

@@ -27,8 +27,14 @@ class UserRoleSeeder extends Seeder
         $role->save();
 
         $role = new UserRole();
-        $role->name = 'Supervisor';
-        $role->desc = 'Supervisor Mangga';
+        $role->name = 'Surveyor';
+        $role->desc = 'Surveyor Mangga';
+        $role->status = '1';
+        $role->save();
+
+        $role = new UserRole();
+        $role->name = 'Pimpinan';
+        $role->desc = 'Pimpinan Mangga';
         $role->status = '1';
         $role->save();
 

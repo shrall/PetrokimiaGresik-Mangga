@@ -20,8 +20,8 @@ class CreateUtamasTable extends Migration
             $table->string('user_spouse')->nullable();
             $table->string('user_birth_date');
             $table->string('user_birth_place');
-            $table->string('user_identity_id');
-            $table->string('user_fam_card_code');
+            $table->string('user_ktp_code');
+            $table->string('user_kk_code');
             $table->string('user_profession');
             $table->string('user_gender');
             $table->text('user_address');
@@ -57,13 +57,13 @@ class CreateUtamasTable extends Migration
             $table->string('telephone');
             $table->string('handphone');
             $table->string('email');
-            $table->string('siup_code');
-            $table->date('siup_date');
+            $table->string('siup_code')->nullable();
+            $table->date('siup_date')->nullable();
             $table->text('ktp');
             $table->text('ktp_selfie');
             $table->text('kk');
             $table->text('kk_selfie');
-            $table->text('siup');
+            $table->text('siup')->nullable();
             $table->text('skdu');
             $table->text('complete_form')->nullable();
             $table->string('companion_name')->nullable();

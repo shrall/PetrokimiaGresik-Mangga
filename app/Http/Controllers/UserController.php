@@ -90,8 +90,8 @@ class UserController extends Controller
         }
         $user->update([
             'picture' => $image,
-            'identity_id' => $request->identity_id,
-            'fam_card_code' => $request->fam_card_code,
+            'ktp_code' => $request->ktp_code,
+            'kk_code' => $request->kk_code,
             'profession' => $request->profession,
             'retired' => $request->retired,
             'education' => $request->education,
@@ -110,7 +110,7 @@ class UserController extends Controller
             'religion' => $request->religion,
             'birth_place' => $request->birth_place,
             'birth_date' => $request->birth_date,
-            'no_handphone' => $request->no_handphone,
+            'handphone' => $request->handphone,
             'address' => $request->address,
             'rt' => $request->rt,
             'rw' => $request->rw,

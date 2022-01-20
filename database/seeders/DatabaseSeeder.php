@@ -25,6 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BusinessFormSeeder::class);
         $this->call(DistributionTypeSeeder::class);
         $this->call(EstablishmentStatusSeeder::class);
-        $this->call(MarketingwSeeder::class);
+        $this->call(MarketingSeeder::class);
     }
 }

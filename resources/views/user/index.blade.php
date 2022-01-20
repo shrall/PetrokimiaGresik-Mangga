@@ -16,7 +16,7 @@
                 <label class="text-gray-400">E-Mail</label>
                 <div name="email" class="form-input mb-8">{{ Auth::user()->email }}</div>
                 <label class="text-gray-400">Nomor Handphone</label>
-                <div class="form-input mb-8">{{ Auth::user()->no_handphone }}
+                <div class="form-input mb-8">{{ Auth::user()->handphone }}
                 </div>
                 <a href="{{ route('user.change_password') }}" class="mangga-button-green w-full text-center mb-4">Ganti
                     Password</a>
@@ -38,9 +38,9 @@
                         Tempat Lahir. Anda juga bisa mengubah informasi personal Anda dengan menekan
                         tombol “Ubah Profile”</div>
                     <label class="text-gray-400">No. KTP</label>
-                    <div class="form-input mb-8">{{ Auth::user()->identity_id ?? '-' }}</div>
+                    <div class="form-input mb-8">{{ Auth::user()->ktp_code ?? '-' }}</div>
                     <label class="text-gray-400">No. KK</label>
-                    <div class="form-input mb-8">{{ Auth::user()->fam_card_code ?? '-' }}</div>
+                    <div class="form-input mb-8">{{ Auth::user()->kk_code ?? '-' }}</div>
                     <label class="text-gray-400">Jenis Kelamin</label>
                     <div class="form-input mb-8">{{ Auth::user()->gender == 'm' ? 'Laki-laki' : 'Perempuan' }}</div>
                     <label class="text-gray-400">Tempat dan Tanggal Lahir</label>

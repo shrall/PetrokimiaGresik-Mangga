@@ -51,7 +51,7 @@
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
                         id="preview-foto-sertifikat-member-{{ $i }}">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="member_certificate[{{ $i }}]"
+                        <input type="file" name="member_certificate[{{ $i }}]" value=''
                             id="foto-sertifikat-member-{{ $i }}" class="hidden"
                             onchange="loadFile(event, 'foto-sertifikat-member-{{ $i }}')" accept="image/*">
                         <label for="foto-sertifikat-member-{{ $i }}"
@@ -67,7 +67,7 @@
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
                         id="preview-foto-selfie-sertifikat-member-{{ $i }}">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="member_certificate_selfie[{{ $i }}]"
+                        <input type="file" name="member_certificate_selfie[{{ $i }}]" value=''
                             id="foto-selfie-sertifikat-member-{{ $i }}" class="hidden"
                             accept="image/*"
                             onchange="loadFile(event, 'foto-selfie-sertifikat-member-{{ $i }}')">

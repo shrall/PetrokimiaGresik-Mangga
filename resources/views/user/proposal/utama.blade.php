@@ -291,7 +291,7 @@
             <tr>
                 <td>3.</td>
                 <td>Nomor KTP</td>
-                <td>: {{ $utama->user_identity_id }}</td>
+                <td>: {{ $utama->user_ktp_code }}</td>
             </tr>
             <tr>
                 <td style="vertical-align: top;">4.</td>
@@ -605,7 +605,7 @@
             </tr>
             <tr>
                 <td width="25%">No. KTP</td>
-                <td>: {{ $utama->user_identity_id }}</td>
+                <td>: {{ $utama->user_ktp_code }}</td>
             </tr>
             <tr>
                 <td width="25%">Agama</td>
@@ -708,7 +708,7 @@
             </tr>
             <tr>
                 <td width="25%">No. KTP</td>
-                <td>: {{ $utama->user_identity_id }}</td>
+                <td>: {{ $utama->user_ktp_code }}</td>
             </tr>
         </table>
         <div style="font-size: 1.1rem;" class="mb-4">Dengan ini meyatakan dengan sebenar-benarnya bahwa :

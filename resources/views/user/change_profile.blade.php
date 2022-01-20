@@ -19,11 +19,11 @@
                             Tempat Lahir. Anda juga bisa mengubah informasi personal Anda dengan menekan
                             tombol “Ubah Profile”</div>
                         <label class="text-gray-400">No. KTP</label>
-                        <input name="identity_id" type="number" class="form-input bg-white mb-4" required
-                            value="{{ Auth::user()->identity_id }}">
+                        <input name="ktp_code" type="number" class="form-input bg-white mb-4" required
+                            value="{{ Auth::user()->ktp_code }}">
                         <label class="text-gray-400">No. KK</label>
-                        <input name="fam_card_code" type="number" class="form-input bg-white mb-4" required
-                            value="{{ Auth::user()->fam_card_code }}">
+                        <input name="kk_code" type="number" class="form-input bg-white mb-4" required
+                            value="{{ Auth::user()->kk_code }}">
                             <label class="text-gray-400 self-start">Agama</label>
                             <select name="religion" class="form-input mb-4" required>
                                 <option value="0" @if (Auth::user()->religion == '0') selected @endif>Muslim</option>
@@ -154,8 +154,8 @@
                             </div>
                         </div>
                         <label class="text-gray-400 self-start">No. Telepon</label>
-                        <input name="no_handphone" type="number" class="form-input bg-white mb-4" required
-                            value="{{ Auth::user()->no_handphone }}">
+                        <input name="handphone" type="number" class="form-input bg-white mb-4" required
+                            value="{{ Auth::user()->handphone }}">
                         <div class="grid grid-cols-12 items-center gap-x-2">
                             <div class="col-span-6">
                                 <label class="text-gray-400">Alamat</label>

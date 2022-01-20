@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PageController as AdminPageController;
+use App\Http\Controllers\Admin\UtamaController as AdminUtamaController;
 use App\Http\Controllers\MudaController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\User\PageController as UserPageController;
@@ -85,10 +86,18 @@ Route::group(['middleware' => ['user']], function () {
     Route::resource('user', UserController::class);
 });
 
-Route::group(['middleware' => ['admin'], 'as' => 'admin.'], function () {
+Route::group(['middleware' => ['admin'], 'as' => 'admin.', 'prefix' => 'admin'], function () {
     Route::get('/dashboard', [AdminPageController::class, 'dashboard'])->name('dashboard');
     Route::get('/program', [AdminPageController::class, 'program'])->name('program');
-    Route::get('/program/mangga_muda', [AdminPageController::class, 'mangga_muda'])->name('program.mangga_muda');
+    Route::get('/program/utama/{business}', [AdminPageController::class, 'mangga_utama'])->name('program.utama');
+    Route::get('/program/business/{business}', [AdminPageController::class, 'mangga_business'])->name('program.business');
+    Route::resource('utama', AdminUtamaController::class);
+    Route::patch('/utama/{utama}/ttd', [AdminUtamaController::class, 'ttd'])->name('utama.ttd');
+    Route::get('/utama/{utama}/approvesurveyor', [AdminUtamaController::class, 'approve_surveyor'])->name('utama.approve_surveyor');
+    Route::get('/utama/{utama}/approvepimpinan', [AdminUtamaController::class, 'approve_pimpinan'])->name('utama.approve_pimpinan');
+    Route::get('/utama/{utama}/reject', [AdminUtamaController::class, 'reject'])->name('utama.reject');
+    Route::get('/utama/{utama}/preview', [AdminUtamaController::class, 'preview'])->name('utama.preview');
+    Route::get('/utama/{utama}/download', [AdminUtamaController::class, 'download'])->name('utama.download');
 });
 
 Route::get('/eee', function () {

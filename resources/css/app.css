@@ -27,6 +27,9 @@
 .mangga-button-gray {
   @apply bg-gray-500 text-white hover:bg-gray-700 mangga-button;
 }
+.mangga-button-red {
+  @apply bg-mangga-red-300 text-white hover:bg-red-600 mangga-button;
+}
 
 
 

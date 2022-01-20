@@ -8,7 +8,7 @@
                     <img src="{{ asset('assets/img/mangga-makmur.png') }}" class="w-full">
                     <div class="flex flex-col items-end">
                         <div class="text-4xl text-mangga-green-500 font-bold">
-                            4012
+                            #
                         </div>
                         Ajuan
                     </div>
@@ -16,12 +16,12 @@
             </a>
         </div>
         <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
-            <a href="{{ route('admin.program.mangga_muda') }}">
+            <a href="#">
                 <div class="grid grid-cols-2 items-center p-4">
                     <img src="{{ asset('assets/img/mangga-muda.png') }}" alt="Mangga Muda" class="w-full">
                     <div class="flex flex-col items-end">
                         <div class="text-4xl text-mangga-green-500 font-bold">
-                            4012
+                            {{ count($businesses->where('mangga_type', 2)) }}
                         </div>
                         Ajuan
                     </div>
@@ -34,46 +34,7 @@
                     <img src="{{ asset('assets/img/mangga-gadung.png') }}" class="w-full">
                     <div class="flex flex-col items-end">
                         <div class="text-4xl text-mangga-green-500 font-bold">
-                            4012
-                        </div>
-                        Ajuan
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
-            <a href="#">
-                <div class="grid grid-cols-2 items-center p-4">
-                    <img src="{{ asset('assets/img/mangga-makmur.png') }}" class="w-full">
-                    <div class="flex flex-col items-end">
-                        <div class="text-4xl text-mangga-green-500 font-bold">
-                            4012
-                        </div>
-                        Ajuan
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
-            <a href="#">
-                <div class="grid grid-cols-2 items-center p-4">
-                    <img src="{{ asset('assets/img/mangga-makmur.png') }}" class="w-full">
-                    <div class="flex flex-col items-end">
-                        <div class="text-4xl text-mangga-green-500 font-bold">
-                            4012
-                        </div>
-                        Ajuan
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
-            <a href="#">
-                <div class="grid grid-cols-2 items-center p-4">
-                    <img src="{{ asset('assets/img/mangga-makmur.png') }}" class="w-full">
-                    <div class="flex flex-col items-end">
-                        <div class="text-4xl text-mangga-green-500 font-bold">
-                            4012
+                            #
                         </div>
                         Ajuan
                     </div>
@@ -94,17 +55,24 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>PT. Petrokimia</td>
-                    <td>2021/01/01 12:59:59</td>
-                    <td>Nama A</td>
-                    <td>Mangga</td>
-                    <td class="flex items-center">
-                        <a href="" class="fa fa-fw fa-check-square cursor-pointer text-3xl text-green-600 hover:text-green-900"></a>
-                        <a href="" class="fa fa-fw fa-times-square cursor-pointer text-3xl text-red-600 hover:text-red-900"></a>
-                    </td>
-                </tr>
+                @foreach ($businesses as $business)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $business->name }}</td>
+                        <td>{{ $business->created_at->format('d/m/Y H:i:s') }}</td>
+                        @if ($business->mangga_type == 1)
+                            <td>{{ $business->utama->user_name }}</td>
+                            <td>Mangga</td>
+                        @elseif ($business->mangga_type == 2)
+                            <td>{{ $business->muda->user_name }}</td>
+                            <td>Mangga Muda</td>
+                        @endif
+                        <td class="flex items-center justify-center">
+                            <a href="{{route('admin.program.utama', $business->id)}}"
+                                class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span> Lihat Detail</a>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

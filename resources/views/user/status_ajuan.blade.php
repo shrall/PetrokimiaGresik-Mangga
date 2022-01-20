@@ -413,7 +413,7 @@
                         </div>
                         <div class="flex flex-col">
                             <span class="text-gray-600">No.KTP</span>
-                            <span>{{ $utama->user_identity_id }} </span>
+                            <span>{{ $utama->user_ktp_code }} </span>
                         </div>
                         <div class="flex flex-col">
                             <span class="text-gray-600">Jenis Kelamin</span>
@@ -425,7 +425,7 @@
                         </div>
                         <div class="flex flex-col">
                             <span class="text-gray-600">No.KK</span>
-                            <span>{{ $utama->user_fam_card_code }} </span>
+                            <span>{{ $utama->user_kk_code }} </span>
                         </div>
                         <div class="flex flex-col">
                             <span class="text-gray-600">Tempat/ Tanggal Lahir</span>

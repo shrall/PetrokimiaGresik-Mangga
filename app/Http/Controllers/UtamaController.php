@@ -9,6 +9,7 @@ use App\Models\BusinessPlan;
 use App\Models\BusinessProduct;
 use App\Models\Utama;
 use App\Models\UtamaMember;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -226,35 +227,25 @@ class UtamaController extends Controller
                 $request->member_ktp_selfie[$key]->move(public_path('uploads/mangga/ktpselfie'), $mktpsf[$key]);
             }
 
-            if ($request->member_certificate) {
-                foreach ($request->member_certificate as $key => $mc) {
-                    if ($mc) {
-                        $mcf[$key] = 'mangga-utama-member-' . ($key + 1) . '-' . time() . '-' . $request['member_certificate'][$key]->getClientOriginalName();
-                        $request->member_certificate[$key]->move(public_path('uploads/mangga/certificate'), $mcf[$key]);
-                    } else {
-                        $mcf[$key] = null;
-                    }
-                }
-            } else {
-                foreach ($request->member_ktp as $key => $mktp) {
-                    $mcf[$key] = null;
+            foreach ($request->member_certificate as $key => $mc) {
+                if ($request->member_certificate[strval($key)]) {
+                    $mcf[strval($key)] = 'mangga-utama-member-' . ($key + 1) . '-' . time() . '-' . $request['member_certificate'][strval($key)]->getClientOriginalName();
+                    $request->member_certificate[strval($key)]->move(public_path('uploads/mangga/certificate'), $mcf[strval($key)]);
+                } else {
+                    $mcf[strval($key)] = null;
                 }
             }
 
-            if ($request->member_certificate_selfie) {
-                foreach ($request->member_certificate_selfie as $key => $mcs) {
-                    if ($mcs) {
-                        $mcsf[$key] = 'mangga-utama-member-' . ($key + 1) . '-' . time() . '-' . $request['member_certificate_selfie'][$key]->getClientOriginalName();
-                        $request->member_certificate_selfie[$key]->move(public_path('uploads/mangga/certificateselfie'), $mcsf[$key]);
-                    } else {
-                        $mcsf[$key] = null;
-                    }
-                }
-            } else {
-                foreach ($request->member_ktp as $key => $mktp) {
-                    $mcsf[$key] = null;
+            foreach ($request->member_certificate_selfie as $key => $mcs) {
+                if ($request->member_certificate_selfie[strval($key)]) {
+                    $mcsf[strval($key)] = 'mangga-utama-member-' . ($key + 1) . '-' . time() . '-' . $request['member_certificate_selfie'][strval($key)]->getClientOriginalName();
+                    $request->member_certificate_selfie[strval($key)]->move(public_path('uploads/mangga/certificateselfie'), $mcsf[strval($key)]);
+                } else {
+                    $mcsf[strval($key)] = null;
                 }
             }
+            $mc_keys = array_keys($mcf);
+            $mcs_keys = array_keys($mcsf);
         }
 
         $reg_number = $this->getRegistrationNumber($request->sector, $request->subsector);
@@ -265,6 +256,7 @@ class UtamaController extends Controller
             "sector_id" => $request->sector,
             "subsector_id" => $request->subsector,
             "type" => $request->type,
+            'mangga_type' => 1,
             "asset_value" => $request->asset_value,
             "address" => $request->address,
             "province_id" => $request->province,
@@ -282,8 +274,8 @@ class UtamaController extends Controller
             'user_spouse' => Auth::user()->spouse,
             'user_birth_date' => Auth::user()->birth_date,
             'user_birth_place' => Auth::user()->birthplace->name,
-            'user_identity_id' => Auth::user()->identity_id,
-            'user_fam_card_code' => Auth::user()->fam_card_code,
+            'user_ktp_code' => Auth::user()->ktp_code,
+            'user_kk_code' => Auth::user()->kk_code,
             'user_gender' => Auth::user()->gender,
             'user_profession' => Auth::user()->profession,
             'user_address' => Auth::user()->address,
@@ -295,7 +287,7 @@ class UtamaController extends Controller
             'user_province' => Auth::user()->province->name,
             'user_postal_code' => Auth::user()->postal_code,
             'user_email' => Auth::user()->email,
-            'user_phone' => Auth::user()->no_handphone,
+            'user_phone' => Auth::user()->handphone,
             'user_bank_branch' => Auth::user()->bank_branch,
             'user_bank_number' => Auth::user()->bank_number,
             'request_amount' => $request->request_amount,
@@ -349,18 +341,33 @@ class UtamaController extends Controller
 
         if ($request->member_name) {
             foreach ($request->member_name as $key => $value) {
-                UtamaMember::create([
-                    'name' => $request->member_name[$key],
-                    'ktp_code' => $request->member_ktp_code[$key],
-                    'phone' => $request->member_phone[$key],
-                    'certificate_name' => $request->member_certificate_name[$key],
-                    'certificate_address' => $request->member_certificate_address[$key],
-                    'ktp' => $mktpf[$key],
-                    'ktp_selfie' => $mktpsf[$key],
-                    'certificate' => $mcf[$key],
-                    'certificate_selfie' => $mcsf[$key],
-                    "utama_id" => $utama->id,
-                ]);
+                if (in_array(strval($key + 1), $mcf)) {
+                    $umember = UtamaMember::create([
+                        'name' => $request->member_name[$key],
+                        'ktp_code' => $request->member_ktp_code[$key],
+                        'phone' => $request->member_phone[$key],
+                        'certificate_name' => $request->member_certificate_name[$key],
+                        'certificate_address' => $request->member_certificate_address[$key],
+                        'ktp' => $mktpf[$key],
+                        'ktp_selfie' => $mktpsf[$key],
+                        'certificate' => $mcf[strval($key + 1)],
+                        "utama_id" => $utama->id,
+                    ]);
+                    $umember->update([
+                        'certificate_selfie' => $mcsf[strval($key + 1)],
+                    ]);
+                }else{
+                    $umember = UtamaMember::create([
+                        'name' => $request->member_name[$key],
+                        'ktp_code' => $request->member_ktp_code[$key],
+                        'phone' => $request->member_phone[$key],
+                        'certificate_name' => $request->member_certificate_name[$key],
+                        'certificate_address' => $request->member_certificate_address[$key],
+                        'ktp' => $mktpf[$key],
+                        'ktp_selfie' => $mktpsf[$key],
+                        "utama_id" => $utama->id,
+                    ]);
+                }
             }
         }
 
@@ -486,7 +493,7 @@ class UtamaController extends Controller
         ]);
 
         $utama->business->update([
-            'status' => 2
+            'status' => 2,
         ]);
 
         return redirect()->route('user.status_ajuan');

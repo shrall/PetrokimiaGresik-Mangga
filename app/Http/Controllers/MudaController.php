@@ -182,6 +182,7 @@ class MudaController extends Controller
             "type" => $request->type,
             "asset_value" => $request->asset_value,
             "address" => $request->address,
+            'mangga_type' => 2,
             "province_id" => $request->province,
             "city_id" => $request->city,
             "district_id" => $request->district,

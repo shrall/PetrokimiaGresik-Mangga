@@ -21,9 +21,9 @@ class UserSeeder extends Seeder
         $user->email = 'user@mangga.com';
         $user->password = Hash::make('wars1234');
         $user->email_verified_at = '2021-05-20 17:33:03';
-        $user->no_handphone = '08123456789';
-        $user->identity_id = '123456789';
-        $user->fam_card_code = '8123456789';
+        $user->handphone = '08123456789';
+        $user->ktp_code = '123456789';
+        $user->kk_code = '8123456789';
         $user->user_role = 1;
         $user->status = 0;
         $user->province_id = 35;
@@ -38,9 +38,9 @@ class UserSeeder extends Seeder
         $user->email = 'admin@mangga.com';
         $user->password = Hash::make('wars1234');
         $user->email_verified_at = '2021-05-20 17:33:03';
-        $user->no_handphone = '08123456789';
-        $user->identity_id = '123456789';
-        $user->fam_card_code = '8123456789';
+        $user->handphone = '08123456789';
+        $user->ktp_code = '123456789';
+        $user->kk_code = '8123456789';
         $user->user_role = 2;
         $user->status = 0;
         $user->province_id = 35;
@@ -55,9 +55,9 @@ class UserSeeder extends Seeder
         $user->email = 'usermuda@mangga.com';
         $user->password = Hash::make('wars1234');
         $user->email_verified_at = '2021-05-20 17:33:03';
-        $user->no_handphone = '08123456789';
-        $user->identity_id = '123456789';
-        $user->fam_card_code = '8123456789';
+        $user->handphone = '08123456789';
+        $user->ktp_code = '123456789';
+        $user->kk_code = '8123456789';
         $user->user_role = 1;
         $user->status = 0;
         $user->province_id = 35;
@@ -65,6 +65,40 @@ class UserSeeder extends Seeder
         $user->district_id = 3578170;
         $user->village_id = 3578170005;
         $user->referral_code = 'mamud';
+        $user->save();
+
+        $user = new User();
+        $user->first_name = 'Surveyor';
+        $user->last_name = 'Mangga';
+        $user->email = 'surveyor@mangga.com';
+        $user->password = Hash::make('wars1234');
+        $user->email_verified_at = '2021-05-20 17:33:03';
+        $user->handphone = '08123456789';
+        $user->ktp_code = '123456789';
+        $user->kk_code = '8123456789';
+        $user->user_role = 3;
+        $user->status = 0;
+        $user->province_id = 35;
+        $user->city_id = 3578;
+        $user->district_id = 3578170;
+        $user->village_id = 3578170005;
+        $user->save();
+
+        $user = new User();
+        $user->first_name = 'Pimpinan';
+        $user->last_name = 'Mangga';
+        $user->email = 'pimpinan@mangga.com';
+        $user->password = Hash::make('wars1234');
+        $user->email_verified_at = '2021-05-20 17:33:03';
+        $user->handphone = '08123456789';
+        $user->ktp_code = '123456789';
+        $user->kk_code = '8123456789';
+        $user->user_role = 4;
+        $user->status = 0;
+        $user->province_id = 35;
+        $user->city_id = 3578;
+        $user->district_id = 3578170;
+        $user->village_id = 3578170005;
         $user->save();
     }
 }
