@@ -48,7 +48,7 @@
         var districts = @json($districts);
         var villages = @json($villages);
 
-        $('#province').on('change', function(e) {
+        $('#province').on('click', function(e) {
             $('#city').html(null);
             $('#district').html('<option value="">Kecamatan</option>');
             $("#district").prop("disabled", true);
@@ -62,7 +62,7 @@
             });
             $("#city").prop("disabled", false);
         });
-        $('#city').on('change', function(e) {
+        $('#city').on('click', function(e) {
             $('#district').html(null);
             $('#village').html('<option value="">Desa/Kelurahan</option>');
             $("#village").prop("disabled", true);
@@ -74,7 +74,7 @@
             });
             $("#district").prop("disabled", false);
         });
-        $('#district').on('change', function(e) {
+        $('#district').on('click', function(e) {
             $('#village').html(null);
             let obj = villages.filter(function(obj) {
                 return obj.district_id === $('#district').val();

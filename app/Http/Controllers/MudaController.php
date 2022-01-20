@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use \PDF;
 
 class MudaController extends Controller
 {
@@ -76,7 +77,7 @@ class MudaController extends Controller
         ];
 
         foreach ($request->member_name as $key => $value) {
-            $messages["member_name.$key.required"] = "Nama Member {$key}";
+            $messages["member_name.$key.required"] = "Nama Anggota {$key}";
         }
         foreach ($request->inflow_sales as $key => $value) {
             $messages["inflow_sales.$key.required"] = "Penerimaan Penjualan {$key}";
@@ -170,8 +171,11 @@ class MudaController extends Controller
         $finance_attachment = 'mangga-muda-' . time() . '-' . $request['finance_attachment']->getClientOriginalName();
         $request->finance_attachment->move(public_path('uploads/mangga/financeattachments'), $finance_attachment);
 
+        $reg_number = $this->getRegistrationNumber($request->sector, $request->subsector);
+
         $business = Business::create([
             'name' => $request->name,
+            'registration_number' => $reg_number,
             'logo' => $logo,
             "sector_id" => $request->sector,
             "subsector_id" => $request->subsector,
@@ -282,5 +286,29 @@ class MudaController extends Controller
     public function destroy(Muda $muda)
     {
         //
+    }
+
+    public function getRegistrationNumber(int $sector, int $subsector)
+    {
+        $temp = 'GG-' . str_pad(rand(0, pow(10, 8) - 1), 8, '0', STR_PAD_LEFT) . '-' . $sector . '-' . $subsector;
+        if (Business::where('registration_number', $temp)->exists()) {
+            return $this->getRegistrationNumber($sector, $subsector);
+        } else {
+            return $temp;
+        }
+    }
+
+    public function preview(Muda $muda)
+    {
+        return view('user.proposal.muda', compact('muda'));
+    }
+    public function download(Muda $muda)
+    {
+        $pdf = PDF::loadview('user.proposal.muda', compact('muda'))->setOption('margin-bottom', '0mm')
+        ->setOption('margin-top', '0mm')
+        ->setOption('margin-right', '0mm')
+        ->setOption('margin-left', '0mm')
+        ->setOption('page-size', 'A4');
+        return $pdf->stream('proposal.pdf');
     }
 }

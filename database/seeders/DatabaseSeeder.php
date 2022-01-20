@@ -22,5 +22,9 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(SectorSeeder::class);
         $this->call(SubSectorSeeder::class);
+        $this->call(BusinessFormSeeder::class);
+        $this->call(DistributionTypeSeeder::class);
+        $this->call(EstablishmentStatusSeeder::class);
+        $this->call(MarketingwSeeder::class);
     }
 }

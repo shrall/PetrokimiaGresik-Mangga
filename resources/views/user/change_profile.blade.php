@@ -8,6 +8,8 @@
         </div>
         <div class="col-span-12 xl:col-span-9">
             <form action="{{ route('user.update', 1) }}" method="post" enctype="multipart/form-data">
+                @csrf
+                @method('PATCH')
                 <div class="grid grid-cols-12 gap-x-4 card px-6 py-8">
                     <div class="col-span-6 flex flex-col">
                         <div class="text-2xl font-bold">Informasi Personal</div>
@@ -17,159 +19,214 @@
                             Tempat Lahir. Anda juga bisa mengubah informasi personal Anda dengan menekan
                             tombol “Ubah Profile”</div>
                         <label class="text-gray-400">No. KTP</label>
-                        <input name="ktp" type="number" class="form-input bg-white mb-4" value="123812847192837105">
+                        <input name="identity_id" type="number" class="form-input bg-white mb-4" required
+                            value="{{ Auth::user()->identity_id }}">
                         <label class="text-gray-400">No. KK</label>
-                        <input name="kk" type="number" class="form-input bg-white mb-4" value="2348720352398472938">
+                        <input name="fam_card_code" type="number" class="form-input bg-white mb-4" required
+                            value="{{ Auth::user()->fam_card_code }}">
+                            <label class="text-gray-400 self-start">Agama</label>
+                            <select name="religion" class="form-input mb-4" required>
+                                <option value="0" @if (Auth::user()->religion == '0') selected @endif>Muslim</option>
+                                <option value="1" @if (Auth::user()->religion == '1') selected @endif>Kristen</option>
+                                <option value="2" @if (Auth::user()->religion == '2') selected @endif>Katolik</option>
+                                <option value="3" @if (Auth::user()->religion == '3') selected @endif>Hindu</option>
+                                <option value="4" @if (Auth::user()->religion == '4') selected @endif>Buddha</option>
+                                <option value="5" @if (Auth::user()->religion == '5') selected @endif>Kong Hu Chu</option>
+                                <option value="6" @if (Auth::user()->religion == '6') selected @endif>Lainnya</option>
+                            </select>
                         <div class="grid grid-cols-12 items-center gap-x-2">
                             <div class="col-span-8">
                                 <label class="text-gray-400">Pekerjaan</label>
-                                <input name="" type="text" class="form-input bg-white mb-4" value="">
+                                <input name="profession" type="text" class="form-input bg-white mb-4" required
+                                    value="{{ Auth::user()->profession }}">
                             </div>
                             <div class="col-span-4">
                                 <label class="text-gray-400">Pensiunan Perusahaan</label>
                                 <div class="flex items-center gap-x-2 mb-4">
-                                    <input type="radio" name="" value="1" id="ya" checked>
-                                    <label for="ya" class="text-gray-700">Ya</label>
-                                    <input type="radio" name="" value="0" id="tidak">
+                                    <input type="radio" name="retired" value="0" id="tidak" @if (Auth::user()->retired == '0') checked @endif>
                                     <label for="tidak" class="text-gray-700">Tidak</label>
+                                    <input type="radio" name="retired" value="1" id="ya" @if (Auth::user()->retired == '1') checked @endif>
+                                    <label for="ya" class="text-gray-700">Ya</label>
                                 </div>
                             </div>
                         </div>
                         <label class="text-gray-400">Tingkat Pendidikan</label>
-                        <select name="pendidikan" class="form-input mb-12">
-                            <option value="">Tidak Sekolah</option>
-                            <option value="">TK</option>
-                            <option value="">SD</option>
-                            <option value="">SMP</option>
-                            <option value="">SMA/Sederajatnya</option>
-                            <option value="">D3/Diplomat</option>
-                            <option value="">S1/Sarjana</option>
-                            <option value="">S2/Magister</option>
-                            <option value="">S3/Dokter</option>
+                        <select name="education" class="form-input mb-12" required>
+                            <option value="0" @if (Auth::user()->education == '0') selected @endif>Tidak Sekolah</option>
+                            <option value="1" @if (Auth::user()->education == '1') selected @endif>Tidak Tamat SD</option>
+                            <option value="2" @if (Auth::user()->education == '2') selected @endif>SD</option>
+                            <option value="3" @if (Auth::user()->education == '3') selected @endif>SMP</option>
+                            <option value="4" @if (Auth::user()->education == '4') selected @endif>SMA/K</option>
+                            <option value="5" @if (Auth::user()->education == '5') selected @endif>D4/S1</option>
+                            <option value="6" @if (Auth::user()->education == '6') selected @endif>S1</option>
+                            <option value="7" @if (Auth::user()->education == '7') selected @endif>S2</option>
+                            <option value="8" @if (Auth::user()->education == '8') selected @endif>S3</option>
                         </select>
                         <label class="text-gray-400">Ahli Waris</label>
-                        <input name="" type="text" class="form-input bg-white mb-4" value="">
+                        <input name="heir" type="text" class="form-input bg-white mb-4" value="{{ Auth::user()->heir }}" required>
                         <label class="text-gray-400">Status Rumah</label>
-                        <input name="" type="text" class="form-input bg-white mb-4" value="">
+                        <select name="house_ownership" class="form-input mb-4" required>
+                            @foreach ($establishment_statuses as $es)
+                                <option value="{{ $es->id }}" @if (Auth::user()->education == $es) selected @endif>{{ $es->name }}</option>
+                            @endforeach
+                        </select>
                         <label class="text-gray-400 self-start">NPWP</label>
-                        <input name="" type="number" class="form-input bg-white mb-4" value="">
+                        <input name="npwp" type="number" class="form-input bg-white mb-4"
+                            value="{{ Auth::user()->npwp }}">
                         <div class="grid grid-cols-2 items-center gap-x-2">
                             <div class="col-span-1">
                                 <label class="text-gray-400">No. Rekening</label>
-                                <input name="" type="number" class="form-input bg-white mb-4" value="">
+                                <input name="bank_number" type="number" class="form-input bg-white mb-4" required
+                                    value="{{ Auth::user()->bank_number }}">
                             </div>
                             <div class="col-span-1">
                                 <label class="text-gray-400">Atas Nama</label>
-                                <input name="" type="text" class="form-input bg-white mb-4" value="">
+                                <input name="bank_owner" type="text" class="form-input bg-white mb-4" required
+                                    value="{{ Auth::user()->bank_owner }}">
                             </div>
                         </div>
                         <div class="grid grid-cols-2 items-center gap-x-2">
                             <div class="col-span-1">
                                 <label class="text-gray-400">Nama Bank</label>
-                                <input name="" type="text" class="form-input bg-white mb-4" value="">
+                                <input name="bank_name" type="text" class="form-input bg-white mb-4" required
+                                    value="{{ Auth::user()->bank_name }}">
                             </div>
                             <div class="col-span-1">
                                 <label class="text-gray-400">Cabang Bank</label>
-                                <input name="" type="text" class="form-input bg-white mb-4" value="">
+                                <input name="bank_branch" type="text" class="form-input bg-white mb-4" required
+                                    value="{{ Auth::user()->bank_branch }}">
                             </div>
                         </div>
                         <div class="grid grid-cols-2 items-center gap-x-2">
                             <div class="col-span-1">
                                 <label class="text-gray-400">Latitude</label>
-                                <input name="" type="text" class="form-input bg-white mb-4" value="">
+                                <input name="latitude" type="text" class="form-input bg-white mb-4"
+                                    value="{{ Auth::user()->latitude }}">
                             </div>
                             <div class="col-span-1">
                                 <label class="text-gray-400">Longitude</label>
-                                <input name="" type="text" class="form-input bg-white mb-4" value="">
+                                <input name="longitude" type="text" class="form-input bg-white mb-4"
+                                    value="{{ Auth::user()->longitude }}">
                             </div>
                         </div>
                     </div>
                     <div class="col-span-6 flex flex-col items-center gap-y-2">
-                        <img class="rounded-full w-56 h-56"
-                            src="https://image.freepik.com/free-photo/delicious-pasta-meal-black-plate-dinner-dark-background_140725-94451.jpg">
+                        <img class="rounded-full w-64 h-64" id="preview-image" @if (Auth::user()->picture) src="{{asset('uploads/user/' . Auth::user()->picture)}}" @else src="{{asset('assets/img/stock.jpg')}}" @endif>
                         <label for="image" class="mangga-button-green">Ubah Foto Profil</label>
-                        <input type="file" name="image" id="image" class="hidden">
-                        <div class="text-sm text-gray-500">foto.jpg</div>
+                        <input type="file" name="image" id="image" class="hidden" onchange="loadFile(event, 'image')" accept="image/*">
                         <div class="grid grid-cols-2 items-center gap-x-2 w-full">
                             <div class="col-span-1">
                                 <label class="text-gray-400">Jenis Kelamin</label>
                                 <div class="flex items-center gap-x-2 mb-4">
-                                    <input type="radio" name="kelamin" value="laki-laki" id="laki-laki" checked>
+                                    <input type="radio" name="gender" value="m" id="laki-laki" @if (Auth::user()->gender == 'm') checked @endif>
                                     <label for="laki-laki" class="text-gray-700">Laki-laki</label>
-                                    <input type="radio" name="kelamin" value="wanita" id="wanita">
+                                    <input type="radio" name="gender" value="f" id="wanita" @if (Auth::user()->gender == 'f') checked @endif>
                                     <label for="wanita" class="text-gray-700">Wanita</label>
                                 </div>
                             </div>
                             <div class="col-span-1">
                                 <label class="text-gray-400">Status Perkawinan</label>
                                 <div class="flex items-center gap-x-2 mb-4">
-                                    <input type="radio" name="perkawinan" value="belum-kawin" id="belum-kawin" checked>
+                                    <input type="radio" name="married" value="0" id="belum-kawin" @if (Auth::user()->married == '0') checked @endif>
                                     <label for="belum-kawin" class="text-gray-700">Belum Kawin</label>
-                                    <input type="radio" name="perkawinan" value="kawin" id="kawin">
+                                    <input type="radio" name="married" value="1" id="kawin" @if (Auth::user()->married == '1') checked @endif>
                                     <label for="kawin" class="text-gray-700">Kawin</label>
                                 </div>
                             </div>
                         </div>
-                        <label class="text-gray-400 self-start">Agama</label>
-                        <select name="agama" class="form-input mb-4">
-                            <option value="">Muslim</option>
-                            <option value="">Kristen</option>
-                            <option value="">Katolik</option>
-                            <option value="">Hindu</option>
-                            <option value="">Buddha</option>
-                            <option value="">Kong Hu Chu</option>
-                            <option value="">Lainnya</option>
-                        </select>
+                        <label class="text-gray-400 self-start">Nama Pasangan (Jika Sudah Menikah)</label>
+                        <input name="spouse" type="text" class="form-input bg-white mb-4"
+                            value="{{ Auth::user()->spouse }}">
                         <div class="grid grid-cols-2 items-center gap-x-2 w-full">
                             <div class="col-span-1">
                                 <label class="text-gray-400">Tempat Lahir</label>
-                                <input name="birthplace" type="text" class="form-input bg-white mb-4" value="">
+                                <select name="birth_place" id="birth_place" class="form-input bg-white mb-4" required>
+                                    @foreach ($cities as $city)
+                                        <option value={{ $city->id }} @if (Auth::user()->birth_place == $city->id) selected @endif>
+                                            {{ $city->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="col-span-1">
                                 <label class="text-gray-400">Tanggal Lahir</label>
-                                <input name="tl" type="date" class="form-input bg-white">
+                                <input name="birth_date" type="date" class="form-input bg-white" required
+                                    value="{{ Auth::user()->birth_date }}">
                             </div>
                         </div>
                         <label class="text-gray-400 self-start">No. Telepon</label>
-                        <input name="" type="number" class="form-input bg-white mb-4" value=""><div class="grid grid-cols-2 items-center gap-x-2">
-                            <div class="col-span-1">
+                        <input name="no_handphone" type="number" class="form-input bg-white mb-4" required
+                            value="{{ Auth::user()->no_handphone }}">
+                        <div class="grid grid-cols-12 items-center gap-x-2">
+                            <div class="col-span-6">
                                 <label class="text-gray-400">Alamat</label>
-                                <input name="" type="text" class="form-input bg-white mb-4" value="Jl. Mawar">
+                                <input name="address" type="text" class="form-input bg-white mb-4" required
+                                    value="{{ Auth::user()->address }}">
                             </div>
-                            <div class="col-span-1">
+                            <div class="col-span-2">
+                                <label class="text-gray-400">RT</label>
+                                <input name="rt" type="text" class="form-input bg-white mb-4" required
+                                    value="{{ Auth::user()->rt }}">
+                            </div>
+                            <div class="col-span-2">
+                                <label class="text-gray-400">RW</label>
+                                <input name="rw" type="text" class="form-input bg-white mb-4" required
+                                    value="{{ Auth::user()->rw }}">
+                            </div>
+                            <div class="col-span-2">
                                 <label class="text-gray-400">Kode Pos</label>
-                                <input name="" type="number" class="form-input bg-white mb-4" value="61233">
+                                <input name="postal_code" type="number" class="form-input bg-white mb-4" required
+                                    value="{{ Auth::user()->postal_code }}">
                             </div>
                         </div>
                         <div class="grid grid-cols-2 items-center gap-x-2 w-full">
                             <div class="col-span-1">
                                 <label class="text-gray-400">Provinsi</label>
-                                <select name="provinsi" class="form-input mb-4">
-                                    <option value="">Tidak Sekolah</option>
-                                    <option value="">TK</option>
+                                <select name="province" id="province" class="form-input bg-white mb-4" required>
+                                    @foreach ($provinces as $province)
+                                        <option value={{ $province->id }} @if (Auth::user()->province_id == $province->id) selected @endif>
+                                            {{ $province->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-span-1">
                                 <label class="text-gray-400">Kota/Kabupaten</label>
-                                <select name="kota" class="form-input mb-4">
-                                    <option value="">Tidak Sekolah</option>
-                                    <option value="">TK</option>
+                                <select name="city" id="city" class="form-input bg-white mb-4" @if (!Auth::user()->city_id) disabled @endif required>
+                                    @if (!Auth::user()->city_id)
+                                        <option value="">Kabupaten/Kota*</option>
+                                    @else
+                                        @foreach ($cities as $city)
+                                            <option value={{ $city->id }} @if (Auth::user()->city_id == $city->id) selected @endif>
+                                                {{ $city->name }}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                         </div>
                         <div class="grid grid-cols-2 items-center gap-x-2 w-full">
                             <div class="col-span-1">
                                 <label class="text-gray-400">Kecamatan</label>
-                                <select name="kecamatan" class="form-input mb-4">
-                                    <option value="">Tidak Sekolah</option>
-                                    <option value="">TK</option>
+                                <select name="district" id="district" class="form-input bg-white mb-4" @if (!Auth::user()->district_id) disabled @endif required>
+                                    @if (!Auth::user()->district_id)
+                                        <option value="">Kabupaten/Kota*</option>
+                                    @else
+                                        @foreach ($districts as $district)
+                                            <option value={{ $district->id }} @if (Auth::user()->district_id == $district->id) selected @endif>
+                                                {{ $district->name }}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                             <div class="col-span-1">
                                 <label class="text-gray-400">Desa/Kelurahan</label>
-                                <select name="desa" class="form-input mb-4">
-                                    <option value="">Tidak Sekolah</option>
-                                    <option value="">TK</option>
+                                <select name="village" id="village" class="form-input bg-white mb-4" @if (!Auth::user()->village_id) disabled @endif required>
+                                    @if (!Auth::user()->village_id)
+                                        <option value="">Kabupaten/Kota*</option>
+                                    @else
+                                        @foreach ($villages as $village)
+                                            <option value={{ $village->id }} @if (Auth::user()->village_id == $village->id) selected @endif>
+                                                {{ $village->name }}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                         </div>
@@ -182,4 +239,61 @@
             </form>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        var provinces = @json($provinces);
+        var cities = @json($cities);
+        var districts = @json($districts);
+        var villages = @json($villages);
+
+        $('#province').on('click', function(e) {
+            $('#city').html(null);
+            $('#district').html('<option value="">Kecamatan</option>');
+            $("#district").prop("disabled", true);
+            $('#village').html('<option value="">Desa/Kelurahan</option>');
+            $("#village").prop("disabled", true);
+            let obj = cities.filter(function(obj) {
+                return obj.province_id === $('#province').val();
+            });
+            obj.forEach(element => {
+                $('#city').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+            $("#city").prop("disabled", false);
+        });
+        $('#city').on('click', function(e) {
+            $('#district').html(null);
+            $('#village').html('<option value="">Desa/Kelurahan</option>');
+            $("#village").prop("disabled", true);
+            let obj = districts.filter(function(obj) {
+                return obj.regency_id === $('#city').val();
+            });
+            obj.forEach(element => {
+                $('#district').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+            $("#district").prop("disabled", false);
+        });
+        $('#district').on('click', function(e) {
+            $('#village').html(null);
+            let obj = villages.filter(function(obj) {
+                return obj.district_id === $('#district').val();
+            });
+            obj.forEach(element => {
+                $('#village').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+            $("#village").prop("disabled", false);
+        });
+    </script>
+
+    <script>
+        var loadFile = function(event, id) {
+            if ($('#' + id)[0].files[0].size > 26214400) {
+                alert("Ukuran gambar tidak bisa melebihi 25MB!");
+                $('#' + id).val(null);
+            } else {
+                $('#preview-' + id).attr('src', URL.createObjectURL(event.target.files[0]));
+            }
+        };
+    </script>
 @endsection

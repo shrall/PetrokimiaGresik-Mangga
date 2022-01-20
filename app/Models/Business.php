@@ -10,6 +10,8 @@ class Business extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'registration_number',
+        'instagram',
         'logo',
         'address',
         'type',
@@ -22,6 +24,10 @@ class Business extends Model
         'village_id',
         'sector_id',
         'subsector_id',
+        'approved_by_surveyor_at',
+        'rejected_by_surveyor_at',
+        'approved_by_pimpinan_at',
+        'rejected_by_surveyor_at',
         'user_id'
     ];
 
@@ -55,5 +61,29 @@ class Business extends Model
     public function muda()
     {
         return $this->hasOne(Muda::class, 'business_id', 'id');
+    }
+    public function utama()
+    {
+        return $this->hasOne(Utama::class, 'business_id', 'id');
+    }
+    public function logs()
+    {
+        return $this->hasMany(BusinessLog::class, 'business_id', 'id');
+    }
+    public function commodities()
+    {
+        return $this->hasMany(BusinessCommodity::class, 'business_id', 'id');
+    }
+    public function plans()
+    {
+        return $this->hasMany(BusinessPlan::class, 'business_id', 'id');
+    }
+    public function assets()
+    {
+        return $this->hasMany(BusinessAsset::class, 'business_id', 'id');
+    }
+    public function products()
+    {
+        return $this->hasMany(BusinessProduct::class, 'business_id', 'id');
     }
 }

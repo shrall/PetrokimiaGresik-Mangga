@@ -3,13 +3,18 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\BusinessForm;
+use App\Models\DistributionType;
 use App\Models\District;
+use App\Models\EstablishmentStatus;
+use App\Models\Marketing;
 use App\Models\Province;
 use App\Models\Regency;
 use App\Models\Sector;
 use App\Models\Subsector;
 use App\Models\Village;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -20,7 +25,13 @@ class PageController extends Controller
 
     public function status_ajuan()
     {
-        return view('user.status_ajuan');
+        if (Auth::user()->referral_code != 'mamud') {
+            $utama = Auth::user()->businesses->whereBetween('status', [1, 2])->first()->utama;
+            return view('user.status_ajuan', compact('utama'));
+        } else {
+            $muda = Auth::user()->businesses->whereBetween('status', [1, 2])->first()->muda;
+            return view('user.status_ajuan', compact('muda'));
+        }
     }
 
     public function riwayat_angsuran()
@@ -50,7 +61,17 @@ class PageController extends Controller
 
     public function form_mangga()
     {
-        return view('user.form.mangga');
+        $sectors = Sector::all();
+        $subsectors = Subsector::all();
+        $provinces = Province::all();
+        $cities = Regency::all();
+        $districts = District::all();
+        $villages = Village::all();
+        $business_forms = BusinessForm::all();
+        $establishment_statuses = EstablishmentStatus::all();
+        $distribution_types = DistributionType::all();
+        $marketings = Marketing::all();
+        return view('user.form.mangga', compact('provinces', 'cities', 'districts', 'villages', 'sectors', 'subsectors', 'business_forms', 'establishment_statuses', 'distribution_types', 'marketings'));
     }
 
     public function form_mangga_muda()
@@ -62,5 +83,11 @@ class PageController extends Controller
         $districts = District::all();
         $villages = Village::all();
         return view('user.form.mangga_muda', compact('provinces', 'cities', 'districts', 'villages', 'sectors', 'subsectors'));
+    }
+
+    public function refresh_kelompok(Request $request)
+    {
+        $member = $request->member;
+        return view('user.form.inc.utama_member', compact('member'));
     }
 }

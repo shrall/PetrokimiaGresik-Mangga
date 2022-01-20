@@ -83,7 +83,7 @@
             <a href="{{route('user.index')}}">
                 <div class="text-xl">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</div>
             </a>
-            <img src="{{ asset('assets/img/asset-toko_mangga-1.png') }}" class="rounded-full w-12 h-12">
+            <img class="rounded-full w-12 h-12" id="preview-image" @if (Auth::user()->picture) src="{{asset('uploads/user/' . Auth::user()->picture)}}" @else src="{{asset('assets/img/stock.jpg')}}" @endif>
             <span class="fa fa-fw fa-chevron-down"></span>
             <ul class="dropdown-menu absolute hidden text-black top-12 pt-2 right-0" style="z-index: 1000;">
                 <li class="flex items-center justify-center">

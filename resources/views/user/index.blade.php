@@ -2,7 +2,7 @@
 
 @section('content')
     @include('inc.user_sidebar_mobile')
-    <div class="grid grid-cols-12 gap-x-8 gap-y-4 py-4 px-8 xl:px-0">
+    <div class="grid grid-cols-12 gap-x-8 gap-y-4 py-4 px-8 xl:px-0 xl:min-h-vh-90">
         <div class="col-span-3 hidden xl:block border-r-2 border-gray-400">
             @include('inc.user_sidebar')
         </div>
@@ -43,11 +43,9 @@
                     <div class="form-input mb-8">{{ Auth::user()->fam_card_code ?? '-' }}</div>
                     <label class="text-gray-400">Jenis Kelamin</label>
                     <div class="form-input mb-8">{{ Auth::user()->gender == 'm' ? 'Laki-laki' : 'Perempuan' }}</div>
-                    <label class="text-gray-400">Agama</label>
-                    <div class="form-input mb-8">{{ Auth::user()->religion ?? '-' }}</div>
                     <label class="text-gray-400">Tempat dan Tanggal Lahir</label>
                     <div class="form-input mb-8">{{ Auth::user()->city->name }},
-                        {{ Auth::user()->birth_date ? date('d-m-Y', Auth::user()->birth_date) : '-' }}
+                        {{ Auth::user()->birth_date }}
                     </div>
                 </div>
             </div>

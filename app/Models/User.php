@@ -20,6 +20,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'first_name',
         'last_name',
+        'picture',
         'email',
         'email_verified_at',
         'password',
@@ -29,6 +30,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'identity_id',
         'fam_card_code',
         'gender',
+        'address',
+        'rt',
+        'rw',
+        'postal_code',
         'religion',
         'referral_code',
         'avatar',
@@ -46,7 +51,23 @@ class User extends Authenticatable implements MustVerifyEmail
         'province_id',
         'city_id',
         'district_id',
-        'village_id'
+        'village_id',
+        'profession',
+        'retired',
+        'education',
+        'heir',
+        'npwp',
+        'bank_number',
+        'bank_owner',
+        'bank_name',
+        'bank_branch',
+        'latitude',
+        'longitude',
+        'gender',
+        'married',
+        'spouse',
+        'house_ownership',
+        'birth_place'
     ];
 
     /**
@@ -126,5 +147,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function businesses()
     {
         return $this->hasMany(Business::class, 'user_id', 'id');
+    }
+    public function birthplace() {
+        return $this->belongsTo(Regency::class, 'birth_place', 'id');
     }
 }

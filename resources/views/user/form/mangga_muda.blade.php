@@ -387,7 +387,6 @@
     <script>
         function updateMembers() {
             var members = $("input[name='member_count']").val();
-            console.log(members);
             $('#member-input-list').html(null);
             for (let index = 1; index <= members; index++) {
                 $('#member-input-list').append(
@@ -399,11 +398,9 @@
     <script>
         var subsectors = @json($subsectors);
 
-        $('#sector').on('change', function(e) {
+        $('#sector').on('click', function(e) {
             $('#subsector').html(null);
             let obj = subsectors.filter(function(obj) {
-                console.log(obj.sector_id);
-                console.log($('#sector').val());
                 return obj.sector_id === parseInt($('#sector').val());
             });
             obj.forEach(element => {
@@ -459,8 +456,8 @@
             if (stepCounter >= 10 && !team) {
                 event.preventDefault();
                 if (!submitted) {
-                    document.getElementById('form-mangga-muda').submit();
                     submitted == true;
+                    document.getElementById('form-mangga-muda').submit();
                 }
             } else {
                 stepCounter += 1;
@@ -499,7 +496,7 @@
         var districts = @json($districts);
         var villages = @json($villages);
 
-        $('#province').on('change', function(e) {
+        $('#province').on('click', function(e) {
             console.log('province');
             $('#city').html(null);
             $('#district').html('<option value="">Kecamatan</option>');
@@ -514,7 +511,7 @@
             });
             $("#city").prop("disabled", false);
         });
-        $('#city').on('change', function(e) {
+        $('#city').on('click', function(e) {
             $('#district').html(null);
             $('#village').html('<option value="">Desa/Kelurahan</option>');
             $("#village").prop("disabled", true);
@@ -526,7 +523,7 @@
             });
             $("#district").prop("disabled", false);
         });
-        $('#district').on('change', function(e) {
+        $('#district').on('click', function(e) {
             $('#village').html(null);
             let obj = villages.filter(function(obj) {
                 return obj.district_id === $('#district').val();

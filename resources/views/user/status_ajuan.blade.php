@@ -6,9 +6,98 @@
         <div class="col-span-3 hidden xl:block border-r-2 border-gray-400">
             @include('inc.user_sidebar')
         </div>
-        @if (Auth::user()->referral_code == 'mamud')
-
-            <div class="col-span-12 xl:col-span-9 h-full">
+        <div class="col-span-12 xl:col-span-9 h-full">
+            <div class="flex flex-col card items-center justify-center gap-y-4 px-8 py-6">
+                <div class="text-2xl font-bold mb-8">Status Pengajuan</div>
+                <div class="flex flex-col xl:flex-row items-center justify-center gap-x-2">
+                    <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                        <div class="rounded-full bg-gray-400 p-4">
+                            <span class="fa fa-fw fa-address-card text-white text-xl"></span>
+                        </div>
+                        <div
+                            class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                            Lengkapi Data Diri</div>
+                    </div>
+                    <div class="block xl:hidden">
+                        <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                    </div>
+                    <div class="hidden xl:block">
+                        <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                    </div>
+                    <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                        <div class="rounded-full @if (Auth::user()->businesses[0]->status == 1) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                            <span class="fa fa-fw fa-user-check text-white text-xl"></span>
+                        </div>
+                        <div
+                            class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                            Submit Form Pengajuan</div>
+                    </div>
+                    @if (Auth::user()->referral_code != 'mamud')
+                        <div class="block xl:hidden">
+                            <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                        </div>
+                        <div class="hidden xl:block">
+                            <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                        </div>
+                        <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                            <div class="rounded-full @if (Auth::user()->businesses[0]->status == 2) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                                <span class="fa fa-fw fa-signature text-white text-xl"></span>
+                            </div>
+                            <div
+                                class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                Memberi TTD Form Pengajuan
+                            </div>
+                        </div>
+                    @endif
+                    <div class="block xl:hidden">
+                        <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                    </div>
+                    <div class="hidden xl:block">
+                        <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                    </div>
+                    <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                        <div class="rounded-full @if (Auth::user()->businesses[0]->status == 3) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                            <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
+                        </div>
+                        <div
+                            class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                            Pengajuan Diapprove Surveyor</div>
+                    </div>
+                    <div class="block xl:hidden">
+                        <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                    </div>
+                    <div class="hidden xl:block">
+                        <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                    </div>
+                    <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                        <div class="rounded-full @if (Auth::user()->businesses[0]->status == 4) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                            <span class="fa fa-fw fa-check-double text-white text-xl"></span>
+                        </div>
+                        <div
+                            class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                            Pengajuan Diapprove Pimpinan</div>
+                    </div>
+                </div>
+                <form action="{{ route('user.utama.ttd', $utama->id) }}" method="post" enctype="multipart/form-data"
+                    class="flex flex-col items-center justify-center gap-y-2">
+                    @csrf
+                    @method('PATCH')
+                    <label for="complete-form" class="font-bold">Upload Form Yang
+                        Sudah Di Tanda Tangani</label>
+                    <a target="blank" href="{{ asset('uploads/mangga/complete_form/' . $utama->complete_form) }}">
+                        <span class="fa fa-fw fa-file-pdf"></span>
+                        <span class="underline">{{ $utama->complete_form }}</span>
+                    </a>
+                    <input type="file" name="complete_form" id="complete-form" required>
+                    <button type="submit" class="mangga-button-green cursor-pointer">Submit</button>
+                </form>
+            </div>
+            @if (Auth::user()->referral_code == 'mamud')
+                <div class="flex items-center justify-end my-4">
+                    <a href="{{ route('user.muda.download', $muda->first()->id) }}" class="text-lg hover:text-gray-700">
+                        <span class="fa fa-fw fa-file-download"></span>Preview Proposal Pengajuan
+                    </a>
+                </div>
                 <div class="text-2xl font-bold mb-8">Detail Pengajuan</div>
                 <div class="card px-8 py-6 flex flex-col gap-y-4">
                     <div class="text-xl font-bold">Data Pengajuan</div>
@@ -16,16 +105,16 @@
                         <img src="{{ asset('uploads/mangga/logos/' . Auth::user()->businesses[0]->logo) }}" alt=""
                             srcset="" class="w-full">
                         <div class="flex flex-col gap-y-2">
-                            <div class="text-3xl font-bold">{{ Auth::user()->businesses[0]->muda->business_title }}</div>
-                            <div class="text-xl">{{ Auth::user()->businesses[0]->muda->leader_name }}</div>
-                            <div class="text-xl">{{ Auth::user()->businesses[0]->muda->university }}</div>
-                            <div class="text-xl">{{ Auth::user()->businesses[0]->muda->faculty }}</div>
-                            <div class="text-xl">{{ Auth::user()->businesses[0]->muda->member_count }} Anggota
+                            <div class="text-3xl font-bold">{{ $muda->business_title }}</div>
+                            <div class="text-xl">{{ $muda->leader_name }}</div>
+                            <div class="text-xl">{{ $muda->university }}</div>
+                            <div class="text-xl">{{ $muda->faculty }}</div>
+                            <div class="text-xl">{{ $muda->member_count }} Anggota
                             </div>
                         </div>
                         <div class="flex flex-col gap-y-2">
                             <div class="text-3xl font-bold">Anggota Tim</div>
-                            @foreach (Auth::user()->businesses[0]->muda->members as $member)
+                            @foreach ($muda->members as $member)
                                 <div class="text-xl">{{ $member->name }}</div>
                             @endforeach
                         </div>
@@ -48,45 +137,45 @@
                         </div>
                     </div>
                     <div class="text-xl font-bold">Prospek Pengembangan Usaha</div>
-                    <div class="text-xl">{{ Auth::user()->businesses[0]->muda->prospect }}</div>
+                    <div class="text-xl">{{ $muda->prospect }}</div>
                     <div class="text-xl font-bold">Rencana Pengembangan Usaha</div>
-                    <div class="text-xl">{{ Auth::user()->businesses[0]->muda->growth_plan }}</div>
+                    <div class="text-xl">{{ $muda->growth_plan }}</div>
                     <div class="text-xl font-bold">Nilai Target Penjualan</div>
-                    <div class="text-xl">{{ Auth::user()->businesses[0]->muda->target }}</div>
+                    <div class="text-xl">{{ $muda->target }}</div>
                     <div class="text-xl font-bold">Kebutuhan dan Sumber Dana</div>
-                    <div class="text-xl">{{ Auth::user()->businesses[0]->muda->needs }}</div>
+                    <div class="text-xl">{{ $muda->needs }}</div>
                     <div class="text-xl font-bold">Rencana Penggunaan Dana</div>
-                    <div class="text-xl">{{ Auth::user()->businesses[0]->muda->utilization_plan }}</div>
+                    <div class="text-xl">{{ $muda->utilization_plan }}</div>
                     <div class="text-xl font-bold">Rencana Pengembalian Dana</div>
-                    <div class="text-xl">{{ Auth::user()->businesses[0]->muda->return_plan }}</div>
+                    <div class="text-xl">{{ $muda->return_plan }}</div>
                     <hr>
                     <div class="text-xl font-bold underline">Analisa Ide</div>
                     <div class="text-xl font-bold">Deskripsi</div>
-                    <div class="text-xl">{{ Auth::user()->businesses[0]->muda->description }}</div>
+                    <div class="text-xl">{{ $muda->description }}</div>
                     <hr>
                     <div class="text-xl font-bold underline">Analisa Pemasaran</div>
                     <div class="text-xl font-bold">Pangsa Pasar Produk dan Go-To-Market Strategy</div>
-                    <div class="text-xl">{{ Auth::user()->businesses[0]->muda->market_share }}</div>
+                    <div class="text-xl">{{ $muda->market_share }}</div>
                     <div class="text-xl font-bold">Peta Positioning</div>
-                    <img src="{{ asset('uploads/mangga/marketpositions/' . Auth::user()->businesses[0]->muda->market_position) }}"
+                    <img src="{{ asset('uploads/mangga/marketpositions/' . $muda->market_position) }}"
                         class="w-128">
                     <hr>
                     <div class="text-xl font-bold underline">Analisa Pemasaran</div>
                     <div class="text-xl font-bold">Strategi Produksi</div>
-                    <div class="text-xl">{{ Auth::user()->businesses[0]->muda->production_strategy }}</div>
+                    <div class="text-xl">{{ $muda->production_strategy }}</div>
                     <div class="text-xl font-bold">Struktur Organisasi</div>
-                    <img src="{{ asset('uploads/mangga/organizationstructures/' . Auth::user()->businesses[0]->muda->organization_structure) }}"
+                    <img src="{{ asset('uploads/mangga/organizationstructures/' . $muda->organization_structure) }}"
                         class="w-128">
                     <hr>
                     <div class="text-xl font-bold underline">Target Usaha</div>
                     <div class="text-xl font-bold">Rencana Untuk Mencapai Target</div>
-                    <div class="text-xl">{{ Auth::user()->businesses[0]->muda->target_plan ?? 'asd' }}</div>
+                    <div class="text-xl">{{ $muda->target_plan ?? 'asd' }}</div>
                     <hr>
                     <div class="text-xl font-bold underline">Analisa Keuangan</div>
                     <div class="text-xl font-bold">Analisis Investasi dan Rencana Cashflow</div>
-                    <div class="text-xl">{{ Auth::user()->businesses[0]->muda->finance }}</div>
+                    <div class="text-xl">{{ $muda->finance }}</div>
                     <div class="text-xl font-bold">Struktur Pendanaan</div>
-                    <img src="{{ asset('uploads/mangga/financeattachments/' . Auth::user()->businesses[0]->muda->finance_attachment) }}"
+                    <img src="{{ asset('uploads/mangga/financeattachments/' . $muda->finance_attachment) }}"
                         class="w-128">
                     <hr>
                     <div class="text-xl font-bold underline">Arus Kas (Cash-Flow) 6 Bulan Terakhir</div>
@@ -103,317 +192,680 @@
                         <tr>
                             <td class="border border-gray-600">Penerimaan Penjualan</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[0]->inflow_sales }}</td>
+                                {{ $muda->reports[0]->inflow_sales }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[1]->inflow_sales }}</td>
+                                {{ $muda->reports[1]->inflow_sales }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[2]->inflow_sales }}</td>
+                                {{ $muda->reports[2]->inflow_sales }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[3]->inflow_sales }}</td>
+                                {{ $muda->reports[3]->inflow_sales }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[4]->inflow_sales }}</td>
+                                {{ $muda->reports[4]->inflow_sales }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[5]->inflow_sales }}</td>
+                                {{ $muda->reports[5]->inflow_sales }}</td>
                         </tr>
                         <tr>
                             <td class="border border-gray-600">Penerimaan Pinjaman</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[0]->inflow_loan }}</td>
+                                {{ $muda->reports[0]->inflow_loan }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[1]->inflow_loan }}</td>
+                                {{ $muda->reports[1]->inflow_loan }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[2]->inflow_loan }}</td>
+                                {{ $muda->reports[2]->inflow_loan }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[3]->inflow_loan }}</td>
+                                {{ $muda->reports[3]->inflow_loan }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[4]->inflow_loan }}</td>
+                                {{ $muda->reports[4]->inflow_loan }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[5]->inflow_loan }}</td>
+                                {{ $muda->reports[5]->inflow_loan }}</td>
                         </tr>
                         <tr class="font-bold">
                             <td class="border border-gray-600">Subtotal Penerimaan</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[0]->inflow_subtotal }}</td>
+                                {{ $muda->reports[0]->inflow_subtotal }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[1]->inflow_subtotal }}</td>
+                                {{ $muda->reports[1]->inflow_subtotal }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[2]->inflow_subtotal }}</td>
+                                {{ $muda->reports[2]->inflow_subtotal }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[3]->inflow_subtotal }}</td>
+                                {{ $muda->reports[3]->inflow_subtotal }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[4]->inflow_subtotal }}</td>
+                                {{ $muda->reports[4]->inflow_subtotal }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[5]->inflow_subtotal }}</td>
+                                {{ $muda->reports[5]->inflow_subtotal }}</td>
                         </tr>
                         <tr>
                             <td class="border border-gray-600">Pembelian Asset (Investasi)</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[0]->outflow_investment }}</td>
+                                {{ $muda->reports[0]->outflow_investment }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[1]->outflow_investment }}</td>
+                                {{ $muda->reports[1]->outflow_investment }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[2]->outflow_investment }}</td>
+                                {{ $muda->reports[2]->outflow_investment }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[3]->outflow_investment }}</td>
+                                {{ $muda->reports[3]->outflow_investment }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[4]->outflow_investment }}</td>
+                                {{ $muda->reports[4]->outflow_investment }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[5]->outflow_investment }}</td>
+                                {{ $muda->reports[5]->outflow_investment }}</td>
                         </tr>
                         <tr>
                             <td class="border border-gray-600">Pembelian Bahan Baku</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[0]->outflow_ingredient }}</td>
+                                {{ $muda->reports[0]->outflow_ingredient }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[1]->outflow_ingredient }}</td>
+                                {{ $muda->reports[1]->outflow_ingredient }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[2]->outflow_ingredient }}</td>
+                                {{ $muda->reports[2]->outflow_ingredient }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[3]->outflow_ingredient }}</td>
+                                {{ $muda->reports[3]->outflow_ingredient }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[4]->outflow_ingredient }}</td>
+                                {{ $muda->reports[4]->outflow_ingredient }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[5]->outflow_ingredient }}</td>
+                                {{ $muda->reports[5]->outflow_ingredient }}</td>
                         </tr>
                         <tr>
                             <td class="border border-gray-600">Biaya Produksi Lain-lain</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[0]->outflow_production }}</td>
+                                {{ $muda->reports[0]->outflow_production }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[1]->outflow_production }}</td>
+                                {{ $muda->reports[1]->outflow_production }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[2]->outflow_production }}</td>
+                                {{ $muda->reports[2]->outflow_production }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[3]->outflow_production }}</td>
+                                {{ $muda->reports[3]->outflow_production }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[4]->outflow_production }}</td>
+                                {{ $muda->reports[4]->outflow_production }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[5]->outflow_production }}</td>
+                                {{ $muda->reports[5]->outflow_production }}</td>
                         </tr>
                         <tr>
                             <td class="border border-gray-600">Biaya Pemeliharaan</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[0]->outflow_maintenance }}</td>
+                                {{ $muda->reports[0]->outflow_maintenance }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[1]->outflow_maintenance }}</td>
+                                {{ $muda->reports[1]->outflow_maintenance }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[2]->outflow_maintenance }}</td>
+                                {{ $muda->reports[2]->outflow_maintenance }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[3]->outflow_maintenance }}</td>
+                                {{ $muda->reports[3]->outflow_maintenance }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[4]->outflow_maintenance }}</td>
+                                {{ $muda->reports[4]->outflow_maintenance }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[5]->outflow_maintenance }}</td>
+                                {{ $muda->reports[5]->outflow_maintenance }}</td>
                         </tr>
                         <tr>
                             <td class="border border-gray-600">Biaya Administrasi Lain-lain</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[0]->outflow_admin }}</td>
+                                {{ $muda->reports[0]->outflow_admin }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[1]->outflow_admin }}</td>
+                                {{ $muda->reports[1]->outflow_admin }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[2]->outflow_admin }}</td>
+                                {{ $muda->reports[2]->outflow_admin }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[3]->outflow_admin }}</td>
+                                {{ $muda->reports[3]->outflow_admin }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[4]->outflow_admin }}</td>
+                                {{ $muda->reports[4]->outflow_admin }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[5]->outflow_admin }}</td>
+                                {{ $muda->reports[5]->outflow_admin }}</td>
                         </tr>
                         <tr>
                             <td class="border border-gray-600">Angsuran Pokok</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[0]->outflow_installments }}</td>
+                                {{ $muda->reports[0]->outflow_installments }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[1]->outflow_installments }}</td>
+                                {{ $muda->reports[1]->outflow_installments }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[2]->outflow_installments }}</td>
+                                {{ $muda->reports[2]->outflow_installments }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[3]->outflow_installments }}</td>
+                                {{ $muda->reports[3]->outflow_installments }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[4]->outflow_installments }}</td>
+                                {{ $muda->reports[4]->outflow_installments }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[5]->outflow_installments }}</td>
+                                {{ $muda->reports[5]->outflow_installments }}</td>
                         </tr>
                         <tr class="font-bold">
                             <td class="border border-gray-600">Sub Total Pengeluaran</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[0]->outflow_subtotal }}</td>
+                                {{ $muda->reports[0]->outflow_subtotal }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[1]->outflow_subtotal }}</td>
+                                {{ $muda->reports[1]->outflow_subtotal }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[2]->outflow_subtotal }}</td>
+                                {{ $muda->reports[2]->outflow_subtotal }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[3]->outflow_subtotal }}</td>
+                                {{ $muda->reports[3]->outflow_subtotal }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[4]->outflow_subtotal }}</td>
+                                {{ $muda->reports[4]->outflow_subtotal }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[5]->outflow_subtotal }}</td>
+                                {{ $muda->reports[5]->outflow_subtotal }}</td>
                         </tr>
                         <tr class="font-bold">
                             <td class="border border-gray-600">Selisih Kas</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[0]->difference }}</td>
+                                {{ $muda->reports[0]->difference }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[1]->difference }}</td>
+                                {{ $muda->reports[1]->difference }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[2]->difference }}</td>
+                                {{ $muda->reports[2]->difference }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[3]->difference }}</td>
+                                {{ $muda->reports[3]->difference }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[4]->difference }}</td>
+                                {{ $muda->reports[4]->difference }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[5]->difference }}</td>
+                                {{ $muda->reports[5]->difference }}</td>
                         </tr>
                         <tr class="font-bold">
                             <td class="border border-gray-600">Selisih Kas Awal</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[0]->difference_start }}</td>
+                                {{ $muda->reports[0]->difference_start }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[1]->difference_start }}</td>
+                                {{ $muda->reports[1]->difference_start }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[2]->difference_start }}</td>
+                                {{ $muda->reports[2]->difference_start }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[3]->difference_start }}</td>
+                                {{ $muda->reports[3]->difference_start }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[4]->difference_start }}</td>
+                                {{ $muda->reports[4]->difference_start }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[5]->difference_start }}</td>
+                                {{ $muda->reports[5]->difference_start }}</td>
                         </tr>
                         <tr class="font-bold">
                             <td class="border border-gray-600">Selisih Kas Akhir</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[0]->difference_end }}</td>
+                                {{ $muda->reports[0]->difference_end }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[1]->difference_end }}</td>
+                                {{ $muda->reports[1]->difference_end }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[2]->difference_end }}</td>
+                                {{ $muda->reports[2]->difference_end }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[3]->difference_end }}</td>
+                                {{ $muda->reports[3]->difference_end }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[4]->difference_end }}</td>
+                                {{ $muda->reports[4]->difference_end }}</td>
                             <td class="border border-gray-600">
-                                {{ Auth::user()->businesses[0]->muda->reports[5]->difference_end }}</td>
+                                {{ $muda->reports[5]->difference_end }}</td>
                         </tr>
                     </table>
                 </div>
-            </div>
-    </div>
-@else
-    <div class="col-span-12 xl:col-span-9 h-screen xl:h-vh-80">
-        <div class="flex flex-col card items-center justify-center gap-y-4 px-8 py-6">
-            <div class="text-2xl font-bold mb-8">Status Pengajuan</div>
-            <div class="flex flex-col xl:flex-row items-center justify-center gap-x-2">
-                <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                    <div class="rounded-full bg-gray-400 p-4">
-                        <span class="fa fa-fw fa-user-shield text-white text-xl"></span>
+            @else
+                <div class="flex items-center justify-end my-4">
+                    <a href="{{ route('user.utama.download', $utama->id) }}" class="text-lg hover:text-gray-700">
+                        <span class="fa fa-fw fa-file-download"></span>Preview Proposal Pengajuan
+                    </a>
+                </div>
+                <div class="text-2xl font-bold mb-4">Detail Pengajuan</div>
+                <div class="card px-8 py-6 flex flex-col gap-y-4">
+                    <div class="text-xl font-bold underline">Mitra Binaan</div>
+                    <div class="grid grid-cols-2 gap-x-8 gap-y-2">
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Tanggal Pengajuan</span>
+                            <span>{{ $utama->created_at->format('d/m/Y') }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Tanggal Penerimaan</span>
+                            @if ($utama->approved_by_surveyor_at)
+                                <span>{{ $utama->approved_by_surveyor_at->format('d/m/Y') }}</span>
+                            @else -
+                            @endif
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Nama Mitra</span>
+                            <span>{{ $utama->user_name }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">No.KTP</span>
+                            <span>{{ $utama->user_identity_id }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Jenis Kelamin</span>
+                            @if ($utama->user_gender == 'm')
+                                Laki-laki
+                            @else
+                                Perempuan
+                            @endif
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">No.KK</span>
+                            <span>{{ $utama->user_fam_card_code }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Tempat/ Tanggal Lahir</span>
+                            <span>{{ $utama->user_birth_place }}, {{ $utama->user_birth_date }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Pekerjaan</span>
+                            <span>{{ $utama->user_profession }} </span>
+                        </div>
+                        <div class="flex flex-col col-span-2">
+                            <span class="text-gray-600">Alamat</span>
+                            <span>{{ $utama->user_address }} RT {{ $utama->user_rt }} RW {{ $utama->user_rw }}
+                            </span>
+                            <span>{{ $utama->user_province }}, {{ $utama->user_city }},
+                                {{ $utama->user_district }},
+                                {{ $utama->user_village }} {{ $utama->user_postal_code }}</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">E-Mail</span>
+                            <span>{{ $utama->user_email }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">No. Telp</span>
+                            <span>{{ $utama->user_phone }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">No. Rekening</span>
+                            <span>{{ $utama->user_bank_number }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Cabang Bank</span>
+                            <span>{{ $utama->user_branch }} </span>
+                        </div>
                     </div>
-                    <div
-                        class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                        Login</div>
-                </div>
-                <div class="block xl:hidden">
-                    <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
-                </div>
-                <div class="hidden xl:block">
-                    <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
-                </div>
-                <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                    <div class="rounded-full bg-gray-400 p-4">
-                        <span class="fa fa-fw fa-user-edit text-white text-xl"></span>
+                    <hr>
+                    @foreach ($utama->members as $member)
+                        <div class="text-xl font-bold">Data Anggota {{ $loop->iteration }}</div>
+                        <div class="grid grid-cols-2 gap-x-8 gap-y-2">
+                            <div class="flex flex-col">
+                                <span class="text-gray-600">Nama</span>
+                                <span>{{ $member->name }} </span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-gray-600">Nama Sertifikat</span>
+                                <span>{{ $member->certificate_name ?? '-' }} </span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-gray-600">No. KTP</span>
+                                <span>{{ $member->ktp_code }} </span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-gray-600">File Sertifikat</span>
+                                @if ($member->certificate)
+                                    <span class="underline">
+                                        <a target="blank"
+                                            href="{{ asset('uploads/mangga/certificate/' . $member->certificate) }}">Download
+                                            Sertifikat</a>
+                                    </span>
+                                @else -
+                                @endif
+                            </div>
+                        </div>
+                        <hr>
+                    @endforeach
+                    @if ($utama->companion_name)
+                        <div class="text-xl font-bold">Data Anggota {{ $loop->iteration }}</div>
+                        <div class="grid grid-cols-2 gap-x-8 gap-y-2">
+                            <div class="flex flex-col">
+                                <span class="text-gray-600">Nama</span>
+                                <span>{{ $member->companion_name }} </span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-gray-600">No. KTP</span>
+                                <span>{{ $member->companion_ktp_code }} </span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-gray-600">Nomor Surat Menikah</span>
+                                <span>{{ $member->companion_wedding_code }} </span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-gray-600">Tanggal menikah</span>
+                                <span>{{ $member->companion_wedding_date }} </span>
+                            </div>
+                            <div class="flex flex-col col-span-2">
+                                <span class="text-gray-600">Alamat</span>
+                                <span>{{ $utama->companion_address }}
+                                </span>
+                                <span>{{ $utama->companionprovince->name }}, {{ $utama->companioncity->name }},
+                                    {{ $utama->companiondistrict->name }},
+                                    {{ $utama->companionvillage->name }} {{ $utama->companion_postal_code }}</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-gray-600">E-Mail</span>
+                                <span>{{ $utama->companion_email }} </span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-gray-600">No. Telp / HP</span>
+                                <span>{{ $utama->companion_telephone ?? '-' }} / {{ $utama->companion_handphone }}
+                                </span>
+                            </div>
+                        </div>
+                        <hr>
+                    @endif
+                    <div class="grid grid-cols-2 gap-x-8 gap-y-2">
+                        <div class="flex flex-col col-span-2">
+                            <div class="text-3xl font-bold">{{ $utama->business->name }}</div>
+                            <span>{{ $utama->business->address }}
+                            </span>
+                            <span>{{ $utama->business->province->name }}, {{ $utama->business->city->name }},
+                                {{ $utama->business->district->name }},
+                                {{ $utama->business->village->name }} {{ $utama->business->postal_code }}</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">E-Mail</span>
+                            <span>{{ $utama->email }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">No. Telp / HP</span>
+                            <span>{{ $utama->telephone ?? '-' }} / {{ $utama->handphone }}
+                            </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Status Tempat Usaha</span>
+                            <span>{{ $utama->establishmentstatus->name }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Alamat Surat Menyurat</span>
+                            @if ($utama->mail_address == '0')
+                                <span>Rumah</span>
+                            @else
+                                <span>Usaha</span>
+                            @endif
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">No. SIUP</span>
+                            <span>{{ $utama->siup_code ?? '-' }}</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Tanggal SIUP</span>
+                            <span>{{ $utama->siup_date ?? '-' }}</span>
+                        </div>
                     </div>
-                    <div
-                        class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                        Lengkapi Data Diri</div>
-                </div>
-                <div class="block xl:hidden">
-                    <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
-                </div>
-                <div class="hidden xl:block">
-                    <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
-                </div>
-                <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                    <div class="rounded-full bg-mangga-orange-300 p-4">
-                        <span class="fa fa-fw fa-user-check text-white text-xl"></span>
+                    <hr>
+                    <div class="grid grid-cols-2 gap-x-8 gap-y-2">
+                        <div class="text-xl font-bold underline">Data Pengajuan</div>
+                        <div class="flex flex-col col-span-2">
+                            <span class="text-gray-600">Jumlah Pengajuan</span>
+                            <span>Rp. {{ number_format($utama->request_amount, 0, ',', '.') }}</span>
+                        </div>
+                        <div class="flex flex-col col-span-2">
+                            <span class="text-gray-600">Agunan</span>
+                            <span>{{ $utama->collateral }}</span>
+                        </div>
+                        <div class="flex flex-col col-span-2">
+                            <span class="text-gray-600">Persyaratan</span>
+                            <div class="grid grid-cols-4 gap-x-4 gap-y-1">
+                                <div class="flex items-center gap-x-2">
+                                    <span class="fa fa-fw fa-check-square"></span>
+                                    <span>
+                                        <a target="blank" href="{{ asset('uploads/mangga/ktp/' . $utama->ktp) }}"
+                                            class="underline">
+                                            KTP
+                                        </a> dan <a target="blank"
+                                            href="{{ asset('uploads/mangga/ktpselfie/' . $member->ktp_selfie) }}"
+                                            class="underline">
+                                            Selfie KTP
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="flex items-center gap-x-2">
+                                    <span class="fa fa-fw fa-check-square"></span>
+                                    <span>
+                                        <a target="blank" href="{{ asset('uploads/mangga/kk/' . $utama->kk) }}"
+                                            class="underline">
+                                            KK
+                                        </a> dan <a target="blank"
+                                            href="{{ asset('uploads/mangga/kkselfie/' . $member->kk_selfie) }}"
+                                            class="underline">
+                                            Selfie KK
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="flex items-center gap-x-2">
+                                    @if ($utama->siup)
+                                        <span class="fa fa-fw fa-check-square"></span>
+                                        <span>
+                                            <a target="blank" href="{{ asset('uploads/mangga/siup/' . $utama->siup) }}"
+                                                class="underline">
+                                                SIUP
+                                            </a>
+                                        </span>
+                                    @else
+                                        <span class="fa fa-fw fa-times-square"></span>
+                                        <span>
+                                            <a target="blank" href="#" class="underline">
+                                                SIUP
+                                            </a>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="flex items-center gap-x-2">
+                                    <span class="fa fa-fw fa-check-square"></span>
+                                    <span>
+                                        <a target="blank" href="{{ asset('uploads/mangga/skdu/' . $utama->skdu) }}"
+                                            class="underline">
+                                            SK Domisili Usaha
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Tipe Penyaluran</span>
+                            <span>{{ $utama->distributiontype->name }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Pemasaran</span>
+                            <span>{{ $utama->marketing->name }} @if ($utama->marketing_id == 3) Ekspor ke {{ $utama->export_to }} @endif </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Sektor</span>
+                            <span>{{ $utama->business->sector->name }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Subsektor</span>
+                            <span>{{ $utama->business->subsector->name }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Jenis Usaha</span>
+                            <span>{{ $utama->business->type }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Bentuk Usaha</span>
+                            <span>{{ $utama->businessform->name }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Produk Unggulan</span>
+                            <span>{{ $utama->best_product }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Komoditi Yang Dihasilkan</span>
+                            <span>
+                                @if ($utama->business->commodities)
+                                    @foreach ($utama->business->commodities as $c)
+                                        @if ($loop->iteration != 1),
+                                        @endif{{ $c->name }}
+                                    @endforeach
+                                @else -
+                                @endif
+                            </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Nilai Usaha</span>
+                            <span>Rp. {{ number_format($utama->business_value, 0, ',', '.') }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Nilai Omzet per Tahun</span>
+                            <span>Rp. {{ number_format($utama->turnover_value, 0, ',', '.') }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Jumlah Unit Usaha</span>
+                            <span>{{ $utama->unit_amount }} </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600">Jumlah SDM</span>
+                            <span>{{ $utama->hr_value }} Orang</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600 font-bold text-lg">Nilai Kekayaan Usaha</span>
+                            <table>
+                                <tr>
+                                    <td width="30%">{{ $utama->business->assets[0]->name }}</td>
+                                    <td>Rp. {{ number_format($utama->business->assets[0]->value, 0, ',', '.') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ $utama->business->assets[1]->name }}</td>
+                                    <td>Rp. {{ number_format($utama->business->assets[1]->value, 0, ',', '.') }}</td>
+                                </tr>
+                                <tr class="font-bold">
+                                    <td>Jumlah</td>
+                                    <td>Rp.
+                                        {{ number_format($utama->business->assets[0]->value + $utama->business->assets[1]->value, 0, ',', '.') }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{ $utama->business->assets[2]->name }}</td>
+                                    <td>Rp. {{ number_format($utama->business->assets[2]->value, 0, ',', '.') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ $utama->business->assets[3]->name }}</td>
+                                    <td>Rp. {{ number_format($utama->business->assets[3]->value, 0, ',', '.') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ $utama->business->assets[4]->name }}</td>
+                                    <td>Rp. {{ number_format($utama->business->assets[4]->value, 0, ',', '.') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ $utama->business->assets[5]->name }}</td>
+                                    <td>Rp. {{ number_format($utama->business->assets[5]->value, 0, ',', '.') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ $utama->business->assets[6]->name }}</td>
+                                    <td>Rp. {{ number_format($utama->business->assets[6]->value, 0, ',', '.') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ $utama->business->assets[7]->name }}</td>
+                                    <td>Rp. {{ number_format($utama->business->assets[7]->value, 0, ',', '.') }}</td>
+                                </tr>
+                                <tr class="font-bold">
+                                    <td>Jumlah</td>
+                                    <td>Rp.
+                                        {{ number_format($utama->business->assets[6]->value + $utama->business->assets[7]->value + $utama->business->assets[2]->value + $utama->business->assets[3]->value + $utama->business->assets[4]->value + $utama->business->assets[5]->value, 0, ',', '.') }}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600 font-bold text-lg">Penjualan Selama Setahun</span>
+                            <table>
+                                @php
+                                    $c_total = 0;
+                                @endphp
+                                @foreach ($utama->business->commodities as $item)
+                                    @php
+                                        $c_total += $item->value;
+                                    @endphp
+                                    <tr>
+                                        <td width="30%">{{ $item->name }}</td>
+                                        <td>: Rp. {{ number_format($item->value, 0, ',', '.') }}</td>
+                                    </tr>
+                                @endforeach
+                                <tr class="font-bold">
+                                    <td>Jumlah</td>
+                                    <td>: Rp.
+                                        {{ number_format($c_total, 0, ',', '.') }}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600 font-bold text-lg">Laba/Keuntungan Selama Setahun</span>
+                            <table>
+                                <tr>
+                                    <td width="30%">Nilai Penjualan</td>
+                                    <td>: Rp. {{ number_format($utama->sales_value, 0, ',', '.') }}</td>
+                                </tr>
+                                <tr>
+                                    <td width="30%">Biaya Total</td>
+                                    <td>: Rp. {{ number_format($utama->total_cost, 0, ',', '.') }}</td>
+                                </tr>
+                                <tr class="font-bold">
+                                    <td>Jumlah</td>
+                                    <td>: Rp.
+                                        {{ number_format($utama->sales_value + $utama->total_cost, 0, ',', '.') }}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="flex flex-col col-span-2">
+                            <span class="text-gray-600 font-bold text-lg">Permasalahan Usaha Yang Dihadapi</span>
+                            {{ $utama->business_problem }}
+                        </div>
+                        <div class="flex flex-col col-span-2">
+                            <span class="text-gray-600 font-bold text-lg">Rencana Penggunaan Pinjaman Dana</span>
+                            <table>
+                                @php
+                                    $p_total = 0;
+                                @endphp
+                                @foreach ($utama->business->plans as $item)
+                                    @php
+                                        $p_total += $item->value;
+                                    @endphp
+                                    <tr>
+                                        <td width="5%" style="vertical-align: top;">{{ $loop->iteration }}.</td>
+                                        <td style="vertical-align: top;">{{ $item->name }}</td>
+                                        <td width="25%" style="vertical-align: top;">: Rp.
+                                            {{ number_format($item->value, 0, ',', '.') }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                <tr class="font-bold">
+                                    <td></td>
+                                    <td>Jumlah</td>
+                                    <td>: Rp.
+                                        {{ number_format($p_total, 0, ',', '.') }}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="flex flex-col col-span-2">
+                            <span class="text-gray-600 font-bold text-lg">Rencana pembelian produk non subsidi PT
+                                Petrokimia Gresik </span>
+                            <table>
+                                <tr>
+                                    <td width="5%">No.</td>
+                                    <td width="30%">Nama Produk</td>
+                                    <td width="10%">Kuantum</td>
+                                    <td width="30%">Harga Satuan</td>
+                                    <td width="25%">Jumlah</td>
+                                </tr>
+                                @foreach ($utama->business->products as $item)
+                                    <tr>
+                                        <td width="5%">{{ $loop->iteration }}.</td>
+                                        <td width="30%">{{ $item->name }}</td>
+                                        <td width="10%">{{ $item->qty ?? '-' }}</td>
+                                        <td width="30%">Rp. {{ number_format($item->price, 0, ',', '.') }}</td>
+                                        <td width="25%">Rp. {{ number_format($item->price * $item->qty, 0, ',', '.') }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600 font-bold text-lg">Foto Tempat Usaha / Tinggal</span>
+                            <img src="{{ asset('uploads/mangga/establishment_picture/' . $utama->establishment_picture) }}"
+                                class="h-72 rounded-lg">
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-600 font-bold text-lg">Foto Komoditas / Produk</span>
+                            <img src="{{ asset('uploads/mangga/product_picture/' . $utama->product_picture) }}"
+                                class="h-72 rounded-lg">
+                        </div>
+                        @if ($utama->business_sketch)
+                            <div class="flex flex-col">
+                                <span class="text-gray-600 font-bold text-lg">Denah Tempat Usaha</span>
+                                <img src="{{ asset('uploads/mangga/business_sketch/' . $utama->business_sketch) }}"
+                                    class="h-72 rounded-lg">
+                            </div>
+                        @endif
+                        @if ($utama->house_sketch)
+                            <div class="flex flex-col">
+                                <span class="text-gray-600 font-bold text-lg">Denah Tempat Tinggal</span>
+                                <img src="{{ asset('uploads/mangga/house_sketch/' . $utama->house_sketch) }}"
+                                    class="h-72 rounded-lg">
+                            </div>
+                        @endif
                     </div>
-                    <div
-                        class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                        Validasi Data Diri</div>
                 </div>
-                <div class="block xl:hidden">
-                    <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
-                </div>
-                <div class="hidden xl:block">
-                    <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
-                </div>
-                <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                    <div class="rounded-full bg-gray-400 p-4">
-                        <span class="fa fa-fw fa-building text-white text-xl"></span>
-                    </div>
-                    <div
-                        class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                        Memilih Sektor Usaha</div>
-                </div>
-                <div class="block xl:hidden">
-                    <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
-                </div>
-                <div class="hidden xl:block">
-                    <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
-                </div>
-                <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                    <div class="rounded-full bg-gray-400 p-4">
-                        <span class="fab fa-fw fa-wpforms text-white text-xl"></span>
-                    </div>
-                    <div
-                        class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                        Mengisi Form Pengajuan</div>
-                </div>
-                <div class="block xl:hidden">
-                    <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
-                </div>
-                <div class="hidden xl:block">
-                    <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
-                </div>
-                <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                    <div class="rounded-full bg-gray-400 p-4">
-                        <span class="fa fa-fw fa-check-circle text-white text-xl"></span>
-                    </div>
-                    <div
-                        class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                        Verifikasi</div>
-                </div>
-                <div class="block xl:hidden">
-                    <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
-                </div>
-                <div class="hidden xl:block">
-                    <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
-                </div>
-                <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                    <div class="rounded-full bg-gray-400 p-4">
-                        <span class="fa fa-fw fa-info-circle text-white text-xl"></span>
-                    </div>
-                    <div
-                        class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                        Survey</div>
-                </div>
-                <div class="block xl:hidden">
-                    <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
-                </div>
-                <div class="hidden xl:block">
-                    <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
-                </div>
-                <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                    <div class="rounded-full bg-gray-400 p-4">
-                        <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
-                    </div>
-                    <div
-                        class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                        Hasil Analisa Pengajuan</div>
-                </div>
-            </div>
+            @endif
         </div>
-    </div>
-    @endif
     </div>
 @endsection
 

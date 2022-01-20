@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\District;
+use App\Models\EstablishmentStatus;
+use App\Models\Province;
+use App\Models\Regency;
 use App\Models\User;
+use App\Models\Village;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -59,7 +64,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view ('user.change_profile');
+        $provinces = Province::all();
+        $cities = Regency::all();
+        $districts = District::all();
+        $villages = Village::all();
+        $establishment_statuses = EstablishmentStatus::all();
+        return view('user.change_profile', compact('provinces', 'cities', 'districts', 'villages', 'establishment_statuses'));
     }
 
     /**
@@ -71,7 +81,46 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::where('id', $id)->first();
+        if ($request->image) {
+            $image = 'user-' . time() . '-' . $request['image']->getClientOriginalName();
+            $request->image->move(public_path('uploads/user'), $image);
+        }else{
+            $image = Auth::user()->picture;
+        }
+        $user->update([
+            'picture' => $image,
+            'identity_id' => $request->identity_id,
+            'fam_card_code' => $request->fam_card_code,
+            'profession' => $request->profession,
+            'retired' => $request->retired,
+            'education' => $request->education,
+            'heir' => $request->heir,
+            'house_ownership' => $request->house_ownership,
+            'npwp' => $request->npwp,
+            'bank_number' => $request->bank_number,
+            'bank_owner' => $request->bank_owner,
+            'bank_name' => $request->bank_name,
+            'bank_branch' => $request->bank_branch,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'gender' => $request->gender,
+            'married' => $request->married,
+            'spouse' => $request->spouse,
+            'religion' => $request->religion,
+            'birth_place' => $request->birth_place,
+            'birth_date' => $request->birth_date,
+            'no_handphone' => $request->no_handphone,
+            'address' => $request->address,
+            'rt' => $request->rt,
+            'rw' => $request->rw,
+            'postal_code' => $request->postal_code,
+            'province_id' => $request->province,
+            'city_id' => $request->city,
+            'district_id' => $request->district,
+            'village_id' => $request->village
+        ]);
+        return redirect()->route('user.edit', $id);
     }
 
     /**

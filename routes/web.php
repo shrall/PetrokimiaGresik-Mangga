@@ -5,6 +5,7 @@ use App\Http\Controllers\MudaController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\User\PageController as UserPageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UtamaController;
 use App\Mail\TemplateMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -54,7 +55,7 @@ Route::group(['as' => 'profil.'], function () {
 });
 
 
-Route::group(['middleware' => ['user', 'verified'], 'as' => 'user.'], function () {
+Route::group(['middleware' => ['user'], 'as' => 'user.'], function () {
     Route::get('/change-password', [UserController::class, 'change_password'])->name('change_password');
     Route::post('/update-password', [UserController::class, 'update_password'])->name('update_password');
 
@@ -69,15 +70,22 @@ Route::group(['middleware' => ['user', 'verified'], 'as' => 'user.'], function (
     Route::get('/belanja-success', [UserPageController::class, 'belanja_success'])->name('belanja_success');
 
     Route::get('/form/mangga', [UserPageController::class, 'form_mangga'])->name('form_mangga');
+    Route::post('/form/mangga/refresh-kelompok', [UserPageController::class, 'refresh_kelompok'])->name('form_mangga.refreshkelompok');
     Route::get('/form/mangga_muda', [UserPageController::class, 'form_mangga_muda'])->name('form_mangga_muda');
     Route::resource('muda', MudaController::class);
+    Route::get('/muda/{muda}/preview', [MudaController::class, 'preview'])->name('muda.preview');
+    Route::get('/muda/{muda}/download', [MudaController::class, 'download'])->name('muda.download');
+    Route::resource('utama', UtamaController::class);
+    Route::patch('/utama/{utama}/ttd', [UtamaController::class, 'ttd'])->name('utama.ttd');
+    Route::get('/utama/{utama}/preview', [UtamaController::class, 'preview'])->name('utama.preview');
+    Route::get('/utama/{utama}/download', [UtamaController::class, 'download'])->name('utama.download');
 });
 
-Route::group(['middleware' => ['user', 'verified']], function () {
+Route::group(['middleware' => ['user']], function () {
     Route::resource('user', UserController::class);
 });
 
-Route::group(['middleware' => ['admin', 'verified'], 'as' => 'admin.'], function () {
+Route::group(['middleware' => ['admin'], 'as' => 'admin.'], function () {
     Route::get('/dashboard', [AdminPageController::class, 'dashboard'])->name('dashboard');
     Route::get('/program', [AdminPageController::class, 'program'])->name('program');
     Route::get('/program/mangga_muda', [AdminPageController::class, 'mangga_muda'])->name('program.mangga_muda');
