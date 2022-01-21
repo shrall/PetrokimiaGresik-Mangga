@@ -186,7 +186,6 @@
             perkembangan pasar dll.</div>
         <hr>
         <div style="font-size: 1.1rem;" class="mb-4">{{ $muda->market_share }}</div>
-        <img src="{{ asset('uploads/mangga/marketpositions/' . $muda->market_position) }}" style="height: 30%;">
     </div>
     <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
         <table style="width: 100%;">
@@ -204,8 +203,6 @@
             analisa kebutuhan SDM dan desain kompetensi.</div>
         <hr>
         <div style="font-size: 1.1rem;" class="mb-4">{{ $muda->production_strategy }}</div>
-        <img src="{{ asset('uploads/mangga/organizationstructures/' . $muda->organization_structure) }}"
-            style="height: 30%;">
     </div>
     <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
         <table style="width: 100%;">
@@ -239,8 +236,6 @@
             lain yang mendukung usaha anda misalnya struktur pendanaan</div>
         <hr>
         <div style="font-size: 1.1rem;" class="mb-4">{{ $muda->prospect }}</div>
-        <img src="{{ asset('uploads/mangga/financeattachments/' . $muda->finance_attachment) }}"
-            style="height: 30%;">
     </div>
     <div class="px-16 py-14" style="height: 1220px;">
         <table style="width: 100%;">
