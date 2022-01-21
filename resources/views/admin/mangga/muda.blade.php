@@ -138,7 +138,7 @@
     </div>
     <div class="card px-8 py-6 flex flex-col gap-y-4">
         <div class="text-xl font-bold">Data Pengajuan</div>
-        <div class="text-lg font-bold">{{$muda->business->registration_number}}</div>
+        <div class="text-lg font-bold">Nomor Registrasi : {{$muda->business->registration_number}}</div>
         <div class="grid grid-cols-3 gap-x-4">
             <img src="{{ asset('uploads/mangga/logos/' . $muda->business->logo) }}" alt="" srcset=""
                 class="w-full">
