@@ -101,7 +101,7 @@
         </table>
         <div class="font-bold text-center text-xl" style="margin-bottom: 3rem;">Nama Usaha: {{ $muda->business->name }}
         </div>
-        <div class="text-center" style="height: 20%; margin-bottom: 7rem;">
+        <div class="text-center" style="height: 20%;">
             <img src="{{ asset('uploads/mangga/logos/' . $muda->business->logo) }}" style="height: 100%;">
         </div>
         <div style="height: 40%">
