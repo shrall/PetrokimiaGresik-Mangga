@@ -130,7 +130,7 @@
             </table>
         </div>
         <div class="text-xl text-center">Fakultas {{ $muda->faculty }}</div>
-        <div class="text-xl text-center">Universitas {{ $muda->faculty }}</div>
+        <div class="text-xl text-center">{{ $muda->university }}</div>
         <div class="text-xl text-center">{{ $muda->business->city->name }}</div>
         <div class="text-xl text-center">{{ date('Y') }}</div>
     </div>
@@ -151,7 +151,7 @@
             kebutuhan dan sumber dana, rencana penggunaan dana, dan rencana pengembalian dana
             sesuai tenor pinjaman.</div>
         <hr>
-        <div style="font-size: 1.1rem;" class="mb-4">{{$muda->prospect}}</div>
+        <div style="font-size: 1.1rem;" class="mb-4">{{ $muda->prospect }}</div>
     </div>
     <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
         <table style="width: 100%;">
@@ -163,10 +163,11 @@
             </tr>
         </table>
         <div class="font-bold" style="font-size: 1.25rem;" class="mb-4">2. Analisa Ide</div>
-        <div style="font-size: 1.1rem;" class="mb-4">Tuliskan deskripsi produk/usaha/jasa yang anda kembangkan. Termasuk keunggulan, ide,
+        <div style="font-size: 1.1rem;" class="mb-4">Tuliskan deskripsi produk/usaha/jasa yang anda
+            kembangkan. Termasuk keunggulan, ide,
             diferensiasi dan keunikan serta potensi pertumbuhan dan resikonya.</div>
         <hr>
-        <div style="font-size: 1.1rem;" class="mb-4">{{$muda->description}}</div>
+        <div style="font-size: 1.1rem;" class="mb-4">{{ $muda->description }}</div>
     </div>
     <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
         <table style="width: 100%;">
@@ -178,12 +179,14 @@
             </tr>
         </table>
         <div class="font-bold" style="font-size: 1.25rem;" class="mb-4">3. Analisa Pemasaran</div>
-        <div style="font-size: 1.1rem;" class="mb-4">Jelaskan pangsa pasar produk atau jasa anda saat ini. Disertai dengan data-data yang
+        <div style="font-size: 1.1rem;" class="mb-4">Jelaskan pangsa pasar produk atau jasa anda saat ini.
+            Disertai dengan data-data yang
             mendukung, misalnya kegiatan pengembangan pemasaran, konsep STP, 4P dan peta
             positioning, kegiatan promosi, strategi penetapan harga, market share, analisis pesaing, trend
             perkembangan pasar dll.</div>
         <hr>
-        <div style="font-size: 1.1rem;" class="mb-4">{{$muda->market_share}}</div>
+        <div style="font-size: 1.1rem;" class="mb-4">{{ $muda->market_share }}</div>
+        <img src="{{ asset('uploads/mangga/marketpositions/' . $muda->market_position) }}" style="height: 30%;">
     </div>
     <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
         <table style="width: 100%;">
@@ -195,11 +198,14 @@
             </tr>
         </table>
         <div class="font-bold" style="font-size: 1.25rem;" class="mb-4">4. Analisa Operasional</div>
-        <div style="font-size: 1.1rem;" class="mb-4">Jelaskan strategi produksi (bila barang) atau pola pelayanan (jasa) usaha anda. Misalnya strategi
+        <div style="font-size: 1.1rem;" class="mb-4">Jelaskan strategi produksi (bila barang) atau pola
+            pelayanan (jasa) usaha anda. Misalnya strategi
             pemilihan komponen biaya produksi dan teknologi proses, desain struktur organisasi, serta
             analisa kebutuhan SDM dan desain kompetensi.</div>
         <hr>
-        <div style="font-size: 1.1rem;" class="mb-4">{{$muda->production_strategy}}</div>
+        <div style="font-size: 1.1rem;" class="mb-4">{{ $muda->production_strategy }}</div>
+        <img src="{{ asset('uploads/mangga/organizationstructures/' . $muda->organization_structure) }}"
+            style="height: 30%;">
     </div>
     <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
         <table style="width: 100%;">
@@ -211,11 +217,12 @@
             </tr>
         </table>
         <div class="font-bold" style="font-size: 1.25rem;" class="mb-4">5. Target Usaha</div>
-        <div style="font-size: 1.1rem;" class="mb-4">Tuliskan pencapaian perkembangan usaha anda (omzet, asset, cashflow) dalam skala waktu
+        <div style="font-size: 1.1rem;" class="mb-4">Tuliskan pencapaian perkembangan usaha anda (omzet,
+            asset, cashflow) dalam skala waktu
             sekaligus strategi produksi, pemasaran dan keuangan untuk mencapai target tersebut (atau
             strategi pengembangan usaha termasuk pola pembiayaannya).</div>
         <hr>
-        <div style="font-size: 1.1rem;" class="mb-4">{{$muda->target_plan}}</div>
+        <div style="font-size: 1.1rem;" class="mb-4">{{ $muda->target_plan }}</div>
     </div>
     <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
         <table style="width: 100%;">
@@ -227,10 +234,13 @@
             </tr>
         </table>
         <div class="font-bold" style="font-size: 1.25rem;" class="mb-4">6. Analisa Keuangan</div>
-        <div style="font-size: 1.1rem;" class="mb-4">Lampirkan analisis investasi, rencana cashflow, estimasi rugi laba, laporan rugi laba dan hal-hal
+        <div style="font-size: 1.1rem;" class="mb-4">Lampirkan analisis investasi, rencana cashflow, estimasi
+            rugi laba, laporan rugi laba dan hal-hal
             lain yang mendukung usaha anda misalnya struktur pendanaan</div>
         <hr>
-        <div style="font-size: 1.1rem;" class="mb-4">{{$muda->prospect}}</div>
+        <div style="font-size: 1.1rem;" class="mb-4">{{ $muda->prospect }}</div>
+        <img src="{{ asset('uploads/mangga/financeattachments/' . $muda->finance_attachment) }}"
+            style="height: 30%;">
     </div>
     <div class="px-16 py-14" style="height: 1220px;">
         <table style="width: 100%;">
@@ -241,9 +251,10 @@
                 </td>
             </tr>
         </table>
-        <div class="font-bold" style="font-size: 1.25rem;" class="mb-8">7. Arus Kas (Cash-Flow) 6 Bulan Terakhir</div>
-        <div class="text-center font-bold" style="font-size:1.15rem;">{{$muda->business->name}}</div>
-        <div class="text-center" style="font-size: 1.15rem;">Tahun {{$muda->created_at->format('Y')}}</div>
+        <div class="font-bold" style="font-size: 1.25rem;" class="mb-8">7. Arus Kas (Cash-Flow) 6 Bulan
+            Terakhir</div>
+        <div class="text-center font-bold" style="font-size:1.15rem;">{{ $muda->business->name }}</div>
+        <div class="text-center" style="font-size: 1.15rem;">Tahun {{ $muda->created_at->format('Y') }}</div>
         <table class="" style="width: 100%; border: solid 1px gray;">
             <tr class="font-bold">
                 <td class="" style="border: solid 1px gray;" width="20%">Bulan ke-</td>
