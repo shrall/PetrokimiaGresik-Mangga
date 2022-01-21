@@ -13,7 +13,7 @@
     <div class="grid grid-cols-12 h-screen md:h-vh-60 xl:h-screen font-pn ">
         <div class="hidden md:block col-span-1 xl:col-span-2"></div>
         <div class="col-span-12 md:col-span-4 relative mx-16 md:mx-0">
-            <img src="{{ asset('assets/img/mangga-muda-2.png') }}" class="w-full absolute md:-left-8 -top-16 md:-top-32"
+            <img src="{{ asset('assets/img/landing-mangga-muda-2.png') }}" class="w-full absolute md:-left-8 -top-16 md:-top-32"
                 id="tentang">
         </div>
         <div class="col-span-12 md:col-span-6 flex flex-col gap-y-4 px-12 pt-64 bg-mangga-green-300">
