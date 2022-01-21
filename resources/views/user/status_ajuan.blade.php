@@ -130,6 +130,7 @@
                 </div>
                 <div class="card px-8 py-6 flex flex-col gap-y-4">
                     <div class="text-xl font-bold">Data Pengajuan</div>
+                    <div class="text-lg font-bold">{{$muda->business->registration_number}}</div>
                     <div class="grid grid-cols-3 gap-x-4">
                         <img src="{{ asset('uploads/mangga/logos/' . Auth::user()->businesses[0]->logo) }}" alt=""
                             srcset="" class="w-full">
@@ -603,6 +604,7 @@
                     <hr>
                     <div class="grid grid-cols-2 gap-x-8 gap-y-2">
                         <div class="text-xl font-bold underline">Data Pengajuan</div>
+                        <div class="text-lg font-bold">{{$utama->business->registration_number}}</div>
                         <div class="flex flex-col col-span-2">
                             <span class="text-gray-600">Jumlah Pengajuan</span>
                             <span>Rp. {{ number_format($utama->request_amount, 0, ',', '.') }}</span>
