@@ -101,7 +101,7 @@
         </table>
         <div class="font-bold text-center text-xl" style="margin-bottom: 3rem;">Nama Usaha: {{ $muda->business->name }}
         </div>
-        <div class="text-center" style="height: 20%; margin-bottom: 7rem;">
+        <div class="text-center" style="height: 20%;">
             <img src="{{ asset('uploads/mangga/logos/' . $muda->business->logo) }}" style="height: 100%;">
         </div>
         <div style="height: 40%">
@@ -130,7 +130,7 @@
             </table>
         </div>
         <div class="text-xl text-center">Fakultas {{ $muda->faculty }}</div>
-        <div class="text-xl text-center">Universitas {{ $muda->faculty }}</div>
+        <div class="text-xl text-center">{{ $muda->university }}</div>
         <div class="text-xl text-center">{{ $muda->business->city->name }}</div>
         <div class="text-xl text-center">{{ date('Y') }}</div>
     </div>
@@ -184,6 +184,9 @@
             perkembangan pasar dll.</div>
         <hr>
         <div style="font-size: 1.1rem;" class="mb-4">{{$muda->market_share}}</div>
+        <div class="text-center" style="height: 30%;">
+            <img src="{{ asset('uploads/mangga/marketpositions/' . $muda->market_position) }}" style="height: 100%;">
+        </div>
     </div>
     <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
         <table style="width: 100%;">
@@ -200,6 +203,9 @@
             analisa kebutuhan SDM dan desain kompetensi.</div>
         <hr>
         <div style="font-size: 1.1rem;" class="mb-4">{{$muda->production_strategy}}</div>
+        <div class="text-center" style="height: 30%;">
+            <img src="{{ asset('uploads/mangga/organizationstructures/' . $muda->organization_structure) }}" style="height: 100%;">
+        </div>
     </div>
     <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
         <table style="width: 100%;">
@@ -231,6 +237,9 @@
             lain yang mendukung usaha anda misalnya struktur pendanaan</div>
         <hr>
         <div style="font-size: 1.1rem;" class="mb-4">{{$muda->prospect}}</div>
+        <div class="text-center" style="height: 30%;">
+            <img src="{{ asset('uploads/mangga/financeattachments/' . $muda->finance_attachment) }}" style="height: 100%;">
+        </div>
     </div>
     <div class="px-16 py-14" style="height: 1220px;">
         <table style="width: 100%;">
