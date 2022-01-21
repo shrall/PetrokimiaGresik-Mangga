@@ -22,6 +22,9 @@ module.exports = {
       fontFamily: {
         "af": ['"Abril Fatface"'],
         "os": ['"Open Sans"'],
+        "lb": ['"Libre Baskerville"'],
+        "pn": ['"pn-regular"'],
+        "pn-bold": ['"pn-bold"'],
       },
       colors: {
         "mangga-green": {
