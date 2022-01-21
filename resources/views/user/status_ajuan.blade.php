@@ -491,35 +491,37 @@
                         </div>
                     </div>
                     <hr>
-                    @foreach ($utama->members as $member)
-                        <div class="text-xl font-bold">Data Anggota {{ $loop->iteration }}</div>
-                        <div class="grid grid-cols-2 gap-x-8 gap-y-2">
-                            <div class="flex flex-col">
-                                <span class="text-gray-600">Nama</span>
-                                <span>{{ $member->name }} </span>
+                    @if (count($utama->members))
+                        @foreach ($utama->members as $member)
+                            <div class="text-xl font-bold">Data Anggota {{ $loop->iteration }}</div>
+                            <div class="grid grid-cols-2 gap-x-8 gap-y-2">
+                                <div class="flex flex-col">
+                                    <span class="text-gray-600">Nama</span>
+                                    <span>{{ $member->name }} </span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-gray-600">Nama Sertifikat</span>
+                                    <span>{{ $member->certificate_name ?? '-' }} </span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-gray-600">No. KTP</span>
+                                    <span>{{ $member->ktp_code }} </span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-gray-600">File Sertifikat</span>
+                                    @if ($member->certificate)
+                                        <span class="underline">
+                                            <a target="blank"
+                                                href="{{ asset('uploads/mangga/certificate/' . $member->certificate) }}">Download
+                                                Sertifikat</a>
+                                        </span>
+                                    @else -
+                                    @endif
+                                </div>
                             </div>
-                            <div class="flex flex-col">
-                                <span class="text-gray-600">Nama Sertifikat</span>
-                                <span>{{ $member->certificate_name ?? '-' }} </span>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-gray-600">No. KTP</span>
-                                <span>{{ $member->ktp_code }} </span>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-gray-600">File Sertifikat</span>
-                                @if ($member->certificate)
-                                    <span class="underline">
-                                        <a target="blank"
-                                            href="{{ asset('uploads/mangga/certificate/' . $member->certificate) }}">Download
-                                            Sertifikat</a>
-                                    </span>
-                                @else -
-                                @endif
-                            </div>
-                        </div>
-                        <hr>
-                    @endforeach
+                            <hr>
+                        @endforeach
+                    @endif
                     @if ($utama->companion_name)
                         <div class="text-xl font-bold">Data Anggota {{ $loop->iteration }}</div>
                         <div class="grid grid-cols-2 gap-x-8 gap-y-2">

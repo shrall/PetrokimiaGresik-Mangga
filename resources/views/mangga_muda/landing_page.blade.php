@@ -3,17 +3,17 @@
 @section('content')
     <div class="grid grid-cols-12 h-vh-70 xl:h-screen pb-32 md:pb-48" id="beranda">
         <div class="hidden md:block col-span-2"></div>
-        <div class="hidden md:block col-span-10 bg-mangga-muda-1 bg-cover relative">
-            <img src="{{asset('assets/svg/mangga-muda.svg')}}" class="absolute w-148 top-12 -left-64">
+        <div class="hidden md:block col-span-10 bg-mangga-muda-1 bg-cover bg-bottom relative">
+            <img src="{{asset('assets/svg/mangga-muda.svg')}}" class="absolute w-148 -top-12 -left-72">
         </div>
-        <div class="block md:hidden col-span-12 bg-mangga-muda-1 bg-cover">
+        <div class="block md:hidden col-span-12 bg-mangga-muda-1 bg-cover bg-bottom">
             <img src="{{asset('assets/svg/mangga-muda.svg')}}" class="w-full mt-24">
         </div>
     </div>
     <div class="grid grid-cols-12 h-screen md:h-vh-60 xl:h-screen bg-mangga-green-300">
         <div class="hidden md:block col-span-1 xl:col-span-2"></div>
         <div class="col-span-12 md:col-span-4 relative mx-16 md:mx-0">
-            <img src="{{asset('assets/img/mangga-muda-2.png')}}" class="w-full absolute md:-left-8 -top-16 md:-top-24" id="tentang">
+            <img src="{{asset('assets/img/mangga-muda-2.png')}}" class="w-full absolute md:-left-8 -top-16 md:-top-32" id="tentang">
         </div>
         <div class="col-span-12 md:col-span-6 flex flex-col gap-y-4 px-12 pt-64">
             <div class="font-af text-6xl text-white">Program Mangga Muda</div>
