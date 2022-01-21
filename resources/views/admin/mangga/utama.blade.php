@@ -360,7 +360,7 @@
                                 class="underline">
                                 KTP
                             </a> dan <a target="blank"
-                                href="{{ asset('uploads/mangga/ktpselfie/' . $member->ktp_selfie) }}"
+                                href="{{ asset('uploads/mangga/ktpselfie/' . $utama->ktp_selfie) }}"
                                 class="underline">
                                 Selfie KTP
                             </a>
@@ -373,7 +373,7 @@
                                 class="underline">
                                 KK
                             </a> dan <a target="blank"
-                                href="{{ asset('uploads/mangga/kkselfie/' . $member->kk_selfie) }}"
+                                href="{{ asset('uploads/mangga/kkselfie/' . $utama->kk_selfie) }}"
                                 class="underline">
                                 Selfie KK
                             </a>
