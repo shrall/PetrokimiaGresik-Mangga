@@ -52,8 +52,7 @@
                         <option value={{ $sector->id }}>{{ $sector->name }}</option>
                     @endforeach
                 </select>
-                <select name="subsector" id="subsector" class="form-pengajuan-input" disabled required>
-                    <option value="">Sub Sektor*</option>
+                <select name="subsector" id="subsector" class="form-pengajuan-input" required>
                 </select>
                 <input type="text" name="type" class="form-pengajuan-input" placeholder="Jenis Usaha*" required>
                 <input type="number" name="asset_value" class="form-pengajuan-input" placeholder="Nilai Aset Usaha*"
@@ -68,15 +67,12 @@
                         <option value={{ $province->id }}>{{ $province->name }}</option>
                     @endforeach
                 </select>
-                <select name="city" id="city" class="form-pengajuan-input" disabled required>
-                    <option value="">Kabupaten/Kota*</option>
+                <select name="city" id="city" class="form-pengajuan-input" required>
                 </select>
                 <div class="grid grid-cols-2 items-center justify-center gap-x-4">
-                    <select name="district" id="district" class="form-pengajuan-input" disabled required>
-                        <option value="">Kecamatan*</option>
+                    <select name="district" id="district" class="form-pengajuan-input" required>
                     </select>
-                    <select name="village" id="village" class="form-pengajuan-input" disabled required>
-                        <option value="">Desa/Kelurahan*</option>
+                    <select name="village" id="village" class="form-pengajuan-input" required>
                     </select>
                 </div>
                 <input type="number" name="postal_code" class="form-pengajuan-input" placeholder="Kode Pos Usaha*" required>
@@ -398,7 +394,7 @@
     <script>
         var subsectors = @json($subsectors);
 
-        $('#sector').on('click', function(e) {
+        $('#sector').on('change', function(e) {
             $('#subsector').html(null);
             let obj = subsectors.filter(function(obj) {
                 return obj.sector_id === parseInt($('#sector').val());
@@ -406,7 +402,12 @@
             obj.forEach(element => {
                 $('#subsector').append('<option value="' + element.id + '">' + element.name + '</option>')
             });
-            $("#subsector").prop("disabled", false);
+        });
+        let obja = subsectors.filter(function(obj) {
+            return obj.sector_id === parseInt($('#sector').val());
+        });
+        obja.forEach(element => {
+            $('#subsector').append('<option value="' + element.id + '">' + element.name + '</option>')
         });
     </script>
     <script>
@@ -496,50 +497,85 @@
         var districts = @json($districts);
         var villages = @json($villages);
 
-        $('#province').on('click', function(e) {
-            console.log('province');
+        $('#province').on('change', function(e) {
             $('#city').html(null);
-            $('#district').html('<option value="">Kecamatan</option>');
-            $("#district").prop("disabled", true);
-            $('#village').html('<option value="">Desa/Kelurahan</option>');
-            $("#village").prop("disabled", true);
-            let obj = cities.filter(function(obj) {
+            $('#district').html(null);
+            $('#village').html(null);
+            let obj1 = cities.filter(function(obj) {
                 return obj.province_id === $('#province').val();
             });
-            obj.forEach(element => {
+            obj1.forEach(element => {
                 $('#city').append('<option value="' + element.id + '">' + element.name + '</option>')
             });
-            $("#city").prop("disabled", false);
-        });
-        $('#city').on('click', function(e) {
-            $('#district').html(null);
-            $('#village').html('<option value="">Desa/Kelurahan</option>');
-            $("#village").prop("disabled", true);
-            let obj = districts.filter(function(obj) {
+            let obj2 = districts.filter(function(obj) {
                 return obj.regency_id === $('#city').val();
             });
-            obj.forEach(element => {
+            obj2.forEach(element => {
                 $('#district').append('<option value="' + element.id + '">' + element.name + '</option>')
             });
-            $("#district").prop("disabled", false);
-        });
-        $('#district').on('click', function(e) {
-            $('#village').html(null);
-            let obj = villages.filter(function(obj) {
+            let obj3 = villages.filter(function(obj) {
                 return obj.district_id === $('#district').val();
             });
-            obj.forEach(element => {
+            obj3.forEach(element => {
                 $('#village').append('<option value="' + element.id + '">' + element.name + '</option>')
             });
-            $("#village").prop("disabled", false);
         });
+        $('#city').on('change', function(e) {
+            $('#district').html(null);
+            $('#village').html(null);
+            let obj2 = districts.filter(function(obj) {
+                return obj.regency_id === $('#city').val();
+            });
+            obj2.forEach(element => {
+                $('#district').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+            let obj3 = villages.filter(function(obj) {
+                return obj.district_id === $('#district').val();
+            });
+            obj3.forEach(element => {
+                $('#village').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+        });
+        $('#district').on('change', function(e) {
+            $('#village').html(null);
+            let obj3 = villages.filter(function(obj) {
+                return obj.district_id === $('#district').val();
+            });
+            obj3.forEach(element => {
+                $('#village').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+        });
+    </script>
+    <script>
+        let obj1 = cities.filter(function(obj) {
+            return obj.province_id === $('#province').val();
+        });
+        obj1.forEach(element => {
+            $('#city').append('<option value="' + element.id + '">' + element.name + '</option>')
+        });
+        $("#city").prop("disabled", false);
+        let obj2 = districts.filter(function(obj) {
+            return obj.regency_id === $('#city').val();
+        });
+        obj2.forEach(element => {
+            $('#district').append('<option value="' + element.id + '">' + element.name + '</option>')
+        });
+        $("#district").prop("disabled", false);
+        let obj3 = villages.filter(function(obj) {
+            return obj.district_id === $('#district').val();
+        });
+        obj3.forEach(element => {
+            $('#village').append('<option value="' + element.id + '">' + element.name + '</option>')
+        });
+        $("#village").prop("disabled", false);
     </script>
 @endsection
 
 @section('modals')
     @if ($errors->any())
         <div class="absolute w-full h-full items-center flex justify-center modal">
-            <div class="bg-black opacity-50 w-full absolute background-modal" style="height: 75rem;" onclick="closeModal();"></div>
+            <div class="bg-black opacity-50 w-full absolute background-modal" style="height: 75rem;"
+                onclick="closeModal();"></div>
             <div class="rounded-lg bg-white px-8 py-6 absolute flex flex-col gap-y-2">
                 <span class="fa fa-fw fa-times text-xl hover:text-red-600 absolute top-4 right-4 cursor-pointer"
                     onclick="closeModal();"></span>

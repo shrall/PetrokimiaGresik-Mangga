@@ -17,19 +17,16 @@
                 <input type="text" name="name" class="form-pengajuan-input mb-8" placeholder="Nama Ketua">
                 <input type="email" name="email" class="form-pengajuan-input mb-8" placeholder="E-Mail Ketua">
                 <input type="number" name="handphone" class="form-pengajuan-input mb-8" placeholder="Nomor HP Ketua">
-                <select name="province" class="form-pengajuan-input mb-8" id="province">
+                <select name="province" class="form-input mb-8" id="province">
                     @foreach ($provinces as $province)
                         <option value={{ $province->id }}>{{ $province->name }}</option>
                     @endforeach
                 </select>
-                <select name="city" class="form-pengajuan-input mb-8" id="city" disabled>
-                    <option value="">Kota/Kabupaten Universitas</option>
+                <select name="city" class="form-input mb-8" id="city">
                 </select>
-                <select name="district" class="form-pengajuan-input mb-8" id="district" disabled>
-                    <option value="">Kecamatan Universitas</option>
+                <select name="district" class="form-input mb-8" id="district">
                 </select>
-                <select name="village" class="form-pengajuan-input mb-8" id="village" disabled>
-                    <option value="">Desa/Kelurahan Universitas</option>
+                <select name="village" class="form-input mb-8" id="village">
                 </select>
                 <input type="password" name="password" class="form-pengajuan-input mb-12" placeholder="Password">
                 <input type="password" name="password_confirmation" class="form-pengajuan-input mb-12"
@@ -52,41 +49,76 @@
         var districts = @json($districts);
         var villages = @json($villages);
 
-        $('#province').on('click', function(e) {
+        $('#province').on('change', function(e) {
             $('#city').html(null);
-            $('#district').html('<option value="">Kecamatan</option>');
-            $("#district").prop("disabled", true);
-            $('#village').html('<option value="">Desa/Kelurahan</option>');
-            $("#village").prop("disabled", true);
-            let obj = cities.filter(function(obj) {
+            $('#district').html(null);
+            $('#village').html(null);
+            let obj1 = cities.filter(function(obj) {
                 return obj.province_id === $('#province').val();
             });
-            obj.forEach(element => {
+            obj1.forEach(element => {
                 $('#city').append('<option value="' + element.id + '">' + element.name + '</option>')
             });
-            $("#city").prop("disabled", false);
-        });
-        $('#city').on('click', function(e) {
-            $('#district').html(null);
-            $('#village').html('<option value="">Desa/Kelurahan</option>');
-            $("#village").prop("disabled", true);
-            let obj = districts.filter(function(obj) {
+            let obj2 = districts.filter(function(obj) {
                 return obj.regency_id === $('#city').val();
             });
-            obj.forEach(element => {
+            obj2.forEach(element => {
                 $('#district').append('<option value="' + element.id + '">' + element.name + '</option>')
             });
-            $("#district").prop("disabled", false);
-        });
-        $('#district').on('click', function(e) {
-            $('#village').html(null);
-            let obj = villages.filter(function(obj) {
+            let obj3 = villages.filter(function(obj) {
                 return obj.district_id === $('#district').val();
             });
-            obj.forEach(element => {
+            obj3.forEach(element => {
                 $('#village').append('<option value="' + element.id + '">' + element.name + '</option>')
             });
-            $("#village").prop("disabled", false);
         });
+        $('#city').on('change', function(e) {
+            $('#district').html(null);
+            $('#village').html(null);
+            let obj2 = districts.filter(function(obj) {
+                return obj.regency_id === $('#city').val();
+            });
+            obj2.forEach(element => {
+                $('#district').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+            let obj3 = villages.filter(function(obj) {
+                return obj.district_id === $('#district').val();
+            });
+            obj3.forEach(element => {
+                $('#village').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+        });
+        $('#district').on('change', function(e) {
+            $('#village').html(null);
+            let obj3 = villages.filter(function(obj) {
+                return obj.district_id === $('#district').val();
+            });
+            obj3.forEach(element => {
+                $('#village').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+        });
+    </script>
+    <script>
+        let obj1 = cities.filter(function(obj) {
+            return obj.province_id === $('#province').val();
+        });
+        obj1.forEach(element => {
+            $('#city').append('<option value="' + element.id + '">' + element.name + '</option>')
+        });
+        $("#city").prop("disabled", false);
+        let obj2 = districts.filter(function(obj) {
+            return obj.regency_id === $('#city').val();
+        });
+        obj2.forEach(element => {
+            $('#district').append('<option value="' + element.id + '">' + element.name + '</option>')
+        });
+        $("#district").prop("disabled", false);
+        let obj3 = villages.filter(function(obj) {
+            return obj.district_id === $('#district').val();
+        });
+        obj3.forEach(element => {
+            $('#village').append('<option value="' + element.id + '">' + element.name + '</option>')
+        });
+        $("#village").prop("disabled", false);
     </script>
 @endsection

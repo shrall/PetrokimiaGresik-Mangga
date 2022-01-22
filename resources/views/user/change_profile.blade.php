@@ -24,16 +24,16 @@
                         <label class="text-gray-400">No. KK</label>
                         <input name="kk_code" type="number" class="form-input bg-white mb-4" required
                             value="{{ Auth::user()->kk_code }}">
-                            <label class="text-gray-400 self-start">Agama</label>
-                            <select name="religion" class="form-input mb-4" required>
-                                <option value="0" @if (Auth::user()->religion == '0') selected @endif>Muslim</option>
-                                <option value="1" @if (Auth::user()->religion == '1') selected @endif>Kristen</option>
-                                <option value="2" @if (Auth::user()->religion == '2') selected @endif>Katolik</option>
-                                <option value="3" @if (Auth::user()->religion == '3') selected @endif>Hindu</option>
-                                <option value="4" @if (Auth::user()->religion == '4') selected @endif>Buddha</option>
-                                <option value="5" @if (Auth::user()->religion == '5') selected @endif>Kong Hu Chu</option>
-                                <option value="6" @if (Auth::user()->religion == '6') selected @endif>Lainnya</option>
-                            </select>
+                        <label class="text-gray-400 self-start">Agama</label>
+                        <select name="religion" class="form-input mb-4" required>
+                            <option value="0" @if (Auth::user()->religion == '0') selected @endif>Muslim</option>
+                            <option value="1" @if (Auth::user()->religion == '1') selected @endif>Kristen</option>
+                            <option value="2" @if (Auth::user()->religion == '2') selected @endif>Katolik</option>
+                            <option value="3" @if (Auth::user()->religion == '3') selected @endif>Hindu</option>
+                            <option value="4" @if (Auth::user()->religion == '4') selected @endif>Buddha</option>
+                            <option value="5" @if (Auth::user()->religion == '5') selected @endif>Kong Hu Chu</option>
+                            <option value="6" @if (Auth::user()->religion == '6') selected @endif>Lainnya</option>
+                        </select>
                         <div class="grid grid-cols-12 items-center gap-x-2">
                             <div class="col-span-8">
                                 <label class="text-gray-400">Pekerjaan</label>
@@ -63,7 +63,8 @@
                             <option value="8" @if (Auth::user()->education == '8') selected @endif>S3</option>
                         </select>
                         <label class="text-gray-400">Ahli Waris</label>
-                        <input name="heir" type="text" class="form-input bg-white mb-4" value="{{ Auth::user()->heir }}" required>
+                        <input name="heir" type="text" class="form-input bg-white mb-4" value="{{ Auth::user()->heir }}"
+                            required>
                         <label class="text-gray-400">Status Rumah</label>
                         <select name="house_ownership" class="form-input mb-4" required>
                             @foreach ($establishment_statuses as $es)
@@ -111,9 +112,10 @@
                         </div>
                     </div>
                     <div class="col-span-6 flex flex-col items-center gap-y-2">
-                        <img class="rounded-full w-64 h-64" id="preview-image" @if (Auth::user()->picture) src="{{asset('uploads/user/' . Auth::user()->picture)}}" @else src="{{asset('assets/img/stock.jpg')}}" @endif>
+                        <img class="rounded-full w-64 h-64" id="preview-image" @if (Auth::user()->picture) src="{{ asset('uploads/user/' . Auth::user()->picture) }}" @else src="{{ asset('assets/img/stock.jpg') }}" @endif>
                         <label for="image" class="mangga-button-green">Ubah Foto Profil</label>
-                        <input type="file" name="image" id="image" class="hidden" onchange="loadFile(event, 'image')" accept="image/*">
+                        <input type="file" name="image" id="image" class="hidden"
+                            onchange="loadFile(event, 'image')" accept="image/*">
                         <div class="grid grid-cols-2 items-center gap-x-2 w-full">
                             <div class="col-span-1">
                                 <label class="text-gray-400">Jenis Kelamin</label>
@@ -190,10 +192,8 @@
                             </div>
                             <div class="col-span-1">
                                 <label class="text-gray-400">Kota/Kabupaten</label>
-                                <select name="city" id="city" class="form-input bg-white mb-4" @if (!Auth::user()->city_id) disabled @endif required>
-                                    @if (!Auth::user()->city_id)
-                                        <option value="">Kabupaten/Kota*</option>
-                                    @else
+                                <select name="city" id="city" class="form-input bg-white mb-4" required>
+                                    @if (Auth::user()->city_id)
                                         @foreach ($cities as $city)
                                             <option value={{ $city->id }} @if (Auth::user()->city_id == $city->id) selected @endif>
                                                 {{ $city->name }}</option>
@@ -205,10 +205,8 @@
                         <div class="grid grid-cols-2 items-center gap-x-2 w-full">
                             <div class="col-span-1">
                                 <label class="text-gray-400">Kecamatan</label>
-                                <select name="district" id="district" class="form-input bg-white mb-4" @if (!Auth::user()->district_id) disabled @endif required>
-                                    @if (!Auth::user()->district_id)
-                                        <option value="">Kabupaten/Kota*</option>
-                                    @else
+                                <select name="district" id="district" class="form-input bg-white mb-4" required>
+                                    @if (Auth::user()->district_id)
                                         @foreach ($districts as $district)
                                             <option value={{ $district->id }} @if (Auth::user()->district_id == $district->id) selected @endif>
                                                 {{ $district->name }}</option>
@@ -218,10 +216,8 @@
                             </div>
                             <div class="col-span-1">
                                 <label class="text-gray-400">Desa/Kelurahan</label>
-                                <select name="village" id="village" class="form-input bg-white mb-4" @if (!Auth::user()->village_id) disabled @endif required>
-                                    @if (!Auth::user()->village_id)
-                                        <option value="">Kabupaten/Kota*</option>
-                                    @else
+                                <select name="village" id="village" class="form-input bg-white mb-4" required>
+                                    @if (Auth::user()->village_id)
                                         @foreach ($villages as $village)
                                             <option value={{ $village->id }} @if (Auth::user()->village_id == $village->id) selected @endif>
                                                 {{ $village->name }}</option>
@@ -248,42 +244,77 @@
         var districts = @json($districts);
         var villages = @json($villages);
 
-        $('#province').on('click', function(e) {
+        $('#province').on('change', function(e) {
             $('#city').html(null);
-            $('#district').html('<option value="">Kecamatan</option>');
-            $("#district").prop("disabled", true);
-            $('#village').html('<option value="">Desa/Kelurahan</option>');
-            $("#village").prop("disabled", true);
-            let obj = cities.filter(function(obj) {
+            $('#district').html(null);
+            $('#village').html(null);
+            let obj1 = cities.filter(function(obj) {
                 return obj.province_id === $('#province').val();
             });
-            obj.forEach(element => {
+            obj1.forEach(element => {
                 $('#city').append('<option value="' + element.id + '">' + element.name + '</option>')
             });
-            $("#city").prop("disabled", false);
-        });
-        $('#city').on('click', function(e) {
-            $('#district').html(null);
-            $('#village').html('<option value="">Desa/Kelurahan</option>');
-            $("#village").prop("disabled", true);
-            let obj = districts.filter(function(obj) {
+            let obj2 = districts.filter(function(obj) {
                 return obj.regency_id === $('#city').val();
             });
-            obj.forEach(element => {
+            obj2.forEach(element => {
                 $('#district').append('<option value="' + element.id + '">' + element.name + '</option>')
             });
-            $("#district").prop("disabled", false);
-        });
-        $('#district').on('click', function(e) {
-            $('#village').html(null);
-            let obj = villages.filter(function(obj) {
+            let obj3 = villages.filter(function(obj) {
                 return obj.district_id === $('#district').val();
             });
-            obj.forEach(element => {
+            obj3.forEach(element => {
                 $('#village').append('<option value="' + element.id + '">' + element.name + '</option>')
             });
-            $("#village").prop("disabled", false);
         });
+        $('#city').on('change', function(e) {
+            $('#district').html(null);
+            $('#village').html(null);
+            let obj2 = districts.filter(function(obj) {
+                return obj.regency_id === $('#city').val();
+            });
+            obj2.forEach(element => {
+                $('#district').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+            let obj3 = villages.filter(function(obj) {
+                return obj.district_id === $('#district').val();
+            });
+            obj3.forEach(element => {
+                $('#village').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+        });
+        $('#district').on('change', function(e) {
+            $('#village').html(null);
+            let obj3 = villages.filter(function(obj) {
+                return obj.district_id === $('#district').val();
+            });
+            obj3.forEach(element => {
+                $('#village').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+        });
+    </script>
+    <script>
+        let obj1 = cities.filter(function(obj) {
+            return obj.province_id === $('#province').val();
+        });
+        obj1.forEach(element => {
+            $('#city').append('<option value="' + element.id + '">' + element.name + '</option>')
+        });
+        $("#city").prop("disabled", false);
+        let obj2 = districts.filter(function(obj) {
+            return obj.regency_id === $('#city').val();
+        });
+        obj2.forEach(element => {
+            $('#district').append('<option value="' + element.id + '">' + element.name + '</option>')
+        });
+        $("#district").prop("disabled", false);
+        let obj3 = villages.filter(function(obj) {
+            return obj.district_id === $('#district').val();
+        });
+        obj3.forEach(element => {
+            $('#village').append('<option value="' + element.id + '">' + element.name + '</option>')
+        });
+        $("#village").prop("disabled", false);
     </script>
 
     <script>

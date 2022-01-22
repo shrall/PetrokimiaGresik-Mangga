@@ -73,6 +73,7 @@ class UtamaController extends Controller
             "ktp_selfie.required" => 'Foto KTP Selfie',
             "kk.required" => 'Foto KK',
             "kk_selfie.required" => 'Foto KK Selfie',
+            "siup.required" => 'SIUP',
             "skdu.required" => 'Surat Keterangan',
             "sales_value.required" => 'Nilai Penjualan',
             "total_cost.required" => 'Biaya Total',
@@ -88,6 +89,10 @@ class UtamaController extends Controller
                 $messages["member_ktp.$key.required"] = "Foto KTP Anggota {$key}";
                 $messages["member_ktp_selfie.$key.required"] = "Foto KTP Selfie Anggota {$key}";
             };
+                $messages["member_ktp.required"] = "Foto KTP Anggota";
+                $messages["member_ktp_selfie.required"] = "Foto KTP Selfie Anggota";
+                $messages["member_ktp.min"] = "Foto KTP Anggota";
+                $messages["member_ktp_selfie.min"] = "Foto KTP Selfie Anggota";
 
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
@@ -116,6 +121,7 @@ class UtamaController extends Controller
                 "ktp_selfie" => 'required',
                 "kk" => 'required',
                 "kk_selfie" => 'required',
+                "siup" => 'required',
                 "skdu" => 'required',
                 "sales_value" => 'required',
                 "total_cost" => 'required',
