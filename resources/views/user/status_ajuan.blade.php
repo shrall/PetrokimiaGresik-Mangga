@@ -524,23 +524,23 @@
                         @endforeach
                     @endif
                     @if ($utama->companion_name)
-                        <div class="text-xl font-bold">Data Anggota {{ $loop->iteration }}</div>
+                        <div class="text-xl font-bold">Data Pendamping</div>
                         <div class="grid grid-cols-2 gap-x-8 gap-y-2">
                             <div class="flex flex-col">
                                 <span class="text-gray-600">Nama</span>
-                                <span>{{ $member->companion_name }} </span>
+                                <span>{{ $utama->companion_name }} </span>
                             </div>
                             <div class="flex flex-col">
                                 <span class="text-gray-600">No. KTP</span>
-                                <span>{{ $member->companion_ktp_code }} </span>
+                                <span>{{ $utama->companion_ktp_code }} </span>
                             </div>
                             <div class="flex flex-col">
                                 <span class="text-gray-600">Nomor Surat Menikah</span>
-                                <span>{{ $member->companion_wedding_code }} </span>
+                                <span>{{ $utama->companion_wedding_code }} </span>
                             </div>
                             <div class="flex flex-col">
                                 <span class="text-gray-600">Tanggal menikah</span>
-                                <span>{{ $member->companion_wedding_date }} </span>
+                                <span>{{ $utama->companion_wedding_date }} </span>
                             </div>
                             <div class="flex flex-col col-span-2">
                                 <span class="text-gray-600">Alamat</span>
