@@ -8,7 +8,7 @@
             <span class="fa fa-fw fa-shopping-cart text-white text-xl" id="sidebar-toggle-button"></span>
         </div>
     </div>
-    <div class="grid grid-cols-12 gap-x-8 gap-y-4 py-4 px-8 xl:px-0">
+    <div class="grid grid-cols-12 gap-x-8 gap-y-4 py-4 px-8 xl:pl-0">
         <div class="col-span-3 hidden xl:block border-r-2 border-gray-400">
             @include('inc.user_sidebar')
         </div>
