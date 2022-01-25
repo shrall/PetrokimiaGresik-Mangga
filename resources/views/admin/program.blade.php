@@ -5,10 +5,10 @@
         <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
             <a href="#">
                 <div class="grid grid-cols-2 items-center p-4">
-                    <img src="{{ asset('assets/img/mangga-makmur.png') }}" class="w-full">
+                    <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}" class="w-full">
                     <div class="flex flex-col items-end">
                         <div class="text-4xl text-mangga-green-500 font-bold">
-                            #
+                            {{ count($businesses->where('mangga_type', 1)) }}
                         </div>
                         Ajuan
                     </div>
@@ -31,7 +31,46 @@
         <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
             <a href="#">
                 <div class="grid grid-cols-2 items-center p-4">
+                    <img src="{{ asset('assets/img/mangga-makmur.png') }}" class="w-full">
+                    <div class="flex flex-col items-end">
+                        <div class="text-4xl text-mangga-green-500 font-bold">
+                            #
+                        </div>
+                        Ajuan
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
+            <a href="#">
+                <div class="grid grid-cols-2 items-center p-4">
                     <img src="{{ asset('assets/img/mangga-gadung.png') }}" class="w-full">
+                    <div class="flex flex-col items-end">
+                        <div class="text-4xl text-mangga-green-500 font-bold">
+                            #
+                        </div>
+                        Ajuan
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
+            <a href="#">
+                <div class="grid grid-cols-2 items-center p-4">
+                    <img src="{{ asset('assets/img/mangga-golek.png') }}" class="w-full">
+                    <div class="flex flex-col items-end">
+                        <div class="text-4xl text-mangga-green-500 font-bold">
+                            #
+                        </div>
+                        Ajuan
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
+            <a href="#">
+                <div class="grid grid-cols-2 items-center p-4">
+                    <img src="{{ asset('assets/img/mangga-madu.png') }}" class="w-full">
                     <div class="flex flex-col items-end">
                         <div class="text-4xl text-mangga-green-500 font-bold">
                             #
