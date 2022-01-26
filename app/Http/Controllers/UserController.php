@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\District;
+use App\Models\Education;
 use App\Models\EstablishmentStatus;
 use App\Models\Province;
 use App\Models\Regency;
+use App\Models\Religion;
 use App\Models\User;
 use App\Models\Village;
 use Illuminate\Http\Request;
@@ -69,7 +71,9 @@ class UserController extends Controller
         $districts = District::all();
         $villages = Village::all();
         $establishment_statuses = EstablishmentStatus::all();
-        return view('user.change_profile', compact('provinces', 'cities', 'districts', 'villages', 'establishment_statuses'));
+        $religions = Religion::all();
+        $educations = Education::all();
+        return view('user.change_profile', compact('provinces', 'cities', 'districts', 'villages', 'establishment_statuses', 'educations', 'religions'));
     }
 
     /**

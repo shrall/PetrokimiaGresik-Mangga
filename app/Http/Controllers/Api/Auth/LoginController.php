@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
+use App\Helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FailedResource;
 use App\Http\Resources\SuccessResource;
 use App\Models\User;
+use App\Models\UserLog;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Laravel\Passport\Client;
@@ -93,11 +95,23 @@ class LoginController extends Controller
 
     public function logout()
     {
+        UserLog::create([
+            'creator_id' => Auth::id(),
+            'desc' => 'User Logout',
+            'notes' => '',
+            'path' => 'logout',
+            'ip' => $_SERVER['REMOTE_ADDR']
+        ]);
         $accesstoken = Auth::user()->token();
         DB::table('oauth_refresh_tokens')->where('access_token_id', $accesstoken->id)->update(['revoked' => true]);
         $accesstoken->revoke();
-        return response([
-            'message' => 'Logged Out.'
-        ]);
+
+        $return = [
+            'api_code' => 200,
+            'api_status' => true,
+            'api_message' => 'Logged Out.',
+            'api_results' => null
+        ];
+        return SuccessResource::make($return);
     }
 }

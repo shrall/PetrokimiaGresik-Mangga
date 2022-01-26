@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -34,7 +34,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'rt',
         'rw',
         'postal_code',
-        'religion',
+        'religion_id',
         'referral_code',
         'avatar',
         'status',
@@ -54,7 +54,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'village_id',
         'profession',
         'retired',
-        'education',
+        'education_id',
         'heir',
         'npwp',
         'bank_number',
@@ -143,6 +143,15 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function role() {
         return $this->belongsTo(UserRole::class, 'user_role', 'id');
+    }
+    public function education() {
+        return $this->belongsTo(Education::class, 'education_id', 'id');
+    }
+    public function religion() {
+        return $this->belongsTo(Religion::class, 'religion_id', 'id');
+    }
+    public function house() {
+        return $this->belongsTo(EstablishmentStatus::class, 'house_ownership', 'id');
     }
     public function businesses()
     {

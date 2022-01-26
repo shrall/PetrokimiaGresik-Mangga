@@ -26,13 +26,9 @@
                             value="{{ Auth::user()->kk_code }}">
                         <label class="text-gray-400 self-start">Agama</label>
                         <select name="religion" class="form-input mb-4" required>
-                            <option value="0" @if (Auth::user()->religion == '0') selected @endif>Muslim</option>
-                            <option value="1" @if (Auth::user()->religion == '1') selected @endif>Kristen</option>
-                            <option value="2" @if (Auth::user()->religion == '2') selected @endif>Katolik</option>
-                            <option value="3" @if (Auth::user()->religion == '3') selected @endif>Hindu</option>
-                            <option value="4" @if (Auth::user()->religion == '4') selected @endif>Buddha</option>
-                            <option value="5" @if (Auth::user()->religion == '5') selected @endif>Kong Hu Chu</option>
-                            <option value="6" @if (Auth::user()->religion == '6') selected @endif>Lainnya</option>
+                            @foreach ($religions as $e)
+                                <option value="{{ $e->id }}" @if (Auth::user()->religion_id == $e->id) selected @endif>{{ $e->name }}</option>
+                            @endforeach
                         </select>
                         <div class="grid grid-cols-12 items-center gap-x-2">
                             <div class="col-span-8">
@@ -52,15 +48,9 @@
                         </div>
                         <label class="text-gray-400">Tingkat Pendidikan</label>
                         <select name="education" class="form-input mb-12" required>
-                            <option value="0" @if (Auth::user()->education == '0') selected @endif>Tidak Sekolah</option>
-                            <option value="1" @if (Auth::user()->education == '1') selected @endif>Tidak Tamat SD</option>
-                            <option value="2" @if (Auth::user()->education == '2') selected @endif>SD</option>
-                            <option value="3" @if (Auth::user()->education == '3') selected @endif>SMP</option>
-                            <option value="4" @if (Auth::user()->education == '4') selected @endif>SMA/K</option>
-                            <option value="5" @if (Auth::user()->education == '5') selected @endif>D4/S1</option>
-                            <option value="6" @if (Auth::user()->education == '6') selected @endif>S1</option>
-                            <option value="7" @if (Auth::user()->education == '7') selected @endif>S2</option>
-                            <option value="8" @if (Auth::user()->education == '8') selected @endif>S3</option>
+                            @foreach ($educations as $e)
+                                <option value="{{ $e->id }}" @if (Auth::user()->education_id == $e->id) selected @endif>{{ $e->name }}</option>
+                            @endforeach
                         </select>
                         <label class="text-gray-400">Ahli Waris</label>
                         <input name="heir" type="text" class="form-input bg-white mb-4" value="{{ Auth::user()->heir }}"
@@ -68,7 +58,7 @@
                         <label class="text-gray-400">Status Rumah</label>
                         <select name="house_ownership" class="form-input mb-4" required>
                             @foreach ($establishment_statuses as $es)
-                                <option value="{{ $es->id }}" @if (Auth::user()->education == $es) selected @endif>{{ $es->name }}</option>
+                                <option value="{{ $es->id }}" @if (Auth::user()->house_ownership == $es->id) selected @endif>{{ $es->name }}</option>
                             @endforeach
                         </select>
                         <label class="text-gray-400 self-start">NPWP</label>

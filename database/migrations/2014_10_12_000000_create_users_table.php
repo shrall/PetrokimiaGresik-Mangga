@@ -27,7 +27,6 @@ class CreateUsersTable extends Migration
             $table->string('ktp_code')->nullable();
             $table->string('kk_code')->nullable();
             $table->string('profession')->nullable();
-            $table->enum('education', ['0', '1', '2', '3', '4', '5', '6', '7', '8'])->default('0')->comment('Tidak Sekolah = 0 Tidak Tamat SD = 1 SD = 2 SMP = 3 SMA/K = 4 Diploma = 5 D4/S1 = 6 S2 = 7 S3 = 8')->nullable();
             $table->string('heir')->nullable();
             $table->string('npwp')->nullable();
             $table->string('bank_number')->nullable();
@@ -40,7 +39,6 @@ class CreateUsersTable extends Migration
             $table->enum('gender', ['m', 'f'])->default('m');
             $table->enum('married', ['0', '1'])->default('0')->comment('Belum Kawin = 0 Kawin = 1');
             $table->string('spouse')->nullable();
-            $table->enum('religion', ['0', '1', '2', '3', '4', '5', '6'])->default('0')->comment('Muslim = 0 Kristen = 1 Katolik = 2 Hindu = 3 Buddha = 4 Kong Hu Chu = 5 Lainnya = 6')->nullable();
             $table->string('referral_code')->nullable();
             $table->string('avatar')->nullable();
             $table->integer('status')->default(0);
