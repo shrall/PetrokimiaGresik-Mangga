@@ -56,9 +56,9 @@
         </div>
     @endif
     @if (Route::current()->getName() == 'media')
-        <a href="{{ route('media') }}" class="nav-active">Media</a>
+        <a href="{{ route('media.index') }}" class="nav-active">Media</a>
     @else
-        <a href="{{ route('media') }}"
+        <a href="{{ route('media.index') }}"
             class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Media</a>
     @endif
     @if (Route::current()->getName() == 'faq')
@@ -124,7 +124,7 @@
         <a href="{{ route('profil.mangga_golek') }}" class="text-lg text-gray-600 cursor-pointer pl-2">Mangga
             Golek</a>
         <hr>
-        <a href="{{ route('media') }}" class="text-lg text-gray-600 cursor-pointer">Media</a>
+        <a href="{{ route('media.index') }}" class="text-lg text-gray-600 cursor-pointer">Media</a>
         <a href="{{ route('faq') }}" class="text-lg text-gray-600 cursor-pointer">FAQ</a>
         <a href="{{ route('toko_mangga') }}" class="text-lg text-gray-600 cursor-pointer">Toko Mangga</a>
         <a href="{{ route('login') }}"

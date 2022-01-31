@@ -19,7 +19,7 @@
                 <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
             </div>
             <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                <div class="rounded-full @if ($muda->business->status == 2) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                <div class="rounded-full {{$muda->business->status == 2 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
                     <span class="fa fa-fw fa-user-check text-white text-xl"></span>
                 </div>
                 <div
@@ -34,7 +34,7 @@
                     <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                 </div>
                 <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                    <div class="rounded-full @if ($muda->business->status == 3) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                    <div class="rounded-full {{$muda->business->status == 3 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
                         <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
                     </div>
                     <div
@@ -48,7 +48,7 @@
                     <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                 </div>
                 <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                    <div class="rounded-full @if ($muda->business->status == 4) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                    <div class="rounded-full {{$muda->business->status == 4 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
                         <span class="fa fa-fw fa-print text-white text-xl"></span>
                     </div>
                     <div
@@ -81,8 +81,7 @@
                 </a>
             </div>
         @elseif (Auth::user()->user_role == 3)
-            @if ($muda->business->status == 2)
-                <div class="flex items-center justify-center gap-x-4">
+            {{$muda->business->status == 2 ? '                <div' : '"flex items'}} justify-center gap-x-4">
                     <a href="{{ route('admin.muda.approve_surveyor', $muda->id) }}"
                         class="mangga-button-green cursor-pointer">Setujui
                     </a>
@@ -91,8 +90,7 @@
                 </div>
             @endif
         @elseif (Auth::user()->user_role == 4)
-            @if ($muda->business->status == 3)
-                <div class="flex items-center justify-center gap-x-4">
+            {{$muda->business->status == 3 ? '                <div' : '"flex items'}} justify-center gap-x-4">
                     <a href="{{ route('admin.muda.approve_surveyor', $muda->id) }}"
                         class="mangga-button-green cursor-pointer">Setujui
                     </a>

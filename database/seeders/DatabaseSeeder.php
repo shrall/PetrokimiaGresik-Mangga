@@ -29,5 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DistributionTypeSeeder::class);
         $this->call(EstablishmentStatusSeeder::class);
         $this->call(MarketingSeeder::class);
+        $this->call(MediaTypeSeeder::class);
     }
 }

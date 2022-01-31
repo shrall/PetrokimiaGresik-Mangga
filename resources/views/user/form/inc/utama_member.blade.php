@@ -19,7 +19,7 @@
                         <label for="foto-ktp-member-{{ $i }}"
                             class="mangga-button-green cursor-pointer">Unggah Foto
                             KTP</label>
-                        <span>*Ukuran File Unggahan Maksimal 25MB</span>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                             Selfie
                             dengan
                             KTP</label>
-                        <span>*Ukuran File Unggahan Maksimal 25MB</span>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                         <label for="foto-sertifikat-member-{{ $i }}"
                             class="mangga-button-green cursor-pointer">Unggah Foto
                             Sertifikat</label>
-                        <span>*Ukuran File Unggahan Maksimal 25MB</span>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                             Foto
                             Selfie dengan
                             Sertifikat</label>
-                        <span>*Ukuran File Unggahan Maksimal 25MB</span>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                     </div>
                 </div>
             </div>

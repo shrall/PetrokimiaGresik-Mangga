@@ -206,7 +206,7 @@
                         <input type="file" name="establishment_picture" id="foto-establishment" class="hidden"
                             onchange="loadFile(event, 'foto-establishment')" accept="image/*" required>
                         <label for="foto-establishment" class="mangga-button-green cursor-pointer">Unggah Foto</label>
-                        <span>*Ukuran File Unggahan Maksimal 25MB</span>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                     </div>
                 </div>
             </div>
@@ -219,7 +219,7 @@
                         <input type="file" name="product_picture" id="foto-product" class="hidden"
                             onchange="loadFile(event, 'foto-product')" accept="image/*" required>
                         <label for="foto-product" class="mangga-button-green cursor-pointer">Unggah Foto</label>
-                        <span>*Ukuran File Unggahan Maksimal 25MB</span>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                     </div>
                 </div>
             </div>
@@ -234,7 +234,7 @@
                         <input type="file" name="business_sketch" id="foto-sketch-b" class="hidden"
                             onchange="loadFile(event, 'foto-sketch-b')" accept="image/*" required>
                         <label for="foto-sketch-b" class="mangga-button-green cursor-pointer">Unggah Foto</label>
-                        <span>*Ukuran File Unggahan Maksimal 25MB</span>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                     </div>
                 </div>
             </div>
@@ -247,7 +247,7 @@
                         <input type="file" name="house_sketch" id="foto-sketch-h" class="hidden"
                             onchange="loadFile(event, 'foto-sketch-h')" accept="image/*" required>
                         <label for="foto-sketch-h" class="mangga-button-green cursor-pointer">Unggah Foto</label>
-                        <span>*Ukuran File Unggahan Maksimal 25MB</span>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                     </div>
                 </div>
             </div>
@@ -398,7 +398,7 @@
                         <input type="file" name="ktp" id="foto-ktp" class="hidden"
                             onchange="loadFile(event, 'foto-ktp')" accept="image/*" required>
                         <label for="foto-ktp" class="mangga-button-green cursor-pointer">Unggah Foto KTP</label>
-                        <span>*Ukuran File Unggahan Maksimal 25MB</span>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                     </div>
                 </div>
             </div>
@@ -411,7 +411,7 @@
                         <input type="file" name="kk" id="foto-kk" class="hidden"
                             onchange="loadFile(event, 'foto-kk')" accept="image/*" required>
                         <label for="foto-kk" class="mangga-button-green cursor-pointer">Unggah Foto KK</label>
-                        <span>*Ukuran File Unggahan Maksimal 25MB</span>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                     </div>
                 </div>
             </div>
@@ -425,7 +425,7 @@
                             required onchange="loadFile(event, 'foto-selfie-ktp')" required>
                         <label for="foto-selfie-ktp" class="mangga-button-green cursor-pointer">Unggah Foto Selfie dengan
                             KTP</label>
-                        <span>*Ukuran File Unggahan Maksimal 25MB</span>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                     </div>
                 </div>
             </div>
@@ -439,7 +439,7 @@
                             required onchange="loadFile(event, 'foto-selfie-kk')" required>
                         <label for="foto-selfie-kk" class="mangga-button-green cursor-pointer">Unggah Foto Selfie dengan
                             KK</label>
-                        <span>*Ukuran File Unggahan Maksimal 25MB</span>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                     </div>
                 </div>
             </div>
@@ -454,7 +454,7 @@
                         <input type="file" name="siup" id="scan-siup" class="hidden"
                             onchange="loadFile(event, 'scan-siup')" accept="image/*">
                         <label for="scan-siup" class="mangga-button-green cursor-pointer">Unggah Scan SIUP</label>
-                        <span>*Ukuran File Unggahan Maksimal 25MB</span>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                     </div>
                 </div>
             </div>
@@ -467,7 +467,7 @@
                         <input type="file" name="skdu" id="scan-sk" class="hidden"
                             onchange="loadFile(event, 'scan-sk')" accept="image/*" required>
                         <label for="scan-sk" class="mangga-button-green cursor-pointer">Unggah Scan SK</label>
-                        <span>*Ukuran File Unggahan Maksimal 25MB</span>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                     </div>
                 </div>
             </div>
@@ -650,8 +650,8 @@
     </script>
     <script>
         var loadFile = function(event, id) {
-            if ($('#' + id)[0].files[0].size > 26214400) {
-                alert("Ukuran gambar tidak bisa melebihi 25MB!");
+            if ($('#' + id)[0].files[0].size > 2097152) {
+                alert("Ukuran gambar tidak bisa melebihi 2 MB!");
                 $('#' + id).val(null);
             } else {
                 $('#preview-' + id).attr('src', URL.createObjectURL(event.target.files[0]));

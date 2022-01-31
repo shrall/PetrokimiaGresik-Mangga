@@ -49,6 +49,12 @@
                             <div class="text-xl">Program Mangga</div>
                         </a>
                     </div>
+                    <div class="flex items-center gap-x-2 hover:text-gray-100 cursor-pointer">
+                        <span class="fa fa-fw fa-photo-video text-3xl"></span>
+                        <a href="{{ route('admin.media.index') }}">
+                            <div class="text-xl">Media</div>
+                        </a>
+                    </div>
                     <div class="flex items-center gap-x-2 hover:text-gray-100 cursor-pointer mt-auto" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
                         <span class="fa fa-fw fa-sign-out-alt text-3xl"></span>

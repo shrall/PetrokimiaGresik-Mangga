@@ -305,8 +305,8 @@
 
     <script>
         var loadFile = function(event, id) {
-            if ($('#' + id)[0].files[0].size > 26214400) {
-                alert("Ukuran gambar tidak bisa melebihi 25MB!");
+            if ($('#' + id)[0].files[0].size > 2097152) {
+                alert("Ukuran gambar tidak bisa melebihi 2 MB!");
                 $('#' + id).val(null);
             } else {
                 $('#preview-' + id).attr('src', URL.createObjectURL(event.target.files[0]));

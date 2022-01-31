@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\MediaController as AdminMediaController;
 use App\Http\Controllers\Admin\MudaController as AdminMudaController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\UtamaController as AdminUtamaController;
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\MudaController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\User\PageController as UserPageController;
@@ -40,7 +42,7 @@ Route::get('/mangga-muda/login', [PageController::class, 'mangga_muda_login'])->
 Route::get('/mangga-muda/home', [PageController::class, 'mangga_muda_home'])->name('mangga_muda.home');
 Route::get('/info', [PageController::class, 'info'])->name('info');
 Route::get('/prosedur', [PageController::class, 'prosedur'])->name('prosedur');
-Route::get('/media', [PageController::class, 'media'])->name('media');
+Route::resource('media', MediaController::class);
 Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 Route::get('/toko-mangga', [PageController::class, 'toko_mangga'])->name('toko_mangga');
 Route::group(['as' => 'profil.'], function () {
@@ -97,13 +99,21 @@ Route::group(['middleware' => ['admin'], 'as' => 'admin.', 'prefix' => 'admin'],
     Route::get('/utama/{utama}/approvepimpinan', [AdminUtamaController::class, 'approve_pimpinan'])->name('utama.approve_pimpinan');
     Route::get('/utama/{utama}/reject', [AdminUtamaController::class, 'reject'])->name('utama.reject');
     Route::get('/utama/{utama}/download', [AdminUtamaController::class, 'download'])->name('utama.download');
-    
+
     Route::get('/program/muda/{business}', [AdminPageController::class, 'mangga_muda'])->name('program.muda');
     Route::resource('muda', AdminMudaController::class);
     Route::get('/muda/{muda}/approvesurveyor', [AdminMudaController::class, 'approve_surveyor'])->name('muda.approve_surveyor');
     Route::get('/muda/{muda}/approvepimpinan', [AdminMudaController::class, 'approve_pimpinan'])->name('muda.approve_pimpinan');
     Route::get('/muda/{muda}/reject', [AdminMudaController::class, 'reject'])->name('muda.reject');
     Route::get('/muda/{muda}/download', [AdminMudaController::class, 'download'])->name('muda.download');
+
+    Route::get('/media', [AdminMediaController::class, 'index'])->name('media.index');
+    Route::get('/media/create', [AdminMediaController::class, 'create'])->name('media.create');
+    Route::post('/media/store', [AdminMediaController::class, 'store'])->name('media.store');
+    Route::get('/media/{media}/edit', [AdminMediaController::class, 'edit'])->name('media.edit');
+    Route::put('/media/{media}/update', [AdminMediaController::class, 'update'])->name('media.update');
+    Route::delete('/media/{media}/delete', [AdminMediaController::class, 'destroy'])->name('media.destroy');
+    Route::post('media/uploadphotocontent', [AdminMediaController::class, 'upload_photo_content'])->name('media.uploadphotocontent');
 });
 
 Route::get('/eee', function () {
