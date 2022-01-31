@@ -19,10 +19,10 @@
                             Tempat Lahir. Anda juga bisa mengubah informasi personal Anda dengan menekan
                             tombol “Ubah Profile”</div>
                         <label class="text-gray-400">No. KTP</label>
-                        <input name="ktp_code" type="number" class="form-input bg-white mb-4" required
+                        <input name="ktp_code" type="number" class="form-input bg-white mb-4" required max="16" min="16"
                             value="{{ Auth::user()->ktp_code }}">
                         <label class="text-gray-400">No. KK</label>
-                        <input name="kk_code" type="number" class="form-input bg-white mb-4" required
+                        <input name="kk_code" type="number" class="form-input bg-white mb-4" required max="16" min="16"
                             value="{{ Auth::user()->kk_code }}">
                         <label class="text-gray-400 self-start">Agama</label>
                         <select name="religion" class="form-input mb-4" required>
@@ -132,12 +132,8 @@
                         <div class="grid grid-cols-2 items-center gap-x-2 w-full">
                             <div class="col-span-1">
                                 <label class="text-gray-400">Tempat Lahir</label>
-                                <select name="birth_place" id="birth_place" class="form-input bg-white mb-4" required>
-                                    @foreach ($cities as $city)
-                                        <option value={{ $city->id }} @if (Auth::user()->birth_place == $city->id) selected @endif>
-                                            {{ $city->name }}</option>
-                                    @endforeach
-                                </select>
+                                <input name="birth_place" type="text" class="form-input bg-white mb-4" required
+                                    value="{{ Auth::user()->address }}">
                             </div>
                             <div class="col-span-1">
                                 <label class="text-gray-400">Tanggal Lahir</label>

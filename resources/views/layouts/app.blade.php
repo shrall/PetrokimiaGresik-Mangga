@@ -32,7 +32,7 @@
     @guest
         @include('inc.navbar')
     @endguest
-    <div class="bg-light-200 font-os">
+    <div class="bg-light-200 font-pn">
         @yield('content')
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

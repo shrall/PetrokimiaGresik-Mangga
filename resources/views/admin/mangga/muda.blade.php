@@ -39,7 +39,7 @@
                     </div>
                     <div
                         class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                        Pengajuan Diapprove Surveyor</div>
+                        Pengajuan Terverifikasi</div>
                 </div>
                 <div class="block xl:hidden">
                     <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
@@ -49,11 +49,11 @@
                 </div>
                 <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                     <div class="rounded-full @if ($muda->business->status == 4) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
-                        <span class="fa fa-fw fa-check-double text-white text-xl"></span>
+                        <span class="fa fa-fw fa-print text-white text-xl"></span>
                     </div>
                     <div
                         class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                        Pengajuan Diapprove Pimpinan</div>
+                        Cetak Proposal</div>
                 </div>
             @else
                 <div class="block xl:hidden">
@@ -75,10 +75,7 @@
         @if (Auth::user()->user_role == 2)
             <div class="flex items-center justify-center gap-x-4">
                 <a href="{{ route('admin.muda.approve_surveyor', $muda->id) }}"
-                    class="mangga-button-green cursor-pointer">Setujui (Surveyor)
-                </a>
-                <a href="{{ route('admin.muda.approve_pimpinan', $muda->id) }}"
-                    class="mangga-button-green cursor-pointer">Setujui (Pimpinan)
+                    class="mangga-button-green cursor-pointer">Setujui
                 </a>
                 <a href="{{ route('admin.muda.reject', $muda->id) }}" class="mangga-button-red cursor-pointer">Tolak
                 </a>
@@ -96,7 +93,7 @@
         @elseif (Auth::user()->user_role == 4)
             @if ($muda->business->status == 3)
                 <div class="flex items-center justify-center gap-x-4">
-                    <a href="{{ route('admin.muda.approve_pimpinan', $muda->id) }}"
+                    <a href="{{ route('admin.muda.approve_surveyor', $muda->id) }}"
                         class="mangga-button-green cursor-pointer">Setujui
                     </a>
                     <a href="{{ route('admin.muda.reject', $muda->id) }}" class="mangga-button-red cursor-pointer">Tolak
@@ -138,7 +135,7 @@
     </div>
     <div class="card px-8 py-6 flex flex-col gap-y-4">
         <div class="text-xl font-bold">Data Pengajuan</div>
-        <div class="text-lg font-bold">Nomor Registrasi : {{$muda->business->registration_number}}</div>
+        <div class="text-lg font-bold">Nomor Registrasi : {{ $muda->business->status >= 3 ? $muda->business->registration_number : '-' }}</div>
         <div class="grid grid-cols-3 gap-x-4">
             <img src="{{ asset('uploads/mangga/logos/' . $muda->business->logo) }}" alt="" srcset=""
                 class="w-full">
@@ -147,6 +144,7 @@
                 <div class="text-xl">{{ $muda->leader_name }}</div>
                 <div class="text-xl">{{ $muda->university }}</div>
                 <div class="text-xl">{{ $muda->faculty }}</div>
+                <div class="text-xl">{{ $muda->recommender }} - {{$muda->recommender_position}}</div>
                 <div class="text-xl">{{ $muda->member_count }} Anggota
                 </div>
             </div>

@@ -23,6 +23,8 @@
                     placeholder="Nama/No.Mahasiswa Ketua Tim*" required>
                 <input type="text" name="university" class="form-pengajuan-input" placeholder="Asal Universitas*" required>
                 <input type="text" name="faculty" class="form-pengajuan-input" placeholder="Fakultas*" required>
+                <input type="text" name="recommender" class="form-pengajuan-input" placeholder="Perekomendasi*" required>
+                <input type="text" name="recommender_position" class="form-pengajuan-input" placeholder="Jabatan Perekomendasi*" required>
                 <input type="number" name="member_count" class="form-pengajuan-input" placeholder="Jumlah Anggota*" required
                     onkeyup="updateMembers();">
             </div>

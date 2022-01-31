@@ -301,6 +301,11 @@ class MudaController extends Controller
 
     public function preview(Muda $muda)
     {
+        if($muda->business->status == 3){
+            $muda->business->update([
+                'status' => 4
+            ]);
+        }
         return view('user.proposal.muda', compact('muda'));
     }
     public function download(Muda $muda)

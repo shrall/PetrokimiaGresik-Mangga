@@ -13,6 +13,8 @@ class Muda extends Model
         'member_count',
         'university',
         'faculty',
+        'recommender',
+        'recommender_position',
         'business_title',
         'prospect',
         'growth_plan',

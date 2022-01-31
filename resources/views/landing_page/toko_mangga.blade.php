@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="h-vh-40 xl:h-vh-80 bg-toko_mangga-1 bg-cover flex items-center justify-center mb-8">
-        <div class="font-af text-white text-4xl md:text-6xl">Semua berawal dari sini.</div>
+        <div class="font-lb text-white text-4xl md:text-6xl">Semua berawal dari sini.</div>
     </div>
     <div class="flex items-center justify-end px-8 md:px-16 xl:px-48 mb-8">
         <div class="dropdown inline-block relative">

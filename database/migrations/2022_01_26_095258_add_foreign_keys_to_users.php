@@ -22,8 +22,6 @@ class AddForeignKeysToUsers extends Migration
             $table->foreign('religion_id')->references('id')->on('religions')->onDelete('cascade');
             $table->unsignedBigInteger('house_ownership')->after('heir')->nullable();
             $table->foreign('house_ownership')->references('id')->on('establishment_statuses')->onDelete('cascade');
-            $table->char('birth_place', 4)->after('birth_date')->nullable();
-            $table->foreign('birth_place')->references('id')->on('regencies')->onDelete('cascade');
             $table->char('province_id', 2)->after('address')->nullable();
             $table->foreign('province_id')->references('id')->on('provinces')->onDelete('cascade');
             $table->char('city_id', 4)->after('province_id')->nullable();

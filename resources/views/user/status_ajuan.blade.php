@@ -55,38 +55,70 @@
                             </div>
                             <div
                                 class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                                Submit Form Pengajuan</div>
+                                Submit Proposal</div>
                         </div>
                     @endif
                     @if (!Auth::user()->businesses->last()->rejected_at)
-                        <div class="block xl:hidden">
-                            <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
-                        </div>
-                        <div class="hidden xl:block">
-                            <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
-                        </div>
-                        <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                            <div class="rounded-full @if (Auth::user()->businesses[0]->status == 3) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
-                                <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
+
+                        @if (Auth::user()->referral_code != 'mamud')
+                            <div class="block xl:hidden">
+                                <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
                             </div>
-                            <div
-                                class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                                Pengajuan Diapprove Surveyor</div>
-                        </div>
-                        <div class="block xl:hidden">
-                            <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
-                        </div>
-                        <div class="hidden xl:block">
-                            <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
-                        </div>
-                        <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                            <div class="rounded-full @if (Auth::user()->businesses[0]->status == 4) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
-                                <span class="fa fa-fw fa-check-double text-white text-xl"></span>
+                            <div class="hidden xl:block">
+                                <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                             </div>
-                            <div
-                                class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                                Pengajuan Diapprove Pimpinan</div>
-                        </div>
+                            <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                                <div class="rounded-full @if (Auth::user()->businesses[0]->status == 3) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                                    <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
+                                </div>
+                                <div
+                                    class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                    Pengajuan Diapprove Surveyor</div>
+                            </div>
+                            <div class="block xl:hidden">
+                                <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                            </div>
+                            <div class="hidden xl:block">
+                                <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                            </div>
+                            <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                                <div class="rounded-full @if (Auth::user()->businesses[0]->status == 4) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                                    <span class="fa fa-fw fa-check-double text-white text-xl"></span>
+                                </div>
+                                <div
+                                    class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                    Pengajuan Diapprove Pimpinan</div>
+                            </div>
+                        @else
+                            <div class="block xl:hidden">
+                                <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                            </div>
+                            <div class="hidden xl:block">
+                                <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                            </div>
+                            <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                                <div class="rounded-full @if (Auth::user()->businesses[0]->status == 3) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                                    <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
+                                </div>
+                                <div
+                                    class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                    Pengajuan Terverifikasi</div>
+                            </div>
+                            <div class="block xl:hidden">
+                                <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                            </div>
+                            <div class="hidden xl:block">
+                                <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                            </div>
+                            <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                                <div class="rounded-full @if (Auth::user()->businesses[0]->status == 4) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                                    <span class="fa fa-fw fa-print text-white text-xl"></span>
+                                </div>
+                                <div
+                                    class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                    Cetak Proposal</div>
+                            </div>
+                        @endif
                     @else
                         <div class="block xl:hidden">
                             <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
@@ -130,7 +162,8 @@
                 </div>
                 <div class="card px-8 py-6 flex flex-col gap-y-4">
                     <div class="text-xl font-bold">Data Pengajuan</div>
-                    <div class="text-lg font-bold">Nomor Registrasi : {{$muda->business->registration_number}}</div>
+                    <div class="text-lg font-bold">Nomor Registrasi :
+                        {{ $muda->business->status >= 3 ? $muda->business->registration_number : '-' }}</div>
                     <div class="grid grid-cols-3 gap-x-4">
                         <img src="{{ asset('uploads/mangga/logos/' . Auth::user()->businesses[0]->logo) }}" alt=""
                             srcset="" class="w-full">
@@ -139,6 +172,8 @@
                             <div class="text-xl">{{ $muda->leader_name }}</div>
                             <div class="text-xl">{{ $muda->university }}</div>
                             <div class="text-xl">{{ $muda->faculty }}</div>
+                            <div class="text-xl">{{ $muda->recommender }} - {{ $muda->recommender_position }}
+                            </div>
                             <div class="text-xl">{{ $muda->member_count }} Anggota
                             </div>
                         </div>
@@ -604,7 +639,8 @@
                     <hr>
                     <div class="grid grid-cols-2 gap-x-8 gap-y-2">
                         <div class="text-xl font-bold underline">Data Pengajuan</div>
-                        <div class="text-lg font-bold">Nomor Registrasi : {{$utama->business->registration_number}}</div>
+                        <div class="text-lg font-bold">Nomor Registrasi : {{ $utama->business->registration_number }}
+                        </div>
                         <div class="flex flex-col col-span-2">
                             <span class="text-gray-600">Jumlah Pengajuan</span>
                             <span>Rp. {{ number_format($utama->request_amount, 0, ',', '.') }}</span>
@@ -771,7 +807,7 @@
                                 <tr class="font-bold">
                                     <td>Jumlah</td>
                                     <td>Rp.
-                                        {{ number_format($utama->business->assets[6]->value + $utama->business->assets[7]->value + $utama->business->assets[2]->value + $utama->business->assets[3]->value + $utama->business->assets[4]->value + $utama->business->assets[5]->value, 0, ',', '.') }}
+                                        {{ number_format($utama->business->assets[6]->value +$utama->business->assets[7]->value +$utama->business->assets[2]->value +$utama->business->assets[3]->value +$utama->business->assets[4]->value +$utama->business->assets[5]->value,0,',','.') }}
                                     </td>
                                 </tr>
                             </table>

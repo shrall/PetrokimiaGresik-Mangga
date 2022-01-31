@@ -6,7 +6,7 @@
         <div class="col-span-1 w-full h-screen bg-cover bg-login-muda">
         </div>
         <div class="col-span-1 flex flex-col items-start justify-center bg-gray-100 h-screen px-12 py-4">
-            <div class="text-xl md:text-5xl font-af text-mangga-green-300 mb-4">Masuk.</div>
+            <div class="text-xl md:text-5xl font-lb text-mangga-green-300 mb-4">Masuk.</div>
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
                     <div class="rounded-lg bg-red-500 w-full p-4 mb-4 text-white">

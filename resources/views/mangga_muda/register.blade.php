@@ -3,7 +3,7 @@
 @section('content')
     <div class="w-full h-full bg-sign-up bg-cover flex flex-col xl:grid xl:grid-cols-2 xl:items-center xl:justify-center">
         <div class="col-span-1 flex flex-col items-start justify-center bg-gray-100 h-full px-12 py-4">
-            <div class="text-xl md:text-5xl font-af text-mangga-green-300 mb-4">Daftar Sekarang.</div>
+            <div class="text-xl md:text-5xl font-lb text-mangga-green-300 mb-4">Daftar Sekarang.</div>
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
                     <div class="rounded-lg bg-red-500 w-full p-4 mb-4 text-white">

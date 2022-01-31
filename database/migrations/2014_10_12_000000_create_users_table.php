@@ -47,6 +47,7 @@ class CreateUsersTable extends Migration
             $table->string('rw')->nullable();
             $table->integer('postal_code')->nullable();
             $table->date('birth_date')->nullable();
+            $table->string('birth_place')->nullable();
             $table->integer('blocked_at')->nullable();
             $table->string('registration_ip')->nullable();
             $table->string('last_login_ip')->nullable();

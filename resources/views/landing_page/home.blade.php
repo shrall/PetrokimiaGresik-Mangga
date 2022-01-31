@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="hidden xl:block">
-        <div class="grid grid-cols-12 content-center h-vh-90 bg-home-1 bg-left bg-contain bg-no-repeat px-16 font-os mb-12">
+        <div class="grid grid-cols-12 content-center h-vh-90 bg-home-1 bg-left bg-contain bg-no-repeat px-16 font-pn mb-12">
             <div class="col-span-7"></div>
             <div class="col-span-5">
                 <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}">
@@ -12,8 +12,8 @@
                 <a href="#" class="mangga-button-green text-xl">Bergabung</a>
             </div>
         </div>
-        <div class="text-6xl text-center font-af text-mangga-green-400 mb-12">Program Mangga</div>
-        <div class="grid grid-cols-12 items-center pl-16 pr-28 py-8 font-os">
+        <div class="text-6xl text-center font-lb text-mangga-green-400 mb-12">Program Mangga</div>
+        <div class="grid grid-cols-12 items-center pl-16 pr-28 py-8 font-pn">
             <div class="col-span-3">
                 <img src="{{ asset('assets/img/mangga-gadung.png') }}" alt="" srcset="">
             </div>
@@ -25,7 +25,7 @@
                 a type specimen book.
             </div>
         </div>
-        <div class="grid grid-cols-12 items-center pl-28 pr-16 py-8 font-os bg-mangga-green-400">
+        <div class="grid grid-cols-12 items-center pl-28 pr-16 py-8 font-pn bg-mangga-green-400">
             <div class="col-span-9 text-white">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 industry's
@@ -37,7 +37,7 @@
                 <img src="{{ asset('assets/img/mangga-makmur.png') }}" alt="" srcset="">
             </div>
         </div>
-        <div class="grid grid-cols-12 items-center pl-16 pr-28 py-8 font-os">
+        <div class="grid grid-cols-12 items-center pl-16 pr-28 py-8 font-pn">
             <div class="col-span-3">
                 <img src="{{ asset('assets/img/mangga-arumanis.png') }}" alt="" srcset="">
             </div>
@@ -49,12 +49,12 @@
                 a type specimen book.
             </div>
         </div>
-        <div class="grid grid-cols-12 items-center px-28 py-8 font-os bg-light-300 mb-24">
+        <div class="grid grid-cols-12 items-center px-28 py-8 font-pn bg-light-300 mb-24">
             <div class="col-span-6">
                 <div class="text-5xl text-mangga-orange-400 font-medium mb-6">AKAD JASA ADMIN</div>
                 <div class="grid grid-cols-2 text-mangga-green-400">
-                    <div class="text-5xl"><span class="font-af text-7xl">0.27%</span><br>/bulan</div>
-                    <div class="text-5xl"><span class="font-af text-7xl">3.27%</span><br>/bulan</div>
+                    <div class="text-5xl"><span class="font-lb text-7xl">0.27%</span><br>/bulan</div>
+                    <div class="text-5xl"><span class="font-lb text-7xl">3.27%</span><br>/bulan</div>
                 </div>
             </div>
             <div class="col-span-6">
@@ -72,7 +72,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex items-center content-center justify-center text-mangga-green-300 font-af text-8xl mb-12">
+        <div class="flex items-center content-center justify-center text-mangga-green-300 font-lb text-8xl mb-12">
             <span class="mb-12">Alur</span> <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}"
                 class="w-96 ml-4">
         </div>
@@ -80,37 +80,37 @@
             <div class="flex flex-col text-white text-2xl">
                 <div class="flex items-center justify-center py-10 bg-mangga-orange-300">Registrasi</div>
                 <div
-                    class="flex items-center justify-center py-16 border border-mangga-orange-300 text-7xl font-af text-mangga-orange-400">
+                    class="flex items-center justify-center py-16 border border-mangga-orange-300 text-7xl font-lb text-mangga-orange-400">
                     1</div>
             </div>
             <div class="flex flex-col text-white text-2xl">
                 <div class="flex items-center justify-center py-10 bg-mangga-green-300">Verifikasi</div>
                 <div
-                    class="flex items-center justify-center py-16 border border-mangga-green-300 text-7xl font-af text-mangga-green-400">
+                    class="flex items-center justify-center py-16 border border-mangga-green-300 text-7xl font-lb text-mangga-green-400">
                     2</div>
             </div>
             <div class="flex flex-col text-white text-2xl">
                 <div class="flex items-center justify-center py-10 bg-mangga-orange-300">Penyaluran</div>
                 <div
-                    class="flex items-center justify-center py-16 border border-mangga-orange-300 text-7xl font-af text-mangga-orange-400">
+                    class="flex items-center justify-center py-16 border border-mangga-orange-300 text-7xl font-lb text-mangga-orange-400">
                     3</div>
             </div>
             <div class="flex flex-col text-white text-2xl">
                 <div class="flex items-center justify-center py-10 bg-mangga-green-300 text-center">Pembinaan</div>
                 <div
-                    class="flex items-center justify-center py-16 border border-mangga-green-300 text-7xl font-af text-mangga-green-400">
+                    class="flex items-center justify-center py-16 border border-mangga-green-300 text-7xl font-lb text-mangga-green-400">
                     4</div>
             </div>
             <div class="flex flex-col text-white text-2xl">
                 <div class="flex items-center justify-center py-10 bg-mangga-orange-300">Monitoring</div>
                 <div
-                    class="flex items-center justify-center py-16 border border-mangga-orange-300 text-7xl font-af text-mangga-orange-400">
+                    class="flex items-center justify-center py-16 border border-mangga-orange-300 text-7xl font-lb text-mangga-orange-400">
                     5</div>
             </div>
         </div>
     </div>
     <div class="hidden md:block xl:hidden">
-        <div class="grid grid-cols-12 content-center px-16 font-os mb-12">
+        <div class="grid grid-cols-12 content-center px-16 font-pn mb-12">
             <div class="col-span-7 bg-home-1 bg-left bg-contain bg-no-repeat h-vh-40"></div>
             <div class="col-span-5 flex flex-col justify-center">
                 <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}">
@@ -120,8 +120,8 @@
                 <a href="#" class="mangga-button-green text-md self-start">Bergabung</a>
             </div>
         </div>
-        <div class="text-6xl text-center font-af text-mangga-green-400 mb-12">Program Mangga</div>
-        <div class="grid grid-cols-12 items-center pl-16 pr-28 py-8 font-os">
+        <div class="text-6xl text-center font-lb text-mangga-green-400 mb-12">Program Mangga</div>
+        <div class="grid grid-cols-12 items-center pl-16 pr-28 py-8 font-pn">
             <div class="col-span-3">
                 <img src="{{ asset('assets/img/mangga-gadung.png') }}" alt="" srcset="">
             </div>
@@ -133,7 +133,7 @@
                 a type specimen book.
             </div>
         </div>
-        <div class="grid grid-cols-12 items-center pl-28 pr-16 py-8 font-os bg-mangga-green-400">
+        <div class="grid grid-cols-12 items-center pl-28 pr-16 py-8 font-pn bg-mangga-green-400">
             <div class="col-span-9 text-white">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 industry's
@@ -145,7 +145,7 @@
                 <img src="{{ asset('assets/img/mangga-makmur.png') }}" alt="" srcset="">
             </div>
         </div>
-        <div class="grid grid-cols-12 items-center pl-16 pr-28 py-8 font-os">
+        <div class="grid grid-cols-12 items-center pl-16 pr-28 py-8 font-pn">
             <div class="col-span-3">
                 <img src="{{ asset('assets/img/mangga-arumanis.png') }}" alt="" srcset="">
             </div>
@@ -157,12 +157,12 @@
                 a type specimen book.
             </div>
         </div>
-        <div class="grid grid-cols-12 items-center px-16 py-8 font-os bg-light-300 mb-24">
+        <div class="grid grid-cols-12 items-center px-16 py-8 font-pn bg-light-300 mb-24">
             <div class="col-span-6">
                 <div class="text-4xl text-mangga-orange-400 font-medium mb-6">AKAD JASA ADMIN</div>
                 <div class="grid grid-cols-2 text-mangga-green-400">
-                    <div class="text-3xl"><span class="font-af text-4xl">0.27%</span><br>/bulan</div>
-                    <div class="text-3xl"><span class="font-af text-4xl">3.27%</span><br>/bulan</div>
+                    <div class="text-3xl"><span class="font-lb text-4xl">0.27%</span><br>/bulan</div>
+                    <div class="text-3xl"><span class="font-lb text-4xl">3.27%</span><br>/bulan</div>
                 </div>
             </div>
             <div class="col-span-6">
@@ -182,7 +182,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex items-center content-center justify-center text-mangga-green-300 font-af text-8xl pb-12">
+        <div class="flex items-center content-center justify-center text-mangga-green-300 font-lb text-8xl pb-12">
             <span class="mb-12">Alur</span> <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}"
                 class="w-96 ml-4">
         </div>
@@ -190,37 +190,37 @@
             <div class="flex flex-col text-white text-lg">
                 <div class="flex items-center justify-center py-4 bg-mangga-orange-300">Registrasi</div>
                 <div
-                    class="flex items-center justify-center py-8 border border-mangga-orange-300 text-4xl font-af text-mangga-orange-400">
+                    class="flex items-center justify-center py-8 border border-mangga-orange-300 text-4xl font-lb text-mangga-orange-400">
                     1</div>
             </div>
             <div class="flex flex-col text-white text-lg">
                 <div class="flex items-center justify-center py-4 bg-mangga-green-300">Verifikasi</div>
                 <div
-                    class="flex items-center justify-center py-8 border border-mangga-green-300 text-4xl font-af text-mangga-green-400">
+                    class="flex items-center justify-center py-8 border border-mangga-green-300 text-4xl font-lb text-mangga-green-400">
                     2</div>
             </div>
             <div class="flex flex-col text-white text-lg">
                 <div class="flex items-center justify-center py-4 bg-mangga-orange-300">Penyaluran</div>
                 <div
-                    class="flex items-center justify-center py-8 border border-mangga-orange-300 text-4xl font-af text-mangga-orange-400">
+                    class="flex items-center justify-center py-8 border border-mangga-orange-300 text-4xl font-lb text-mangga-orange-400">
                     3</div>
             </div>
             <div class="flex flex-col text-white text-lg">
                 <div class="flex items-center justify-center py-4 bg-mangga-green-300 text-center">Pembinaan</div>
                 <div
-                    class="flex items-center justify-center py-8 border border-mangga-green-300 text-4xl font-af text-mangga-green-400">
+                    class="flex items-center justify-center py-8 border border-mangga-green-300 text-4xl font-lb text-mangga-green-400">
                     4</div>
             </div>
             <div class="flex flex-col text-white text-lg">
                 <div class="flex items-center justify-center py-4 bg-mangga-orange-300">Monitoring</div>
                 <div
-                    class="flex items-center justify-center py-8 border border-mangga-orange-300 text-4xl font-af text-mangga-orange-400">
+                    class="flex items-center justify-center py-8 border border-mangga-orange-300 text-4xl font-lb text-mangga-orange-400">
                     5</div>
             </div>
         </div>
     </div>
     <div class="sm:block md:hidden xl:hidden">
-        <div class="flex flex-col items-center justify-center px-4 font-os mb-12">
+        <div class="flex flex-col items-center justify-center px-4 font-pn mb-12">
             <div class="w-full h-vh-40 bg-home-1 bg-center bg-contain bg-no-repeat"></div>
             <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}">
             <div class="text-lg font-semibold mb-2">Jadilah bagian dari <span class="text-mangga-green-400">Mitra
@@ -229,8 +229,8 @@
             </div>
             <a href="#" class="mangga-button-green text-md">Bergabung</a>
         </div>
-        <div class="text-3xl text-center font-af text-mangga-green-400 mb-12">Program Mangga</div>
-        <div class="flex flex-col items-center p-8 font-os">
+        <div class="text-3xl text-center font-lb text-mangga-green-400 mb-12">Program Mangga</div>
+        <div class="flex flex-col items-center p-8 font-pn">
             <img src="{{ asset('assets/img/mangga-gadung.png') }}" alt="" srcset="">
             <div class="text-xl text-center">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
@@ -240,7 +240,7 @@
                 a type specimen book.
             </div>
         </div>
-        <div class="flex flex-col items-center p-8 font-os bg-mangga-green-400">
+        <div class="flex flex-col items-center p-8 font-pn bg-mangga-green-400">
             <img src="{{ asset('assets/img/mangga-makmur.png') }}" alt="" srcset="">
             <div class="text-white text-xl text-center">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
@@ -250,7 +250,7 @@
                 a type specimen book.
             </div>
         </div>
-        <div class="flex flex-col items-center p-8 font-os">
+        <div class="flex flex-col items-center p-8 font-pn">
             <img src="{{ asset('assets/img/mangga-arumanis.png') }}" alt="" srcset="">
             <div class="text-xl text-center">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
@@ -260,11 +260,11 @@
                 a type specimen book.
             </div>
         </div>
-        <div class="flex flex-col items-center px-4 font-os bg-light-300 mb-24 py-8">
+        <div class="flex flex-col items-center px-4 font-pn bg-light-300 mb-24 py-8">
             <div class="text-4xl text-mangga-orange-400 font-medium mb-6">AKAD JASA ADMIN</div>
             <div class="grid grid-cols-1 text-mangga-green-400 mb-8">
-                <div class="text-5xl"><span class="font-af text-7xl">0.27%</span><br>/bulan</div>
-                <div class="text-5xl"><span class="font-af text-7xl">3.27%</span><br>/bulan</div>
+                <div class="text-5xl"><span class="font-lb text-7xl">0.27%</span><br>/bulan</div>
+                <div class="text-5xl"><span class="font-lb text-7xl">3.27%</span><br>/bulan</div>
             </div>
             <div class="grid grid-cols-1 items-center gap-y-4">
                 <div class="flex items-center text-xl">
@@ -282,7 +282,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex items-center content-center justify-center text-mangga-green-300 font-af text-6xl mb-12">
+        <div class="flex items-center content-center justify-center text-mangga-green-300 font-lb text-6xl mb-12">
             <span class="mb-6">Alur</span> <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}"
                 class="w-52 ml-4">
         </div>
@@ -290,31 +290,31 @@
             <div class="flex flex-col text-white text-xl">
                 <div class="flex items-center justify-center py-4 bg-mangga-orange-300">Registrasi</div>
                 <div
-                    class="flex items-center justify-center py-8 border border-mangga-orange-300 text-4xl font-af text-mangga-orange-400">
+                    class="flex items-center justify-center py-8 border border-mangga-orange-300 text-4xl font-lb text-mangga-orange-400">
                     1</div>
             </div>
             <div class="flex flex-col text-white text-xl">
                 <div class="flex items-center justify-center py-4 bg-mangga-green-300">Verifikasi</div>
                 <div
-                    class="flex items-center justify-center py-8 border border-mangga-green-300 text-4xl font-af text-mangga-green-400">
+                    class="flex items-center justify-center py-8 border border-mangga-green-300 text-4xl font-lb text-mangga-green-400">
                     2</div>
             </div>
             <div class="flex flex-col text-white text-xl">
                 <div class="flex items-center justify-center py-4 bg-mangga-orange-300">Penyaluran</div>
                 <div
-                    class="flex items-center justify-center py-8 border border-mangga-orange-300 text-4xl font-af text-mangga-orange-400">
+                    class="flex items-center justify-center py-8 border border-mangga-orange-300 text-4xl font-lb text-mangga-orange-400">
                     3</div>
             </div>
             <div class="flex flex-col text-white text-xl">
                 <div class="flex items-center justify-center py-4 bg-mangga-green-300 text-center">Pembinaan</div>
                 <div
-                    class="flex items-center justify-center py-8 border border-mangga-green-300 text-4xl font-af text-mangga-green-400">
+                    class="flex items-center justify-center py-8 border border-mangga-green-300 text-4xl font-lb text-mangga-green-400">
                     4</div>
             </div>
             <div class="flex flex-col text-white text-xl">
                 <div class="flex items-center justify-center py-4 bg-mangga-orange-300">Monitoring</div>
                 <div
-                    class="flex items-center justify-center py-8 border border-mangga-orange-300 text-4xl font-af text-mangga-orange-400">
+                    class="flex items-center justify-center py-8 border border-mangga-orange-300 text-4xl font-lb text-mangga-orange-400">
                     5</div>
             </div>
         </div>

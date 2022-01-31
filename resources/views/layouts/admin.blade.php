@@ -20,7 +20,7 @@
 
 <body>
     @yield('modals')
-    <div class="bg-light-200 font-os">
+    <div class="bg-light-200 font-pn">
         <div class="grid grid-cols-12">
             <div class="col-span-2 bg-mangga-green-500 text-white relative">
                 <div class="flex flex-col gap-y-4 w-2/12 min-h-screen p-4 fixed">

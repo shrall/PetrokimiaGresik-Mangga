@@ -279,7 +279,7 @@ class UtamaController extends Controller
             'user_npwp' => Auth::user()->npwp,
             'user_spouse' => Auth::user()->spouse,
             'user_birth_date' => Auth::user()->birth_date,
-            'user_birth_place' => Auth::user()->birthplace->name,
+            'user_birth_place' => Auth::user()->birth_place,
             'user_ktp_code' => Auth::user()->ktp_code,
             'user_kk_code' => Auth::user()->kk_code,
             'user_gender' => Auth::user()->gender,

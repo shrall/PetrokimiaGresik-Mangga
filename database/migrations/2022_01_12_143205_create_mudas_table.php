@@ -19,6 +19,8 @@ class CreateMudasTable extends Migration
             $table->integer('member_count');
             $table->string('university');
             $table->string('faculty');
+            $table->string('recommender');
+            $table->string('recommender_position');
             $table->string('business_title');
             $table->text('prospect');
             $table->text('growth_plan');

@@ -1,11 +1,11 @@
 @extends('layouts.home')
 
 @section('content')
-    <div class="text-center text-mangga-green-400 font-af text-4xl pt-24 mb-4 mx-8 md:mx-0">Prosedur menjadi Mitra Binaan
+    <div class="text-center text-mangga-green-400 font-lb text-4xl pt-24 mb-4 mx-8 md:mx-0">Prosedur menjadi Mitra Binaan
     </div>
-    <div class="text-center text-mangga-green-400 font-os text-xl mb-2">sesuai dengan</div>
-    <div class="text-center text-mangga-green-400 font-os text-xl mx-8 md:mx-0">INSTRUKSI KERJA</div>
-    <div class="text-center text-mangga-green-400 font-os text-xl mx-8 md:mx-0 pb-16">MEKANISME MENJADI MB PROGRAM PUMK 2021
+    <div class="text-center text-mangga-green-400 font-pn text-xl mb-2">sesuai dengan</div>
+    <div class="text-center text-mangga-green-400 font-pn text-xl mx-8 md:mx-0">INSTRUKSI KERJA</div>
+    <div class="text-center text-mangga-green-400 font-pn text-xl mx-8 md:mx-0 pb-16">MEKANISME MENJADI MB PROGRAM PUMK 2021
     </div>
     <div class="mx-8 md:mx-24 xl:mx-64 border border-gray-400 px-12 py-16 bg-white mb-12">
         <div class="text-3xl font-bold mb-2">Kriteria UMK yang dapat menjadi mitra binaan BUMN :</div>
@@ -36,7 +36,7 @@
         </ol>
     </div>
     <img src="{{ asset('assets/svg/asset-prosedur-1.svg') }}" class="w-screen">
-    <div class="text-center text-mangga-green-400 font-af text-4xl pt-24 mb-24">Prosedur menjadi Mitra Binaan</div>
+    <div class="text-center text-mangga-green-400 font-lb text-4xl pt-24 mb-24">Prosedur menjadi Mitra Binaan</div>
     <div class="hidden md:block">
         <div
             class="grid grid-cols-12 items-center justify center mx-20 xl:mx-52 bg-prosedur-2 bg-contain bg-no-repeat bg-right h-vh-80 ">

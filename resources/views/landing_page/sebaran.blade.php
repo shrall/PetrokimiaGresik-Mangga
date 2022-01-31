@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="flex flex-col gap-y-4 py-4 px-8">
-        <div class="text-6xl font-af text-mangga-green-400 mb-8">Sebaran Mangga</div>
+        <div class="text-6xl font-lb text-mangga-green-400 mb-8">Sebaran Mangga</div>
         <div class="grid grid-cols-12 gap-y-4 md:gap-y-0 md:gap-12">
-            <div class="col-span-12 md:col-span-3 flex items-end justify-center text-5xl font-af text-mangga-green-400">Jawa Timur</div>
+            <div class="col-span-12 md:col-span-3 flex items-end justify-center text-5xl font-lb text-mangga-green-400">Jawa Timur</div>
             <div class="col-span-12 md:col-span-9 row">
                 <div class="col-12 p-0">
                     <div id="chart-east" class="h-vh-30 md:h-vh-50"></div>
@@ -37,7 +37,7 @@
                     <div>Lorem Ipsum</div>
                 </div>
             </div>
-            <div class="col-span-12 md:col-span-3 flex md:hidden items-end justify-center text-5xl font-af text-mangga-green-400">Jawa Tengah</div>
+            <div class="col-span-12 md:col-span-3 flex md:hidden items-end justify-center text-5xl font-lb text-mangga-green-400">Jawa Tengah</div>
             <div class="col-span-12 md:col-span-9 row">
                 <div class="col-12 p-0">
                     <div id="chart-central" class="h-vh-30 md:h-vh-50"></div>
@@ -76,7 +76,7 @@
                     Mangga, Provinsi Jateng terdapat <span class="font-bold">131</span> Mangga dan Pada Provinsi D.I.Y
                     terdapat <span class="font-bold">3</span> Mangga
                 </div>
-                <div class="text-5xl font-af text-mangga-green-400 mt-auto hidden md:block">
+                <div class="text-5xl font-lb text-mangga-green-400 mt-auto hidden md:block">
                     Jawa Tengah
                 </div>
             </div>

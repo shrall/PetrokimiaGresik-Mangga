@@ -1,5 +1,5 @@
 {{-- desktop --}}
-<div class="items-center gap-x-4 font-os px-8 py-4 bg-light-200 text-lg hidden xl:grid grid-cols-12" id="navbar-desktop">
+<div class="items-center gap-x-4 font-pn px-8 py-4 bg-light-200 text-lg hidden xl:grid grid-cols-12" id="navbar-desktop">
     <a href="{{ route('mangga_muda.home') }}" class="col-span-3">
         <img src="{{ asset('assets/svg/mangga-logo-mini.svg') }}" width="30px">
     </a>
@@ -47,8 +47,8 @@
     @endauth
 </div>
 {{-- mobile --}}
-<div class="font-os px-8 py-4 bg-light-200 text-lg block xl:hidden" id="navbar-mobile">
-    <div class="flex items-center gap-x-4 font-os text-lg mb-4">
+<div class="font-pn px-8 py-4 bg-light-200 text-lg block xl:hidden" id="navbar-mobile">
+    <div class="flex items-center gap-x-4 font-pn text-lg mb-4">
         <a href="{{ route('mangga_muda.home') }}" class="mr-auto">
         <img src="{{ asset('assets/svg/mangga-logo-mini.svg') }}" width="40px">
         </a>

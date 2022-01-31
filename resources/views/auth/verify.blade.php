@@ -20,8 +20,8 @@
 </head>
 
 <body>
-    <div class="bg-light-200 font-os w-screen h-screen flex flex-col items-center justify-center gap-y-2">
-        <div class="text-5xl text-center font-af text-mangga-green-400 mb-12">Terima kasih telah mendaftar di Mangga!
+    <div class="bg-light-200 font-pn w-screen h-screen flex flex-col items-center justify-center gap-y-2">
+        <div class="text-5xl text-center font-lb text-mangga-green-400 mb-12">Terima kasih telah mendaftar di Mangga!
         </div>
         <img src="{{ asset('assets/svg/verifikasi-email.svg') }}" alt="" srcset="">
         <div class="text-3xl">Cek email yang baru saja didaftarkan untuk menyelesaikan proses verifikasi.</div>

@@ -49,7 +49,7 @@ class UserResource extends JsonResource
             "rw" => $this->rw,
             "postal_code" => $this->postal_code,
             "birth_date" => $this->birth_date,
-            "birth_place" => $this->birthplace->name,
+            "birth_place" => $this->birth_place,
         ];
     }
 }
