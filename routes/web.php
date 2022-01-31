@@ -42,7 +42,9 @@ Route::get('/mangga-muda/login', [PageController::class, 'mangga_muda_login'])->
 Route::get('/mangga-muda/home', [PageController::class, 'mangga_muda_home'])->name('mangga_muda.home');
 Route::get('/info', [PageController::class, 'info'])->name('info');
 Route::get('/prosedur', [PageController::class, 'prosedur'])->name('prosedur');
-Route::resource('media', MediaController::class);
+Route::get('/media', [MediaController::class, 'index'])->name('media.index');
+Route::get('/media/{media}', [MediaController::class, 'show'])->name('media.show');
+Route::post('media/fetch_data', [MediaController::class, 'fetch_data'])->name('media.fetchdata');
 Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 Route::get('/toko-mangga', [PageController::class, 'toko_mangga'])->name('toko_mangga');
 Route::group(['as' => 'profil.'], function () {

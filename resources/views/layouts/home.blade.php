@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    @yield('modals')
     @include('inc.navbar')
     <div class="bg-light-200 font-pn">
         @yield('content')

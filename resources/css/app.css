@@ -81,3 +81,10 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+ol{
+    @apply list-decimal;
+}
+ul{
+    @apply list-disc;
+}

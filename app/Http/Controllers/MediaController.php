@@ -14,7 +14,8 @@ class MediaController extends Controller
      */
     public function index()
     {
-        return view('landing_page.media.index');
+        $medias = Media::where('type_id', 1)->orderBy('created_at', 'desc')->paginate(5);
+        return view('landing_page.media.index', compact('medias'));
     }
 
     /**
@@ -46,7 +47,7 @@ class MediaController extends Controller
      */
     public function show(Media $media)
     {
-        //
+        return view('landing_page.media.show', compact('media'));
     }
 
     /**
@@ -81,5 +82,11 @@ class MediaController extends Controller
     public function destroy(Media $media)
     {
         //
+    }
+
+    function fetch_data(Request $request)
+    {
+        $medias = Media::where('type_id', $request->data)->orderBy('created_at', 'desc')->paginate(5);
+        return view('landing_page.inc.media', compact('medias'))->render();
     }
 }
