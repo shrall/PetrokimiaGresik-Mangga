@@ -145,14 +145,11 @@
     </div>
     <div class="px-16 py-14"
         style="height: 1220px; padding-bottom: 10rem; margin-bottom: 4rem; border-bottom: solid 4px #009345;">
-        <table style="width: 100%;">
+        <table style="width: 100%; padding-bottom: 12rem;">
             <tr>
-                <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="height: 6rem;">
-                    <img src="{{ asset('assets/img/mangga-muda.png') }}" style="height: 6rem;">
-                </td>
-                <td>
-                    <div style="padding-top: 20px; padding-bottom: 20px; border-radius: 50%; border: solid 2px #009345; color:#009345;"
-                        class="text-center text-4xl font-lb">01</div>
+                <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 16rem;"></td>
+                <td style="text-align: end;"><img src="{{ asset('assets/img/mangga-muda.png') }}"
+                        style="width: 16rem;">
                 </td>
             </tr>
         </table>
