@@ -7,7 +7,7 @@
             @include('inc.user_sidebar')
         </div>
         <div class="col-span-12 xl:col-span-9">
-            <form action="{{ route('user.update', 1) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('user.update', Auth::id()) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="grid grid-cols-12 gap-x-4 card px-6 py-8">

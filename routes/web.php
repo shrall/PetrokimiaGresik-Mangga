@@ -31,7 +31,7 @@ Route::get('/template', function () {
     return new TemplateMail();
 });
 
-Route::get('/proposal', function(){
+Route::get('/proposal', function () {
     return view('proposal');
 });
 Route::get('/proposal/download', [PageController::class, 'checkPDF']);
@@ -61,7 +61,7 @@ Route::group(['as' => 'profil.'], function () {
 });
 
 
-Route::group(['middleware' => ['user'], 'as' => 'user.'], function () {
+Route::group(['middleware' => ['user', 'verified'], 'as' => 'user.'], function () {
     Route::get('/change-password', [UserController::class, 'change_password'])->name('change_password');
     Route::post('/update-password', [UserController::class, 'update_password'])->name('update_password');
 
@@ -87,7 +87,7 @@ Route::group(['middleware' => ['user'], 'as' => 'user.'], function () {
     Route::get('/utama/{utama}/download', [UtamaController::class, 'download'])->name('utama.download');
 });
 
-Route::group(['middleware' => ['user']], function () {
+Route::group(['middleware' => ['user', 'verified']], function () {
     Route::resource('user', UserController::class);
 });
 

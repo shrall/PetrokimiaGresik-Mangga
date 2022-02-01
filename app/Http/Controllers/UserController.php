@@ -154,8 +154,8 @@ class UserController extends Controller
             $user->update([
                 'password' => Hash::make($data['new_password']),
             ]);
-            return redirect()->route('user.changepassword')->with('Success', 'Password Updated!');
+            return redirect()->route('user.change_password')->with('Message', 'Password Updated!');
         }
-        return redirect()->route('user.changepassword')->with('Error', 'Wrong Password.');
+        return redirect()->route('user.change_password')->with('Message', 'Wrong Password.');
     }
 }
