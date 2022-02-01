@@ -26,7 +26,7 @@
                     </div>
                     @if (Auth::user()->referral_code != 'mamud')
                         <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                            <div class="rounded-full {{Auth::user()->businesses[0]->status == 1 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} @endif p-4">
+                            <div class="rounded-full {{Auth::user()->businesses[0]->status == 1 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
                                 <span class="fa fa-fw fa-user-check text-white text-xl"></span>
                             </div>
                             <div
@@ -40,7 +40,7 @@
                             <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                         </div>
                         <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                            <div class="rounded-full {{Auth::user()->businesses[0]->status == 2 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} @endif p-4">
+                            <div class="rounded-full {{Auth::user()->businesses[0]->status == 2 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
                                 <span class="fa fa-fw fa-signature text-white text-xl"></span>
                             </div>
                             <div
@@ -50,7 +50,7 @@
                         </div>
                     @else
                         <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                            <div class="rounded-full {{Auth::user()->businesses[0]->status == 2 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} @endif p-4">
+                            <div class="rounded-full {{Auth::user()->businesses[0]->status == 2 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
                                 <span class="fa fa-fw fa-user-check text-white text-xl"></span>
                             </div>
                             <div
@@ -68,7 +68,7 @@
                                 <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                             </div>
                             <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                                <div class="rounded-full {{Auth::user()->businesses[0]->status == 3 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} @endif p-4">
+                                <div class="rounded-full {{Auth::user()->businesses[0]->status == 3 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
                                     <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
                                 </div>
                                 <div
@@ -82,7 +82,7 @@
                                 <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                             </div>
                             <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                                <div class="rounded-full {{Auth::user()->businesses[0]->status == 4 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} @endif p-4">
+                                <div class="rounded-full {{Auth::user()->businesses[0]->status == 4 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
                                     <span class="fa fa-fw fa-check-double text-white text-xl"></span>
                                 </div>
                                 <div
@@ -97,7 +97,7 @@
                                 <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                             </div>
                             <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                                <div class="rounded-full {{Auth::user()->businesses[0]->status == 3 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} @endif p-4">
+                                <div class="rounded-full {{Auth::user()->businesses[0]->status == 3 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
                                     <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
                                 </div>
                                 <div
@@ -111,7 +111,7 @@
                                 <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                             </div>
                             <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                                <div class="rounded-full {{Auth::user()->businesses[0]->status == 4 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} @endif p-4">
+                                <div class="rounded-full {{Auth::user()->businesses[0]->status == 4 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
                                     <span class="fa fa-fw fa-print text-white text-xl"></span>
                                 </div>
                                 <div

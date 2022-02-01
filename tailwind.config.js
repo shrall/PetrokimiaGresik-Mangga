@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "home-1": "url('/assets/img/asset-home-1.png')",
+        "landing-page-1": "url('/assets/svg/asset-landing-page-1.svg')",
         "prosedur-2": "url('/assets/img/asset-prosedur-2.png')",
         "prosedur-3": "url('/assets/img/asset-prosedur-3.png')",
         "prosedur-4": "url('/assets/img/asset-prosedur-4.png')",
@@ -18,6 +19,7 @@ module.exports = {
         "mangga-muda-5": "url('/assets/img/landing-mangga-muda-5.png')",
         "sign-in": "url('/assets/svg/sign-in.svg')",
         "sign-up": "url('/assets/svg/sign-up.svg')",
+        "proposal-utama": "url('/assets/svg/proposal-utama.svg')",
       },
       fontFamily: {
         "af": ['"Abril Fatface"'],

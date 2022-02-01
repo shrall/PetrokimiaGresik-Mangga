@@ -479,7 +479,7 @@
                     placeholder="Nomor Surat Nikah">
                 <div class="font-bold mb-2">Tanggal Menikah</div>
                 <input type="date" name="companion_wedding_date" class="form-pengajuan-input">
-                <input type="number" name="companion_ktp_code" class="form-pengajuan-input" placeholder="Nomor KTP">
+                <input type="number" name="companion_ktp_code" class="form-pengajuan-input" placeholder="Nomor KTP" minlength="16" maxlength="16">
                 <input type="number" name="companion_telephone" class="form-pengajuan-input" placeholder="Nomor Telepon">
                 <input type="number" name="companion_handphone" class="form-pengajuan-input" placeholder="Nomor HP">
             </div>

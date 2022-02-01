@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="hidden xl:block">
-        <div class="grid grid-cols-12 content-center h-vh-90 bg-home-1 bg-left bg-contain bg-no-repeat px-16 font-pn mb-12">
+        <div class="grid grid-cols-12 content-center h-vh-90 bg-landing-page-1 bg-left bg-contain bg-no-repeat px-16 font-pn mb-12">
             <div class="col-span-7"></div>
             <div class="col-span-5">
                 <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}">
@@ -111,7 +111,7 @@
     </div>
     <div class="hidden md:block xl:hidden">
         <div class="grid grid-cols-12 content-center px-16 font-pn mb-12">
-            <div class="col-span-7 bg-home-1 bg-left bg-contain bg-no-repeat h-vh-40"></div>
+            <div class="col-span-7 bg-landing-page-1 bg-left bg-contain bg-no-repeat h-vh-40"></div>
             <div class="col-span-5 flex flex-col justify-center">
                 <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}">
                 <div class="text-sm mb-2">Jadilah bagian dari <span class="text-mangga-green-400">Mitra Kebanggaan</span>
@@ -221,7 +221,7 @@
     </div>
     <div class="sm:block md:hidden xl:hidden">
         <div class="flex flex-col items-center justify-center px-4 font-pn mb-12">
-            <div class="w-full h-vh-40 bg-home-1 bg-center bg-contain bg-no-repeat"></div>
+            <div class="w-full h-vh-40 bg-landing-page-1 bg-center bg-contain bg-no-repeat"></div>
             <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}">
             <div class="text-lg font-semibold mb-2">Jadilah bagian dari <span class="text-mangga-green-400">Mitra
                     Kebanggaan</span>

@@ -3,7 +3,7 @@
         <div class="">
             <input type="text" name="member_name[{{ $i }}]" class="form-pengajuan-input"
                 placeholder="Nama Anggota*" required>
-            <input type="number" name="member_ktp_code[{{ $i }}]" class="form-pengajuan-input"
+            <input type="number" name="member_ktp_code[{{ $i }}]" class="form-pengajuan-input" minlength="16" maxlength="16"
                 placeholder="No. KTP*" required>
             <input type="number" name="member_phone[{{ $i }}]" class="form-pengajuan-input"
                 placeholder="No. Telepon*" required>

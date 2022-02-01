@@ -81,7 +81,7 @@
 </head>
 
 <body class="" style="font-family: Arial;">
-    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
+    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 24rem;">
         <table style="width: 100%;" class="mb-4">
             <tr>
                 <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 16rem;"></td>
@@ -116,11 +116,11 @@
                 </tr>
                 <tr>
                     <td>Tahap</td>
-                    <td>: ?????</td>
+                    <td>: Pengajuan</td>
                 </tr>
                 <tr>
                     <td>Paraf</td>
-                    <td>: ???????</td>
+                    <td>: PT Petrokimia Gresik</td>
                 </tr>
             </table>
             <table style="font-size: 1.25rem; margin-bottom: 4rem;" class="font-bold">
@@ -194,12 +194,12 @@
             </table>
         </div>
     </div>
-    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
+    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 24rem;">
         <div style="height: 2rem;"></div>
         <table style="width: 100%;" class="mb-4">
             <tr>
                 <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 12rem;"></td>
-                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK(USAHA MIKRO & KECIL)</td>
+                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK<br>(USAHA MIKRO & KECIL)</td>
                 <td style="text-align: end;"><img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}"
                         style="width: 12rem;"></td>
             </tr>
@@ -336,12 +336,12 @@
             </tr>
         </table>
     </div>
-    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
+    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 24rem;">
         <div style="height: 2rem;"></div>
         <table style="width: 100%;" class="mb-4">
             <tr>
                 <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 12rem;"></td>
-                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK(USAHA MIKRO & KECIL)</td>
+                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK<br>(USAHA MIKRO & KECIL)</td>
                 <td style="text-align: end;"><img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}"
                         style="width: 12rem;"></td>
             </tr>
@@ -448,12 +448,12 @@
             </tr>
         </table>
     </div>
-    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
+    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 24rem;">
         <div style="height: 2rem;"></div>
         <table style="width: 100%;" class="mb-4">
             <tr>
                 <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 12rem;"></td>
-                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK(USAHA MIKRO & KECIL)</td>
+                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK<br>(USAHA MIKRO & KECIL)</td>
                 <td style="text-align: end;"><img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}"
                         style="width: 12rem;"></td>
             </tr>
@@ -521,12 +521,12 @@
             Nama Terang & Tanda Tangan
         </div>
     </div>
-    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
+    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 24rem;">
         <div style="height: 2rem;"></div>
         <table style="width: 100%;" class="mb-4">
             <tr>
                 <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 12rem;"></td>
-                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK(USAHA MIKRO & KECIL)</td>
+                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK<br>(USAHA MIKRO & KECIL)</td>
                 <td style="text-align: end;"><img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}"
                         style="width: 12rem;"></td>
             </tr>
@@ -535,7 +535,7 @@
             Tinggal</div>
         <div class="text-center mb-4" style="height: 40%;">
             <img src="{{ asset('uploads/mangga/establishment_picture/' . $utama->establishment_picture) }}"
-                style="height: 100%;">
+                style="height: 100%; max-width: 50rem;">
         </div>
         <div class="font-bold text-center" style="font-size: 1.25rem;" class="mb-4">Foto Komoditas / Produk
         </div>
@@ -544,12 +544,12 @@
                 style="height: 100%;">
         </div>
     </div>
-    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
+    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 24rem;">
         <div style="height: 2rem;"></div>
         <table style="width: 100%;" class="mb-4">
             <tr>
                 <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 12rem;"></td>
-                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK(USAHA MIKRO & KECIL)</td>
+                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK<br>(USAHA MIKRO & KECIL)</td>
                 <td style="text-align: end;"><img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}"
                         style="width: 12rem;"></td>
             </tr>
@@ -568,12 +568,12 @@
             @endif
         </div>
     </div>
-    {{-- <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
+    {{-- <div class="px-16 py-14" style="height: 1220px; margin-bottom: 24rem;">
         <div style="height: 2rem;"></div>
         <table style="width: 100%;" class="mb-4">
             <tr>
                 <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 12rem;"></td>
-                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK(USAHA MIKRO & KECIL)</td>
+                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK<br>(USAHA MIKRO & KECIL)</td>
                 <td style="text-align: end;"><img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}"
                         style="width: 12rem;"></td>
             </tr>
@@ -662,12 +662,12 @@
             <div>Dapat menggunakan form dari Desa / Kelurahan setempat</div>
         </div>
     </div> --}}
-    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
+    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 24rem;">
         <div style="height: 2rem;"></div>
         <table style="width: 100%;" class="mb-4">
             <tr>
                 <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 12rem;"></td>
-                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK(USAHA MIKRO & KECIL)</td>
+                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK<br>(USAHA MIKRO & KECIL)</td>
                 <td style="text-align: end;"><img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}"
                         style="width: 12rem;"></td>
             </tr>
@@ -732,12 +732,12 @@
             Ketua Kelompok/Pengusaha Kecil
         </div>
     </div>
-    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 12rem;">
+    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 24rem;">
         <div style="height: 2rem;"></div>
         <table style="width: 100%;" class="mb-4">
             <tr>
                 <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 12rem;"></td>
-                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK(USAHA MIKRO & KECIL)</td>
+                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK<br>(USAHA MIKRO & KECIL)</td>
                 <td style="text-align: end;"><img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}"
                         style="width: 12rem;"></td>
             </tr>
@@ -790,7 +790,7 @@
         <table style="width: 100%;" class="mb-4">
             <tr>
                 <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 12rem;"></td>
-                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK(USAHA MIKRO & KECIL)</td>
+                <td class="text-2xl font-bold text-center">PROPOSAL PROGRAM PENDANAAN UMK<br>(USAHA MIKRO & KECIL)</td>
                 <td style="text-align: end;"><img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}"
                         style="width: 12rem;"></td>
             </tr>

@@ -24,7 +24,7 @@ class CreateMudasTable extends Migration
             $table->string('business_title');
             $table->text('prospect');
             $table->text('growth_plan');
-            $table->integer('target');
+            $table->bigInteger('target');
             $table->text('needs');
             $table->text('utilization_plan');
             $table->text('return_plan');

@@ -19,10 +19,10 @@
                             Tempat Lahir. Anda juga bisa mengubah informasi personal Anda dengan menekan
                             tombol “Ubah Profile”</div>
                         <label class="text-gray-400">No. KTP</label>
-                        <input name="ktp_code" type="number" class="form-input bg-white mb-4" required max="16" min="16"
+                        <input name="ktp_code" type="number" class="form-input bg-white mb-4" required maxlength="16" minlength="16"
                             value="{{ Auth::user()->ktp_code }}">
                         <label class="text-gray-400">No. KK</label>
-                        <input name="kk_code" type="number" class="form-input bg-white mb-4" required max="16" min="16"
+                        <input name="kk_code" type="number" class="form-input bg-white mb-4" required maxlength="16" minlength="16"
                             value="{{ Auth::user()->kk_code }}">
                         <label class="text-gray-400 self-start">Agama</label>
                         <select name="religion" class="form-input mb-4" required>
