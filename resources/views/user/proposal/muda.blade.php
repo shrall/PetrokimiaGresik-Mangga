@@ -145,7 +145,7 @@
     </div>
     <div class="px-16 py-14"
         style="height: 1220px; padding-bottom: 10rem; margin-bottom: 4rem; border-bottom: solid 4px #009345;">
-        <table style="width: 100%; padding-bottom: 12rem;">
+        <table style="width: 100%;">
             <tr>
                 <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 16rem;"></td>
                 <td style="text-align: end;"><img src="{{ asset('assets/img/mangga-muda.png') }}"
