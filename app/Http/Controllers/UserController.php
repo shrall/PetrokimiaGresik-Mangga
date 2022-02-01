@@ -156,6 +156,6 @@ class UserController extends Controller
             ]);
             return redirect()->route('user.change_password')->with('Message', 'Password Updated!');
         }
-        return redirect()->route('user.change_password')->with('Message', 'Wrong Password.');
+        return redirect()->route('user.change_password')->with('Message', 'Password Salah.');
     }
 }
