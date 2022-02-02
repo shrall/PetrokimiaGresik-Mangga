@@ -30,27 +30,27 @@
     class="bg-mangga-green-400 flex flex-col items-center justify-center px-12 pt-12 pb-4 font-pn text-white md:hidden">
     <img src="{{ asset('assets/svg/mangga-logo-white.svg') }}" class="w-full mb-12">
     <div class="text-2xl font-semibold mb-2">Alamat</div>
-    <ul class="text-md text-center mb-4">
+    <ul class="list-none text-md text-center mb-4">
         <li>Kantor Departemen CSR</li>
         <li>Gedung Graha Petrokimia Gresik</li>
         <li>Jl. Jenderal Ahmad Yani - Gresik 61119</li>
     </ul>
     <div class="text-2xl font-semibold my-2">SMS/Whatsapp</div>
-    <ul class="text-md text-center mb-4">
+    <ul class="list-none text-md text-center mb-4">
         <li>081366994994</li>
     </ul>
     <div class="text-2xl font-bold my-2">E-Mail</div>
-    <ul class="text-md text-center mb-4">
+    <ul class="list-none text-md text-center mb-4">
         <li>manggacspetrokimia@gmail.com</li>
     </ul>
     <div class="text-xl font-semibold mb-2">Quick Link</div>
-    <ul class="text-md text-center mb-4">
+    <ul class="list-none text-md text-center mb-4">
         <li><a href="{{ route('profil.tentang') }}">Tentang Kami</a></li>
         <li><a href="{{ route('faq') }}">Bantuan</a></li>
         <li><a href="#">Kebijakan Privasi</a></li>
     </ul>
     <div class="text-xl font-semibold mb-2">Social Media</div>
-    <ul class="text-md text-center mb-4">
+    <ul class="list-none text-md text-center mb-4">
         <li><a href="https://www.instagram.com/mangga_petrokimiagresik/">Instagram</a></li>
         <li><a href="https://vt.tiktok.com/ZSeqbcF46/">Tiktok</a></li>
         <li><a href="#">Youtube</a></li>
