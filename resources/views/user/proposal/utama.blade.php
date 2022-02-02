@@ -541,7 +541,7 @@
         </div>
         <div class="text-center mb-4" style="height: 40%; ">
             <img src="{{ asset('uploads/mangga/product_picture/' . $utama->product_picture) }}"
-                style="height: 100%;">
+                style="height: 100%; max-width: 50rem;">
         </div>
     </div>
     <div class="px-16 py-14" style="height: 1220px; margin-bottom: 24rem;">
@@ -558,13 +558,13 @@
         <div class="text-center mb-4" style="height: 40%;">
             @if ($utama->business_sketch)
                 <img src="{{ asset('uploads/mangga/business_sketch/' . $utama->business_sketch) }}"
-                    style="height: 100%;">
+                    style="height: 100%; max-width: 50rem;">
             @endif
         </div>
         <div class="font-bold text-center" style="font-size: 1.25rem;" class="mb-4">Denah Tempat Tinggal</div>
         <div class="text-center mb-4" style="height: 40%; ">
             @if ($utama->house_sketch)
-                <img src="{{ asset('uploads/mangga/house_sketch/' . $utama->house_sketch) }}" style="height: 100%;">
+                <img src="{{ asset('uploads/mangga/house_sketch/' . $utama->house_sketch) }}" style="height: 100%; max-width: 50rem;">
             @endif
         </div>
     </div>
