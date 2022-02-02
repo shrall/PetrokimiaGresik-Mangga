@@ -17,16 +17,16 @@
                 <input type="text" name="name" class="form-pengajuan-input mb-8" placeholder="Nama Ketua">
                 <input type="email" name="email" class="form-pengajuan-input mb-8" placeholder="E-Mail Ketua">
                 <input type="number" name="handphone" class="form-pengajuan-input mb-8" placeholder="Nomor HP Ketua">
-                <select name="province" class="form-input mb-8" id="province">
+                <select name="province" class="form-pengajuan-input mb-8" id="province">
                     @foreach ($provinces as $province)
                         <option value={{ $province->id }}>{{ $province->name }}</option>
                     @endforeach
                 </select>
-                <select name="city" class="form-input mb-8" id="city">
+                <select name="city" class="form-pengajuan-input mb-8" id="city">
                 </select>
-                <select name="district" class="form-input mb-8" id="district">
+                <select name="district" class="form-pengajuan-input mb-8" id="district">
                 </select>
-                <select name="village" class="form-input mb-8" id="village">
+                <select name="village" class="form-pengajuan-input mb-8" id="village">
                 </select>
                 <input type="password" name="password" class="form-pengajuan-input mb-12" placeholder="Password">
                 <input type="password" name="password_confirmation" class="form-pengajuan-input mb-12"

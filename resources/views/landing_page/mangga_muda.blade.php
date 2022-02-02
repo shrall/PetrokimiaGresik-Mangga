@@ -65,12 +65,31 @@
             </div>
             <div class="text-4xl text-center font-lb text-mangga-green-400">Tertarik? Daftar Sekarang.</div>
             <div class="flex flex-col md:flex-row items-center gap-x-4">
-                <a href="{{ route('mangga_muda.register') }}"
-                    class="bg-mangga-green-300 text-white hover:bg-mangga-green-400 rounded-md text-center p-4 w-72 md:w-128 mx-auto mb-4 text-xl cursor-pointer">Daftar
-                    Mangga Agrosociopreneur</a>
-                <a href="{{ route('mangga_muda.register') }}"
-                    class="bg-mangga-green-300 text-white hover:bg-mangga-green-400 rounded-md text-center p-4 w-72 md:w-128 mx-auto mb-4 text-xl cursor-pointer">Daftar
-                    Mangga Creativesociopreneur</a>
+                @guest
+                    <a href="{{ route('mangga_muda.register') }}"
+                        class="bg-mangga-green-300 text-white hover:bg-mangga-green-400 rounded-md text-center p-4 w-72 md:w-128 mx-auto mb-4 text-xl cursor-pointer">Daftar
+                        Mangga Agrosociopreneur</a>
+                    <a href="{{ route('mangga_muda.register') }}"
+                        class="bg-mangga-green-300 text-white hover:bg-mangga-green-400 rounded-md text-center p-4 w-72 md:w-128 mx-auto mb-4 text-xl cursor-pointer">Daftar
+                        Mangga Creativesociopreneur</a>
+                @endguest
+                @auth
+                    @if (Auth::user()->referral_code == 'mamud')
+                        <a href="{{ route('user.form_mangga_muda') }}"
+                            class="bg-mangga-green-300 text-white hover:bg-mangga-green-400 rounded-md text-center p-4 w-72 md:w-128 mx-auto mb-4 text-xl cursor-pointer">Daftar
+                            Mangga Agrosociopreneur</a>
+                        <a href="{{ route('user.form_mangga_muda') }}"
+                            class="bg-mangga-green-300 text-white hover:bg-mangga-green-400 rounded-md text-center p-4 w-72 md:w-128 mx-auto mb-4 text-xl cursor-pointer">Daftar
+                            Mangga Creativesociopreneur</a>
+                    @else
+                        <a onclick="alert('Logout dan register di website Mangga Muda untuk mengajukan Program Mangga Muda');"
+                            class="bg-mangga-green-300 text-white hover:bg-mangga-green-400 rounded-md text-center p-4 w-72 md:w-128 mx-auto mb-4 text-xl cursor-pointer">Daftar
+                            Mangga Agrosociopreneur</a>
+                        <a onclick="alert('Logout dan register di website Mangga Muda untuk mengajukan Program Mangga Muda');"
+                            class="bg-mangga-green-300 text-white hover:bg-mangga-green-400 rounded-md text-center p-4 w-72 md:w-128 mx-auto mb-4 text-xl cursor-pointer">Daftar
+                            Mangga Creativesociopreneur</a>
+                    @endif
+                @endauth
             </div>
         </div>
     </div>
