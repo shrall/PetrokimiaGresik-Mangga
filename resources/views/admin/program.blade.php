@@ -81,6 +81,41 @@
             </a>
         </div>
     </div>
+    <hr>
+    <div class="grid grid-cols-2 gap-x-4 gap-y-2 mb-4">
+        <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
+            <div class="grid grid-cols-4 items-center p-4">
+                <span class="fa fa-fw fa-user text-3xl"></span>
+                <div class="flex flex-col items-start col-span-2">
+                    <div class="text-4xl text-mangga-green-500 font-bold">
+                        PM CCM
+                    </div>
+                    {{ $people->pm_ccm }}
+                </div>
+                <div class="flex items-center justify-center">
+                    <a href="{{ route('admin.people.pmccm') }}" class="mangga-button-green cursor-pointer">
+                        <span class="fa fa-fw fa-edit"></span>Edit
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
+            <div class="grid grid-cols-4 items-center p-4">
+                <span class="fa fa-fw fa-user text-3xl"></span>
+                <div class="flex flex-col items-start col-span-2">
+                    <div class="text-4xl text-mangga-green-500 font-bold">
+                        VP CSR
+                    </div>
+                    {{ $people->vp }}
+                </div>
+                <div class="flex items-center justify-center">
+                    <a href="{{ route('admin.people.vp') }}" class="mangga-button-green cursor-pointer">
+                        <span class="fa fa-fw fa-edit"></span>Edit
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="card bg-white px-8 py-6">
         <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
             <thead>

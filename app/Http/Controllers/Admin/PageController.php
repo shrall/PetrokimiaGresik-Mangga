@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Business;
 use App\Models\Muda;
+use App\Models\People;
 use App\Models\User;
 use App\Models\Utama;
 use Illuminate\Http\Request;
@@ -19,8 +20,9 @@ class PageController extends Controller
     }
     public function program()
     {
+        $people = People::first();
         $businesses = Business::all();
-        return view('admin.program', compact('businesses'));
+        return view('admin.program', compact('businesses', 'people'));
     }
     public function mangga_muda(Business $business)
     {

@@ -7,6 +7,7 @@ use App\Models\BusinessAsset;
 use App\Models\BusinessCommodity;
 use App\Models\BusinessPlan;
 use App\Models\BusinessProduct;
+use App\Models\People;
 use App\Models\Utama;
 use App\Models\UtamaMember;
 use Carbon\Carbon;
@@ -500,11 +501,13 @@ class UtamaController extends Controller
 
     public function preview(Utama $utama)
     {
-        return view('user.proposal.utama', compact('utama'));
+        $people = People::first();
+        return view('user.proposal.utama', compact('utama', 'people'));
     }
     public function download(Utama $utama)
     {
-        $pdf = PDF::loadview('user.proposal.utama', compact('utama'))->setOption('margin-bottom', '0mm')
+        $people = People::first();
+        $pdf = PDF::loadview('user.proposal.utama', compact('utama', 'people'))->setOption('margin-bottom', '0mm')
             ->setOption('margin-top', '0mm')
             ->setOption('margin-right', '0mm')
             ->setOption('margin-left', '0mm')

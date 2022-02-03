@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="hidden xl:block">
-        <div class="grid grid-cols-12 content-center h-vh-90 bg-landing-page-1 bg-left bg-contain bg-no-repeat px-16 font-pn mb-12">
+        <div
+            class="grid grid-cols-12 content-center h-vh-90 bg-landing-page-1 bg-left bg-contain bg-no-repeat px-16 font-pn mb-12">
             <div class="col-span-7"></div>
             <div class="col-span-5">
                 <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}">
@@ -123,14 +124,12 @@
         <div class="text-6xl text-center font-lb text-mangga-green-400 mb-12">Program Mangga</div>
         <div class="grid grid-cols-12 items-center pl-16 pr-28 py-8 font-pn">
             <div class="col-span-3">
-                <img src="{{ asset('assets/img/mangga-gadung.png') }}" alt="" srcset="">
+                <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}" alt="" srcset="">
             </div>
             <div class="col-span-9">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's
-                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-                make
-                a type specimen book.
+                Program Pendanaan Usaha Mikro Kecil yang bertujuan untuk meningkatkan
+                Kemampuan dan mengembangkan usaha mikro kecil agar menjadi tangguh serta mandiri dengan strategi
+                Pendampingan dan pembinaan.
             </div>
         </div>
         <div class="grid grid-cols-12 items-center pl-28 pr-16 py-8 font-pn bg-mangga-green-400">
@@ -142,7 +141,7 @@
                 a type specimen book.
             </div>
             <div class="col-span-3">
-                <img src="{{ asset('assets/img/mangga-makmur.png') }}" alt="" srcset="">
+                <img src="{{ asset('assets/svg/mangga-muda.svg') }}" alt="" srcset="">
             </div>
         </div>
         <div class="grid grid-cols-12 items-center pl-16 pr-28 py-8 font-pn">
@@ -233,11 +232,9 @@
         <div class="flex flex-col items-center p-8 font-pn">
             <img src="{{ asset('assets/img/mangga-gadung.png') }}" alt="" srcset="">
             <div class="text-xl text-center">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's
-                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-                make
-                a type specimen book.
+                Program Pendanaan Usaha Mikro Kecil yang bertujuan untuk meningkatkan
+                Kemampuan dan mengembangkan usaha mikro kecil agar menjadi tangguh serta mandiri dengan strategi
+                Pendampingan dan pembinaan.
             </div>
         </div>
         <div class="flex flex-col items-center p-8 font-pn bg-mangga-green-400">

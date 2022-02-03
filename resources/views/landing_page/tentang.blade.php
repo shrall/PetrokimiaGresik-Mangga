@@ -8,8 +8,7 @@
             <div class="border border-gray-400 px-12 py-8 bg-white mb-4">
                 <div class="text-3xl font-bold mb-2 text-mangga-green-300">PUMK :</div>
                 <div class="text-lg">Program Pendanaan Usaha Mikro Kecil yang bertujuan untuk meningkatkan
-                    Kemampuan dan
-                    mengembangkan usaha mikro kecil agar menjadi tangguh serta mandiri dengan strategi
+                    Kemampuan dan mengembangkan usaha mikro kecil agar menjadi tangguh serta mandiri dengan strategi
                     Pendampingan dan pembinaan.</div>
             </div>
             <div class="text-lg">Dalam strategi tersebut, CSR Petrokimia Gresik menciptakan inovasi program yang

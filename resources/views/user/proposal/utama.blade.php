@@ -862,12 +862,12 @@
                 <td width="33%" style="text-align: center;">
                     <br>
                     PM CCM<br><br><br><br><br><br><br><br><br>
-                    (Eko Suroso)
+                    ({{$people->pm_ccm}})
                 </td>
                 <td width="33%" style="text-align: center;">
                     Menyetujui,<br>
                     VP Departemen CSR<br><br><br><br><br><br><br><br><br>
-                    (Muhammad Ihwan F.)
+                    ({{$people->vp}})
                 </td>
             </tr>
         </table>

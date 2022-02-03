@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\MediaController as AdminMediaController;
 use App\Http\Controllers\Admin\MudaController as AdminMudaController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
+use App\Http\Controllers\Admin\PeopleController;
 use App\Http\Controllers\Admin\UtamaController as AdminUtamaController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\MudaController;
@@ -116,6 +117,10 @@ Route::group(['middleware' => ['admin'], 'as' => 'admin.', 'prefix' => 'admin'],
     Route::put('/media/{media}/update', [AdminMediaController::class, 'update'])->name('media.update');
     Route::delete('/media/{media}/delete', [AdminMediaController::class, 'destroy'])->name('media.destroy');
     Route::post('media/uploadphotocontent', [AdminMediaController::class, 'upload_photo_content'])->name('media.uploadphotocontent');
+
+    Route::get('/people/pmccm', [PeopleController::class, 'pmccm'])->name('people.pmccm');
+    Route::get('/people/vp', [PeopleController::class, 'vp'])->name('people.vp');
+    Route::resource('people', PeopleController::class);
 });
 
 Route::get('/eee', function () {

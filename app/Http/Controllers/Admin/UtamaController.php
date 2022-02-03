@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BusinessLog;
+use App\Models\People;
 use App\Models\Utama;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -90,11 +91,13 @@ class UtamaController extends Controller
 
     public function preview(Utama $utama)
     {
-        return view('user.proposal.utama', compact('utama'));
+        $people = People::first();
+        return view('user.proposal.utama', compact('utama', 'people'));
     }
     public function download(Utama $utama)
     {
-        $pdf = PDF::loadview('user.proposal.utama', compact('utama'))->setOption('margin-bottom', '0mm')
+        $people = People::first();
+        $pdf = PDF::loadview('user.proposal.utama', compact('utama', 'people'))->setOption('margin-bottom', '0mm')
             ->setOption('margin-top', '0mm')
             ->setOption('margin-right', '0mm')
             ->setOption('margin-left', '0mm')
