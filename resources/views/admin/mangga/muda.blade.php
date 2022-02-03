@@ -19,7 +19,7 @@
                 <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
             </div>
             <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                <div class="rounded-full {{$muda->business->status == 2 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
+                <div class="rounded-full {{ $muda->business->status == 2 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
                     <span class="fa fa-fw fa-user-check text-white text-xl"></span>
                 </div>
                 <div
@@ -34,7 +34,8 @@
                     <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                 </div>
                 <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                    <div class="rounded-full {{$muda->business->status == 3 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
+                    <div
+                        class="rounded-full {{ $muda->business->status == 3 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
                         <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
                     </div>
                     <div
@@ -48,7 +49,8 @@
                     <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                 </div>
                 <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                    <div class="rounded-full {{$muda->business->status == 4 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
+                    <div
+                        class="rounded-full {{ $muda->business->status == 4 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
                         <span class="fa fa-fw fa-print text-white text-xl"></span>
                     </div>
                     <div
@@ -72,33 +74,13 @@
                 </div>
             @endif
         </div>
-        @if (Auth::user()->user_role == 2)
-            <div class="flex items-center justify-center gap-x-4">
-                <a href="{{ route('admin.muda.approve_surveyor', $muda->id) }}"
-                    class="mangga-button-green cursor-pointer">Setujui
-                </a>
-                <a href="{{ route('admin.muda.reject', $muda->id) }}" class="mangga-button-red cursor-pointer">Tolak
-                </a>
-            </div>
-        @elseif (Auth::user()->user_role == 3)
-            {{$muda->business->status == 2 ? '                <div' : '"flex items'}} justify-center gap-x-4">
-                    <a href="{{ route('admin.muda.approve_surveyor', $muda->id) }}"
-                        class="mangga-button-green cursor-pointer">Setujui
-                    </a>
-                    <a href="{{ route('admin.muda.reject', $muda->id) }}" class="mangga-button-red cursor-pointer">Tolak
-                    </a>
-                </div>
-            @endif
-        @elseif (Auth::user()->user_role == 4)
-            {{$muda->business->status == 3 ? '                <div' : '"flex items'}} justify-center gap-x-4">
-                    <a href="{{ route('admin.muda.approve_surveyor', $muda->id) }}"
-                        class="mangga-button-green cursor-pointer">Setujui
-                    </a>
-                    <a href="{{ route('admin.muda.reject', $muda->id) }}" class="mangga-button-red cursor-pointer">Tolak
-                    </a>
-                </div>
-            @endif
-        @endif
+        <div class="flex items-center justify-center gap-x-4">
+            <a href="{{ route('admin.muda.approve_surveyor', $muda->id) }}"
+                class="mangga-button-green cursor-pointer">Setujui
+            </a>
+            <a href="{{ route('admin.muda.reject', $muda->id) }}" class="mangga-button-red cursor-pointer">Tolak
+            </a>
+        </div>
     </div>
     @if (Auth::user()->user_role == 2)
         <div class="card bg-white px-8 py-6 mb-4">
@@ -133,7 +115,8 @@
     </div>
     <div class="card px-8 py-6 flex flex-col gap-y-4">
         <div class="text-xl font-bold">Data Pengajuan</div>
-        <div class="text-lg font-bold">Nomor Registrasi : {{ $muda->business->status >= 3 ? $muda->business->registration_number : '-' }}</div>
+        <div class="text-lg font-bold">Nomor Registrasi :
+            {{ $muda->business->status >= 3 ? $muda->business->registration_number : '-' }}</div>
         <div class="grid grid-cols-3 gap-x-4">
             <img src="{{ asset('uploads/mangga/logos/' . $muda->business->logo) }}" alt="" srcset=""
                 class="w-full">
@@ -142,7 +125,7 @@
                 <div class="text-xl">{{ $muda->leader_name }}</div>
                 <div class="text-xl">{{ $muda->university }}</div>
                 <div class="text-xl">{{ $muda->faculty }}</div>
-                <div class="text-xl">{{ $muda->recommender }} - {{$muda->recommender_position}}</div>
+                <div class="text-xl">{{ $muda->recommender }} - {{ $muda->recommender_position }}</div>
                 <div class="text-xl">{{ $muda->member_count }} Anggota
                 </div>
             </div>
