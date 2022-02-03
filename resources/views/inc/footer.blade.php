@@ -9,7 +9,7 @@
         <div class="text-2xl font-bold my-2">SMS/Whatsapp</div>
         <div>081366994994</div>
         <div class="text-2xl font-bold my-2">E-Mail</div>
-        <div>manggacspetrokimia@gmail.com</div>
+        <div>manggacsrpetrokimia@gmail.com</div>
     </div>
     <div class="flex flex-col text-xl col-span-3 lg:col-span-2">
         <div class="text-2xl font-bold mb-2">Quick Link</div>
@@ -41,7 +41,7 @@
     </ul>
     <div class="text-2xl font-bold my-2">E-Mail</div>
     <ul class="list-none text-md text-center mb-4">
-        <li>manggacspetrokimia@gmail.com</li>
+        <li>manggacsrpetrokimia@gmail.com</li>
     </ul>
     <div class="text-xl font-semibold mb-2">Quick Link</div>
     <ul class="list-none text-md text-center mb-4">
