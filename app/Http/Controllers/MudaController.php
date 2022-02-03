@@ -307,7 +307,7 @@ class MudaController extends Controller
 
     public function preview(Muda $muda)
     {
-        if($muda->business->status == 3){
+        if ($muda->business->status == 3) {
             $muda->business->update([
                 'status' => 4
             ]);
@@ -316,11 +316,16 @@ class MudaController extends Controller
     }
     public function download(Muda $muda)
     {
+        if ($muda->business->status == 3) {
+            $muda->business->update([
+                'status' => 4
+            ]);
+        }
         $pdf = PDF::loadview('user.proposal.muda', compact('muda'))->setOption('margin-bottom', '0mm')
-        ->setOption('margin-top', '0mm')
-        ->setOption('margin-right', '0mm')
-        ->setOption('margin-left', '0mm')
-        ->setOption('page-size', 'A4');
+            ->setOption('margin-top', '0mm')
+            ->setOption('margin-right', '0mm')
+            ->setOption('margin-left', '0mm')
+            ->setOption('page-size', 'A4');
         return $pdf->stream('proposal.pdf');
     }
 }

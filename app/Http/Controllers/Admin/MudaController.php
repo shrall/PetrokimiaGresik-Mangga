@@ -110,24 +110,7 @@ class MudaController extends Controller
 
             ]);
             BusinessLog::create([
-                'description' => 'Disetujui (Surveyor) oleh ' . Auth::user()->first_name . ' ' . Auth::user()->last_name,
-                'business_id' => $muda->business->id,
-                'admin_id' => Auth::user()->id
-            ]);
-        }
-        return redirect()->route('admin.program.muda', $muda->business->id);
-    }
-
-    public function approve_pimpinan(Muda $muda)
-    {
-        if (Auth::user()->user_role == 2 || Auth::user()->user_role == 4) {
-            $muda->business->update([
-                'status' => 4,
-                'approved_by_pimpinan_at' => Carbon::now(),
-                'rejected_at' => null,
-            ]);
-            BusinessLog::create([
-                'description' => 'Disetujui (Pimpinan) oleh ' . Auth::user()->first_name . ' ' . Auth::user()->last_name,
+                'description' => 'Disetujui oleh ' . Auth::user()->first_name . ' ' . Auth::user()->last_name,
                 'business_id' => $muda->business->id,
                 'admin_id' => Auth::user()->id
             ]);
