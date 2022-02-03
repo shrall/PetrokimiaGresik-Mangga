@@ -16,6 +16,7 @@ class CreateMudasTable extends Migration
         Schema::create('mudas', function (Blueprint $table) {
             $table->id();
             $table->string('leader_name');
+            $table->string('subcategory');
             $table->integer('member_count');
             $table->string('university');
             $table->string('faculty');

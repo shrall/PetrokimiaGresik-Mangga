@@ -17,9 +17,9 @@ class AddForeignKeysToBusinesses extends Migration
             $table->unsignedBigInteger('user_id')->index()->after('postal_code');
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->unsignedBigInteger('sector_id')->index()->after('user_id');
+            $table->unsignedBigInteger('sector_id')->index()->after('user_id')->nullable();
             $table->foreign('sector_id')->references('id')->on('sectors');
-            $table->unsignedBigInteger('subsector_id')->index()->after('sector_id');
+            $table->unsignedBigInteger('subsector_id')->index()->after('sector_id')->nullable();
             $table->foreign('subsector_id')->references('id')->on('subsectors');
 
             $table->char('province_id', 2)->after('subsector_id');

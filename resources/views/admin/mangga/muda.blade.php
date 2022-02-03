@@ -123,6 +123,8 @@
             <div class="flex flex-col gap-y-2">
                 <div class="text-3xl font-bold">{{ $muda->business_title }}</div>
                 <div class="text-xl">{{ $muda->leader_name }}</div>
+                <div class="text-xl">{{ $muda->business->user->email }}</div>
+                <div class="text-xl">{{ $muda->business->user->no_handphone }}</div>
                 <div class="text-xl">{{ $muda->university }}</div>
                 <div class="text-xl">{{ $muda->faculty }}</div>
                 <div class="text-xl">{{ $muda->recommender }} - {{ $muda->recommender_position }}</div>
@@ -143,8 +145,8 @@
                 class="w-full col-span-5 rounded-lg">
             <div class="flex flex-col gap-y-2 col-span-7">
                 <div class="text-3xl font-bold">{{ $muda->business->name }}</div>
-                <div class="flex">{{ $muda->business->sector->name }} |
-                    {{ $muda->business->subsector->name }}</div>
+                <div class="flex">{{ $muda->type->name }} |
+                    {{ $muda->category->name }} - {{ $muda->subcategory }}</div>
                 <div class="flex flex-col gap-y-1">
                     <span>{{ $muda->business->address }}</span>
                     <span>{{ $muda->business->city->name }},

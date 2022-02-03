@@ -8,6 +8,8 @@ use App\Models\DistributionType;
 use App\Models\District;
 use App\Models\EstablishmentStatus;
 use App\Models\Marketing;
+use App\Models\MudaCategory;
+use App\Models\MudaType;
 use App\Models\Province;
 use App\Models\Regency;
 use App\Models\Sector;
@@ -76,13 +78,13 @@ class PageController extends Controller
 
     public function form_mangga_muda()
     {
-        $sectors = Sector::all();
-        $subsectors = Subsector::all();
         $provinces = Province::all();
         $cities = Regency::all();
         $districts = District::all();
         $villages = Village::all();
-        return view('user.form.mangga_muda', compact('provinces', 'cities', 'districts', 'villages', 'sectors', 'subsectors'));
+        $types = MudaType::all();
+        $categories = MudaCategory::all();
+        return view('user.form.mangga_muda', compact('provinces', 'cities', 'districts', 'villages', 'types', 'categories'));
     }
 
     public function refresh_kelompok(Request $request)

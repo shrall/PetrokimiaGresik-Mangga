@@ -24,7 +24,8 @@
                 <input type="text" name="university" class="form-pengajuan-input" placeholder="Asal Universitas*" required>
                 <input type="text" name="faculty" class="form-pengajuan-input" placeholder="Fakultas*" required>
                 <input type="text" name="recommender" class="form-pengajuan-input" placeholder="Perekomendasi*" required>
-                <input type="text" name="recommender_position" class="form-pengajuan-input" placeholder="Jabatan Perekomendasi*" required>
+                <input type="text" name="recommender_position" class="form-pengajuan-input"
+                    placeholder="Jabatan Perekomendasi*" required>
                 <input type="number" name="member_count" class="form-pengajuan-input" placeholder="Jumlah Anggota*" required
                     onkeyup="updateMembers();">
             </div>
@@ -49,13 +50,14 @@
         <div class="grid-cols-2 gap-x-8 gap-y-2 form-step hidden" id="data-usaha-2">
             <div class="">
                 <input type="text" name="name" class="form-pengajuan-input" placeholder="Nama Usaha*" required>
-                <select name="sector" id="sector" class="form-pengajuan-input" required>
-                    @foreach ($sectors as $sector)
-                        <option value={{ $sector->id }}>{{ $sector->name }}</option>
+                <select name="muda_type" id="muda_type" class="form-pengajuan-input" required>
+                    @foreach ($types as $type)
+                        <option value={{ $type->id }}>{{ $type->name }}</option>
                     @endforeach
                 </select>
-                <select name="subsector" id="subsector" class="form-pengajuan-input" required>
+                <select name="category" id="category" class="form-pengajuan-input" required>
                 </select>
+                <input type="text" name="subcategory" class="form-pengajuan-input" placeholder="Subkategori*" required>
                 <input type="text" name="type" class="form-pengajuan-input" placeholder="Jenis Usaha*" required>
                 <input type="number" name="asset_value" class="form-pengajuan-input" placeholder="Nilai Aset Usaha*"
                     style="margin-bottom: 0.5rem;">
@@ -394,22 +396,22 @@
         }
     </script>
     <script>
-        var subsectors = @json($subsectors);
+        var categories = @json($categories);
 
-        $('#sector').on('change', function(e) {
-            $('#subsector').html(null);
-            let obj = subsectors.filter(function(obj) {
-                return obj.sector_id === parseInt($('#sector').val());
+        $('#muda_type').on('change', function(e) {
+            $('#category').html(null);
+            let obj = categories.filter(function(obj) {
+                return obj.type_id === parseInt($('#muda_type').val());
             });
             obj.forEach(element => {
-                $('#subsector').append('<option value="' + element.id + '">' + element.name + '</option>')
+                $('#category').append('<option value="' + element.id + '">' + element.name + '</option>')
             });
         });
-        let obja = subsectors.filter(function(obj) {
-            return obj.sector_id === parseInt($('#sector').val());
+        let obja = categories.filter(function(obj) {
+            return obj.type_id === parseInt($('#muda_type').val());
         });
         obja.forEach(element => {
-            $('#subsector').append('<option value="' + element.id + '">' + element.name + '</option>')
+            $('#category').append('<option value="' + element.id + '">' + element.name + '</option>')
         });
     </script>
     <script>

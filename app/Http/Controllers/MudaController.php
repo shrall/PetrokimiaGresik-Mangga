@@ -45,8 +45,9 @@ class MudaController extends Controller
         $messages = [
             'name.required' => 'Nama Bisnis',
             'logo.required' => 'Logo Bisnis',
-            "sector.required" => 'Sektor Bisnis',
-            "subsector.required" => 'Sub Sektor Bisnis',
+            "muda_type.required" => 'Jenis Mangga Muda',
+            "category.required" => 'Kategori',
+            "subcategory.required" => 'Subkategori',
             "type.required" => 'Jenis Usaha',
             "asset_value.required" => 'Nilai Asset Usaha',
             "address.required" => 'Alamat Usaha',
@@ -100,8 +101,9 @@ class MudaController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'logo' => 'required',
-            "sector" => 'required',
-            "subsector" => 'required',
+            "muda_type" => 'required',
+            "category" => 'required',
+            "subcategory" => 'required',
             "type" => 'required',
             "asset_value" => 'required',
             "address" => 'required',
@@ -175,7 +177,7 @@ class MudaController extends Controller
         $finance_attachment = 'mangga-muda-' . time() . '-' . $request['finance_attachment']->getClientOriginalName();
         $request->finance_attachment->move(public_path('uploads/mangga/financeattachments'), $finance_attachment);
 
-        $reg_number = $this->getRegistrationNumber($request->sector, $request->subsector);
+        $reg_number = $this->getRegistrationNumber($request->muda_type, $request->category);
 
         $business = Business::create([
             'name' => $request->name,
@@ -199,6 +201,9 @@ class MudaController extends Controller
             "business_title" => $request->business_title,
             "leader_name" => $request->leader_name,
             "university" => $request->university,
+            "type_id" => $request->muda_type,
+            "category_id" => $request->category,
+            "subcategory" => $request->subcategory,
             "faculty" => $request->faculty,
             "recommender" => $request->recommender,
             "recommender_position" => $request->recommender_position,

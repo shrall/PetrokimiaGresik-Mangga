@@ -30,7 +30,10 @@ class Muda extends Model
         'target_plan',
         'finance',
         'finance_attachment',
-        'business_id'
+        'business_id',
+        'type_id',
+        'category_id',
+        'subcategory',
     ];
     public function business()
     {
@@ -43,5 +46,13 @@ class Muda extends Model
     public function reports()
     {
         return $this->hasMany(MudaReport::class, 'muda_id', 'id');
+    }
+    public function type()
+    {
+        return $this->belongsTo(MudaType::class, 'type_id', 'id');
+    }
+    public function category()
+    {
+        return $this->belongsTo(MudaCategory::class, 'category_id', 'id');
     }
 }

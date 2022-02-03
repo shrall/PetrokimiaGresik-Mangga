@@ -13,16 +13,25 @@
     <div class="grid grid-cols-12 h-screen md:h-vh-60 xl:h-screen font-pn ">
         <div class="hidden md:block col-span-1 xl:col-span-2"></div>
         <div class="col-span-12 md:col-span-4 relative mx-16 md:mx-0">
-            <img src="{{ asset('assets/img/landing-mangga-muda-2.png') }}" class="w-full absolute md:-left-8 -top-16 md:-top-32"
-                id="tentang">
+            <img src="{{ asset('assets/img/landing-mangga-muda-2.png') }}"
+                class="w-full absolute md:-left-8 -top-16 md:-top-32" id="tentang">
         </div>
         <div class="col-span-12 md:col-span-6 flex flex-col gap-y-4 px-12 pt-64 bg-mangga-green-300">
             <div class="font-lb text-6xl text-white">Program Mangga Muda</div>
             <div class="text-xl text-white">Program Mangga Muda dibagi menjadi 2 kategori yaitu Mangga Muda Agrosociopreneur
                 dan Creativesociopreneur.</div>
-            <a href="{{ route('mangga_muda.register') }}"
-                class="font-lb text-4xl text-mangga-yellow-400 hover:text-mangga-yellow-300 text-right">Daftar Sekarang
-                <span class="fa fa-fw fa-chevron-right"></span></a>
+            @guest
+                <a href="{{ route('mangga_muda.register') }}"
+                    class="font-lb text-4xl text-mangga-yellow-400 hover:text-mangga-yellow-300 text-right">Daftar Sekarang
+                    <span class="fa fa-fw fa-chevron-right"></span>
+                </a>
+            @endguest
+            @auth
+                <a href="{{ route('user.form_mangga') }}"
+                    class="font-lb text-4xl text-mangga-yellow-400 hover:text-mangga-yellow-300 text-right">Daftar Sekarang
+                    <span class="fa fa-fw fa-chevron-right"></span>
+                </a>
+            @endauth
         </div>
     </div>
     <div class="grid grid-cols-12 h-full md:h-vh-70 xl:h-screen bg-mangga-muda-3 bg-no-repeat bg-cover relative font-pn">
@@ -240,7 +249,8 @@
                     <span class="text-3xl font-lb">07</span>
                     <span class="text-lg">Feb</span>
                 </div>
-                <span class="text-lg text-center col-span-3">Peluncuran Poster & Booklet Pendaftaran & Video Submission dibuka</span>
+                <span class="text-lg text-center col-span-3">Peluncuran Poster & Booklet Pendaftaran & Video Submission
+                    dibuka</span>
             </div>
             <div class="grid grid-cols-4 items-center gap-x-4">
                 <div
