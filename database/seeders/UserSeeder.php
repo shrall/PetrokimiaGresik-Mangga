@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -30,6 +31,19 @@ class UserSeeder extends Seeder
         $user->city_id = 3578;
         $user->district_id = 3578170;
         $user->village_id = 3578170005;
+        $user->postal_code = 1;
+        $user->birth_date = Carbon::now();
+        $user->birth_place = 'KL';
+        $user->address = 'KL';
+        $user->profession = 1;
+        $user->heir = 1;
+        $user->house_ownership = 1;
+        $user->bank_number = 1;
+        $user->bank_owner = 1;
+        $user->bank_name = 1;
+        $user->bank_branch = 1;
+        $user->rt = 1;
+        $user->rw = 1;
         $user->save();
 
         $user = new User();

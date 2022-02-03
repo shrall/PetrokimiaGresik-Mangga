@@ -106,32 +106,24 @@
             </div>
         </div>
         <div class="grid-cols-2 gap-x-8 form-step hidden" id="nilai-kekayaan-3">
-            <input type="hidden" name="business_asset_name[1]" value="Tanah">
-            <input type="hidden" name="business_asset_name[2]" value="Bangunan">
-            <input type="hidden" name="business_asset_name[3]" value="Kas">
-            <input type="hidden" name="business_asset_name[4]" value="Piutang">
-            <input type="hidden" name="business_asset_name[5]" value="Peralatan Usaha/Produksi">
-            <input type="hidden" name="business_asset_name[6]" value="Bank(Tabungan)">
-            <input type="hidden" name="business_asset_name[7]" value="Persediaan">
-            <input type="hidden" name="business_asset_name[8]" value="Kendaraan">
             <div>
-                <input type="number" name="business_asset_value[1]" class="form-pengajuan-input" placeholder="Tanah (Rp.)*"
+                <input type="number" name="land" class="form-pengajuan-input" placeholder="Tanah (Rp.)*"
                     required>
-                <input type="number" name="business_asset_value[2]" class="form-pengajuan-input"
+                <input type="number" name="building" class="form-pengajuan-input"
                     placeholder="Bangunan (Rp.)*" required>
             </div>
             <div>
-                <input type="number" name="business_asset_value[3]" class="form-pengajuan-input" placeholder="Kas (Rp.)*"
+                <input type="number" name="treasury" class="form-pengajuan-input" placeholder="Kas (Rp.)*"
                     required>
-                <input type="number" name="business_asset_value[4]" class="form-pengajuan-input"
+                <input type="number" name="credit" class="form-pengajuan-input"
                     placeholder="Piutang (Rp.)*" required>
-                <input type="number" name="business_asset_value[5]" class="form-pengajuan-input"
+                <input type="number" name="production_tools" class="form-pengajuan-input"
                     placeholder="Peralatan Usaha/Produksi (Rp.)*" required>
-                <input type="number" name="business_asset_value[6]" class="form-pengajuan-input"
+                <input type="number" name="savings" class="form-pengajuan-input"
                     placeholder="Bank(Tabungan) (Rp.)*" required>
-                <input type="number" name="business_asset_value[7]" class="form-pengajuan-input"
+                <input type="number" name="supply" class="form-pengajuan-input"
                     placeholder="Persediaan (Rp.)*" required>
-                <input type="number" name="business_asset_value[8]" class="form-pengajuan-input"
+                <input type="number" name="vehicle" class="form-pengajuan-input"
                     placeholder="Kendaraan (Rp.)*" required>
             </div>
         </div>
@@ -831,7 +823,7 @@
 @endsection
 
 @section('modals')
-    @if (!Auth::user()->email || !Auth::user()->handphone || !Auth::user()->ktp_code || !Auth::user()->kk_code || !Auth::user()->postal_code || !Auth::user()->birth_date || !Auth::user()->profession || !Auth::user()->heir || !Auth::user()->house_ownership || !Auth::user()->bank_number || !Auth::user()->bank_owner || !Auth::user()->bank_name || !Auth::user()->bank_branch || !Auth::user()->rt || !Auth::user()->rw)
+    @if (!Auth::user()->email || !Auth::user()->handphone || !Auth::user()->ktp_code || !Auth::user()->kk_code || !Auth::user()->postal_code || !Auth::user()->birth_date || !Auth::user()->birth_place || !Auth::user()->address || !Auth::user()->profession || !Auth::user()->heir || !Auth::user()->house_ownership || !Auth::user()->bank_number || !Auth::user()->bank_owner || !Auth::user()->bank_name || !Auth::user()->bank_branch || !Auth::user()->rt || !Auth::user()->rw)
         <div class="absolute w-screen h-screen flex items-center justify-center modal">
             <div class="bg-black opacity-50 w-screen h-screen absolute background-modal"></div>
             <div class="rounded-lg bg-white px-8 py-6 absolute flex flex-col gap-y-2">

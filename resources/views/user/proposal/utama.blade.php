@@ -351,56 +351,56 @@
         <table style="font-size: 1.1rem; width: 100%;" class="mb-4">
             <tr>
                 <td width="5%">1.</td>
-                <td width="30%">{{ $utama->business->assets[0]->name }}</td>
-                <td>: Rp. {{ number_format($utama->business->assets[0]->value, 0, ',', '.') }}</td>
+                <td width="30%">Tanah</td>
+                <td>: Rp. {{ number_format($utama->land, 0, ',', '.') }}</td>
             </tr>
             <tr>
                 <td>2.</td>
-                <td>{{ $utama->business->assets[1]->name }}</td>
-                <td>: Rp. {{ number_format($utama->business->assets[1]->value, 0, ',', '.') }}</td>
+                <td>Bangunan</td>
+                <td>: Rp. {{ number_format($utama->building, 0, ',', '.') }}</td>
             </tr>
             <tr class="font-bold">
                 <td></td>
                 <td>Jumlah</td>
                 <td>: Rp.
-                    {{ number_format($utama->business->assets[0]->value + $utama->business->assets[1]->value, 0, ',', '.') }}
+                    {{ number_format($utama->land + $utama->building, 0, ',', '.') }}
                 </td>
             </tr>
             <tr>
                 <td>1.</td>
-                <td>{{ $utama->business->assets[2]->name }}</td>
-                <td>: Rp. {{ number_format($utama->business->assets[2]->value, 0, ',', '.') }}</td>
+                <td>Kas</td>
+                <td>: Rp. {{ number_format($utama->treasury, 0, ',', '.') }}</td>
             </tr>
             <tr>
                 <td>2.</td>
-                <td>{{ $utama->business->assets[3]->name }}</td>
-                <td>: Rp. {{ number_format($utama->business->assets[3]->value, 0, ',', '.') }}</td>
+                <td>Piutang</td>
+                <td>: Rp. {{ number_format($utama->credit, 0, ',', '.') }}</td>
             </tr>
             <tr>
                 <td>3.</td>
-                <td>{{ $utama->business->assets[4]->name }}</td>
-                <td>: Rp. {{ number_format($utama->business->assets[4]->value, 0, ',', '.') }}</td>
+                <td>Peralatan Usaha/Produksi</td>
+                <td>: Rp. {{ number_format($utama->production_tools, 0, ',', '.') }}</td>
             </tr>
             <tr>
                 <td>4.</td>
-                <td>{{ $utama->business->assets[5]->name }}</td>
-                <td>: Rp. {{ number_format($utama->business->assets[5]->value, 0, ',', '.') }}</td>
+                <td>Bank(Tabungan)</td>
+                <td>: Rp. {{ number_format($utama->savings, 0, ',', '.') }}</td>
             </tr>
             <tr>
                 <td>5.</td>
-                <td>{{ $utama->business->assets[6]->name }}</td>
-                <td>: Rp. {{ number_format($utama->business->assets[6]->value, 0, ',', '.') }}</td>
+                <td>Persediaan</td>
+                <td>: Rp. {{ number_format($utama->supply, 0, ',', '.') }}</td>
             </tr>
             <tr>
                 <td>6.</td>
-                <td>{{ $utama->business->assets[7]->name }}</td>
-                <td>: Rp. {{ number_format($utama->business->assets[7]->value, 0, ',', '.') }}</td>
+                <td>Kendaraan</td>
+                <td>: Rp. {{ number_format($utama->vehicle, 0, ',', '.') }}</td>
             </tr>
             <tr class="font-bold">
                 <td></td>
                 <td>Jumlah</td>
                 <td>: Rp.
-                    {{ number_format($utama->business->assets[6]->value + $utama->business->assets[7]->value + $utama->business->assets[2]->value + $utama->business->assets[3]->value + $utama->business->assets[4]->value + $utama->business->assets[5]->value, 0, ',', '.') }}
+                    {{ number_format($utama->supply + $utama->vehicle + $utama->treasury + $utama->credit + $utama->production_tools + $utama->savings, 0, ',', '.') }}
                 </td>
             </tr>
         </table>

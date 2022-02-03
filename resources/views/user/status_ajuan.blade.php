@@ -26,7 +26,8 @@
                     </div>
                     @if (Auth::user()->referral_code != 'mamud')
                         <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                            <div class="rounded-full {{Auth::user()->businesses[0]->status == 1 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
+                            <div
+                                class="rounded-full {{ Auth::user()->businesses[0]->status == 1 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
                                 <span class="fa fa-fw fa-user-check text-white text-xl"></span>
                             </div>
                             <div
@@ -40,7 +41,8 @@
                             <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                         </div>
                         <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                            <div class="rounded-full {{Auth::user()->businesses[0]->status == 2 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
+                            <div
+                                class="rounded-full {{ Auth::user()->businesses[0]->status == 2 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
                                 <span class="fa fa-fw fa-signature text-white text-xl"></span>
                             </div>
                             <div
@@ -50,7 +52,8 @@
                         </div>
                     @else
                         <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                            <div class="rounded-full {{Auth::user()->businesses[0]->status == 2 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
+                            <div
+                                class="rounded-full {{ Auth::user()->businesses[0]->status == 2 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
                                 <span class="fa fa-fw fa-user-check text-white text-xl"></span>
                             </div>
                             <div
@@ -68,7 +71,8 @@
                                 <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                             </div>
                             <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                                <div class="rounded-full {{Auth::user()->businesses[0]->status == 3 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
+                                <div
+                                    class="rounded-full {{ Auth::user()->businesses[0]->status == 3 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
                                     <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
                                 </div>
                                 <div
@@ -82,7 +86,8 @@
                                 <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                             </div>
                             <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                                <div class="rounded-full {{Auth::user()->businesses[0]->status == 4 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
+                                <div
+                                    class="rounded-full {{ Auth::user()->businesses[0]->status == 4 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
                                     <span class="fa fa-fw fa-check-double text-white text-xl"></span>
                                 </div>
                                 <div
@@ -97,7 +102,8 @@
                                 <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                             </div>
                             <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                                <div class="rounded-full {{Auth::user()->businesses[0]->status == 3 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
+                                <div
+                                    class="rounded-full {{ Auth::user()->businesses[0]->status == 3 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
                                     <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
                                 </div>
                                 <div
@@ -111,7 +117,8 @@
                                 <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                             </div>
                             <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                                <div class="rounded-full {{Auth::user()->businesses[0]->status == 4 ? 'bg-mangga-orange-300' : 'bg-gray-400'}} p-4">
+                                <div
+                                    class="rounded-full {{ Auth::user()->businesses[0]->status == 4 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
                                     <span class="fa fa-fw fa-print text-white text-xl"></span>
                                 </div>
                                 <div
@@ -767,47 +774,47 @@
                             <span class="text-gray-600 font-bold text-lg">Nilai Kekayaan Usaha</span>
                             <table>
                                 <tr>
-                                    <td width="30%">{{ $utama->business->assets[0]->name }}</td>
-                                    <td>Rp. {{ number_format($utama->business->assets[0]->value, 0, ',', '.') }}</td>
+                                    <td width="30%">Tanah</td>
+                                    <td>Rp. {{ number_format($utama->land, 0, ',', '.') }}</td>
                                 </tr>
                                 <tr>
-                                    <td>{{ $utama->business->assets[1]->name }}</td>
-                                    <td>Rp. {{ number_format($utama->business->assets[1]->value, 0, ',', '.') }}</td>
+                                    <td>Bangunan</td>
+                                    <td>Rp. {{ number_format($utama->building, 0, ',', '.') }}</td>
                                 </tr>
                                 <tr class="font-bold">
                                     <td>Jumlah</td>
                                     <td>Rp.
-                                        {{ number_format($utama->business->assets[0]->value + $utama->business->assets[1]->value, 0, ',', '.') }}
+                                        {{ number_format($utama->land + $utama->building, 0, ',', '.') }}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>{{ $utama->business->assets[2]->name }}</td>
-                                    <td>Rp. {{ number_format($utama->business->assets[2]->value, 0, ',', '.') }}</td>
+                                    <td>Kas</td>
+                                    <td>Rp. {{ number_format($utama->treasury, 0, ',', '.') }}</td>
                                 </tr>
                                 <tr>
-                                    <td>{{ $utama->business->assets[3]->name }}</td>
-                                    <td>Rp. {{ number_format($utama->business->assets[3]->value, 0, ',', '.') }}</td>
+                                    <td>Piutang</td>
+                                    <td>Rp. {{ number_format($utama->credit, 0, ',', '.') }}</td>
                                 </tr>
                                 <tr>
-                                    <td>{{ $utama->business->assets[4]->name }}</td>
-                                    <td>Rp. {{ number_format($utama->business->assets[4]->value, 0, ',', '.') }}</td>
+                                    <td>Peralatan Usaha/Produksi</td>
+                                    <td>Rp. {{ number_format($utama->production_tools, 0, ',', '.') }}</td>
                                 </tr>
                                 <tr>
-                                    <td>{{ $utama->business->assets[5]->name }}</td>
-                                    <td>Rp. {{ number_format($utama->business->assets[5]->value, 0, ',', '.') }}</td>
+                                    <td>Bank(Tabungan)</td>
+                                    <td>Rp. {{ number_format($utama->savings, 0, ',', '.') }}</td>
                                 </tr>
                                 <tr>
-                                    <td>{{ $utama->business->assets[6]->name }}</td>
-                                    <td>Rp. {{ number_format($utama->business->assets[6]->value, 0, ',', '.') }}</td>
+                                    <td>Persediaan</td>
+                                    <td>Rp. {{ number_format($utama->supply, 0, ',', '.') }}</td>
                                 </tr>
                                 <tr>
-                                    <td>{{ $utama->business->assets[7]->name }}</td>
-                                    <td>Rp. {{ number_format($utama->business->assets[7]->value, 0, ',', '.') }}</td>
+                                    <td>Kendaraan</td>
+                                    <td>Rp. {{ number_format($utama->vehicle, 0, ',', '.') }}</td>
                                 </tr>
                                 <tr class="font-bold">
                                     <td>Jumlah</td>
                                     <td>Rp.
-                                        {{ number_format($utama->business->assets[6]->value +$utama->business->assets[7]->value +$utama->business->assets[2]->value +$utama->business->assets[3]->value +$utama->business->assets[4]->value +$utama->business->assets[5]->value,0,',','.') }}
+                                        {{ number_format($utama->treasury + $utama->credit + $utama->production_tools + $utama->savings + $utama->supply + $utama->vehicle,0,',','.') }}
                                     </td>
                                 </tr>
                             </table>

@@ -60,6 +60,14 @@ class UtamaController extends Controller
             "postal_code.required" => 'Kode Pos Usaha',
             "request_amount.required" => 'Jumlah Pengajuan',
             "unit_amount.required" => 'Jumlah Unit Usaha',
+            'land.required' => 'Tanah',
+            'building.required' => 'Bangunan',
+            'treasury.required' => 'Kas',
+            'credit.required' => 'Piutang',
+            'production_tools.required' => 'Peralatan Usaha/Produksi',
+            'savings.required' => 'Bank(Tabungan)',
+            'supply.required' => 'Persediaan',
+            'vehicle.required' => 'Kendaraan',
             "collateral.required" => 'Agunan',
             "distribution_type.required" => 'Tipe Penyaluran',
             "business_form.required" => 'Bentuk Usaha',
@@ -117,6 +125,14 @@ class UtamaController extends Controller
                 "handphone" => 'required',
                 "establishment_status" => 'required',
                 "unit_amount" => 'required',
+                'land' => 'required',
+                'building' => 'required',
+                'treasury' => 'required',
+                'credit' => 'required',
+                'production_tools' => 'required',
+                'savings' => 'required',
+                'supply' => 'required',
+                'vehicle' => 'required',
                 "ktp" => 'required',
                 "ktp_selfie" => 'required',
                 "kk" => 'required',
@@ -163,6 +179,14 @@ class UtamaController extends Controller
                 "handphone" => 'required',
                 "establishment_status" => 'required',
                 "unit_amount" => 'required',
+                'land' => 'required',
+                'building' => 'required',
+                'treasury' => 'required',
+                'credit' => 'required',
+                'production_tools' => 'required',
+                'savings' => 'required',
+                'supply' => 'required',
+                'vehicle' => 'required',
                 "ktp" => 'required',
                 "ktp_selfie" => 'required',
                 "kk" => 'required',
@@ -310,6 +334,14 @@ class UtamaController extends Controller
             'telephone' => $request->telephone,
             'handphone' => $request->handphone,
             "unit_amount" => $request->unit_amount,
+            'land' => $request->land,
+            'building' => $request->building,
+            'treasury' => $request->treasury,
+            'credit' => $request->credit,
+            'production_tools' => $request->production_tools,
+            'savings' => $request->savings,
+            'supply' => $request->supply,
+            'vehicle' => $request->vehicle,
             "export_to" => $request->export_to,
             "product_distributor" => $request->product_distributor,
             "marketing_id" => $request->marketing,
@@ -382,16 +414,6 @@ class UtamaController extends Controller
                 BusinessPlan::create([
                     'name' => $request->business_plan_name[$key],
                     'value' => $request->business_plan_value[$key],
-                    "business_id" => $business->id,
-                ]);
-            }
-        }
-
-        foreach ($request->business_asset_name as $key => $value) {
-            if ($value && $request->business_asset_value[$key]) {
-                BusinessAsset::create([
-                    'name' => $request->business_asset_name[$key],
-                    'value' => $request->business_asset_value[$key],
                     "business_id" => $business->id,
                 ]);
             }

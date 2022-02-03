@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ReligionSeeder::class);
         $this->call(VillageSeeder::class);
         $this->call(UserRoleSeeder::class);
-        $this->call(UserSeeder::class);
         $this->call(SectorSeeder::class);
         $this->call(SubSectorSeeder::class);
         $this->call(BusinessFormSeeder::class);
@@ -30,5 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(EstablishmentStatusSeeder::class);
         $this->call(MarketingSeeder::class);
         $this->call(MediaTypeSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }

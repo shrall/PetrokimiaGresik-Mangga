@@ -46,6 +46,14 @@ class CreateUtamasTable extends Migration
             $table->bigInteger('sales_value');
             $table->bigInteger('total_cost');
             $table->integer('unit_amount');
+            $table->bigInteger('land');
+            $table->bigInteger('building');
+            $table->bigInteger('treasury');
+            $table->bigInteger('credit');
+            $table->bigInteger('production_tools');
+            $table->bigInteger('savings');
+            $table->bigInteger('supply');
+            $table->bigInteger('vehicle');
             $table->string('export_to')->nullable();
             $table->string('product_distributor')->nullable();
             $table->text('business_problem');
