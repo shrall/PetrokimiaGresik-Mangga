@@ -21,6 +21,10 @@
                 <input type="text" name="business_title" class="form-pengajuan-input" placeholder="Judul Usaha*" required>
                 <input type="text" name="leader_name" class="form-pengajuan-input"
                     placeholder="Nama/No.Mahasiswa Ketua Tim*" required>
+                <input type="text" name="leader_email" class="form-pengajuan-input" placeholder="E-Mail Ketua Tim*"
+                    required>
+                <input type="text" name="leader_phone" class="form-pengajuan-input" placeholder="No. HP Ketua Tim*"
+                    required>
                 <input type="text" name="university" class="form-pengajuan-input" placeholder="Asal Universitas*" required>
                 <input type="text" name="faculty" class="form-pengajuan-input" placeholder="Fakultas*" required>
                 <input type="text" name="recommender" class="form-pengajuan-input" placeholder="Perekomendasi*" required>

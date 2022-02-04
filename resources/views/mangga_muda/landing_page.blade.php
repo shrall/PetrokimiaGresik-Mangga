@@ -38,24 +38,25 @@
         <div
             class="col-span-12 md:col-span-6 bg-white px-12 md:pl-16 md:pr-24 py-8 flex flex-col text-xl md:absolute md:-top-16 mt-16 md:mt-0">
             <img src="{{ asset('assets/svg/mangga-muda-agrosociopreneur.svg') }}" class="w-full md:w-148">
+            <div class="md:pl-24">Program kompetisi pendanaan dan pemberian pembinaan serta pengembangan<br>
+                bagi para generasi muda yang memiliki usaha di bidang Agrosocio.</div>
             <div class="font-bold md:pl-24">Kategori :</div>
-            <div class="md:pl-24"><span class="font-bold">On farm</span> (lahan pertanian atau terkait dengan
-                budidaya).<br>
-                Ex : Petani (budidaya padi, sayuran, tanaman hias,
-                dsb.), Pekebun (kelapa sawit, teh, tebu, dsb.),
-                Peternak , Nelayan.
+            <div class="md:pl-24">
+                <span class="font-bold">On farm</span> (Usaha Budidaya).<br>
+                Sub kategori : Pertanian, Perkebunan, Peternakan, Perikanan
             </div>
-            <div class="md:pl-24"><span class="font-bold">Off farm</span> (produk non-budidaya atau hasil pasca
-                panennya).<br>
-                Ex : Pedagang sayuran, Pengepul hasil tani, dsb.
+            <div class="md:pl-24"><span class="font-bold">Off farm</span> (Usaha Pengolahan Hasil Budidaya).<br>
             </div>
         </div>
         <div
             class="col-span-12 md:col-span-6 xl:col-span-7 bg-white px-12 md:pl-16 md:pr-24 py-8 flex flex-col justify-end text-xl md:absolute md:-bottom-128 md:right-0 my-16 md:mt-0">
             <img src="{{ asset('assets/svg/mangga-muda-creativesocipreneur.svg') }}" class="w-148">
+            <div class="pl-24">
+                Program kompetisi pendanaan dan pemberian pembinaan serta pengembangan<br>
+                bagi para generasi muda yang memiliki usaha di bidang Industri Kreatif.</div>
             <div class="font-bold pl-24">Kategori :</div>
             <ul class="list-disc text-lg ml-5 mb-4 pl-24">
-                <li>Content Creator</li>
+                <li>Content Creator, Cinematography, Photography</li>
                 <li>Fashion</li>
                 <li>Food & Beverages</li>
                 <li>Furniture</li>

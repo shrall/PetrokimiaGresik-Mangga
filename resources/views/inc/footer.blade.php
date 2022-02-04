@@ -21,7 +21,7 @@
         <div class="text-2xl font-bold mb-2">Social Media</div>
         <a href="https://www.instagram.com/mangga_petrokimiagresik/">Instagram</a>
         <a href="https://vt.tiktok.com/ZSeqbcF46/">Tiktok</a>
-        <a href="#">Youtube</a>
+        <a href="https://youtube.com/channel/UCLBPtUL_oID">Youtube</a>
     </div>
     <div class="col-span-12 text-center text-xl">Copyright © 2021 Kemitraan Petrokimia Gresik. All Rights Reserved.
     </div>
@@ -53,7 +53,7 @@
     <ul class="list-none text-md text-center mb-4">
         <li><a href="https://www.instagram.com/mangga_petrokimiagresik/">Instagram</a></li>
         <li><a href="https://vt.tiktok.com/ZSeqbcF46/">Tiktok</a></li>
-        <li><a href="#">Youtube</a></li>
+        <li><a href="https://youtube.com/channel/UCLBPtUL_oID">Youtube</a></li>
     </ul>
     <div class="text-md text-center">Copyright © 2021 Kemitraan Petrokimia Gresik. All Rights Reserved.</div>
 </footer>

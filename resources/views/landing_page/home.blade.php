@@ -19,20 +19,15 @@
                 <img src="{{ asset('assets/img/mangga-gadung.png') }}" alt="" srcset="">
             </div>
             <div class="col-span-9">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's
-                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-                make
-                a type specimen book.
+                <span class="font-bold">Mangga Gadung</span> dengan akronim <span class="font-bold">Mitra
+                    Kebanggaan - Pedagang Unggul</span>, adalah program yang dikhususkan bagi pedagang pupuk untuk mendorong
+                penjualan pupuk non subsidi melalui penyaluran PMK.
             </div>
         </div>
         <div class="grid grid-cols-12 items-center pl-28 pr-16 py-8 font-pn bg-mangga-green-400">
             <div class="col-span-9 text-white">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's
-                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-                make
-                a type specimen book.
+                <span class="font-bold">Mangga Makmur (Majukan Usaha Rakyat)</span>merupakan program pertanian terpadu
+                yang diinisiasi oleh Pupuk Indonesia dan PUMK merupakan bagian kecil dari integrasi program tersebut.
             </div>
             <div class="col-span-3">
                 <img src="{{ asset('assets/img/mangga-makmur.png') }}" alt="" srcset="">
@@ -43,11 +38,9 @@
                 <img src="{{ asset('assets/img/mangga-arumanis.png') }}" alt="" srcset="">
             </div>
             <div class="col-span-9">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's
-                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-                make
-                a type specimen book.
+                <span class="font-bold">Mangga Arumanis (Asuransi maksimal untuk pertanian strategis)</span>adalah
+                program pembinaan sektor pertanian dengan memberikan proteksi asuransi terhadap usaha pertanian mitra
+                binaan.
             </div>
         </div>
         <div class="grid grid-cols-12 items-center px-28 py-8 font-pn bg-light-300 mb-24">
@@ -124,24 +117,21 @@
         <div class="text-6xl text-center font-lb text-mangga-green-400 mb-12">Program Mangga</div>
         <div class="grid grid-cols-12 items-center pl-16 pr-28 py-8 font-pn">
             <div class="col-span-3">
-                <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}" alt="" srcset="">
+                <img src="{{ asset('assets/svg/mangga-gadung.svg') }}" alt="" srcset="">
             </div>
             <div class="col-span-9">
-                Program Pendanaan Usaha Mikro Kecil yang bertujuan untuk meningkatkan
-                Kemampuan dan mengembangkan usaha mikro kecil agar menjadi tangguh serta mandiri dengan strategi
-                Pendampingan dan pembinaan.
+                <span class="font-bold">Mangga Gadung</span> dengan akronim <span class="font-bold">Mitra
+                    Kebanggaan - Pedagang Unggul</span>, adalah program yang dikhususkan bagi pedagang pupuk untuk mendorong
+                penjualan pupuk non subsidi melalui penyaluran PMK.
             </div>
         </div>
         <div class="grid grid-cols-12 items-center pl-28 pr-16 py-8 font-pn bg-mangga-green-400">
             <div class="col-span-9 text-white">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's
-                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-                make
-                a type specimen book.
+                <span class="font-bold">Mangga Makmur (Majukan Usaha Rakyat)</span>merupakan program pertanian terpadu
+                yang diinisiasi oleh Pupuk Indonesia dan PUMK merupakan bagian kecil dari integrasi program tersebut.
             </div>
             <div class="col-span-3">
-                <img src="{{ asset('assets/svg/mangga-muda.svg') }}" alt="" srcset="">
+                <img src="{{ asset('assets/svg/mangga-makmur.svg') }}" alt="" srcset="">
             </div>
         </div>
         <div class="grid grid-cols-12 items-center pl-16 pr-28 py-8 font-pn">
@@ -149,11 +139,9 @@
                 <img src="{{ asset('assets/img/mangga-arumanis.png') }}" alt="" srcset="">
             </div>
             <div class="col-span-9">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's
-                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-                make
-                a type specimen book.
+                <span class="font-bold">Mangga Arumanis (Asuransi maksimal untuk pertanian strategis)</span>adalah
+                program pembinaan sektor pertanian dengan memberikan proteksi asuransi terhadap usaha pertanian mitra
+                binaan.
             </div>
         </div>
         <div class="grid grid-cols-12 items-center px-16 py-8 font-pn bg-light-300 mb-24">
@@ -232,29 +220,24 @@
         <div class="flex flex-col items-center p-8 font-pn">
             <img src="{{ asset('assets/img/mangga-gadung.png') }}" alt="" srcset="">
             <div class="text-xl text-center">
-                Program Pendanaan Usaha Mikro Kecil yang bertujuan untuk meningkatkan
-                Kemampuan dan mengembangkan usaha mikro kecil agar menjadi tangguh serta mandiri dengan strategi
-                Pendampingan dan pembinaan.
+                <span class="font-bold">Mangga Gadung</span> dengan akronim <span class="font-bold">Mitra
+                    Kebanggaan - Pedagang Unggul</span>, adalah program yang dikhususkan bagi pedagang pupuk untuk mendorong
+                penjualan pupuk non subsidi melalui penyaluran PMK.
             </div>
         </div>
         <div class="flex flex-col items-center p-8 font-pn bg-mangga-green-400">
             <img src="{{ asset('assets/img/mangga-makmur.png') }}" alt="" srcset="">
             <div class="text-white text-xl text-center">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's
-                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-                make
-                a type specimen book.
+                <span class="font-bold">Mangga Makmur (Majukan Usaha Rakyat)</span>merupakan program pertanian terpadu
+                yang diinisiasi oleh Pupuk Indonesia dan PUMK merupakan bagian kecil dari integrasi program tersebut.
             </div>
         </div>
         <div class="flex flex-col items-center p-8 font-pn">
             <img src="{{ asset('assets/img/mangga-arumanis.png') }}" alt="" srcset="">
             <div class="text-xl text-center">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's
-                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-                make
-                a type specimen book.
+                <span class="font-bold">Mangga Arumanis (Asuransi maksimal untuk pertanian strategis)</span>adalah
+                program pembinaan sektor pertanian dengan memberikan proteksi asuransi terhadap usaha pertanian mitra
+                binaan.
             </div>
         </div>
         <div class="flex flex-col items-center px-4 font-pn bg-light-300 mb-24 py-8">

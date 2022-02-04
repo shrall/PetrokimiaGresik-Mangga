@@ -177,8 +177,8 @@
                         <div class="flex flex-col gap-y-2">
                             <div class="text-3xl font-bold">{{ $muda->business_title }}</div>
                             <div class="text-xl">{{ $muda->leader_name }}</div>
-                            <div class="text-xl">{{ $muda->business->user->email }}</div>
-                            <div class="text-xl">{{ $muda->business->user->no_handphone }}</div>
+                            <div class="text-xl">{{ $muda->leader_email }}</div>
+                            <div class="text-xl">{{ $muda->leader_phone }}</div>
                             <div class="text-xl">{{ $muda->university }}</div>
                             <div class="text-xl">{{ $muda->faculty }}</div>
                             <div class="text-xl">{{ $muda->recommender }} - {{ $muda->recommender_position }}

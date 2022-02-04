@@ -10,6 +10,8 @@ class Muda extends Model
     use HasFactory;
     protected $fillable = [
         'leader_name',
+        'leader_email',
+        'leader_phone',
         'member_count',
         'university',
         'faculty',

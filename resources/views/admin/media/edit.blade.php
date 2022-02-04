@@ -95,8 +95,7 @@
                 mediaEmbed: {
                     previewsInData: true
                 },
-                removePlugins: ['CKFinderUploadAdapter', 'CKFinder', 'EasyImage', 'Image', 'ImageCaption', 'ImageStyle',
-                    'ImageToolbar', 'ImageUpload', 'MediaEmbed', 'Table'
+                removePlugins: [ 'Table'
                 ],
             }).then(editor => {
                 editor.setData(@json($media->content))
