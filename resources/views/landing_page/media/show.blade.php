@@ -9,8 +9,7 @@
         <div class="flex flex-col md:flex-row md:items-center justify-between">
             <div class="text-gray-400"><span
                     class="fa fa-fw fa-clock mr-2"></span>{{ $media->created_at->format('d/m/Y') }}</div>
-            <div class="text-mangga-green-400">oleh
-                {{ $media->user->first_name . ' ' . $media->user->last_name }}</div>
+            <div class="text-mangga-green-400"></div>
         </div>
         <hr>
         @if ($media->type_id != 2)
