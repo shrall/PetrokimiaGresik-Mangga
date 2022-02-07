@@ -118,8 +118,8 @@ Route::group(['middleware' => ['admin'], 'as' => 'admin.', 'prefix' => 'admin'],
     Route::delete('/media/{media}/delete', [AdminMediaController::class, 'destroy'])->name('media.destroy');
     Route::post('media/uploadphotocontent', [AdminMediaController::class, 'upload_photo_content'])->name('media.uploadphotocontent');
 
-    Route::get('/people/pmccm', [PeopleController::class, 'pmccm'])->name('people.pmccm');
-    Route::get('/people/vp', [PeopleController::class, 'vp'])->name('people.vp');
+    Route::get('/people/one', [PeopleController::class, 'one'])->name('people.one');
+    Route::get('/people/two', [PeopleController::class, 'two'])->name('people.two');
     Route::resource('people', PeopleController::class);
 });
 

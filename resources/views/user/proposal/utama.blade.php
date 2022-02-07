@@ -861,13 +861,13 @@
                 </td>
                 <td width="33%" style="text-align: center;">
                     <br>
-                    PM CCM<br><br><br><br><br><br><br><br><br>
-                    ({{$people->pm_ccm}})
+                    {{$people->one_title}}<br><br><br><br><br><br><br><br><br>
+                    ({{$people->one}})
                 </td>
                 <td width="33%" style="text-align: center;">
                     Menyetujui,<br>
-                    VP Departemen CSR<br><br><br><br><br><br><br><br><br>
-                    ({{$people->vp}})
+                    {{$people->two_title}}<br><br><br><br><br><br><br><br><br>
+                    ({{$people->two}})
                 </td>
             </tr>
         </table>

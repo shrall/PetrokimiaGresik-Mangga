@@ -36,15 +36,17 @@ class PeopleController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->type == 'pm_ccm') {
+        if ($request->type == 'one') {
             $people = People::first();
             $people->update([
-                'pm_ccm' => $request->pm_ccm,
+                'one' => $request->name,
+                'one_title' => $request->title,
             ]);
-        } else if ($request->type == 'vp') {
+        } else if ($request->type == 'two') {
             $people = People::first();
             $people->update([
-                'vp' => $request->vp,
+                'two' => $request->name,
+                'two_title' => $request->title,
             ]);
         }
         return redirect()->route('admin.program');
@@ -94,14 +96,14 @@ class PeopleController extends Controller
     {
         //
     }
-    public function pmccm()
+    public function one()
     {
         $people = People::first();
-        return view('admin.people.pmccm', compact('people'));
+        return view('admin.people.one', compact('people'));
     }
-    public function vp()
+    public function two()
     {
         $people = People::first();
-        return view('admin.people.vp', compact('people'));
+        return view('admin.people.two', compact('people'));
     }
 }

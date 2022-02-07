@@ -88,12 +88,12 @@
                 <span class="fa fa-fw fa-user text-3xl"></span>
                 <div class="flex flex-col items-start col-span-2">
                     <div class="text-4xl text-mangga-green-500 font-bold">
-                        PM CCM
+                        {{ $people->one_title }}
                     </div>
-                    {{ $people->pm_ccm }}
+                    {{ $people->one }}
                 </div>
                 <div class="flex items-center justify-center">
-                    <a href="{{ route('admin.people.pmccm') }}" class="mangga-button-green cursor-pointer">
+                    <a href="{{ route('admin.people.one') }}" class="mangga-button-green cursor-pointer">
                         <span class="fa fa-fw fa-edit"></span>Edit
                     </a>
                 </div>
@@ -104,12 +104,12 @@
                 <span class="fa fa-fw fa-user text-3xl"></span>
                 <div class="flex flex-col items-start col-span-2">
                     <div class="text-4xl text-mangga-green-500 font-bold">
-                        VP CSR
+                        {{ $people->two_title }}
                     </div>
-                    {{ $people->vp }}
+                    {{ $people->two }}
                 </div>
                 <div class="flex items-center justify-center">
-                    <a href="{{ route('admin.people.vp') }}" class="mangga-button-green cursor-pointer">
+                    <a href="{{ route('admin.people.two') }}" class="mangga-button-green cursor-pointer">
                         <span class="fa fa-fw fa-edit"></span>Edit
                     </a>
                 </div>
@@ -183,6 +183,7 @@
                 .columns.adjust()
                 .responsive.recalc();
         });
+
     </script>
 @endsection
 

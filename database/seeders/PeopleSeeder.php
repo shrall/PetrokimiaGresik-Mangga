@@ -15,8 +15,10 @@ class PeopleSeeder extends Seeder
     public function run()
     {
         $people = new People();
-        $people->pm_ccm = 'Eko Suroso';
-        $people->vp = 'Muhammad Ihwan F.';
+        $people->one = 'Eko Suroso';
+        $people->two = 'Muhammad Ihwan F.';
+        $people->one_title = 'PM CCM';
+        $people->two_title = 'VP CSR';
         $people->save();
     }
 }
