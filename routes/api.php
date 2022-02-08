@@ -23,8 +23,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('login', [LoginController::class, 'login']);
-Route::post('register', [RegisterController::class, 'register']);
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/register', [RegisterController::class, 'register']);
 Route::group(['prefix' => 'location'], function () {
     Route::get('/province', [LocationController::class, 'province']);
     Route::get('/city', [LocationController::class, 'city']);
@@ -39,6 +39,6 @@ Route::apiResource('establishmentstatus', EstablishmentStatusController::class);
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResource('user', UserController::class);
-    Route::post('email/verify', [UserController::class, 'resend_email']);
-    Route::post('logout', [LoginController::class, 'logout']);
+    Route::post('/email/verify', [UserController::class, 'resend_email']);
+    Route::post('/logout', [LoginController::class, 'logout']);
 });
