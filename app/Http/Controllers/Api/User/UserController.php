@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\User;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\UserResource;
+use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,8 @@ class UserController extends Controller
     }
 
     public function resend_email(Request $request){
-        $request->user()->sendEmailVerificationNotification();
+        $user = User::where('email', $request->email)->first();
+        $user->sendEmailVerificationNotification();
         $return = [
             'api_code' => 200,
             'api_status' => true,
