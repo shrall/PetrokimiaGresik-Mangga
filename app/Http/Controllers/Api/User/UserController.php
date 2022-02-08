@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\User;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\UserResource;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,6 +23,17 @@ class UserController extends Controller
             'api_status' => true,
             'api_message' => 'Lorem ipsum',
             'api_results' => UserResource::make(Auth::user())
+        ];
+        return SuccessResource::make($return);
+    }
+
+    public function resend_email(Request $request){
+        $request->user()->sendEmailVerificationNotification();
+        $return = [
+            'api_code' => 200,
+            'api_status' => true,
+            'api_message' => 'Lorem ipsum',
+            'api_results' => 'Verification link sent!'
         ];
         return SuccessResource::make($return);
     }

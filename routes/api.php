@@ -39,5 +39,6 @@ Route::apiResource('establishmentstatus', EstablishmentStatusController::class);
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResource('user', UserController::class);
+    Route::post('email/verify', [UserController::class, 'resend_email']);
     Route::post('logout', [LoginController::class, 'logout']);
 });
