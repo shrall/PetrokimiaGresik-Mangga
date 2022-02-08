@@ -79,8 +79,7 @@
                         <div class="grid grid-cols-2 items-center gap-x-2">
                             <div class="col-span-1">
                                 <label class="text-gray-400">Nama Bank</label>
-                                <input name="bank_name" type="text" class="form-input bg-white mb-4" required
-                                    value="{{ Auth::user()->bank_name }}">
+                                <input name="bank_name" type="text" class="form-input bg-white mb-4" readonly value="BNI">
                             </div>
                             <div class="col-span-1">
                                 <label class="text-gray-400">Cabang Bank</label>
