@@ -54,7 +54,7 @@
                     </div>
                     <div
                         class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                        Pengajuan Diapprove Surveyor</div>
+                        Pengajuan Terevaluasi Surveyor</div>
                 </div>
                 <div class="block xl:hidden">
                     <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
@@ -87,12 +87,12 @@
                 </div>
             @endif
         </div>
+        <label for="complete-form" class="font-bold">Upload Form Yang
+            Sudah Di Tanda Tangani</label>
         <form action="{{ route('admin.utama.ttd', $utama->id) }}" method="post" enctype="multipart/form-data"
-            class="flex flex-col items-center justify-center gap-y-2">
+            class="flex items-center justify-center gap-y-2 bg-gray-300 rounded-xl shadow-xl p-4">
             @csrf
             @method('PATCH')
-            <label for="complete-form" class="font-bold">Upload Form Yang
-                Sudah Di Tanda Tangani</label>
             <a target="blank" href="{{ asset('uploads/mangga/complete_form/' . $utama->complete_form) }}">
                 <span class="fa fa-fw fa-file-pdf"></span>
                 <span class="underline">{{ $utama->complete_form }}</span>
@@ -102,9 +102,16 @@
         </form>
         @if (Auth::user()->user_role == 2)
             <div class="flex items-center justify-center gap-x-4">
-                <a href="{{ route('admin.utama.approve_surveyor', $utama->id) }}"
-                    class="mangga-button-green cursor-pointer">Setujui (Surveyor)
-                </a>
+                @if ($utama->evaluation)
+                    <a target="blank" href="{{ route('admin.evaluation.show', $utama->evaluation->id) }}"
+                        class="mangga-button-green cursor-pointer">
+                        <span class="fa fa-fw fa-file-download"></span>Lihat Hasil Evaluasi
+                    </a>
+                @else
+                    <a href="{{ route('admin.business.show', $utama->business->id) }}"
+                        class="mangga-button-green cursor-pointer">Buat Evaluasi (Surveyor)
+                    </a>
+                @endif
                 <a href="{{ route('admin.utama.approve_pimpinan', $utama->id) }}"
                     class="mangga-button-green cursor-pointer">Setujui (Pimpinan)
                 </a>
@@ -113,13 +120,18 @@
             </div>
         @elseif (Auth::user()->user_role == 3)
             @if ($utama->business->status == 2)
-                <div class="flex items-center justify-center gap-x-4">
-                    <a href="{{ route('admin.utama.approve_surveyor', $utama->id) }}"
-                        class="mangga-button-green cursor-pointer">Setujui
+                @if ($utama->evaluation)
+                    <a target="blank" href="{{ route('admin.evaluation.show', $utama->evaluation->id) }}"
+                        class="mangga-button-green cursor-pointer">
+                        <span class="fa fa-fw fa-file-download"></span>Lihat Hasil Evaluasi
                     </a>
-                    <a href="{{ route('admin.utama.reject', $utama->id) }}" class="mangga-button-red cursor-pointer">Tolak
-                    </a>
-                </div>
+                @else
+                    <div class="flex items-center justify-center gap-x-4">
+                        <a href="{{ route('admin.business.show', $utama->business->id) }}"
+                            class="mangga-button-green cursor-pointer">Buat Evaluasi
+                        </a>
+                    </div>
+                @endif
             @endif
         @elseif (Auth::user()->user_role == 4)
             @if ($utama->business->status == 3)
@@ -127,7 +139,8 @@
                     <a href="{{ route('admin.utama.approve_pimpinan', $utama->id) }}"
                         class="mangga-button-green cursor-pointer">Setujui
                     </a>
-                    <a href="{{ route('admin.utama.reject', $utama->id) }}" class="mangga-button-red cursor-pointer">Tolak
+                    <a href="{{ route('admin.utama.reject', $utama->id) }}"
+                        class="mangga-button-red cursor-pointer">Tolak
                     </a>
                 </div>
             @endif
@@ -342,7 +355,7 @@
         <hr>
         <div class="grid grid-cols-2 gap-x-8 gap-y-2">
             <div class="text-xl font-bold underline">Data Pengajuan</div>
-            <div class="text-lg font-bold">Nomor Registrasi : {{$utama->business->registration_number}}</div>
+            <div class="text-lg font-bold">Nomor Registrasi : {{ $utama->business->registration_number }}</div>
             <div class="flex flex-col col-span-2">
                 <span class="text-gray-600">Jumlah Pengajuan</span>
                 <span>Rp. {{ number_format($utama->request_amount, 0, ',', '.') }}</span>
@@ -357,12 +370,10 @@
                     <div class="flex items-center gap-x-2">
                         <span class="fa fa-fw fa-check-square"></span>
                         <span>
-                            <a target="blank" href="{{ asset('uploads/mangga/ktp/' . $utama->ktp) }}"
-                                class="underline">
+                            <a target="blank" href="{{ asset('uploads/mangga/ktp/' . $utama->ktp) }}" class="underline">
                                 KTP
                             </a> dan <a target="blank"
-                                href="{{ asset('uploads/mangga/ktpselfie/' . $utama->ktp_selfie) }}"
-                                class="underline">
+                                href="{{ asset('uploads/mangga/ktpselfie/' . $utama->ktp_selfie) }}" class="underline">
                                 Selfie KTP
                             </a>
                         </span>
@@ -370,11 +381,9 @@
                     <div class="flex items-center gap-x-2">
                         <span class="fa fa-fw fa-check-square"></span>
                         <span>
-                            <a target="blank" href="{{ asset('uploads/mangga/kk/' . $utama->kk) }}"
-                                class="underline">
+                            <a target="blank" href="{{ asset('uploads/mangga/kk/' . $utama->kk) }}" class="underline">
                                 KK
-                            </a> dan <a target="blank"
-                                href="{{ asset('uploads/mangga/kkselfie/' . $utama->kk_selfie) }}"
+                            </a> dan <a target="blank" href="{{ asset('uploads/mangga/kkselfie/' . $utama->kk_selfie) }}"
                                 class="underline">
                                 Selfie KK
                             </a>
@@ -415,7 +424,8 @@
             </div>
             <div class="flex flex-col">
                 <span class="text-gray-600">Pemasaran</span>
-                <span>{{ $utama->marketing->name }} @if ($utama->marketing_id == 3) Ekspor ke {{ $utama->export_to }} @endif </span>
+                <span>{{ $utama->marketing->name }} @if ($utama->marketing_id == 3)
+                        Ekspor ke {{ $utama->export_to }} @endif </span>
             </div>
             <div class="flex flex-col">
                 <span class="text-gray-600">Sektor</span>
@@ -509,7 +519,7 @@
                     <tr class="font-bold">
                         <td>Jumlah</td>
                         <td>Rp.
-                            {{ number_format($utama->treasury + $utama->credit + $utama->production_tools + $utama->savings + $utama->supply + $utama->vehicle,0,',','.') }}
+                            {{ number_format($utama->treasury + $utama->credit + $utama->production_tools + $utama->savings + $utama->supply + $utama->vehicle, 0, ',', '.') }}
                         </td>
                     </tr>
                 </table>
@@ -639,129 +649,130 @@
 @endsection
 
 @section('scripts')
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            var table = $('#example').DataTable({
-                    responsive: true
-                })
-                .columns.adjust()
-                .responsive.recalc();
-        });
-    </script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var table = $('#example').DataTable({
+                responsive: true
+            })
+            .columns.adjust()
+            .responsive.recalc();
+    });
+
+</script>
 @endsection
 
 @section('head')
-    <!--Regular Datatables CSS-->
-    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-    <!--Responsive Extension Datatables CSS-->
-    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+<!--Regular Datatables CSS-->
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+<!--Responsive Extension Datatables CSS-->
+<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 
 
-    <!--Datatables -->
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <style>
-        /*Form fields*/
-        .dataTables_wrapper select,
-        .dataTables_wrapper .dataTables_filter input {
-            color: #4a5568;
-            /*text-gray-700*/
-            padding-left: 1rem;
-            /*pl-4*/
-            padding-right: 1rem;
-            /*pl-4*/
-            padding-top: .5rem;
-            /*pl-2*/
-            padding-bottom: .5rem;
-            /*pl-2*/
-            line-height: 1.25;
-            /*leading-tight*/
-            border-width: 2px;
-            /*border-2*/
-            border-radius: .25rem;
-            border-color: #edf2f7;
-            /*border-gray-200*/
-            background-color: #edf2f7;
-            /*bg-gray-200*/
-        }
+<!--Datatables -->
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<style>
+    /*Form fields*/
+    .dataTables_wrapper select,
+    .dataTables_wrapper .dataTables_filter input {
+        color: #4a5568;
+        /*text-gray-700*/
+        padding-left: 1rem;
+        /*pl-4*/
+        padding-right: 1rem;
+        /*pl-4*/
+        padding-top: .5rem;
+        /*pl-2*/
+        padding-bottom: .5rem;
+        /*pl-2*/
+        line-height: 1.25;
+        /*leading-tight*/
+        border-width: 2px;
+        /*border-2*/
+        border-radius: .25rem;
+        border-color: #edf2f7;
+        /*border-gray-200*/
+        background-color: #edf2f7;
+        /*bg-gray-200*/
+    }
 
-        /*Row Hover*/
-        table.dataTable.hover tbody tr:hover,
-        table.dataTable.display tbody tr:hover {
-            background-color: #ebf4ff;
-            /*bg-indigo-100*/
-        }
+    /*Row Hover*/
+    table.dataTable.hover tbody tr:hover,
+    table.dataTable.display tbody tr:hover {
+        background-color: #ebf4ff;
+        /*bg-indigo-100*/
+    }
 
-        /*Pagination Buttons*/
-        .dataTables_wrapper .dataTables_paginate .paginate_button {
-            font-weight: 700;
-            /*font-bold*/
-            border-radius: .25rem;
-            /*rounded*/
-            border: 1px solid transparent;
-            /*border border-transparent*/
-        }
+    /*Pagination Buttons*/
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        font-weight: 700;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        border: 1px solid transparent;
+        /*border border-transparent*/
+    }
 
-        /*Pagination Buttons - Current selected */
-        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-            color: #fff !important;
-            /*text-white*/
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-            /*shadow*/
-            font-weight: 700;
-            /*font-bold*/
-            border-radius: .25rem;
-            /*rounded*/
-            background: #0f7144 !important;
-            /*bg-indigo-500*/
-            border: 1px solid transparent;
-            /*border border-transparent*/
-        }
+    /*Pagination Buttons - Current selected */
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        color: #fff !important;
+        /*text-white*/
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        /*shadow*/
+        font-weight: 700;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        background: #0f7144 !important;
+        /*bg-indigo-500*/
+        border: 1px solid transparent;
+        /*border border-transparent*/
+    }
 
-        /*Pagination Buttons - Hover */
-        .dataTables_wrapper .dataTables_paginate .paginate_button:hover,
-        .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
-            color: #fff !important;
-            /*text-white*/
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-            /*shadow*/
-            font-weight: 700;
-            /*font-bold*/
-            border-radius: .25rem;
-            background: #0f7144 !important;
-            border: 1px solid transparent;
-            /*border border-transparent*/
-            cursor: pointer;
-        }
+    /*Pagination Buttons - Hover */
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
+        color: #fff !important;
+        /*text-white*/
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        /*shadow*/
+        font-weight: 700;
+        /*font-bold*/
+        border-radius: .25rem;
+        background: #0f7144 !important;
+        border: 1px solid transparent;
+        /*border border-transparent*/
+        cursor: pointer;
+    }
 
-        .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-            color: #fff !important;
-            cursor: default;
-        }
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+        color: #fff !important;
+        cursor: default;
+    }
 
-        .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
-            cursor: pointer;
-        }
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+        cursor: pointer;
+    }
 
-        /*Add padding to bottom border */
-        table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;
-            /*border-b-1 border-gray-300*/
-            margin-top: 0.75em;
-            margin-bottom: 0.75em;
-        }
+    /*Add padding to bottom border */
+    table.dataTable.no-footer {
+        border-bottom: 1px solid #e2e8f0;
+        /*border-b-1 border-gray-300*/
+        margin-top: 0.75em;
+        margin-bottom: 0.75em;
+    }
 
-        /*Change colour of responsive icon*/
-        table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
-        table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-            background-color: #0f7144 !important;
-            /*bg-indigo-500*/
-        }
+    /*Change colour of responsive icon*/
+    table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+    table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+        background-color: #0f7144 !important;
+        /*bg-indigo-500*/
+    }
 
-        .paginate_button,
-        .paginate_button:hover {
-            color: #ffffff !important;
-        }
+    .paginate_button,
+    .paginate_button:hover {
+        color: #ffffff !important;
+    }
 
-    </style>
+</style>
 @endsection

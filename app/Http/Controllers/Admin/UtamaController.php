@@ -121,24 +121,6 @@ class UtamaController extends Controller
         return redirect()->route('admin.program.utama', $utama->business->id);
     }
 
-    public function approve_surveyor(Utama $utama)
-    {
-        if (Auth::user()->user_role == 2 || Auth::user()->user_role == 3) {
-            $utama->business->update([
-                'status' => 3,
-                'approved_by_surveyor_at' => Carbon::now(),
-                'rejected_at' => null,
-
-            ]);
-            BusinessLog::create([
-                'description' => 'Disetujui (Surveyor) oleh ' . Auth::user()->first_name . ' ' . Auth::user()->last_name,
-                'business_id' => $utama->business->id,
-                'admin_id' => Auth::user()->id
-            ]);
-        }
-        return redirect()->route('admin.program.utama', $utama->business->id);
-    }
-
     public function approve_pimpinan(Utama $utama)
     {
         if (Auth::user()->user_role == 2 || Auth::user()->user_role == 4) {

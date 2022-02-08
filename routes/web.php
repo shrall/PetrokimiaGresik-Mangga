@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\BusinessController;
 use App\Http\Controllers\Admin\MediaController as AdminMediaController;
 use App\Http\Controllers\Admin\MudaController as AdminMudaController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\PeopleController;
 use App\Http\Controllers\Admin\UtamaController as AdminUtamaController;
+use App\Http\Controllers\Admin\UtamaEvaluationController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\MudaController;
 use App\Http\Controllers\PageController;
@@ -121,6 +123,11 @@ Route::group(['middleware' => ['admin'], 'as' => 'admin.', 'prefix' => 'admin'],
     Route::get('/people/one', [PeopleController::class, 'one'])->name('people.one');
     Route::get('/people/two', [PeopleController::class, 'two'])->name('people.two');
     Route::resource('people', PeopleController::class);
+
+    Route::post('/evaluation/check', [UtamaEvaluationController::class, 'check'])->name('evaluation.check');
+    Route::resource('evaluation', UtamaEvaluationController::class);
+
+    Route::resource('business', BusinessController::class);
 });
 
 Route::get('/eee', function () {

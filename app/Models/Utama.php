@@ -112,6 +112,10 @@ class Utama extends Model
     {
         return $this->hasMany(UtamaMember::class, 'utama_id', 'id');
     }
+    public function evaluation()
+    {
+        return $this->hasOne(UtamaEvaluation::class, 'utama_id', 'id');
+    }
 
     public function companionprovince() {
         return $this->belongsTo(Province::class, 'companion_province', 'id');

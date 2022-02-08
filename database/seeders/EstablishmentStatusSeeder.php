@@ -25,5 +25,9 @@ class EstablishmentStatusSeeder extends Seeder
         $status = new EstablishmentStatus();
         $status->name = 'Keluarga';
         $status->save();
+
+        $status = new EstablishmentStatus();
+        $status->name = 'Sertifikat';
+        $status->save();
     }
 }

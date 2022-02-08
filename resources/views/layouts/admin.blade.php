@@ -6,22 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="title" content="Mangga Petrokimia Gresik">
     <meta name="description" content="Mangga Petrokimia Gresik">
-    <link rel="apple-touch-icon" sizes="57x57" href="{{asset('favicon/apple-icon-57x57.png')}}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{{asset('favicon/apple-icon-60x60.png')}}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{asset('favicon/apple-icon-72x72.png')}}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('favicon/apple-icon-76x76.png')}}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{asset('favicon/apple-icon-114x114.png')}}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{asset('favicon/apple-icon-120x120.png')}}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{asset('favicon/ms-icon-144x144.png')}}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{asset('favicon/apple-icon-152x152.png')}}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('favicon/apple-icon-180x180.png')}}">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{asset('favicon/android-icon-192x192.png')}}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('favicon/apple-icon-57x57.png') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('favicon/apple-icon-60x60.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('favicon/apple-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('favicon/apple-icon-76x76.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('favicon/apple-icon-114x114.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('favicon/apple-icon-120x120.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('favicon/ms-icon-144x144.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('favicon/apple-icon-152x152.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-icon-180x180.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon/android-icon-192x192.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="asset('favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="{{asset('favicon/favicon-96x96.png')}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('favicon/favicon-16x16.png')}}">
-    <link rel="manifest" href="{{asset('favicon/manifest.json')}}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('favicon/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('favicon/manifest.json') }}">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="{{asset('favicon/ms-icon-144x144.png')}}">
+    <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     <meta name="theme-color" content="#ffffff">
     <meta name="google-site-verification" content="9A7AopC-vYhUTF8T44Y3ffwY2cLGlnnR16KZvKrv4Ps" />
 
@@ -31,7 +31,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{asset('css/app.css?v=').time()}}" rel="stylesheet">
+    <link href="{{ asset('css/app.css?v=') . time() }}" rel="stylesheet">
 
     {{-- Font Awesome --}}
     <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css">
@@ -45,8 +45,8 @@
             <div class="col-span-2 bg-mangga-green-500 text-white relative">
                 <div class="flex flex-col gap-y-4 w-2/12 min-h-screen p-4 fixed">
                     <div class="flex items-center">
-                    <a href="{{ route('home') }}">
-                        <img src="{{ asset('assets/svg/mangga-logo-white.svg') }}" class="w-9/10 mx-auto"></a>
+                        <a href="{{ route('home') }}">
+                            <img src="{{ asset('assets/svg/mangga-logo-white.svg') }}" class="w-9/10 mx-auto"></a>
                     </div>
                     <hr>
                     <div class="flex items-center gap-x-2">
@@ -73,6 +73,12 @@
                         <span class="fa fa-fw fa-photo-video text-3xl"></span>
                         <a href="{{ route('admin.media.index') }}">
                             <div class="text-xl">Media</div>
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-x-2 hover:text-gray-100 cursor-pointer">
+                        <span class="fa fa-fw fa-paste text-3xl"></span>
+                        <a href="{{ route('admin.evaluation.index') }}">
+                            <div class="text-xl">Evaluasi</div>
                         </a>
                     </div>
                     <div class="flex items-center gap-x-2 hover:text-gray-100 cursor-pointer mt-auto" onclick="event.preventDefault();

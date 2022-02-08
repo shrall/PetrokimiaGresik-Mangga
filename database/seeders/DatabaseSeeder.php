@@ -18,6 +18,10 @@ class DatabaseSeeder extends Seeder
         $this->call(IndoRegionRegencySeeder::class);
         $this->call(IndoRegionDistrictSeeder::class);
         $this->call(IndoRegionVillageSeeder::class);
+        $this->call(CapitalSourceSeeder::class);
+        $this->call(FinanceRecordSeeder::class);
+        $this->call(InstallmentTypeSeeder::class);
+        $this->call(ProductionProcessSeeder::class);
         $this->call(MudaTypeSeeder::class);
         $this->call(MudaCategorySeeder::class);
         $this->call(PeopleSeeder::class);
