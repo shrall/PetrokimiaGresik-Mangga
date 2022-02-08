@@ -77,7 +77,7 @@
                                 </div>
                                 <div
                                     class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                                    Pengajuan Diapprove Surveyor</div>
+                                    Pengajuan Terevaluasi Surveyor</div>
                             </div>
                             <div class="block xl:hidden">
                                 <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
@@ -144,12 +144,12 @@
                     @endif
                 </div>
                 @if (Auth::user()->referral_code != 'mamud')
-                    <form action="{{ route('user.utama.ttd', $utama->id) }}" method="post" enctype="multipart/form-data"
-                        class="flex flex-col items-center justify-center gap-y-2">
+                    <label for="complete-form" class="font-bold">Upload Form Yang
+                        Sudah Di Tanda Tangani</label>
+                    <form action="{{ route('admin.utama.ttd', $utama->id) }}" method="post" enctype="multipart/form-data"
+                        class="flex items-center justify-center gap-y-2 bg-gray-300 rounded-xl shadow-xl p-4">
                         @csrf
                         @method('PATCH')
-                        <label for="complete-form" class="font-bold">Upload Form Yang
-                            Sudah Di Tanda Tangani</label>
                         <a target="blank" href="{{ asset('uploads/mangga/complete_form/' . $utama->complete_form) }}">
                             <span class="fa fa-fw fa-file-pdf"></span>
                             <span class="underline">{{ $utama->complete_form }}</span>
@@ -231,8 +231,7 @@
                     <div class="text-xl font-bold">Pangsa Pasar Produk dan Go-To-Market Strategy</div>
                     <div class="text-xl">{{ $muda->market_share }}</div>
                     <div class="text-xl font-bold">Peta Positioning</div>
-                    <img src="{{ asset('uploads/mangga/marketpositions/' . $muda->market_position) }}"
-                        class="w-128">
+                    <img src="{{ asset('uploads/mangga/marketpositions/' . $muda->market_position) }}" class="w-128">
                     <hr>
                     <div class="text-xl font-bold underline">Analisa Pemasaran</div>
                     <div class="text-xl font-bold">Strategi Produksi</div>
@@ -722,7 +721,8 @@
                         </div>
                         <div class="flex flex-col">
                             <span class="text-gray-600">Pemasaran</span>
-                            <span>{{ $utama->marketing->name }} @if ($utama->marketing_id == 3) Ekspor ke {{ $utama->export_to }} @endif </span>
+                            <span>{{ $utama->marketing->name }} @if ($utama->marketing_id == 3) Ekspor ke {{ $utama->export_to }}
+                                @endif </span>
                         </div>
                         <div class="flex flex-col">
                             <span class="text-gray-600">Sektor</span>
@@ -816,7 +816,7 @@
                                 <tr class="font-bold">
                                     <td>Jumlah</td>
                                     <td>Rp.
-                                        {{ number_format($utama->treasury + $utama->credit + $utama->production_tools + $utama->savings + $utama->supply + $utama->vehicle,0,',','.') }}
+                                        {{ number_format($utama->treasury + $utama->credit + $utama->production_tools + $utama->savings + $utama->supply + $utama->vehicle, 0, ',', '.') }}
                                     </td>
                                 </tr>
                             </table>
@@ -949,6 +949,6 @@
 @endsection
 
 @section('scripts')
-    <script>
-    </script>
+<script>
+</script>
 @endsection
