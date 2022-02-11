@@ -104,6 +104,7 @@ Route::group(['middleware' => ['admin'], 'as' => 'admin.', 'prefix' => 'admin'],
     Route::get('/utama/{utama}/approvepimpinan', [AdminUtamaController::class, 'approve_pimpinan'])->name('utama.approve_pimpinan');
     Route::get('/utama/{utama}/reject', [AdminUtamaController::class, 'reject'])->name('utama.reject');
     Route::get('/utama/{utama}/download', [AdminUtamaController::class, 'download'])->name('utama.download');
+    Route::get('/utama/{utama}/preview', [AdminUtamaController::class, 'preview'])->name('utama.preview');
 
     Route::get('/program/muda/{business}', [AdminPageController::class, 'mangga_muda'])->name('program.muda');
     Route::resource('muda', AdminMudaController::class);
