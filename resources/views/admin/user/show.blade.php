@@ -1,119 +1,17 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="grid grid-cols-3 gap-x-4 gap-y-2 mb-4">
-        <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
-            <a href="#">
-                <div class="grid grid-cols-2 items-center p-4">
-                    <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}" class="w-full">
-                    <div class="flex flex-col items-end">
-                        <div class="text-4xl text-mangga-green-500 font-bold">
-                            {{ count($businesses->where('mangga_type', 1)) }}
-                        </div>
-                        Ajuan
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
-            <a href="#">
-                <div class="grid grid-cols-2 items-center p-4">
-                    <img src="{{ asset('assets/img/mangga-muda.png') }}" alt="Mangga Muda" class="w-full">
-                    <div class="flex flex-col items-end">
-                        <div class="text-4xl text-mangga-green-500 font-bold">
-                            {{ count($businesses->where('mangga_type', 2)) }}
-                        </div>
-                        Ajuan
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
-            <a href="#">
-                <div class="grid grid-cols-2 items-center p-4">
-                    <img src="{{ asset('assets/img/mangga-makmur.png') }}" class="w-full">
-                    <div class="flex flex-col items-end">
-                        <div class="text-4xl text-mangga-green-500 font-bold">
-                            #
-                        </div>
-                        Ajuan
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
-            <a href="#">
-                <div class="grid grid-cols-2 items-center p-4">
-                    <img src="{{ asset('assets/img/mangga-gadung.png') }}" class="w-full">
-                    <div class="flex flex-col items-end">
-                        <div class="text-4xl text-mangga-green-500 font-bold">
-                            #
-                        </div>
-                        Ajuan
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
-            <a href="#">
-                <div class="grid grid-cols-2 items-center p-4">
-                    <img src="{{ asset('assets/img/mangga-golek.png') }}" class="w-full">
-                    <div class="flex flex-col items-end">
-                        <div class="text-4xl text-mangga-green-500 font-bold">
-                            #
-                        </div>
-                        Ajuan
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
-            <a href="#">
-                <div class="grid grid-cols-2 items-center p-4">
-                    <img src="{{ asset('assets/img/mangga-madu.png') }}" class="w-full">
-                    <div class="flex flex-col items-end">
-                        <div class="text-4xl text-mangga-green-500 font-bold">
-                            #
-                        </div>
-                        Ajuan
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <hr>
-    <div class="grid grid-cols-2 gap-x-4 gap-y-2 mb-4">
-        <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
-            <div class="grid grid-cols-4 items-center p-4">
-                <span class="fa fa-fw fa-user text-3xl"></span>
-                <div class="flex flex-col items-start col-span-2">
-                    <div class="text-4xl text-mangga-green-500 font-bold">
-                        {{ $people->one_title }}
-                    </div>
-                    {{ $people->one }}
-                </div>
-                <div class="flex items-center justify-center">
-                    <a href="{{ route('admin.people.one') }}" class="mangga-button-green cursor-pointer">
-                        <span class="fa fa-fw fa-edit"></span>Edit
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
-            <div class="grid grid-cols-4 items-center p-4">
-                <span class="fa fa-fw fa-user text-3xl"></span>
-                <div class="flex flex-col items-start col-span-2">
-                    <div class="text-4xl text-mangga-green-500 font-bold">
-                        {{ $people->two_title }}
-                    </div>
-                    {{ $people->two }}
-                </div>
-                <div class="flex items-center justify-center">
-                    <a href="{{ route('admin.people.two') }}" class="mangga-button-green cursor-pointer">
-                        <span class="fa fa-fw fa-edit"></span>Edit
-                    </a>
-                </div>
-            </div>
+    <div class="grid grid-cols-3 gap-x-4 items-center mb-4">
+        <img class="rounded-full w-64 h-64"
+            @if (Auth::user()->picture) src="{{ asset('uploads/user/' . Auth::user()->picture) }}" @else src="{{ asset('assets/img/stock.jpg') }}" @endif>
+        <div class="flex flex-col gap-y-2 col-span-2">
+            <div class="text-3xl font-bold">{{ $user->first_name }} {{ $user->last_name }}</div>
+            <div class="text-xl">{{ $user->email }}</div>
+            <div class="text-xl">{{ $user->no_handphone }}</div>
+            <div class="text-xl">{{ $user->province->name }}</div>
+            <div class="text-xl">{{ $user->city->name }}</div>
+            <div class="text-xl">{{ $user->district->name }}</div>
+            <div class="text-xl">{{ $user->village->name }}</div>
         </div>
     </div>
     <div class="card bg-white px-8 py-6">
@@ -123,23 +21,20 @@
                     <th data-priority="1">No.</th>
                     <th data-priority="2">Nama Usaha</th>
                     <th data-priority="3">Tanggal Pengajuan</th>
-                    <th data-priority="4">Pemilik Usaha</th>
                     <th data-priority="5">Program</th>
                     <th data-priority="6">Status</th>
                     <th data-priority="7">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($businesses as $business)
+                @foreach ($user->businesses as $business)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $business->name }}</td>
                         <td>{{ $business->created_at->format('d/m/Y H:i:s') }}</td>
                         @if ($business->mangga_type == 1)
-                            <td>{{ $business->utama->user_name }}</td>
                             <td>Mangga</td>
                         @elseif ($business->mangga_type == 2)
-                            <td>{{ $business->muda->leader_name }}</td>
                             <td>Mangga Muda</td>
                         @endif
                         @if ($business->status == 1)
@@ -183,7 +78,6 @@
                 .columns.adjust()
                 .responsive.recalc();
         });
-
     </script>
 @endsection
 

@@ -186,8 +186,8 @@
             </div>
             <div class="flex flex-col">
                 <span class="text-gray-600">Tanggal Penerimaan</span>
-                @if ($utama->Setujuid_by_surveyor_at)
-                    <span>{{ $utama->Setujuid_by_surveyor_at->format('d/m/Y') }}</span>
+                @if ($utama->accepted_by_surveyor_at)
+                    <span>{{ $utama->accepted_by_surveyor_at->format('d/m/Y') }}</span>
                 @else -
                 @endif
             </div>

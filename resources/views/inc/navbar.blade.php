@@ -20,10 +20,10 @@
                         <div class="text-2xl py-2 border-b-2 border-light-200">Program Mangga</div>
                         <a href="{{ route('profil.mangga') }}" class="hover:text-gray-200">Mangga</a>
                         <a href="{{ route('profil.mangga_gadung') }}" class="hover:text-gray-200">Mangga Gadung</a>
-                        <a href="{{ route('profil.mangga_muda') }}" class="hover:text-gray-200">Mangga Muda</a>
                         <a href="{{ route('profil.mangga_makmur') }}" class="hover:text-gray-200">Mangga Makmur</a>
-                        <a href="{{ route('profil.mangga_madu') }}" class="hover:text-gray-200">Mangga Madu</a>
                         <a href="{{ route('profil.mangga_golek') }}" class="hover:text-gray-200">Mangga Golek</a>
+                        <a href="{{ route('profil.mangga_muda') }}" class="hover:text-gray-200">Mangga Muda</a>
+                        <a href="{{ route('profil.mangga_madu') }}" class="hover:text-gray-200">Mangga Madu</a>
                     </div>
                 </div>
             </div>
@@ -46,10 +46,10 @@
                         <div class="text-2xl py-2 border-b-2 border-light-200">Program Mangga</div>
                         <a href="{{ route('profil.mangga') }}" class="hover:text-gray-200">Mangga</a>
                         <a href="{{ route('profil.mangga_gadung') }}" class="hover:text-gray-200">Mangga Gadung</a>
-                        <a href="{{ route('profil.mangga_muda') }}" class="hover:text-gray-200">Mangga Muda</a>
                         <a href="{{ route('profil.mangga_makmur') }}" class="hover:text-gray-200">Mangga Makmur</a>
-                        <a href="{{ route('profil.mangga_madu') }}" class="hover:text-gray-200">Mangga Madu</a>
                         <a href="{{ route('profil.mangga_golek') }}" class="hover:text-gray-200">Mangga Golek</a>
+                        <a href="{{ route('profil.mangga_muda') }}" class="hover:text-gray-200">Mangga Muda</a>
+                        <a href="{{ route('profil.mangga_madu') }}" class="hover:text-gray-200">Mangga Madu</a>
                     </div>
                 </div>
             </div>

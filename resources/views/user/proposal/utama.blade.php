@@ -162,10 +162,12 @@
                             @foreach ($utama->business->commodities as $c)
                                 @if ($loop->iteration != 1)
                                     <span style="visibility: hidden;">:</span>
-                                @endif{{ $c->name }}@if (!$loop->last)<br>@endif
-                            @endforeach
-                        @else -
-                        @endif
+                                    @endif{{ $c->name }}@if (!$loop->last)
+                                        <br>
+                                    @endif
+                                @endforeach
+                            @else -
+                            @endif
                     </td>
                 </tr>
             </table>
@@ -258,7 +260,9 @@
                 <td>Komoditas Yang Dihasilkan</td>
                 <td>: @if ($utama->business->commodities)
                         @foreach ($utama->business->commodities as $c)
-                            {{ $c->name }}@if (!$loop->last),@endif
+                            {{ $c->name }}@if (!$loop->last)
+                                ,
+                            @endif
                         @endforeach
                     @else -
                     @endif
@@ -272,7 +276,10 @@
             <tr>
                 <td>10.</td>
                 <td>Pemasaran</td>
-                <td>: {{ $utama->marketing->name }} @if ($utama->marketing_id == 3) ke {{ $utama->export_to }} @endif</td>
+                <td>: {{ $utama->marketing->name }} @if ($utama->marketing_id == 3)
+                        ke {{ $utama->export_to }}
+                    @endif
+                </td>
             </tr>
         </table>
         <div class="font-bold" style="font-size: 1.25rem;">I.B. Penanggung Jawab Usaha</div>
@@ -400,7 +407,7 @@
                 <td></td>
                 <td>Jumlah</td>
                 <td>: Rp.
-                    {{ number_format($utama->supply + $utama->vehicle + $utama->treasury + $utama->credit + $utama->production_tools + $utama->savings, 0, ',', '.') }}
+                    {{ number_format($utama->supply + $utama->vehicle + $utama->treasury + $utama->credit + $utama->production_tools + $utama->savings,0,',','.') }}
                 </td>
             </tr>
         </table>
@@ -564,7 +571,8 @@
         <div class="font-bold text-center" style="font-size: 1.25rem;" class="mb-4">Denah Tempat Tinggal</div>
         <div class="text-center mb-4" style="height: 40%; ">
             @if ($utama->house_sketch)
-                <img src="{{ asset('uploads/mangga/house_sketch/' . $utama->house_sketch) }}" style="height: 100%; max-width: 50rem;">
+                <img src="{{ asset('uploads/mangga/house_sketch/' . $utama->house_sketch) }}"
+                    style="height: 100%; max-width: 50rem;">
             @endif
         </div>
     </div>
@@ -785,7 +793,7 @@
             ({{ $utama->user_name }})
         </div>
     </div>
-    <div class="px-16 py-14" style="height: 1220px;">
+    <div class="px-16 py-14" style="height: 1220px; @if ($utama->business_form_id == 4) margin-bottom: 24rem; @endif">
         <div style="height: 2rem;"></div>
         <table style="width: 100%;" class="mb-4">
             <tr>
@@ -848,7 +856,7 @@
         <div style="font-size: 1.1rem;" class="mb-4">Setelah menerima pencairan Pendanaan UMK (PUMK) Dep. CSR
             PT Petrokimia Gresik. Kami
             berharap dapat membeli produk non subsidi yang sudah kami pilih sesuai dengan kolom di atas
-            melalui distributor <span class="font-bold">{{$utama->product_distributor}}</span>
+            melalui distributor <span class="font-bold">{{ $utama->product_distributor }}</span>
         </div>
         <div style="font-size: 1.1rem;" class="mb-4">Demikian formulir ini kami isi tanpa ada unsur paksaan
             dari pihak manapun.</div>
@@ -861,17 +869,728 @@
                 </td>
                 <td width="33%" style="text-align: center;">
                     <br>
-                    {{$people->one_title}}<br><br><br><br><br><br><br><br><br>
-                    ({{$people->one}})
+                    {{ $people->one_title }}<br><br><br><br><br><br><br><br><br>
+                    ({{ $people->one }})
                 </td>
                 <td width="33%" style="text-align: center;">
                     Menyetujui,<br>
-                    {{$people->two_title}}<br><br><br><br><br><br><br><br><br>
-                    ({{$people->two}})
+                    {{ $people->two_title }}<br><br><br><br><br><br><br><br><br>
+                    ({{ $people->two }})
                 </td>
             </tr>
         </table>
     </div>
+    @if ($utama->business_form_id == 4)
+        @if ($utama->business->sector_id == 6)
+            @foreach ($utama->members as $member)
+                <div class="px-16 py-14"
+                    style="height: 1220px; @if (!$loop->last) margin-bottom: 24rem; @endif">
+                    <div style="height: 2rem;"></div>
+                    <table style="width: 100%;" class="mb-4">
+                        <tr>
+                            <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 12rem;"></td>
+                            <td class="text-2xl font-bold text-center">FORMULIR PINJAMAN MODAL KERJA<br>USAHA PERIKANAN
+                                {{ $utama->business->name }}
+                            </td>
+                            <td style="text-align: end;"><img
+                                    src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}" style="width: 12rem;">
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="font-size: 1.1rem; width: 100%;" class="mb-4">
+                        <tr>
+                            <td width="25%">Desa/Kelurahan</td>
+                            <td>: {{ $utama->user_village }}</td>
+                        </tr>
+                        <tr>
+                            <td width="25%">Kecamatan</td>
+                            <td>: {{ $utama->user_district }}</td>
+                        </tr>
+                        <tr>
+                            <td width="25%">Kabupaten</td>
+                            <td>: {{ $utama->user_city }}</td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <table style="font-size: 1.1rem; width: 100%; margin-bottom: 8rem;">
+                        <tr>
+                            <td width="5%">1.</td>
+                            <td width="30%">Nama</td>
+                            <td>: {{ $member->name }}</td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>Alamat</td>
+                            <td>: {{ $member->address }}</td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td>Pendapatan rata-rata (1 tahun)</td>
+                            <td>: {{ $member->income }}</td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td>Biaya usaha (1 tahun)</td>
+                            <td>: {{ $member->cost }}</td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <td>Keuntungan (1 tahun)</td>
+                            <td>: {{ $member->profit }}</td>
+                        </tr>
+                        <tr>
+                            <td>6.</td>
+                            <td>Nilai Kekayaan</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Tanah</td>
+                            <td>: Rp. {{ number_format($member->land, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Bangunan</td>
+                            <td>: Rp. {{ number_format($member->building, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Alat Kerja/Mesin</td>
+                            <td>: Rp. {{ number_format($member->production_tools, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Persediaan</td>
+                            <td>: Rp. {{ number_format($member->supply, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr class="font-bold">
+                            <td></td>
+                            <td>Jumlah</td>
+                            <td>: Rp.
+                                {{ number_format($member->land + $member->building + $member->production_tools + $member->supply, 0, ',', '.') }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7.</td>
+                            <td>Pinjaman Yang Diminta</td>
+                            <td>: Rp. {{ number_format($member->loan_amount, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td>8.</td>
+                            <td>Rencana Penggunaan Pinjaman</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Pembelian Bakalan: {{ $member->cow_count }} ekor</td>
+                            <td>: Rp. {{ number_format($member->cow_price, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Biaya Perawatan: </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Tenaga Kerja</td>
+                            <td>: Rp. {{ number_format($member->human_resource, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Obat-obatan</td>
+                            <td>: Rp. {{ number_format($member->medicine, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Pakan: </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Konsentrate</td>
+                            <td>: Rp. {{ number_format($member->concentrate, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>HMT (Rumput, dll)</td>
+                            <td>: Rp. {{ number_format($member->hmt, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Biaya Garap</td>
+                            <td>: Rp. {{ number_format($member->cultivation, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Transportasi</td>
+                            <td>: Rp. {{ number_format($member->transportation, 0, ',', '.') }}</td>
+                        </tr>
+                    </table>
+                    <table style="font-size: 1.1rem; width: 100%;" class="mb-4">
+                        <tr>
+                            <td width="50%" style="text-align: center;">
+
+                            </td>
+                            <td width="50%" style="text-align: center;">
+                                .................................,
+                                ....-...............{{ $member->created_at->year }}
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="font-size: 1.1rem; width: 100%;" class="mb-4">
+                        <tr>
+                            <td width="38%" style="text-align: center;">
+                                Mengetahui,<br><br><br><br><br><br><br><br><br><br>
+                                Ketua Kelompok
+                            </td>
+                            <td width="24%"
+                                style="width:4cm; height: 6cm; text-align: center; border: 2px solid black; vertical-align: middle;">
+                                Pas Foto<br>
+                                4x6<br>
+                            </td>
+                            <td width="38%" style="text-align: center;">
+                                Hormat Kami,<br><br><br><br><br><br><br><br><br><br>
+                                Pemohon
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            @endforeach
+        @elseif ($utama->business->sector_id == 2)
+            @foreach ($utama->members as $member)
+                <div class="px-16 py-14"
+                    style="height: 1220px; @if (!$loop->last) margin-bottom: 24rem; @endif">
+                    <div style="height: 2rem;"></div>
+                    <table style="width: 100%;" class="mb-4">
+                        <tr>
+                            <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 12rem;"></td>
+                            <td class="text-2xl font-bold text-center">FORMULIR PINJAMAN MODAL KERJA<br>USAHA PERIKANAN
+                                {{ $utama->business->name }}
+                            </td>
+                            <td style="text-align: end;"><img
+                                    src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}" style="width: 12rem;">
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="font-size: 1.1rem; width: 100%;" class="mb-4">
+                        <tr>
+                            <td width="25%">Desa/Kelurahan</td>
+                            <td>: {{ $utama->user_village }}</td>
+                        </tr>
+                        <tr>
+                            <td width="25%">Kecamatan</td>
+                            <td>: {{ $utama->user_district }}</td>
+                        </tr>
+                        <tr>
+                            <td width="25%">Kabupaten</td>
+                            <td>: {{ $utama->user_city }}</td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <table style="font-size: 1.1rem; width: 100%; margin-bottom: 8rem;">
+                        <tr>
+                            <td width="5%">1.</td>
+                            <td width="30%">Nama</td>
+                            <td>: {{ $member->name }}</td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>Alamat</td>
+                            <td>: {{ $member->address }}</td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td>Pendapatan rata-rata per panen</td>
+                            <td>: {{ $member->income }}</td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td>Biaya usaha per panen</td>
+                            <td>: {{ $member->cost }}</td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <td>Keuntungan</td>
+                            <td>: {{ $member->profit }}</td>
+                        </tr>
+                        <tr>
+                            <td>6.</td>
+                            <td>Lahan Yang Digarap</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Status</td>
+                            <td>: {{ $member->lo->name }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Luas</td>
+                            <td>: {{ $member->land_area }} m2
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7.</td>
+                            <td>Nilai Kekayaan</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Tanah</td>
+                            <td>: Rp. {{ number_format($member->land, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Bangunan</td>
+                            <td>: Rp. {{ number_format($member->building, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Alat Kerja/Mesin</td>
+                            <td>: Rp. {{ number_format($member->production_tools, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Persediaan</td>
+                            <td>: Rp. {{ number_format($member->supply, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr class="font-bold">
+                            <td></td>
+                            <td>Jumlah</td>
+                            <td>: Rp.
+                                {{ number_format($member->land + $member->building + $member->production_tools + $member->supply, 0, ',', '.') }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8.</td>
+                            <td>Pinjaman Yang Diminta</td>
+                            <td>: Rp. {{ number_format($member->loan_amount, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td>9.</td>
+                            <td>Rencana Penggunaan Pinjaman</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Pembelian Bibit</td>
+                            <td>: Rp. {{ number_format($member->seed, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Pembelian Pakan</td>
+                            <td>: Rp. {{ number_format($member->feed, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Obat-obatan</td>
+                            <td>: Rp. {{ number_format($member->medicine, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Biaya Garap</td>
+                            <td>: Rp. {{ number_format($member->cultivation, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Transportasi</td>
+                            <td>: Rp. {{ number_format($member->transportation, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Lain-lain</td>
+                            <td>: Rp. {{ number_format($member->others, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td>10.</td>
+                            <td>Jangka Waktu Usaha (Bulan)</td>
+                            <td>: {{ $member->period_month }} bulan</td>
+                        </tr>
+                    </table>
+                    <table style="font-size: 1.1rem; width: 100%;" class="mb-4">
+                        <tr>
+                            <td width="50%" style="text-align: center;">
+
+                            </td>
+                            <td width="50%" style="text-align: center;">
+                                .................................,
+                                ....-...............{{ $member->created_at->year }}
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="font-size: 1.1rem; width: 100%;" class="mb-4">
+                        <tr>
+                            <td width="38%" style="text-align: center;">
+                                Mengetahui,<br><br><br><br><br><br><br><br><br><br>
+                                Ketua Kelompok
+                            </td>
+                            <td width="24%"
+                                style="width:4cm; height: 6cm; text-align: center; border: 2px solid black; vertical-align: middle;">
+                                Pas Foto<br>
+                                4x6<br>
+                            </td>
+                            <td width="38%" style="text-align: center;">
+                                Hormat Kami,<br><br><br><br><br><br><br><br><br><br>
+                                Pemohon
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            @endforeach
+        @elseif ($utama->business->sector_id == 3)
+            @foreach ($utama->members as $member)
+                <div class="px-16 py-14"
+                    style="height: 1220px; @if (!$loop->last) margin-bottom: 24rem; @endif">
+                    <div style="height: 2rem;"></div>
+                    <table style="width: 100%;" class="mb-4">
+                        <tr>
+                            <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 12rem;"></td>
+                            <td class="text-2xl font-bold text-center">FORMULIR PINJAMAN MODAL KERJA<br>USAHA PERTANIAN
+                                {{ $utama->business->name }}
+                            </td>
+                            <td style="text-align: end;"><img
+                                    src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}" style="width: 12rem;">
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="font-size: 1.1rem; width: 100%;" class="mb-4">
+                        <tr>
+                            <td width="25%">Desa/Kelurahan</td>
+                            <td>: {{ $utama->user_village }}</td>
+                        </tr>
+                        <tr>
+                            <td width="25%">Kecamatan</td>
+                            <td>: {{ $utama->user_district }}</td>
+                        </tr>
+                        <tr>
+                            <td width="25%">Kabupaten</td>
+                            <td>: {{ $utama->user_city }}</td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <table style="font-size: 1.1rem; width: 100%; margin-bottom: 8rem;">
+                        <tr>
+                            <td width="5%">1.</td>
+                            <td width="30%">Nama</td>
+                            <td>: {{ $member->name }}</td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>Alamat</td>
+                            <td>: {{ $member->address }}</td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td>Pendapatan rata-rata per panen</td>
+                            <td>: {{ $member->income }}</td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td>Biaya usaha per panen</td>
+                            <td>: {{ $member->cost }}</td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <td>Keuntungan</td>
+                            <td>: {{ $member->profit }}</td>
+                        </tr>
+                        <tr>
+                            <td>6.</td>
+                            <td>Lahan Yang Digarap</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Status</td>
+                            <td>: {{ $member->lo->name }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Luas</td>
+                            <td>: {{ $member->land_area }} m2
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7.</td>
+                            <td>Nilai Kekayaan</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Tanah</td>
+                            <td>: Rp. {{ number_format($member->land, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Bangunan</td>
+                            <td>: Rp. {{ number_format($member->building, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Alat Kerja/Mesin</td>
+                            <td>: Rp. {{ number_format($member->production_tools, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Persediaan</td>
+                            <td>: Rp. {{ number_format($member->supply, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr class="font-bold">
+                            <td></td>
+                            <td>Jumlah</td>
+                            <td>: Rp.
+                                {{ number_format($member->land + $member->building + $member->production_tools + $member->supply, 0, ',', '.') }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8.</td>
+                            <td>Pinjaman Yang Diminta</td>
+                            <td>: Rp. {{ number_format($member->loan_amount, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td>9.</td>
+                            <td>Rencana Penggunaan Pinjaman</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Pembelian Bibit</td>
+                            <td>: Rp. {{ number_format($member->seed, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Pembelian Pakan</td>
+                            <td>: Rp. {{ number_format($member->feed, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Obat-obatan</td>
+                            <td>: Rp. {{ number_format($member->medicine, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Biaya Garap</td>
+                            <td>: Rp. {{ number_format($member->cultivation, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Transportasi</td>
+                            <td>: Rp. {{ number_format($member->transportation, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Lain-lain</td>
+                            <td>: Rp. {{ number_format($member->others, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td>10.</td>
+                            <td>Jangka Waktu Usaha (Bulan)</td>
+                            <td>: {{ $member->period_month }} bulan</td>
+                        </tr>
+                    </table>
+                    <table style="font-size: 1.1rem; width: 100%;" class="mb-4">
+                        <tr>
+                            <td width="50%" style="text-align: center;">
+
+                            </td>
+                            <td width="50%" style="text-align: center;">
+                                .................................,
+                                ....-...............{{ $member->created_at->year }}
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="font-size: 1.1rem; width: 100%;" class="mb-4">
+                        <tr>
+                            <td width="38%" style="text-align: center;">
+                                Mengetahui,<br><br><br><br><br><br><br><br><br><br>
+                                Ketua Kelompok
+                            </td>
+                            <td width="24%"
+                                style="width:4cm; height: 6cm; text-align: center; border: 2px solid black; vertical-align: middle;">
+                                Pas Foto<br>
+                                4x6<br>
+                            </td>
+                            <td width="38%" style="text-align: center;">
+                                Hormat Kami,<br><br><br><br><br><br><br><br><br><br>
+                                Pemohon
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            @endforeach
+        @elseif ($utama->business->sector_id == 8)
+            @foreach ($utama->members as $member)
+                <div class="px-16 py-14"
+                    style="height: 1220px; @if (!$loop->last) margin-bottom: 24rem; @endif">
+                    <div style="height: 2rem;"></div>
+                    <table style="width: 100%;" class="mb-4">
+                        <tr>
+                            <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 12rem;"></td>
+                            <td class="text-2xl font-bold text-center">FORMULIR PINJAMAN MODAL KERJA<br>USAHA PERKEBUNAN
+                                {{ $utama->business->name }}
+                            </td>
+                            <td style="text-align: end;"><img
+                                    src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}" style="width: 12rem;">
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="font-size: 1.1rem; width: 100%;" class="mb-4">
+                        <tr>
+                            <td width="25%">Desa/Kelurahan</td>
+                            <td>: {{ $utama->user_village }}</td>
+                        </tr>
+                        <tr>
+                            <td width="25%">Kecamatan</td>
+                            <td>: {{ $utama->user_district }}</td>
+                        </tr>
+                        <tr>
+                            <td width="25%">Kabupaten</td>
+                            <td>: {{ $utama->user_city }}</td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <table style="font-size: 1.1rem; width: 100%; margin-bottom: 8rem;">
+                        <tr>
+                            <td width="5%">1.</td>
+                            <td width="30%">Nama</td>
+                            <td>: {{ $member->name }}</td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>Alamat</td>
+                            <td>: {{ $member->address }}</td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td>Pendapatan rata-rata per panen</td>
+                            <td>: {{ $member->income }}</td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td>Biaya usaha per panen</td>
+                            <td>: {{ $member->cost }}</td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <td>Keuntungan</td>
+                            <td>: {{ $member->profit }}</td>
+                        </tr>
+                        <tr>
+                            <td>6.</td>
+                            <td>Lahan Yang Digarap</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Status</td>
+                            <td>: {{ $member->lo->name }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Luas</td>
+                            <td>: {{ $member->land_area }} m2
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7.</td>
+                            <td>Nilai Kekayaan</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Tanah</td>
+                            <td>: Rp. {{ number_format($member->land, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Bangunan</td>
+                            <td>: Rp. {{ number_format($member->building, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Alat Kerja/Mesin</td>
+                            <td>: Rp. {{ number_format($member->production_tools, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Persediaan</td>
+                            <td>: Rp. {{ number_format($member->supply, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr class="font-bold">
+                            <td></td>
+                            <td>Jumlah</td>
+                            <td>: Rp.
+                                {{ number_format($member->land + $member->building + $member->production_tools + $member->supply, 0, ',', '.') }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8.</td>
+                            <td>Pinjaman Yang Diminta</td>
+                            <td>: Rp. {{ number_format($member->loan_amount, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td>9.</td>
+                            <td>Rencana Penggunaan Pinjaman</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Pembelian Bibit</td>
+                            <td>: Rp. {{ number_format($member->seed, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Pembelian Pakan</td>
+                            <td>: Rp. {{ number_format($member->feed, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Obat-obatan</td>
+                            <td>: Rp. {{ number_format($member->medicine, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Biaya Garap</td>
+                            <td>: Rp. {{ number_format($member->cultivation, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Transportasi</td>
+                            <td>: Rp. {{ number_format($member->transportation, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Lain-lain</td>
+                            <td>: Rp. {{ number_format($member->others, 0, ',', '.') }}</td>
+                        </tr>
+                        <tr>
+                            <td>10.</td>
+                            <td>Jangka Waktu Usaha (Bulan)</td>
+                            <td>: {{ $member->period_month }} bulan</td>
+                        </tr>
+                    </table>
+                    <table style="font-size: 1.1rem; width: 100%;" class="mb-4">
+                        <tr>
+                            <td width="50%" style="text-align: center;">
+
+                            </td>
+                            <td width="50%" style="text-align: center;">
+                                .................................,
+                                ....-...............{{ $member->created_at->year }}
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="font-size: 1.1rem; width: 100%;" class="mb-4">
+                        <tr>
+                            <td width="38%" style="text-align: center;">
+                                Mengetahui,<br><br><br><br><br><br><br><br><br><br>
+                                Ketua Kelompok
+                            </td>
+                            <td width="24%"
+                                style="width:4cm; height: 6cm; text-align: center; border: 2px solid black; vertical-align: middle;">
+                                Pas Foto<br>
+                                4x6<br>
+                            </td>
+                            <td width="38%" style="text-align: center;">
+                                Hormat Kami,<br><br><br><br><br><br><br><br><br><br>
+                                Pemohon
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            @endforeach
+        @endif
+    @endif
 </body>
 
 </html>

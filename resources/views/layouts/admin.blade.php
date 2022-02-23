@@ -70,6 +70,12 @@
                         </a>
                     </div>
                     <div class="flex items-center gap-x-2 hover:text-gray-100 cursor-pointer">
+                        <span class="fa fa-fw fa-users text-3xl"></span>
+                        <a href="{{ route('admin.user.index') }}">
+                            <div class="text-xl">User</div>
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-x-2 hover:text-gray-100 cursor-pointer">
                         <span class="fa fa-fw fa-photo-video text-3xl"></span>
                         <a href="{{ route('admin.media.index') }}">
                             <div class="text-xl">Media</div>

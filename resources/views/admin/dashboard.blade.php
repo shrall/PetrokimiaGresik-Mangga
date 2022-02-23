@@ -13,7 +13,7 @@
                 <span class="fa fa-fw fa-clipboard-list text-gray-400 text-8xl"></span>
             </div>
             <hr>
-            <a href="#" class="flex justify-center hover:text-gray-700 my-4">Lihat Detail ></a>
+            <a href="{{ route('admin.program') }}" class="flex justify-center hover:text-gray-700 my-4">Lihat Detail ></a>
         </div>
         <div class="border-2 border-gray-400 bg-white">
             <div class="flex items-center justify-evenly gap-x-4 p-4">
@@ -39,7 +39,7 @@
                 <span class="fa fa-fw fa-users text-gray-400 text-8xl"></span>
             </div>
             <hr>
-            <a href="#" class="flex justify-center hover:text-gray-700 my-4">Lihat Detail ></a>
+            <a href="{{ route('admin.user.index') }}" class="flex justify-center hover:text-gray-700 my-4">Lihat Detail ></a>
         </div>
     </div>
 @endsection

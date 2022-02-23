@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\MediaController as AdminMediaController;
 use App\Http\Controllers\Admin\MudaController as AdminMudaController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\PeopleController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\UtamaController as AdminUtamaController;
 use App\Http\Controllers\Admin\UtamaEvaluationController;
 use App\Http\Controllers\MediaController;
@@ -129,6 +130,8 @@ Route::group(['middleware' => ['admin'], 'as' => 'admin.', 'prefix' => 'admin'],
     Route::resource('evaluation', UtamaEvaluationController::class);
 
     Route::resource('business', BusinessController::class);
+
+    Route::resource('user', AdminUserController::class);
 });
 
 Route::get('/eee', function () {

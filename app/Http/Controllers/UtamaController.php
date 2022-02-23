@@ -47,6 +47,7 @@ class UtamaController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $messages = [
             'name.required' => 'Nama Bisnis',
             "sector.required" => 'Sektor Bisnis',
@@ -98,10 +99,10 @@ class UtamaController extends Controller
                 $messages["member_ktp.$key.required"] = "Foto KTP Anggota {$key}";
                 $messages["member_ktp_selfie.$key.required"] = "Foto KTP Selfie Anggota {$key}";
             };
-                $messages["member_ktp.required"] = "Foto KTP Anggota";
-                $messages["member_ktp_selfie.required"] = "Foto KTP Selfie Anggota";
-                $messages["member_ktp.min"] = "Foto KTP Anggota";
-                $messages["member_ktp_selfie.min"] = "Foto KTP Selfie Anggota";
+            $messages["member_ktp.required"] = "Foto KTP Anggota";
+            $messages["member_ktp_selfie.required"] = "Foto KTP Selfie Anggota";
+            $messages["member_ktp.min"] = "Foto KTP Anggota";
+            $messages["member_ktp_selfie.min"] = "Foto KTP Selfie Anggota";
 
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
@@ -192,6 +193,7 @@ class UtamaController extends Controller
                 "ktp_selfie" => 'required',
                 "kk" => 'required',
                 "kk_selfie" => 'required',
+                "siup" => 'required',
                 "skdu" => 'required',
                 "sales_value" => 'required',
                 "total_cost" => 'required',
@@ -258,27 +260,33 @@ class UtamaController extends Controller
                 $request->member_ktp_selfie[$key]->move(public_path('uploads/mangga/ktpselfie'), $mktpsf[$key]);
             }
 
-            foreach ($request->member_certificate as $key => $mc) {
-                if ($request->member_certificate[strval($key)]) {
-                    $mcf[strval($key)] = 'mangga-utama-member-' . ($key + 1) . '-' . time() . '-' . $request['member_certificate'][strval($key)]->getClientOriginalName();
-                    $request->member_certificate[strval($key)]->move(public_path('uploads/mangga/certificate'), $mcf[strval($key)]);
-                } else {
-                    $mcf[strval($key)] = null;
+            if ($request->member_certificate != null) {
+                foreach ($request->member_certificate as $key => $mc) {
+                    if ($request->member_certificate[strval($key)]) {
+                        $mcf[strval($key)] = 'mangga-utama-member-' . ($key + 1) . '-' . time() . '-' . $request['member_certificate'][strval($key)]->getClientOriginalName();
+                        $request->member_certificate[strval($key)]->move(public_path('uploads/mangga/certificate'), $mcf[strval($key)]);
+                    } else {
+                        $mcf[strval($key)] = null;
+                    }
                 }
+            } else {
+                $mcf = array();
             }
 
-            foreach ($request->member_certificate_selfie as $key => $mcs) {
-                if ($request->member_certificate_selfie[strval($key)]) {
-                    $mcsf[strval($key)] = 'mangga-utama-member-' . ($key + 1) . '-' . time() . '-' . $request['member_certificate_selfie'][strval($key)]->getClientOriginalName();
-                    $request->member_certificate_selfie[strval($key)]->move(public_path('uploads/mangga/certificateselfie'), $mcsf[strval($key)]);
-                } else {
-                    $mcsf[strval($key)] = null;
+            if ($request->member_certificate_selfie != null) {
+                foreach ($request->member_certificate_selfie as $key => $mcs) {
+                    if ($request->member_certificate_selfie[strval($key)]) {
+                        $mcsf[strval($key)] = 'mangga-utama-member-' . ($key + 1) . '-' . time() . '-' . $request['member_certificate_selfie'][strval($key)]->getClientOriginalName();
+                        $request->member_certificate_selfie[strval($key)]->move(public_path('uploads/mangga/certificateselfie'), $mcsf[strval($key)]);
+                    } else {
+                        $mcsf[strval($key)] = null;
+                    }
                 }
+            } else {
+                $mcsf = null;
             }
-            $mc_keys = array_keys($mcf);
-            $mcs_keys = array_keys($mcsf);
         }
-
+        // dd($mcf);
         $reg_number = $this->getRegistrationNumber($request->sector, $request->subsector);
 
         $business = Business::create([
@@ -377,29 +385,82 @@ class UtamaController extends Controller
             'companion_village' => $request->companion_village,
             'business_id' => $business->id
         ]);
-
         if ($request->member_name) {
             foreach ($request->member_name as $key => $value) {
-                if (in_array(strval($key + 1), $mcf)) {
+                if (in_array(strval($key), $mcf)) {
                     $umember = UtamaMember::create([
                         'name' => $request->member_name[$key],
                         'ktp_code' => $request->member_ktp_code[$key],
+                        'kk_code' => $request->member_kk_code[$key],
                         'phone' => $request->member_phone[$key],
+                        'address' => $request->member_address[$key],
+                        'kk_code' => $request->member_kk_code[$key],
+                        'address' => $request->member_address[$key],
+                        'income' => $request->member_income[$key],
+                        'cost' => $request->member_cost[$key],
+                        'profit' => $request->member_profit[$key],
+                        'land' => $request->member_land[$key],
+                        'building' => $request->member_building[$key],
+                        'production_tools' => $request->member_production_tools[$key],
+                        'supply' => $request->member_supply[$key],
+                        'loan_amount' => $request->member_loan_amount[$key],
+                        'cow_count' => $request->member_cow_count[$key] ?? null,
+                        'cow_price' => $request->member_cow_price[$key] ?? null,
+                        'human_resource' => $request->member_human_resource[$key] ?? null,
+                        'medicine' => $request->member_medicine[$key] ?? null,
+                        'concentrate' => $request->member_concentrate[$key] ?? null,
+                        'hmt' => $request->member_hmt[$key] ?? null,
+                        'cultivation' => $request->member_cultivation[$key] ?? null,
+                        'transportation' => $request->member_transportation[$key] ?? null,
+                        'land_ownership' => $request->member_land_ownership[$key] ?? null,
+                        'land_area' => $request->member_land_area[$key] ?? null,
+                        'seed' => $request->member_seed[$key] ?? null,
+                        'feed' => $request->member_feed[$key] ?? null,
+                        'others' => $request->member_others[$key] ?? null,
+                        'period_month' => $request->member_period_month[$key] ?? null,
+                        'fertilizer' => $request->member_fertilizer[$key] ?? null,
                         'certificate_name' => $request->member_certificate_name[$key],
                         'certificate_address' => $request->member_certificate_address[$key],
                         'ktp' => $mktpf[$key],
                         'ktp_selfie' => $mktpsf[$key],
-                        'certificate' => $mcf[strval($key + 1)],
+                        'certificate' => $mcf[strval($key)],
                         "utama_id" => $utama->id,
                     ]);
                     $umember->update([
-                        'certificate_selfie' => $mcsf[strval($key + 1)],
+                        'certificate_selfie' => $mcsf[strval($key)],
                     ]);
-                }else{
+                } else {
                     $umember = UtamaMember::create([
                         'name' => $request->member_name[$key],
                         'ktp_code' => $request->member_ktp_code[$key],
+                        'kk_code' => $request->member_kk_code[$key],
                         'phone' => $request->member_phone[$key],
+                        'address' => $request->member_address[$key],
+                        'kk_code' => $request->member_kk_code[$key],
+                        'address' => $request->member_address[$key],
+                        'income' => $request->member_income[$key],
+                        'cost' => $request->member_cost[$key],
+                        'profit' => $request->member_profit[$key],
+                        'land' => $request->member_land[$key],
+                        'building' => $request->member_building[$key],
+                        'production_tools' => $request->member_production_tools[$key],
+                        'supply' => $request->member_supply[$key],
+                        'loan_amount' => $request->member_loan_amount[$key],
+                        'cow_count' => $request->member_cow_count[$key] ?? null,
+                        'cow_price' => $request->member_cow_price[$key] ?? null,
+                        'human_resource' => $request->member_human_resource[$key] ?? null,
+                        'medicine' => $request->member_medicine[$key] ?? null,
+                        'concentrate' => $request->member_concentrate[$key] ?? null,
+                        'hmt' => $request->member_hmt[$key] ?? null,
+                        'cultivation' => $request->member_cultivation[$key] ?? null,
+                        'transportation' => $request->member_transportation[$key] ?? null,
+                        'land_ownership' => $request->member_land_ownership[$key] ?? null,
+                        'land_area' => $request->member_land_area[$key] ?? null,
+                        'seed' => $request->member_seed[$key] ?? null,
+                        'feed' => $request->member_feed[$key] ?? null,
+                        'others' => $request->member_others[$key] ?? null,
+                        'period_month' => $request->member_period_month[$key] ?? null,
+                        'fertilizer' => $request->member_fertilizer[$key] ?? null,
                         'certificate_name' => $request->member_certificate_name[$key],
                         'certificate_address' => $request->member_certificate_address[$key],
                         'ktp' => $mktpf[$key],
@@ -420,13 +481,15 @@ class UtamaController extends Controller
             }
         }
 
-        foreach ($request->business_commodity_name as $key => $value) {
-            if ($value && $request->business_commodity_value[$key]) {
-                BusinessCommodity::create([
-                    'name' => $request->business_commodity_name[$key],
-                    'value' => $request->business_commodity_value[$key],
-                    "business_id" => $business->id,
-                ]);
+        if ($request->business_commodity_name != null) {
+            foreach ($request->business_commodity_name as $key => $value) {
+                if ($value && $request->business_commodity_value[$key]) {
+                    BusinessCommodity::create([
+                        'name' => $request->business_commodity_name[$key],
+                        'value' => $request->business_commodity_value[$key],
+                        "business_id" => $business->id,
+                    ]);
+                }
             }
         }
 

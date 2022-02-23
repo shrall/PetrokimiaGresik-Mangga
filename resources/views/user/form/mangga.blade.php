@@ -30,7 +30,8 @@
                 </select>
                 <select name="sector" id="sector" class="form-pengajuan-input" required>
                     @foreach ($sectors as $sector)
-                        <option value={{ $sector->id }}>{{ $sector->name }}</option>
+                        <option value={{ $sector->id }} @if ($selected_sector == $sector->id) selected @endif>
+                            {{ $sector->name }}</option>
                     @endforeach
                 </select>
                 <select name="subsector" id="subsector" class="form-pengajuan-input" required>
@@ -47,9 +48,6 @@
             <div class="">
                 <input type="text" name="best_product" class="form-pengajuan-input" placeholder="Produk Unggulan">
                 <select name="business_form" id="bentuk-usaha" class="form-pengajuan-input">
-                    @foreach ($business_forms as $bf)
-                        <option value={{ $bf->id }}>{{ $bf->name }}</option>
-                    @endforeach
                 </select>
                 <input type="number" name="member_count" class="form-pengajuan-input hidden kelompok" id="jumlah-anggota"
                     placeholder="Jumlah Anggota*" required onkeyup="refreshMemberCount();">
@@ -92,11 +90,11 @@
                 <input type="number" name="telephone" class="form-pengajuan-input" placeholder="No. Telepon Usaha*"
                     required>
                 <input type="number" name="handphone" class="form-pengajuan-input" placeholder="No. HP Usaha*" required>
-                <input type="email" name="email" class="form-pengajuan-input" placeholder="E-Mail">
+                <input type="text" name="email" class="form-pengajuan-input" placeholder="E-Mail*" required>
                 <input type="number" name="siup_code" class="form-pengajuan-input" style="margin-bottom: 0.5rem;"
-                    placeholder="No. SIUP*">
+                    placeholder="No. SIUP*" required>
                 <div class="font-bold mb-2">Tanggal SIUP*</div>
-                <input type="date" name="siup_date" class="form-pengajuan-input">
+                <input type="date" name="siup_date" class="form-pengajuan-input" required>
                 <div class="font-bold mb-2">Status Tempat Usaha</div>
                 <select name="establishment_status" id="" class="form-pengajuan-input">
                     @foreach ($establishment_statuses as $es)
@@ -105,29 +103,27 @@
                 </select>
             </div>
         </div>
-        <div class="grid-cols-2 gap-x-8 form-step hidden" id="nilai-kekayaan-3">
+        <div id="form-kelompok">
+        </div>
+        <div class="grid-cols-2 gap-x-8 form-step hidden nilai-kekayaan" id="nilai-kekayaan-3">
             <div>
-                <input type="number" name="land" class="form-pengajuan-input" placeholder="Tanah (Rp.)*"
-                    required>
-                <input type="number" name="building" class="form-pengajuan-input"
+                <input type="number" id="land" name="land" class="form-pengajuan-input" placeholder="Tanah (Rp.)*" required>
+                <input type="number" id="building" name="building" class="form-pengajuan-input"
                     placeholder="Bangunan (Rp.)*" required>
             </div>
             <div>
-                <input type="number" name="treasury" class="form-pengajuan-input" placeholder="Kas (Rp.)*"
-                    required>
-                <input type="number" name="credit" class="form-pengajuan-input"
-                    placeholder="Piutang (Rp.)*" required>
-                <input type="number" name="production_tools" class="form-pengajuan-input"
+                <input type="number" name="treasury" class="form-pengajuan-input" placeholder="Kas (Rp.)*" required>
+                <input type="number" name="credit" class="form-pengajuan-input" placeholder="Piutang (Rp.)*" required>
+                <input type="number" id="tools" name="production_tools" class="form-pengajuan-input"
                     placeholder="Peralatan Usaha/Produksi (Rp.)*" required>
-                <input type="number" name="savings" class="form-pengajuan-input"
-                    placeholder="Bank(Tabungan) (Rp.)*" required>
-                <input type="number" name="supply" class="form-pengajuan-input"
-                    placeholder="Persediaan (Rp.)*" required>
-                <input type="number" name="vehicle" class="form-pengajuan-input"
-                    placeholder="Kendaraan (Rp.)*" required>
+                <input type="number" name="savings" class="form-pengajuan-input" placeholder="Bank(Tabungan) (Rp.)*"
+                    required>
+                <input type="number" id="supply" name="supply" class="form-pengajuan-input" placeholder="Persediaan (Rp.)*"
+                    required>
+                <input type="number" name="vehicle" class="form-pengajuan-input" placeholder="Kendaraan (Rp.)*" required>
             </div>
         </div>
-        <div class="grid-cols-3 gap-x-8 form-step hidden" id="penjualan-setahun-4">
+        <div class="grid-cols-3 gap-x-8 form-step hidden penjualan-setahun" id="penjualan-setahun-4">
             <div class="col-span-2">
                 <input type="text" name="business_commodity_name[1]" class="form-pengajuan-input"
                     placeholder="Nama Komoditas">
@@ -153,7 +149,7 @@
                     placeholder="Nilai Komoditas (Rp.)">
             </div>
         </div>
-        <div class="grid-cols-3 gap-x-8 form-step hidden" id="laba-permasalahan-5">
+        <div class="grid-cols-3 gap-x-8 form-step hidden laba-permasalahan" id="laba-permasalahan-5">
             <div>
                 <div class="font-bold mb-2">Laba Keuntungan Selama Setahun</div>
                 <input type="number" name="sales_value" class="form-pengajuan-input" placeholder="Nilai Penjualan (Rp.)"
@@ -167,9 +163,9 @@
                     required></textarea>
             </div>
         </div>
-        <div class="grid-cols-3 gap-x-8 form-step hidden" id="rencana-penggunaan-6">
+        <div class="grid-cols-3 gap-x-8 form-step hidden rencana-penggunaan" id="rencana-penggunaan-6">
             <div class="col-span-2">
-                <input type="text" name="business_plan_name[1]" class="form-pengajuan-input" placeholder="Rencana">
+                <input type="text" name="business_plan_name[1]" class="form-pengajuan-input" placeholder="Rencana" required>
                 <input type="text" name="business_plan_name[2]" class="form-pengajuan-input" placeholder="Rencana">
                 <input type="text" name="business_plan_name[3]" class="form-pengajuan-input" placeholder="Rencana">
                 <input type="text" name="business_plan_name[4]" class="form-pengajuan-input" placeholder="Rencana">
@@ -177,7 +173,7 @@
             </div>
             <div>
                 <input type="number" name="business_plan_value[1]" class="form-pengajuan-input"
-                    placeholder="Anggaran Rencana (Rp.)">
+                    placeholder="Anggaran Rencana (Rp.)" required>
                 <input type="number" name="business_plan_value[2]" class="form-pengajuan-input"
                     placeholder="Anggaran Rencana (Rp.)">
                 <input type="number" name="business_plan_value[3]" class="form-pengajuan-input"
@@ -188,14 +184,14 @@
                     placeholder="Anggaran Rencana (Rp.)">
             </div>
         </div>
-        <div class="grid-cols-2 gap-8 form-step hidden" id="foto-usaha-7">
+        <div class="grid-cols-2 gap-8 form-step hidden foto-usaha" id="foto-usaha-7">
             <div class="">
                 <label class="font-bold">Foto Tempat Usaha/Tempat Tinggal*</label>
                 <div class="flex flex-col gap-y-4">
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-full h-72 rounded-lg"
                         id="preview-foto-establishment">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="establishment_picture" id="foto-establishment" class="hidden"
+                        <input type="file" name="establishment_picture" id="foto-establishment" class="invisible w-2"
                             onchange="loadFile(event, 'foto-establishment')" accept="image/*" required>
                         <label for="foto-establishment" class="mangga-button-green cursor-pointer">Unggah Foto</label>
                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
@@ -208,7 +204,7 @@
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-full h-72 rounded-lg"
                         id="preview-foto-product">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="product_picture" id="foto-product" class="hidden"
+                        <input type="file" name="product_picture" id="foto-product" class="invisible w-2"
                             onchange="loadFile(event, 'foto-product')" accept="image/*" required>
                         <label for="foto-product" class="mangga-button-green cursor-pointer">Unggah Foto</label>
                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
@@ -216,14 +212,14 @@
                 </div>
             </div>
         </div>
-        <div class="grid-cols-2 gap-8 form-step hidden" id="denah-tempat-8">
+        <div class="grid-cols-2 gap-8 form-step hidden denah-tempat" id="denah-tempat-8">
             <div class="">
                 <label class="font-bold">Denah Tempat Usaha</label>
                 <div class="flex flex-col gap-y-4">
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-full h-72 rounded-lg"
                         id="preview-foto-sketch-b">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="business_sketch" id="foto-sketch-b" class="hidden"
+                        <input type="file" name="business_sketch" id="foto-sketch-b" class="invisible w-2"
                             onchange="loadFile(event, 'foto-sketch-b')" accept="image/*" required>
                         <label for="foto-sketch-b" class="mangga-button-green cursor-pointer">Unggah Foto</label>
                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
@@ -236,7 +232,7 @@
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-full h-72 rounded-lg"
                         id="preview-foto-sketch-h">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="house_sketch" id="foto-sketch-h" class="hidden"
+                        <input type="file" name="house_sketch" id="foto-sketch-h" class="invisible w-2"
                             onchange="loadFile(event, 'foto-sketch-h')" accept="image/*" required>
                         <label for="foto-sketch-h" class="mangga-button-green cursor-pointer">Unggah Foto</label>
                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
@@ -244,7 +240,7 @@
                 </div>
             </div>
         </div>
-        <div class="grid-cols-2 gap-8 form-step hidden" id="rencana-pembelian-9">
+        <div class="grid-cols-2 gap-8 form-step hidden rencana-pembelian" id="rencana-pembelian-9">
             <input type="hidden" name="business_product_name[1]" value="Urea (Ton)">
             <input type="hidden" name="business_product_name[2]" value="ZA (Ton)">
             <input type="hidden" name="business_product_name[3]" value="ZK (Ton)">
@@ -267,51 +263,51 @@
                 <label class="font-bold">1. Urea (Ton)</label>
                 <div class="grid grid-cols-4 gap-x-4">
                     <input type="number" name="business_product_qty[1]" class="form-pengajuan-input" placeholder="Kuantum"
-                        required>
+                    >
                     <input type="number" name="business_product_price[1]" class="form-pengajuan-input col-span-3"
-                        placeholder="Harga Satuan (Rp.)" required>
+                        placeholder="Harga Satuan (Rp.)">
                 </div>
                 <label class="font-bold">3. ZK (Ton)</label>
                 <div class="grid grid-cols-4 gap-x-4">
                     <input type="number" name="business_product_qty[3]" class="form-pengajuan-input" placeholder="Kuantum"
-                        required>
+                        >
                     <input type="number" name="business_product_price[3]" class="form-pengajuan-input col-span-3"
-                        placeholder="Harga Satuan (Rp.)" required>
+                        placeholder="Harga Satuan (Rp.)" >
                 </div>
                 <label class="font-bold">5. Phonska Plus (Ton)</label>
                 <div class="grid grid-cols-4 gap-x-4">
                     <input type="number" name="business_product_qty[5]" class="form-pengajuan-input" placeholder="Kuantum"
-                        required>
+                        >
                     <input type="number" name="business_product_price[5]" class="form-pengajuan-input col-span-3"
-                        placeholder="Harga Satuan (Rp.)" required>
+                        placeholder="Harga Satuan (Rp.)" >
                 </div>
                 <label class="font-bold">7. Petro Nitrat (Ton)</label>
                 <div class="grid grid-cols-4 gap-x-4">
                     <input type="number" name="business_product_qty[7]" class="form-pengajuan-input" placeholder="Kuantum"
-                        required>
+                        >
                     <input type="number" name="business_product_price[7]" class="form-pengajuan-input col-span-3"
-                        placeholder="Harga Satuan (Rp.)" required>
+                        placeholder="Harga Satuan (Rp.)" >
                 </div>
                 <label class="font-bold">9. Petro Cas (Ton)</label>
                 <div class="grid grid-cols-4 gap-x-4">
                     <input type="number" name="business_product_qty[9]" class="form-pengajuan-input" placeholder="Kuantum"
-                        required>
+                        >
                     <input type="number" name="business_product_price[9]" class="form-pengajuan-input col-span-3"
-                        placeholder="Harga Satuan (Rp.)" required>
+                        placeholder="Harga Satuan (Rp.)" >
                 </div>
                 <label class="font-bold">11. Petro Gladiator (Dus)</label>
                 <div class="grid grid-cols-4 gap-x-4">
                     <input type="number" name="business_product_qty[11]" class="form-pengajuan-input" placeholder="Kuantum"
-                        required>
+                        >
                     <input type="number" name="business_product_price[11]" class="form-pengajuan-input col-span-3"
-                        placeholder="Harga Satuan (Rp.)" required>
+                        placeholder="Harga Satuan (Rp.)" >
                 </div>
                 <label class="font-bold">13. Petro Biofish (Dus)</label>
                 <div class="grid grid-cols-4 gap-x-4">
                     <input type="number" name="business_product_qty[13]" class="form-pengajuan-input" placeholder="Kuantum"
-                        required>
+                        >
                     <input type="number" name="business_product_price[13]" class="form-pengajuan-input col-span-3"
-                        placeholder="Harga Satuan (Rp.)" required>
+                        placeholder="Harga Satuan (Rp.)" >
                 </div>
                 <input type="text" name="business_product_name[15]" class="form-pengajuan-input" placeholder="15.">
                 <div class="grid grid-cols-4 gap-x-4">
@@ -325,51 +321,51 @@
                 <label class="font-bold">2. ZA (Ton)</label>
                 <div class="grid grid-cols-4 gap-x-4">
                     <input type="number" name="business_product_qty[2]" class="form-pengajuan-input" placeholder="Kuantum"
-                        required>
+                        >
                     <input type="number" name="business_product_price[2]" class="form-pengajuan-input col-span-3"
-                        placeholder="Harga Satuan (Rp.)" required>
+                        placeholder="Harga Satuan (Rp.)" >
                 </div>
                 <label class="font-bold">4. SP36/26 (Ton)</label>
                 <div class="grid grid-cols-4 gap-x-4">
                     <input type="number" name="business_product_qty[4]" class="form-pengajuan-input" placeholder="Kuantum"
-                        required>
+                        >
                     <input type="number" name="business_product_price[4]" class="form-pengajuan-input col-span-3"
-                        placeholder="Harga Satuan (Rp.)" required>
+                        placeholder="Harga Satuan (Rp.)" >
                 </div>
                 <label class="font-bold">6. Petro Ningrat (Ton)</label>
                 <div class="grid grid-cols-4 gap-x-4">
                     <input type="number" name="business_product_qty[6]" class="form-pengajuan-input" placeholder="Kuantum"
-                        required>
+                        >
                     <input type="number" name="business_product_price[6]" class="form-pengajuan-input col-span-3"
-                        placeholder="Harga Satuan (Rp.)" required>
+                        placeholder="Harga Satuan (Rp.)" >
                 </div>
                 <label class="font-bold">8. Kaptan (Ton)</label>
                 <div class="grid grid-cols-4 gap-x-4">
                     <input type="number" name="business_product_qty[8]" class="form-pengajuan-input" placeholder="Kuantum"
-                        required>
+                        >
                     <input type="number" name="business_product_price[8]" class="form-pengajuan-input col-span-3"
-                        placeholder="Harga Satuan (Rp.)" required>
+                        placeholder="Harga Satuan (Rp.)" >
                 </div>
                 <label class="font-bold">10. Petro Biofertile (Dus)</label>
                 <div class="grid grid-cols-4 gap-x-4">
                     <input type="number" name="business_product_qty[10]" class="form-pengajuan-input" placeholder="Kuantum"
-                        required>
+                        >
                     <input type="number" name="business_product_price[10]" class="form-pengajuan-input col-span-3"
-                        placeholder="Harga Satuan (Rp.)" required>
+                        placeholder="Harga Satuan (Rp.)" >
                 </div>
                 <label class="font-bold">12. Petro Biofeed (Dus)</label>
                 <div class="grid grid-cols-4 gap-x-4">
                     <input type="number" name="business_product_qty[12]" class="form-pengajuan-input" placeholder="Kuantum"
-                        required>
+                        >
                     <input type="number" name="business_product_price[12]" class="form-pengajuan-input col-span-3"
-                        placeholder="Harga Satuan (Rp.)" required>
+                        placeholder="Harga Satuan (Rp.)" >
                 </div>
                 <label class="font-bold">14. Petro Chick (Dus)</label>
                 <div class="grid grid-cols-4 gap-x-4">
                     <input type="number" name="business_product_qty[14]" class="form-pengajuan-input" placeholder="Kuantum"
-                        required>
+                        >
                     <input type="number" name="business_product_price[14]" class="form-pengajuan-input col-span-3"
-                        placeholder="Harga Satuan (Rp.)" required>
+                        placeholder="Harga Satuan (Rp.)" >
                 </div>
                 <input type="text" name="business_product_name[16]" class="form-pengajuan-input" placeholder="16.">
                 <div class="grid grid-cols-4 gap-x-4">
@@ -380,14 +376,14 @@
                 </div>
             </div>
         </div>
-        <div class="grid-cols-2 gap-8 form-step hidden" id="dokumen-mitra-10">
+        <div class="grid-cols-2 gap-8 form-step hidden dokumen-mitra" id="dokumen-mitra-10">
             <div class="">
                 <label class="font-bold">Foto KTP*</label>
                 <div class="flex items-end gap-x-4">
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
                         id="preview-foto-ktp">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="ktp" id="foto-ktp" class="hidden"
+                        <input type="file" name="ktp" id="foto-ktp" class="invisible w-2"
                             onchange="loadFile(event, 'foto-ktp')" accept="image/*" required>
                         <label for="foto-ktp" class="mangga-button-green cursor-pointer">Unggah Foto KTP</label>
                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
@@ -400,7 +396,7 @@
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
                         id="preview-foto-kk">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="kk" id="foto-kk" class="hidden"
+                        <input type="file" name="kk" id="foto-kk" class="invisible w-2"
                             onchange="loadFile(event, 'foto-kk')" accept="image/*" required>
                         <label for="foto-kk" class="mangga-button-green cursor-pointer">Unggah Foto KK</label>
                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
@@ -413,7 +409,7 @@
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
                         id="preview-foto-selfie-ktp">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="ktp_selfie" id="foto-selfie-ktp" class="hidden" accept="image/*"
+                        <input type="file" name="ktp_selfie" id="foto-selfie-ktp" class="invisible w-2" accept="image/*"
                             required onchange="loadFile(event, 'foto-selfie-ktp')" required>
                         <label for="foto-selfie-ktp" class="mangga-button-green cursor-pointer">Unggah Foto Selfie dengan
                             KTP</label>
@@ -427,7 +423,7 @@
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
                         id="preview-foto-selfie-kk">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="kk_selfie" id="foto-selfie-kk" class="hidden" accept="image/*"
+                        <input type="file" name="kk_selfie" id="foto-selfie-kk" class="invisible w-2" accept="image/*"
                             required onchange="loadFile(event, 'foto-selfie-kk')" required>
                         <label for="foto-selfie-kk" class="mangga-button-green cursor-pointer">Unggah Foto Selfie dengan
                             KK</label>
@@ -436,15 +432,15 @@
                 </div>
             </div>
         </div>
-        <div class="grid-cols-2 gap-8 form-step hidden" id="dokumen-persyaratan-11">
+        <div class="grid-cols-2 gap-8 form-step hidden dokumen-persyaratan" id="dokumen-persyaratan-11">
             <div class="mb-24">
                 <label class="font-bold">Scan SIUP*</label>
                 <div class="flex items-end gap-x-4">
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
                         id="preview-scan-siup">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="siup" id="scan-siup" class="hidden"
-                            onchange="loadFile(event, 'scan-siup')" accept="image/*">
+                        <input type="file" name="siup" id="scan-siup" class="invisible w-2"
+                            onchange="loadFile(event, 'scan-siup')" accept="image/*" required>
                         <label for="scan-siup" class="mangga-button-green cursor-pointer">Unggah Scan SIUP</label>
                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                     </div>
@@ -456,7 +452,7 @@
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
                         id="preview-scan-sk">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="skdu" id="scan-sk" class="hidden"
+                        <input type="file" name="skdu" id="scan-sk" class="invisible w-2"
                             onchange="loadFile(event, 'scan-sk')" accept="image/*" required>
                         <label for="scan-sk" class="mangga-button-green cursor-pointer">Unggah Scan SK</label>
                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
@@ -464,14 +460,15 @@
                 </div>
             </div>
         </div>
-        <div class="grid-cols-2 gap-x-8 form-step hidden" id="data-pendamping-12">
+        <div class="grid-cols-2 gap-x-8 form-step hidden data-pendamping" id="data-pendamping-12">
             <div class="">
                 <input type="text" name="companion_name" class="form-pengajuan-input" placeholder="Nama Pendamping">
                 <input type="number" name="companion_wedding_code" class="form-pengajuan-input"
                     placeholder="Nomor Surat Nikah">
                 <div class="font-bold mb-2">Tanggal Menikah</div>
                 <input type="date" name="companion_wedding_date" class="form-pengajuan-input">
-                <input type="number" name="companion_ktp_code" class="form-pengajuan-input" placeholder="Nomor KTP" minlength="16" maxlength="16">
+                <input type="number" name="companion_ktp_code" class="form-pengajuan-input" placeholder="Nomor KTP"
+                    minlength="16" maxlength="16">
                 <input type="number" name="companion_telephone" class="form-pengajuan-input" placeholder="Nomor Telepon">
                 <input type="number" name="companion_handphone" class="form-pengajuan-input" placeholder="Nomor HP">
             </div>
@@ -491,8 +488,6 @@
                 </select>
             </div>
         </div>
-        <div id="form-kelompok">
-        </div>
         <div class="flex items-center justify-end gap-x-4 mt-2">
             <a href="#" class="mangga-button-transparent-orange cursor-pointer" onclick="previousStep();">
                 <span class="fa fa-fw fa-chevron-left"></span>
@@ -508,6 +503,7 @@
 
 @section('scripts')
     <script>
+        var maxSteps = 12;
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $('#bentuk-usaha').on('change', function(e) {
             if ($('#bentuk-usaha').val() != 4) {
@@ -519,14 +515,20 @@
                 team = true;
                 $('.kelompok').removeClass('hidden').addClass('block');
             }
+            $('#land').prop("readonly", team);
+            $('#building').prop("readonly", team);
+            $('#supply').prop("readonly", team);
+            $('#tools').prop("readonly", team);
             refreshMemberCount();
         });
 
         function refreshMemberCount() {
-            $('#max-steps').html(12 + parseInt($('#jumlah-anggota').val() ? $('#jumlah-anggota').val() : 0));
+            maxSteps = 12 + parseInt($('#jumlah-anggota').val() ? $('#jumlah-anggota').val() : 0);
+            $('#max-steps').html(maxSteps);
             $.post('{{ config('app.url') }}' + "/form/mangga/refresh-kelompok", {
                     _token: CSRF_TOKEN,
                     member: $('#jumlah-anggota').val(),
+                    sector: $('#sector').val()
                 })
                 .done(function(data) {
                     $('#form-kelompok').html(data);
@@ -534,6 +536,24 @@
                 .fail(function(e) {
                     console.log(e);
                 });
+            $('.nilai-kekayaan').attr('id', 'nilai-kekayaan-' + (maxSteps - 9));
+            $('.penjualan-setahun').attr('id', 'penjualan-setahun-' + (maxSteps - 8));
+            $('.laba-permasalahan').attr('id', 'laba-permasalahan-' + (maxSteps - 7));
+            $('.rencana-penggunaan').attr('id', 'rencana-penggunaan-' + (maxSteps - 6));
+            $('.foto-usaha').attr('id', 'foto-usaha-' + (maxSteps - 5));
+            $('.denah-tempat').attr('id', 'denah-tempat-' + (maxSteps - 4));
+            $('.rencana-pembelian').attr('id', 'rencana-pembelian-' + (maxSteps - 3));
+            $('.dokumen-mitra').attr('id', 'dokumen-mitra-' + (maxSteps - 2));
+            $('.dokumen-persyaratan').attr('id', 'dokumen-persyaratan-' + (maxSteps - 1));
+            $('.data-pendamping').attr('id', 'data-pendamping-' + (maxSteps));
+        }
+
+        function sumData(type) {
+            let tempTotal = 0;
+            $('.member-' + type).each(function() {
+                tempTotal += parseInt($(this).val());
+            });
+            $('#' + type).val(tempTotal);
         }
     </script>
     <script>
@@ -554,77 +574,130 @@
         var teamCount = 1;
 
         function changeTitle() {
-            if (stepCounter == 2) {
-                title = "data-usaha";
-                $('#steps-title').html('Data Usaha');
-            } else if (stepCounter == 1) {
+            if (stepCounter == 1) {
                 title = "data-pengajuan";
                 $('#steps-title').html('Data Pengajuan');
-            } else if (stepCounter == 3) {
-                title = "nilai-kekayaan";
-                $('#steps-title').html('Nilai Kekayaan Usaha');
-            } else if (stepCounter == 4) {
-                title = "penjualan-setahun";
-                $('#steps-title').html('Penjualan Selama Setahun');
-            } else if (stepCounter == 5) {
-                title = "laba-permasalahan";
-                $('#steps-title').html('Laba Keuntungan Selama Setahun & Permasalahan yang Dihadapi');
-            } else if (stepCounter == 6) {
-                title = "rencana-penggunaan";
-                $('#steps-title').html('Rencana Penggunaan Pinjaman Dana');
-            } else if (stepCounter == 7) {
-                title = "foto-usaha";
-                $('#steps-title').html('Foto Tempat Usaha/Tempat Tinggal dan Komoditas/Produk');
-            } else if (stepCounter == 8) {
-                title = "denah-tempat";
-                $('#steps-title').html('Denah Tempat Usaha dan Tempat Tinggal');
-            } else if (stepCounter == 9) {
-                title = "rencana-pembelian";
-                $('#steps-title').html('Rencana pembelian produk non-subsidi PT Petrokimia Gresik ');
-            } else if (stepCounter == 10) {
-                title = "dokumen-mitra";
-                $('#steps-title').html('Dokumen Mitra');
-            } else if (stepCounter == 11) {
-                title = "dokumen-persyaratan";
-                $('#steps-title').html('Dokumen Persyaratan');
-            } else if (stepCounter == 12) {
-                title = "data-pendamping";
-                $('#steps-title').html('Data Pendamping');
-            } else if (stepCounter > 12 && team) {
-                title = "data-anggota";
-                $('#steps-title').html('Data Anggota');
+            } else if (stepCounter == 2) {
+                title = "data-usaha";
+                $('#steps-title').html('Data Usaha');
             }
-            if (stepCounter == 12 && !team) {
-                $('#next-button-text').html('Selesai');
-            } else if (stepCounter >= 12 + parseInt($('#jumlah-anggota').val() ? $('#jumlah-anggota').val() : 0) && team) {
-                $('#next-button-text').html('Selesai');
+            if (!team) {
+                if (stepCounter == 3) {
+                    title = "nilai-kekayaan";
+                    $('#steps-title').html('Nilai Kekayaan Usaha');
+                } else if (stepCounter == 4) {
+                    title = "penjualan-setahun";
+                    $('#steps-title').html('Penjualan Selama Setahun');
+                } else if (stepCounter == 5) {
+                    title = "laba-permasalahan";
+                    $('#steps-title').html('Laba Keuntungan Selama Setahun & Permasalahan yang Dihadapi');
+                } else if (stepCounter == 6) {
+                    title = "rencana-penggunaan";
+                    $('#steps-title').html('Rencana Penggunaan Pinjaman Dana');
+                } else if (stepCounter == 7) {
+                    title = "foto-usaha";
+                    $('#steps-title').html('Foto Tempat Usaha/Tempat Tinggal dan Komoditas/Produk');
+                } else if (stepCounter == 8) {
+                    title = "denah-tempat";
+                    $('#steps-title').html('Denah Tempat Usaha dan Tempat Tinggal');
+                } else if (stepCounter == 9) {
+                    title = "rencana-pembelian";
+                    $('#steps-title').html('Rencana pembelian produk non-subsidi PT Petrokimia Gresik ');
+                } else if (stepCounter == 10) {
+                    title = "dokumen-mitra";
+                    $('#steps-title').html('Dokumen Mitra');
+                } else if (stepCounter == 11) {
+                    title = "dokumen-persyaratan";
+                    $('#steps-title').html('Dokumen Persyaratan');
+                } else if (stepCounter == 12) {
+                    title = "data-pendamping";
+                    $('#steps-title').html('Data Pendamping');
+                }
+                if (stepCounter == 12) {
+                    $('#next-button-text').html('Selesai');
+                } else {
+                    $('#next-button-text').html('Langkah Selanjutnya');
+                }
             } else {
-                $('#next-button-text').html('Langkah Selanjutnya');
+                if (stepCounter == 3 + parseInt($('#jumlah-anggota').val() ? $('#jumlah-anggota').val() : 0)) {
+                    title = "nilai-kekayaan";
+                    $('#steps-title').html('Nilai Kekayaan Usaha');
+                } else if (stepCounter == 4 + parseInt($('#jumlah-anggota').val() ? $('#jumlah-anggota').val() : 0)) {
+                    title = "penjualan-setahun";
+                    $('#steps-title').html('Penjualan Selama Setahun');
+                } else if (stepCounter == 5 + parseInt($('#jumlah-anggota').val() ? $('#jumlah-anggota').val() : 0)) {
+                    title = "laba-permasalahan";
+                    $('#steps-title').html('Laba Keuntungan Selama Setahun & Permasalahan yang Dihadapi');
+                } else if (stepCounter == 6 + parseInt($('#jumlah-anggota').val() ? $('#jumlah-anggota').val() : 0)) {
+                    title = "rencana-penggunaan";
+                    $('#steps-title').html('Rencana Penggunaan Pinjaman Dana');
+                } else if (stepCounter == 7 + parseInt($('#jumlah-anggota').val() ? $('#jumlah-anggota').val() : 0)) {
+                    title = "foto-usaha";
+                    $('#steps-title').html('Foto Tempat Usaha/Tempat Tinggal dan Komoditas/Produk');
+                } else if (stepCounter == 8 + parseInt($('#jumlah-anggota').val() ? $('#jumlah-anggota').val() : 0)) {
+                    title = "denah-tempat";
+                    $('#steps-title').html('Denah Tempat Usaha dan Tempat Tinggal');
+                } else if (stepCounter == 9 + parseInt($('#jumlah-anggota').val() ? $('#jumlah-anggota').val() : 0)) {
+                    title = "rencana-pembelian";
+                    $('#steps-title').html('Rencana pembelian produk non-subsidi PT Petrokimia Gresik ');
+                } else if (stepCounter == 10 + parseInt($('#jumlah-anggota').val() ? $('#jumlah-anggota').val() : 0)) {
+                    title = "dokumen-mitra";
+                    $('#steps-title').html('Dokumen Mitra');
+                } else if (stepCounter == 11 + parseInt($('#jumlah-anggota').val() ? $('#jumlah-anggota').val() : 0)) {
+                    title = "dokumen-persyaratan";
+                    $('#steps-title').html('Dokumen Persyaratan');
+                } else if (stepCounter == 12 + parseInt($('#jumlah-anggota').val() ? $('#jumlah-anggota').val() : 0)) {
+                    title = "data-pendamping";
+                    $('#steps-title').html('Data Pendamping');
+                } else if (stepCounter >= 3) {
+                    title = "data-anggota";
+                    $('#steps-title').html('Data Anggota');
+                }
+                if (stepCounter == 12 + parseInt($('#jumlah-anggota').val() ? $('#jumlah-anggota').val() : 0)) {
+                    $('#next-button-text').html('Selesai');
+                } else {
+                    $('#next-button-text').html('Langkah Selanjutnya');
+                }
             }
-
         }
 
+        function checkFields() {
+            let state = true;
+            $('#sector').addClass('border').addClass('border-red-600');
+            $('input,textarea,select').filter('[required]:visible').each(function() {
+                if ($(this).val() == '') {
+                    state = false;
+                    $(this).addClass('border').addClass('border-red-600');
+                } else {
+                    $(this).removeClass('border').removeClass('border-red-600');
+                }
+            });
+            return state;
+        }
         var submitted = false;
 
         function nextStep() {
-            if (stepCounter >= 12 && !team) {
-                event.preventDefault();
-                if (!submitted) {
-                    submitted == true;
-                    document.getElementById('form-mangga-utama').submit();
+            if (checkFields()) {
+                if (stepCounter >= 12 && !team) {
+                    event.preventDefault();
+                    if (!submitted) {
+                        submitted == true;
+                        document.getElementById('form-mangga-utama').submit();
+                    }
+                } else if (stepCounter >= 12 + parseInt($('#jumlah-anggota').val() ? $('#jumlah-anggota').val() : 0) &&
+                    team) {
+                    event.preventDefault();
+                    if (!submitted) {
+                        submitted == true;
+                        document.getElementById('form-mangga-utama').submit();
+                    }
+                } else {
+                    stepCounter += 1;
+                    changeTitle();
+                    $('#counter-steps').html(stepCounter);
+                    $('.form-step').removeClass('grid').addClass('hidden');
+                    $('#' + title + '-' + stepCounter).addClass('grid').removeClass('hidden');
                 }
-            } else if (stepCounter >= 12 + parseInt($('#jumlah-anggota').val() ? $('#jumlah-anggota').val() : 0) && team) {
-                event.preventDefault();
-                if (!submitted) {
-                    submitted == true;
-                    document.getElementById('form-mangga-utama').submit();
-                }
-            } else {
-                stepCounter += 1;
-                changeTitle();
-                $('#counter-steps').html(stepCounter);
-                $('.form-step').removeClass('grid').addClass('hidden');
-                $('#' + title + '-' + stepCounter).addClass('grid').removeClass('hidden');
             }
         }
 
@@ -651,6 +724,7 @@
         };
     </script>
     <script>
+        var businessforms = @json($business_forms);
         var subsectors = @json($subsectors);
 
         $('#sector').on('change', function(e) {
@@ -661,12 +735,42 @@
             obj.forEach(element => {
                 $('#subsector').append('<option value="' + element.id + '">' + element.name + '</option>')
             });
+            $('#bentuk-usaha').html(null);
+            businessforms.forEach(element => {
+                if (parseInt($('#sector').val()) == 1 || parseInt($('#sector').val()) == 4 || parseInt($(
+                            '#sector')
+                        .val()) == 5 || parseInt($('#sector').val()) == 7) {
+                    if (element.id != 4) {
+                        $('#bentuk-usaha').append('<option value="' + element.id + '">' + element.name +
+                            '</option>')
+                    }
+                } else {
+                    $('#bentuk-usaha').append('<option value="' + element.id + '">' + element.name +
+                        '</option>')
+                }
+            });
+            team = false;
+            $('.kelompok').removeClass('block').addClass('hidden');
+            $('#form-kelompok').html(null);
+            $('#jumlah-anggota').val(0);
+            refreshMemberCount();
         });
         let obja = subsectors.filter(function(obj) {
             return obj.sector_id === parseInt($('#sector').val());
         });
         obja.forEach(element => {
             $('#subsector').append('<option value="' + element.id + '">' + element.name + '</option>')
+        });
+        $('#bentuk-usaha').html(null);
+        businessforms.forEach(element => {
+            if (parseInt($('#sector').val()) == 1 || parseInt($('#sector').val()) == 4 || parseInt($('#sector')
+                    .val()) == 5 || parseInt($('#sector').val()) == 7) {
+                if (element.id != 4) {
+                    $('#bentuk-usaha').append('<option value="' + element.id + '">' + element.name + '</option>')
+                }
+            } else {
+                $('#bentuk-usaha').append('<option value="' + element.id + '">' + element.name + '</option>')
+            }
         });
     </script>
     <script>

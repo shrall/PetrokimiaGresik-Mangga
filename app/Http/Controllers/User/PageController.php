@@ -17,6 +17,8 @@ use App\Models\Subsector;
 use App\Models\Village;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+
 
 class PageController extends Controller
 {
@@ -63,6 +65,7 @@ class PageController extends Controller
 
     public function form_mangga()
     {
+        $selected_sector = request('sector');
         $sectors = Sector::all();
         $subsectors = Subsector::all();
         $provinces = Province::all();
@@ -73,7 +76,7 @@ class PageController extends Controller
         $establishment_statuses = EstablishmentStatus::all();
         $distribution_types = DistributionType::all();
         $marketings = Marketing::all();
-        return view('user.form.mangga', compact('provinces', 'cities', 'districts', 'villages', 'sectors', 'subsectors', 'business_forms', 'establishment_statuses', 'distribution_types', 'marketings'));
+        return view('user.form.mangga', compact('provinces', 'cities', 'districts', 'villages', 'selected_sector', 'sectors', 'subsectors', 'business_forms', 'establishment_statuses', 'distribution_types', 'marketings'));
     }
 
     public function form_mangga_muda()
@@ -90,6 +93,8 @@ class PageController extends Controller
     public function refresh_kelompok(Request $request)
     {
         $member = $request->member;
-        return view('user.form.inc.utama_member', compact('member'));
+        $sector = $request->sector;
+        $establishment_statuses = EstablishmentStatus::all();
+        return view('user.form.inc.utama_member', compact('member', 'sector', 'establishment_statuses'));
     }
 }
