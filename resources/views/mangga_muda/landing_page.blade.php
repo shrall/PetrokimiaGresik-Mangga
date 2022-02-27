@@ -70,289 +70,46 @@
     <div class="flex flex-col h-full px-12 xl:px-24 py-8 font-pn" id="timeline">
         <div class="text-6xl font-lb text-mangga-green-500 font-bold">Timeline</div>
         <div class="mb-4">Lomba Mangga Muda akan dilaksanan dengan jadwal berikut:</div>
-        <div class="hidden md:flex flex-col gap-y-4">
-            <div class="text-4xl font-pn font-bold">Januari</div>
-            <div class="grid grid-cols-4 items-start gap-x-4">
-                <div class="flex flex-col items-center justify-center gap-y-2">
-                    <div
-                        class="rounded-full @if (date('Y-m-d') < date('Y-m-d', strtotime('02/01/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-24 h-24">
-                        <span class="text-4xl font-lb">28</span>
-                        <span class="text-lg">Jan</span>
-                    </div>
-                    <span class="text-lg text-center">Persiapan Web dan WA aktif</span>
+        <div class="grid grid-col-1 xl:grid-cols-5 gap-12 bg-mangga-green-400 py-8">
+            <div class="flex flex-col items-center justify-center">
+                <div class="w-24 h-36 bg-buah bg-contain bg-no-repeat bg-center text-center pt-12 pl-4 text-sm">
+                    1 Feb -<br>20 Mei
+                    <br><br>
+                    <span class="text-mangga-yellow-400">Pendaftaran</span>
                 </div>
             </div>
-            <div class="text-4xl font-pn font-bold">Februari</div>
-            <div class="grid grid-cols-4 items-start gap-x-4">
-                <div class="flex flex-col items-center justify-center gap-y-2">
-                    <div
-                        class="rounded-full @if (date('Y-m-d') >= date('Y-m-d', strtotime('02/01/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('02/04/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-24 h-24">
-                        <span class="text-4xl font-lb">01</span>
-                        <span class="text-lg">Feb</span>
-                    </div>
-                    <span class="text-lg text-center">Surat ke PIKPG dan Sosialisasi dimulai</span>
-                </div>
-                <div class="flex flex-col items-center justify-center gap-y-2">
-                    <div
-                        class="rounded-full @if (date('Y-m-d') >= date('Y-m-d', strtotime('02/04/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('02/07/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-24 h-24">
-                        <span class="text-4xl font-lb">04</span>
-                        <span class="text-lg">Feb</span>
-                    </div>
-                    <span class="text-lg text-center">Persiapan Booklet dan Poster</span>
-                </div>
-                <div class="flex flex-col items-center justify-center gap-y-2">
-                    <div
-                        class="rounded-full @if (date('Y-m-d') >= date('Y-m-d', strtotime('02/07/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('03/01/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-24 h-24">
-                        <span class="text-4xl font-lb">07</span>
-                        <span class="text-lg">Feb</span>
-                    </div>
-                    <span class="text-lg text-center">Peluncuran Poster & Booklet Pendaftaran & Video Submission
-                        dibuka</span>
+            <div class="flex flex-col items-center justify-center">
+                <div class="w-24 h-36 bg-buah bg-contain bg-no-repeat bg-center text-center pt-12 pl-4 text-sm">
+                    1 Feb -<br>20 Mei
+                    <br><br>
+                    <span class="text-mangga-yellow-400">Pengumpulan Proposal</span>
                 </div>
             </div>
-            <div class="text-4xl font-pn font-bold">Maret</div>
-            <div class="grid grid-cols-4 items-start gap-x-4">
-                <div class="flex flex-col items-center justify-center gap-y-2">
-                    <div
-                        class="rounded-full @if (date('Y-m-d') >= date('Y-m-d', strtotime('03/01/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('03/20/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-24 h-24">
-                        <span class="text-4xl font-lb">01</span>
-                        <span class="text-lg">Mar</span>
-                    </div>
-                    <span class="text-lg text-center">Seleksi Internal dimulai</span>
-                </div>
-                <div class="flex flex-col items-center justify-center gap-y-2">
-                    <div
-                        class="rounded-full @if (date('Y-m-d') >= date('Y-m-d', strtotime('03/20/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('03/28/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-24 h-24">
-                        <span class="text-4xl font-lb">20</span>
-                        <span class="text-lg">Mar</span>
-                    </div>
-                    <span class="text-lg text-center">Sosialisasi berakhir</span>
-                </div>
-                <div class="flex flex-col items-center justify-center gap-y-2">
-                    <div
-                        class="rounded-full @if (date('Y-m-d') >= date('Y-m-d', strtotime('03/28/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('03/30/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-24 h-24">
-                        <span class="text-4xl font-lb">28</span>
-                        <span class="text-lg">Mar</span>
-                    </div>
-                    <span class="text-lg text-center">Survey dimulai</span>
-                </div>
-                <div class="flex flex-col items-center justify-center gap-y-2">
-                    <div
-                        class="rounded-full @if (date('Y-m-d') >= date('Y-m-d', strtotime('03/30/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('04/01/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-24 h-24">
-                        <span class="text-4xl font-lb">30</span>
-                        <span class="text-lg">Mar</span>
-                    </div>
-                    <span class="text-lg text-center">Pendaftaran & Video Submission ditutup</span>
+            <div class="flex flex-col items-center justify-center">
+                <div class="w-24 h-36 bg-buah bg-contain bg-no-repeat bg-center text-center pt-12 pl-4 text-sm">
+                    20<br>Mei
+                    <br><br>
+                    <span class="text-mangga-yellow-400">Booth Camp</span>
                 </div>
             </div>
-            <div class="text-4xl font-pn font-bold">April</div>
-            <div class="grid grid-cols-4 items-start gap-x-4">
-                <div class="flex flex-col items-center justify-center gap-y-2">
-                    <div
-                        class="rounded-full @if (date('Y-m-d') >= date('Y-m-d', strtotime('04/01/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('04/08/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-24 h-24">
-                        <span class="text-4xl font-lb">01</span>
-                        <span class="text-lg">APR</span>
-                    </div>
-                    <span class="text-lg text-center">Seleksi Internal selesai</span>
-                </div>
-                <div class="flex flex-col items-center justify-center gap-y-2">
-                    <div
-                        class="rounded-full @if (date('Y-m-d') >= date('Y-m-d', strtotime('04/08/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('04/10/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-24 h-24">
-                        <span class="text-4xl font-lb">08</span>
-                        <span class="text-lg">APR</span>
-                    </div>
-                    <span class="text-lg text-center">Survey selesai</span>
-                </div>
-                <div class="flex flex-col items-center justify-center gap-y-2">
-                    <div
-                        class="rounded-full @if (date('Y-m-d') >= date('Y-m-d', strtotime('04/10/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('04/11/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-24 h-24">
-                        <span class="text-4xl font-lb">10</span>
-                        <span class="text-lg">APR</span>
-                    </div>
-                    <span class="text-lg text-center">Penentuan Pemenang Day 1</span>
-                </div>
-                <div class="flex flex-col items-center justify-center gap-y-2">
-                    <div
-                        class="rounded-full @if (date('Y-m-d') >= date('Y-m-d', strtotime('04/11/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('06/19/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-24 h-24">
-                        <span class="text-4xl font-lb">11</span>
-                        <span class="text-lg">APR</span>
-                    </div>
-                    <span class="text-lg text-center">Penentuan Pemenang Day 2</span>
+            <div class="flex flex-col items-center justify-center">
+                <div class="w-24 h-36 bg-buah bg-contain bg-no-repeat bg-center text-center pt-12 pl-4 text-sm">
+                    24 Juni<br>- 2 Juli
+                    <br><br>
+                    <span class="text-mangga-yellow-400 font-bold">Mangga Hybrid Expo</span>
                 </div>
             </div>
-            <div class="text-4xl font-pn font-bold">Juni</div>
-            <div class="grid grid-cols-4 items-start gap-x-4">
-                <div class="flex flex-col items-center justify-center gap-y-2">
-                    <div
-                        class="rounded-full @if (date('Y-m-d') >= date('Y-m-d', strtotime('06/19/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('06/20/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-24 h-24">
-                        <span class="text-4xl font-lb">19</span>
-                        <span class="text-lg">Jun</span>
-                    </div>
-                    <span class="text-lg text-center">Penjurian Eksternal</span>
-                </div>
-                <div class="flex flex-col items-center justify-center gap-y-2">
-                    <div
-                        class="rounded-full @if (date('Y-m-d') >= date('Y-m-d', strtotime('06/20/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('06/24/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-24 h-24">
-                        <span class="text-4xl font-lb">20</span>
-                        <span class="text-lg">Jun</span>
-                    </div>
-                    <span class="text-lg text-center">Penjurian Eksternal dan Persiapan Expo</span>
-                </div>
-                <div class="flex flex-col items-center justify-center gap-y-2">
-                    <div
-                        class="rounded-full @if (date('Y-m-d') >= date('Y-m-d', strtotime('06/24/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('07/28/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-24 h-24">
-                        <span class="text-4xl font-lb">24</span>
-                        <span class="text-lg">Jun</span>
-                    </div>
-                    <span class="text-lg text-center">Persiapan selesai dan Expo dibuka</span>
-                </div>
-            </div>
-            <div class="text-4xl font-pn font-bold">Juli</div>
-            <div class="grid grid-cols-4 items-start gap-x-4">
-                <div class="flex flex-col items-center justify-center gap-y-2">
-                    <div
-                        class="rounded-full @if (date('Y-m-d') >= date('Y-m-d', strtotime('07/28/2022'))) @endif bg-gray-300 flex flex-col items-center justify-center w-24 h-24">
-                        <span class="text-4xl font-lb">28</span>
-                        <span class="text-lg">Jul</span>
-                    </div>
-                    <span class="text-lg text-center">Expo berakhir dan Awarding</span>
+            <div class="flex flex-col items-center justify-center">
+                <div class="w-24 h-36 bg-buah bg-contain bg-no-repeat bg-center text-center pt-12 pl-4 text-sm">
+                    2<br>Juli
+                    <br><br>
+                    <span class="text-mangga-yellow-400">Awarding</span>
                 </div>
             </div>
         </div>
-        <flex class="flex-col md:hidden flex gap-y-4">
-            <div class="grid grid-cols-4 items-center gap-x-4">
-                <div
-                    class="rounded-full col-span-1 @if (date('Y-m-d') < date('Y-m-d', strtotime('02/01/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-20 h-20">
-                    <span class="text-3xl font-lb">28</span>
-                    <span class="text-lg">Jan</span>
-                </div>
-                <span class="text-lg text-center col-span-3">Persiapan Web dan WA aktif</span>
-            </div>
-            <div class="grid grid-cols-4 items-center gap-x-4">
-                <div
-                    class="rounded-full col-span-1 @if (date('Y-m-d') >= date('Y-m-d', strtotime('02/01/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('02/04/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-20 h-20">
-                    <span class="text-3xl font-lb">01</span>
-                    <span class="text-lg">Feb</span>
-                </div>
-                <span class="text-lg text-center col-span-3">Surat ke PIKPG dan Sosialisasi dimulai</span>
-            </div>
-            <div class="grid grid-cols-4 items-center gap-x-4">
-                <div
-                    class="rounded-full col-span-1 @if (date('Y-m-d') >= date('Y-m-d', strtotime('02/04/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('02/07/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-20 h-20">
-                    <span class="text-3xl font-lb">04</span>
-                    <span class="text-lg">Feb</span>
-                </div>
-                <span class="text-lg text-center col-span-3">Persiapan Booklet dan Poster</span>
-            </div>
-            <div class="grid grid-cols-4 items-center gap-x-4">
-                <div
-                    class="rounded-full col-span-1 @if (date('Y-m-d') >= date('Y-m-d', strtotime('02/07/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('03/01/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-20 h-20">
-                    <span class="text-3xl font-lb">07</span>
-                    <span class="text-lg">Feb</span>
-                </div>
-                <span class="text-lg text-center col-span-3">Peluncuran Poster & Booklet Pendaftaran & Video Submission
-                    dibuka</span>
-            </div>
-            <div class="grid grid-cols-4 items-center gap-x-4">
-                <div
-                    class="rounded-full col-span-1 @if (date('Y-m-d') >= date('Y-m-d', strtotime('03/01/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('03/20/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-20 h-20">
-                    <span class="text-3xl font-lb">01</span>
-                    <span class="text-lg">Mar</span>
-                </div>
-                <span class="text-lg text-center col-span-3">Seleksi Internal dimulai</span>
-            </div>
-            <div class="grid grid-cols-4 items-center gap-x-4">
-                <div
-                    class="rounded-full col-span-1 @if (date('Y-m-d') >= date('Y-m-d', strtotime('03/20/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('03/28/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-20 h-20">
-                    <span class="text-3xl font-lb">20</span>
-                    <span class="text-lg">Mar</span>
-                </div>
-                <span class="text-lg text-center col-span-3">Sosialisasi berakhir</span>
-            </div>
-            <div class="grid grid-cols-4 items-center gap-x-4">
-                <div
-                    class="rounded-full col-span-1 @if (date('Y-m-d') >= date('Y-m-d', strtotime('03/28/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('03/30/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-20 h-20">
-                    <span class="text-3xl font-lb">28</span>
-                    <span class="text-lg">Mar</span>
-                </div>
-                <span class="text-lg text-center col-span-3">Survey dimulai</span>
-            </div>
-            <div class="grid grid-cols-4 items-center gap-x-4">
-                <div
-                    class="rounded-full col-span-1 @if (date('Y-m-d') >= date('Y-m-d', strtotime('03/30/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('04/01/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-20 h-20">
-                    <span class="text-3xl font-lb">30</span>
-                    <span class="text-lg">Mar</span>
-                </div>
-                <span class="text-lg text-center col-span-3">Pendaftaran & Video Submission ditutup</span>
-            </div>
-            <div class="grid grid-cols-4 items-center gap-x-4">
-                <div
-                    class="rounded-full col-span-1 @if (date('Y-m-d') >= date('Y-m-d', strtotime('04/01/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('04/08/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-20 h-20">
-                    <span class="text-3xl font-lb">01</span>
-                    <span class="text-lg">APR</span>
-                </div>
-                <span class="text-lg text-center col-span-3">Seleksi Internal selesai</span>
-            </div>
-            <div class="grid grid-cols-4 items-center gap-x-4">
-                <div
-                    class="rounded-full col-span-1 @if (date('Y-m-d') >= date('Y-m-d', strtotime('04/08/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('04/10/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-20 h-20">
-                    <span class="text-3xl font-lb">08</span>
-                    <span class="text-lg">APR</span>
-                </div>
-                <span class="text-lg text-center col-span-3">Survey selesai</span>
-            </div>
-            <div class="grid grid-cols-4 items-center gap-x-4">
-                <div
-                    class="rounded-full col-span-1 @if (date('Y-m-d') >= date('Y-m-d', strtotime('04/10/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('04/11/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-20 h-20">
-                    <span class="text-3xl font-lb">10</span>
-                    <span class="text-lg">APR</span>
-                </div>
-                <span class="text-lg text-center col-span-3">Penentuan Pemenang Day 1</span>
-            </div>
-            <div class="grid grid-cols-4 items-center gap-x-4">
-                <div
-                    class="rounded-full col-span-1 @if (date('Y-m-d') >= date('Y-m-d', strtotime('04/11/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('06/19/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-20 h-20">
-                    <span class="text-3xl font-lb">11</span>
-                    <span class="text-lg">APR</span>
-                </div>
-                <span class="text-lg text-center col-span-3">Penentuan Pemenang Day 2</span>
-            </div>
-            <div class="grid grid-cols-4 items-center gap-x-4">
-                <div
-                    class="rounded-full col-span-1 @if (date('Y-m-d') >= date('Y-m-d', strtotime('06/19/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('06/20/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-20 h-20">
-                    <span class="text-3xl font-lb">19</span>
-                    <span class="text-lg">Jun</span>
-                </div>
-                <span class="text-lg text-center col-span-3">Penjurian Eksternal</span>
-            </div>
-            <div class="grid grid-cols-4 items-center gap-x-4">
-                <div
-                    class="rounded-full col-span-1 @if (date('Y-m-d') >= date('Y-m-d', strtotime('06/20/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('06/24/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-20 h-20">
-                    <span class="text-3xl font-lb">20</span>
-                    <span class="text-lg">Jun</span>
-                </div>
-                <span class="text-lg text-center col-span-3">Penjurian Eksternal dan Persiapan Expo</span>
-            </div>
-            <div class="grid grid-cols-4 items-center gap-x-4">
-                <div
-                    class="rounded-full col-span-1 @if (date('Y-m-d') >= date('Y-m-d', strtotime('06/24/2022')) && date('Y-m-d') < date('Y-m-d', strtotime('07/28/2022'))) bg-mangga-green-400 text-white @endif bg-gray-300 flex flex-col items-center justify-center w-20 h-20">
-                    <span class="text-3xl font-lb">24</span>
-                    <span class="text-lg">Jun</span>
-                </div>
-                <span class="text-lg text-center col-span-3">Persiapan selesai dan Expo dibuka</span>
-            </div>
-            <div class="grid grid-cols-4 items-center gap-x-4">
-                <div
-                    class="rounded-full col-span-1 @if (date('Y-m-d') >= date('Y-m-d', strtotime('07/28/2022'))) @endif bg-gray-300 flex flex-col items-center justify-center w-20 h-20">
-                    <span class="text-3xl font-lb">28</span>
-                    <span class="text-lg">Jul</span>
-                </div>
-                <span class="text-lg text-center col-span-3">Expo berakhir dan Awarding</span>
-            </div>
-        </flex>
     </div>
     <div class="flex flex-col gap-y-12 h-vh-30 font-pn">
-        <div class="text-6xl font-lb text-center">Semangat Berkompetisi!</div>
+        <div class="text-3xl xl:text-6xl font-lb text-center">Semangat Berkompetisi!</div>
         <a href="{{ route('mangga_muda.register') }}"
             class="bg-mangga-orange-300 text-white hover:bg-mangga-orange-400 rounded-md text-center p-4 w-80 xl:w-128 mx-auto mb-4 text-xl cursor-pointer">Daftar
             Sekarang</a>

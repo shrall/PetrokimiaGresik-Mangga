@@ -20,6 +20,7 @@ module.exports = {
         "sign-in": "url('/assets/svg/sign-in.svg')",
         "sign-up": "url('/assets/svg/sign-up.svg')",
         "proposal-utama": "url('/assets/svg/proposal-utama.svg')",
+        "buah": "url('/assets/svg/mangga-muda-buah.svg')",
       },
       fontFamily: {
         "af": ['"Abril Fatface"'],
