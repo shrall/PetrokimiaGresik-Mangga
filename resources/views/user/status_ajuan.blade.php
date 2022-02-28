@@ -7,7 +7,7 @@
             @include('inc.user_sidebar')
         </div>
         <div class="col-span-12 xl:col-span-9 h-full">
-            <div class="flex flex-col card items-center justify-center gap-y-4 px-8 py-6 mb-4">
+            <div class="flex flex-col card items-center justify-center gap-y-4 px-8 py-6">
                 <div class="text-2xl font-bold mb-8">Status Pengajuan</div>
                 <div class="flex flex-col xl:flex-row items-center justify-center gap-x-2">
                     <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
@@ -15,7 +15,7 @@
                             <span class="fa fa-fw fa-address-card text-white text-xl"></span>
                         </div>
                         <div
-                            class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                            class="text-md text-gray-400 text-center w-56 xl:w-24 h-16 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
                             Lengkapi Data Diri</div>
                     </div>
                     <div class="block xl:hidden">
@@ -31,7 +31,7 @@
                                 <span class="fa fa-fw fa-user-check text-white text-xl"></span>
                             </div>
                             <div
-                                class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                class="text-md text-gray-400 text-center w-56 xl:w-24 h-16 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
                                 Submit Form Pengajuan</div>
                         </div>
                         <div class="block xl:hidden">
@@ -46,23 +46,37 @@
                                 <span class="fa fa-fw fa-signature text-white text-xl"></span>
                             </div>
                             <div
-                                class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                class="text-md text-gray-400 text-center w-56 xl:w-24 h-16 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
                                 Memberi TTD Form Pengajuan
                             </div>
                         </div>
                     @else
                         <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                             <div
-                                class="rounded-full {{ Auth::user()->businesses[0]->status == 2 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
+                                class="rounded-full {{ Auth::user()->businesses[0]->status == 1 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
                                 <span class="fa fa-fw fa-user-check text-white text-xl"></span>
                             </div>
                             <div
-                                class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                                Submit Proposal</div>
+                                class="text-md text-gray-400 text-center w-56 xl:w-24 h-16 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                Submit Form Proposal</div>
+                        </div>
+                        <div class="block xl:hidden">
+                            <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+                        </div>
+                        <div class="hidden xl:block">
+                            <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+                        </div>
+                        <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                            <div
+                                class="rounded-full {{ Auth::user()->businesses[0]->status == 2 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
+                                <span class="fa fa-fw fa-print text-white text-xl"></span>
+                            </div>
+                            <div
+                                class="text-md text-gray-400 text-center w-56 xl:w-24 h-16 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                Submit Ulang Proposal</div>
                         </div>
                     @endif
                     @if (!Auth::user()->businesses->last()->rejected_at)
-
                         @if (Auth::user()->referral_code != 'mamud')
                             <div class="block xl:hidden">
                                 <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
@@ -76,7 +90,7 @@
                                     <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
                                 </div>
                                 <div
-                                    class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                    class="text-md text-gray-400 text-center w-56 xl:w-24 h-16 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
                                     Pengajuan Terevaluasi Surveyor</div>
                             </div>
                             <div class="block xl:hidden">
@@ -91,7 +105,7 @@
                                     <span class="fa fa-fw fa-check-double text-white text-xl"></span>
                                 </div>
                                 <div
-                                    class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                    class="text-md text-gray-400 text-center w-56 xl:w-24 h-16 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
                                     Pengajuan Diapprove Pimpinan</div>
                             </div>
                         @else
@@ -107,7 +121,7 @@
                                     <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
                                 </div>
                                 <div
-                                    class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                    class="text-md text-gray-400 text-center w-56 xl:w-24 h-16 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
                                     Pengajuan Terverifikasi</div>
                             </div>
                             <div class="block xl:hidden">
@@ -122,7 +136,7 @@
                                     <span class="fa fa-fw fa-print text-white text-xl"></span>
                                 </div>
                                 <div
-                                    class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                    class="text-md text-gray-400 text-center w-56 xl:w-24 h-16 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
                                     Cetak Proposal</div>
                             </div>
                         @endif
@@ -138,21 +152,38 @@
                                 <span class="fa fa-fw fa-times text-white text-xl"></span>
                             </div>
                             <div
-                                class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                                class="text-md text-gray-400 text-center w-56 xl:w-24 h-16 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
                                 Pengajuan Ditolak</div>
                         </div>
                     @endif
                 </div>
+                <div class="flex items-center mb-4">
+                    <a href="{{ route('user.muda.edit', $muda->id) }}" class="mangga-button-green cursor-pointer">Edit Form</a>
+                </div>
                 @if (Auth::user()->referral_code != 'mamud')
                     <label for="complete-form" class="font-bold">Upload Form Yang
                         Sudah Di Tanda Tangani</label>
-                    <form action="{{ route('admin.utama.ttd', $utama->id) }}" method="post" enctype="multipart/form-data"
+                    <form action="{{ route('user.utama.ttd', $utama->id) }}" method="post" enctype="multipart/form-data"
                         class="flex items-center justify-center gap-y-2 bg-gray-300 rounded-xl shadow-xl p-4">
                         @csrf
                         @method('PATCH')
                         <a target="blank" href="{{ asset('uploads/mangga/complete_form/' . $utama->complete_form) }}">
                             <span class="fa fa-fw fa-file-pdf"></span>
                             <span class="underline">{{ $utama->complete_form }}</span>
+                        </a>
+                        <input type="file" name="complete_form" id="complete-form" required>
+                        <button type="submit" class="mangga-button-green cursor-pointer">Submit</button>
+                    </form>
+                @else
+                    <label for="complete-form" class="font-bold">Upload Form Yang
+                        Sudah Di Tanda Tangani</label>
+                    <form action="{{ route('user.muda.ttd', $muda->id) }}" method="post" enctype="multipart/form-data"
+                        class="flex items-center justify-center gap-y-2 bg-gray-300 rounded-xl shadow-xl p-4">
+                        @csrf
+                        @method('PATCH')
+                        <a target="blank" href="{{ asset('uploads/mangga/complete_form/' . $muda->complete_form) }}">
+                            <span class="fa fa-fw fa-file-pdf"></span>
+                            <span class="underline">{{ $muda->complete_form }}</span>
                         </a>
                         <input type="file" name="complete_form" id="complete-form" required>
                         <button type="submit" class="mangga-button-green cursor-pointer">Submit</button>
@@ -231,7 +262,8 @@
                     <div class="text-xl font-bold">Pangsa Pasar Produk dan Go-To-Market Strategy</div>
                     <div class="text-xl">{{ $muda->market_share }}</div>
                     <div class="text-xl font-bold">Peta Positioning</div>
-                    <img src="{{ asset('uploads/mangga/marketpositions/' . $muda->market_position) }}" class="w-128">
+                    <img src="{{ asset('uploads/mangga/marketpositions/' . $muda->market_position) }}"
+                        class="w-128">
                     <hr>
                     <div class="text-xl font-bold underline">Analisa Pemasaran</div>
                     <div class="text-xl font-bold">Strategi Produksi</div>
@@ -478,7 +510,8 @@
                             <span class="text-gray-600">Tanggal Penerimaan</span>
                             @if ($utama->approved_by_surveyor_at)
                                 <span>{{ $utama->approved_by_surveyor_at->format('d/m/Y') }}</span>
-                            @else -
+                            @else
+                                -
                             @endif
                         </div>
                         <div class="flex flex-col">
@@ -559,7 +592,8 @@
                                                 href="{{ asset('uploads/mangga/certificate/' . $member->certificate) }}">Download
                                                 Sertifikat</a>
                                         </span>
-                                    @else -
+                                    @else
+                                        -
                                     @endif
                                 </div>
                             </div>
@@ -721,7 +755,8 @@
                         </div>
                         <div class="flex flex-col">
                             <span class="text-gray-600">Pemasaran</span>
-                            <span>{{ $utama->marketing->name }} @if ($utama->marketing_id == 3) Ekspor ke {{ $utama->export_to }}
+                            <span>{{ $utama->marketing->name }} @if ($utama->marketing_id == 3)
+                                    Ekspor ke {{ $utama->export_to }}
                                 @endif </span>
                         </div>
                         <div class="flex flex-col">
@@ -749,10 +784,12 @@
                             <span>
                                 @if ($utama->business->commodities)
                                     @foreach ($utama->business->commodities as $c)
-                                        @if ($loop->iteration != 1),
+                                        @if ($loop->iteration != 1)
+                                            ,
                                         @endif{{ $c->name }}
                                     @endforeach
-                                @else -
+                                @else
+                                    -
                                 @endif
                             </span>
                         </div>
@@ -816,7 +853,7 @@
                                 <tr class="font-bold">
                                     <td>Jumlah</td>
                                     <td>Rp.
-                                        {{ number_format($utama->treasury + $utama->credit + $utama->production_tools + $utama->savings + $utama->supply + $utama->vehicle, 0, ',', '.') }}
+                                        {{ number_format($utama->treasury + $utama->credit + $utama->production_tools + $utama->savings + $utama->supply + $utama->vehicle,0,',','.') }}
                                     </td>
                                 </tr>
                             </table>
@@ -949,6 +986,6 @@
 @endsection
 
 @section('scripts')
-<script>
-</script>
+    <script>
+    </script>
 @endsection

@@ -663,7 +663,6 @@
 
         function checkFields() {
             let state = true;
-            $('#sector').addClass('border').addClass('border-red-600');
             $('input,textarea,select').filter('[required]:visible').each(function() {
                 if ($(this).val() == '') {
                     state = false;

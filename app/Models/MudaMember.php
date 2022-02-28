@@ -9,7 +9,7 @@ class MudaMember extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name', 'muda_id'
+        'name', 'muda_id', 'ktp', 'ktm'
     ];
     public function muda()
     {

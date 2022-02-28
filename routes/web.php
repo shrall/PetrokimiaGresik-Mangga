@@ -83,6 +83,7 @@ Route::group(['middleware' => ['user', 'verified'], 'as' => 'user.'], function (
     Route::post('/form/mangga/refresh-kelompok', [UserPageController::class, 'refresh_kelompok'])->name('form_mangga.refreshkelompok');
     Route::get('/form/mangga_muda', [UserPageController::class, 'form_mangga_muda'])->name('form_mangga_muda');
     Route::resource('muda', MudaController::class);
+    Route::patch('/muda/{muda}/ttd', [MudaController::class, 'ttd'])->name('muda.ttd');
     Route::get('/muda/{muda}/preview', [MudaController::class, 'preview'])->name('muda.preview');
     Route::get('/muda/{muda}/download', [MudaController::class, 'download'])->name('muda.download');
     Route::resource('utama', UtamaController::class);
@@ -109,10 +110,12 @@ Route::group(['middleware' => ['admin'], 'as' => 'admin.', 'prefix' => 'admin'],
 
     Route::get('/program/muda/{business}', [AdminPageController::class, 'mangga_muda'])->name('program.muda');
     Route::resource('muda', AdminMudaController::class);
+    Route::patch('/muda/{muda}/ttd', [AdminMudaController::class, 'ttd'])->name('muda.ttd');
     Route::get('/muda/{muda}/approvesurveyor', [AdminMudaController::class, 'approve_surveyor'])->name('muda.approve_surveyor');
     Route::get('/muda/{muda}/approvepimpinan', [AdminMudaController::class, 'approve_pimpinan'])->name('muda.approve_pimpinan');
     Route::get('/muda/{muda}/reject', [AdminMudaController::class, 'reject'])->name('muda.reject');
     Route::get('/muda/{muda}/download', [AdminMudaController::class, 'download'])->name('muda.download');
+    Route::get('/muda/{muda}/preview', [AdminMudaController::class, 'preview'])->name('muda.preview');
 
     Route::get('/media', [AdminMediaController::class, 'index'])->name('media.index');
     Route::get('/media/create', [AdminMediaController::class, 'create'])->name('media.create');

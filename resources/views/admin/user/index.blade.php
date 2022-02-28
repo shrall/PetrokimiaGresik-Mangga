@@ -6,7 +6,7 @@
             <thead>
                 <tr>
                     <th data-priority="1">Nama</th>
-                    <th data-priority="2">Tipe</th>
+                    <th data-priority="2">E-Mail</th>
                     <th data-priority="3">Action</th>
                 </tr>
             </thead>

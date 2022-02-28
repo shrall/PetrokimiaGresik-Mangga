@@ -25,6 +25,28 @@
                     required>
                 <input type="text" name="leader_phone" class="form-pengajuan-input" placeholder="No. HP Ketua Tim*"
                     required>
+                <label class="font-bold">KTP Ketua*</label>
+                <div class="flex items-end gap-x-4">
+                    <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
+                        id="preview-leader-ktp">
+                    <div class="flex flex-col gap-y-2">
+                        <input type="file" name="leader_ktp" id="leader-ktp" class="invisible w-2"
+                            onchange="loadFile(event, 'leader-ktp')" accept="image/*" required>
+                        <label for="leader-ktp" class="mangga-button-green cursor-pointer">Unggah Foto KTP</label>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
+                    </div>
+                </div>
+                <label class="font-bold">KTM Ketua*</label>
+                <div class="flex items-end gap-x-4">
+                    <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
+                        id="preview-leader-ktm">
+                    <div class="flex flex-col gap-y-2">
+                        <input type="file" name="leader_ktm" id="leader-ktm" class="invisible w-2"
+                            onchange="loadFile(event, 'leader-ktm')" accept="image/*" required>
+                        <label for="leader-ktm" class="mangga-button-green cursor-pointer">Unggah Foto KTM</label>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
+                    </div>
+                </div>
                 <input type="text" name="university" class="form-pengajuan-input" placeholder="Asal Universitas*" required>
                 <input type="text" name="faculty" class="form-pengajuan-input" placeholder="Fakultas*" required>
                 <input type="text" name="recommender" class="form-pengajuan-input" placeholder="Perekomendasi*" required>
@@ -32,23 +54,19 @@
                     placeholder="Jabatan Perekomendasi*" required>
                 <input type="number" name="member_count" class="form-pengajuan-input" placeholder="Jumlah Anggota*" required
                     onkeyup="updateMembers();">
-            </div>
-            <div class="" id="member-input-list">
-                <input type="text" name="member_name[1]" class="form-pengajuan-input" placeholder="Nama Anggota 1*"
-                    required>
-            </div>
-            <div class="">
                 <label class="font-bold">Logo Usaha*</label>
                 <div class="flex items-end gap-x-4">
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
                         id="preview-logo-usaha">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="logo" id="logo-usaha" class="hidden"
+                        <input type="file" name="logo" id="logo-usaha" class="invisible w-2"
                             onchange="loadFile(event, 'logo-usaha')" accept="image/*" required>
                         <label for="logo-usaha" class="mangga-button-green cursor-pointer">Unggah Logo Usaha</label>
                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                     </div>
                 </div>
+            </div>
+            <div class="" id="member-input-list">
             </div>
         </div>
         <div class="grid-cols-2 gap-x-8 gap-y-2 form-step hidden" id="data-usaha-2">
@@ -113,14 +131,14 @@
         </div>
         <div class="grid-cols-2 gap-8 form-step hidden" id="analisa-ide-3">
             <div class="col-span-2">
-                <textarea
+                <textarea required
                     placeholder="Tuliskan deskripsi produk/usaha/jasa yang anda kembangkan. Termasuk keunggulan, ide, diferensiasi dan keunikan serta potensi pertumbuhan dan resikonya.*"
                     name="description" id="" cols="30" rows="17" class="form-pengajuan-input"></textarea>
             </div>
         </div>
         <div class="grid-cols-12 gap-8 form-step hidden" id="analisa-pemasaran-4">
             <div class="col-span-8">
-                <textarea
+                <textarea required
                     placeholder="Jelaskan pangsa pasar produk atau jasa anda saat ini. Disertai dengan data-data yang mendukung, misalnya kegiatan pengembangan pemasaran, konsep STP, 4P dan petapositioning, kegiatan promosi, strategi penetapan harga, market share, analisis pesaing, trend perkembangan pasar dll.*"
                     name="market_share" id="" cols="30" rows="17" class="form-pengajuan-input"></textarea>
             </div>
@@ -130,7 +148,7 @@
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
                         id="preview-peta-positioning">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="market_position" id="peta-positioning" class="hidden"
+                        <input type="file" name="market_position" id="peta-positioning" class="invisible w-2"
                             onchange="loadFile(event, 'peta-positioning')" accept="image/*" required>
                         <label for="peta-positioning" class="mangga-button-green cursor-pointer">Unggah Peta
                             Positioning</label>
@@ -141,7 +159,7 @@
         </div>
         <div class="grid-cols-12 gap-8 form-step hidden" id="analisa-operasional-5">
             <div class="col-span-8">
-                <textarea
+                <textarea required
                     placeholder="Jelaskan strategi produksi (bila barang) atau pola pelayanan (jasa) usaha anda. Misalnya strategi pemilihan komponen biaya produksi dan teknologi proses, desain struktur organisasi, serta analisa kebutuhan SDM dan desain kompetensi.*"
                     name="production_strategy" id="" cols="30" rows="17" class="form-pengajuan-input"></textarea>
             </div>
@@ -151,7 +169,7 @@
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
                         id="preview-struktur-organisasi">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="organization_structure" id="struktur-organisasi" class="hidden"
+                        <input type="file" name="organization_structure" id="struktur-organisasi" class="invisible w-2"
                             onchange="loadFile(event, 'struktur-organisasi')" accept="image/*" required>
                         <label for="struktur-organisasi" class="mangga-button-green cursor-pointer">Unggah Struktur
                             Organisasi</label>
@@ -162,14 +180,14 @@
         </div>
         <div class="grid-cols-2 gap-8 form-step hidden" id="target-usaha-6">
             <div class="col-span-2">
-                <textarea
+                <textarea required
                     placeholder="Tuliskan pencapaian perkembangan usaha anda (omzet, asset, cashflow) dalam skala waktu sekaligus strategi produksi, pemasaran dan keuangan untuk mencapai target tersebut (atau strategi pengembangan usaha termasuk pola pembiayaannya).*"
                     name="target_plan" id="" cols="30" rows="17" class="form-pengajuan-input"></textarea>
             </div>
         </div>
         <div class="grid-cols-12 gap-8 form-step hidden" id="target-usaha-7">
             <div class="col-span-8">
-                <textarea
+                <textarea required
                     placeholder="Lampirkan analisis investasi, rencana cashflow, estimasi rugi laba, laporan rugi laba dan halhal lain yang mendukung usaha anda misalnya struktur pendanaan.*"
                     name="finance" id="" cols="30" rows="17" class="form-pengajuan-input"></textarea>
             </div>
@@ -179,7 +197,7 @@
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
                         id="preview-struktur-pendanaan">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="finance_attachment" id="struktur-pendanaan" class="hidden"
+                        <input type="file" name="finance_attachment" id="struktur-pendanaan" class="invisible w-2"
                             onchange="loadFile(event, 'struktur-pendanaan')" accept="image/*" required>
                         <label for="struktur-pendanaan" class="mangga-button-green cursor-pointer">Unggah Struktur
                             Pendanaan</label>
@@ -192,8 +210,8 @@
             <div class="">
                 <label class="text-gray-600 font-bold text-xl">BULAN 1</label><br>
                 <label class="text-gray-600 font-bold">Penerimaan</label>
-                <input type="number" name="inflow_sales[1]" class="form-pengajuan-input" placeholder="Penerimaan Penjualan*"
-                    required>
+                <input type="number" name="inflow_sales[1]" class="form-pengajuan-input"
+                    placeholder="Penerimaan Penjualan*" required>
                 <input type="number" name="inflow_loan[1]" class="form-pengajuan-input" placeholder="Penerimaan Pinjaman*"
                     required>
                 <input type="number" name="inflow_subtotal[1]" class="form-pengajuan-input"
@@ -396,6 +414,35 @@
                 $('#member-input-list').append(
                     `<input type="text" name="member_name[${index}]" class="form-pengajuan-input" placeholder="Nama Anggota ${index}*" required>`
                 )
+                $('#member-input-list').append(
+                    `<div class="flex items-end gap-x-4">
+                    <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
+                        id="preview-member-ktp-${index}">
+                    <div class="flex flex-col gap-y-2">
+                        <input type="file" name="member_ktp[${index}]" id="member-ktp-${index}" class="invisible w-2"
+                            onchange="loadFile(event, 'member-ktp-${index}')" accept="image/*" required>
+                        <label for="member-ktp-${index}" class="mangga-button-green cursor-pointer">Unggah Foto KTP</label>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
+                    </div>
+                </div>`
+                )
+                $('#member-input-list').append(
+                    `<div class="flex items-end gap-x-4">
+                    <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
+                        id="preview-member-ktm-${index}">
+                    <div class="flex flex-col gap-y-2">
+                        <input type="file" name="member_ktm[${index}]" id="member-ktm-${index}" class="invisible w-2"
+                            onchange="loadFile(event, 'member-ktm-${index}')" accept="image/*" required>
+                        <label for="member-ktm-${index}" class="mangga-button-green cursor-pointer">Unggah Foto KTM</label>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
+                    </div>
+                </div>`
+                )
+                if (index != members) {
+                    $('#member-input-list').append(
+                        `<hr class="mb-2 border-2">`
+                    )
+                }
             }
         }
     </script>
@@ -434,7 +481,7 @@
                 $('#steps-title').html('Data Pengajuan');
             } else if (stepCounter == 3) {
                 title = "analisa-ide";
-                $('#steps-title').html('analisa-ide');
+                $('#steps-title').html('Analisa Ide');
             } else if (stepCounter == 4) {
                 title = "analisa-pemasaran";
                 $('#steps-title').html('Analisa Pemasaran');
@@ -461,19 +508,34 @@
 
         var submitted = false;
 
-        function nextStep() {
-            if (stepCounter >= 10 && !team) {
-                event.preventDefault();
-                if (!submitted) {
-                    submitted == true;
-                    document.getElementById('form-mangga-muda').submit();
+        function checkFields() {
+            let state = true;
+            $('input,textarea,select').filter('[required]:visible').each(function() {
+                if ($(this).val() == '') {
+                    state = false;
+                    $(this).addClass('border').addClass('border-red-600');
+                } else {
+                    $(this).removeClass('border').removeClass('border-red-600');
                 }
-            } else {
-                stepCounter += 1;
-                changeTitle();
-                $('#counter-steps').html(stepCounter);
-                $('.form-step').removeClass('grid').addClass('hidden');
-                $('#' + title + '-' + stepCounter).addClass('grid').removeClass('hidden');
+            });
+            return state;
+        }
+
+        function nextStep() {
+            if (checkFields()) {
+                if (stepCounter >= 10 && !team) {
+                    event.preventDefault();
+                    if (!submitted) {
+                        submitted == true;
+                        document.getElementById('form-mangga-muda').submit();
+                    }
+                } else {
+                    stepCounter += 1;
+                    changeTitle();
+                    $('#counter-steps').html(stepCounter);
+                    $('.form-step').removeClass('grid').addClass('hidden');
+                    $('#' + title + '-' + stepCounter).addClass('grid').removeClass('hidden');
+                }
             }
         }
 

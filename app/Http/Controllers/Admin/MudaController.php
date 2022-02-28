@@ -94,10 +94,10 @@ class MudaController extends Controller
     public function download(Muda $muda)
     {
         $pdf = PDF::loadview('user.proposal.muda', compact('muda'))->setOption('margin-bottom', '0mm')
-        ->setOption('margin-top', '0mm')
-        ->setOption('margin-right', '0mm')
-        ->setOption('margin-left', '0mm')
-        ->setOption('page-size', 'A4');
+            ->setOption('margin-top', '0mm')
+            ->setOption('margin-right', '0mm')
+            ->setOption('margin-left', '0mm')
+            ->setOption('page-size', 'A4');
         return $pdf->stream('proposal.pdf');
     }
     public function approve_surveyor(Muda $muda)
@@ -129,6 +129,21 @@ class MudaController extends Controller
             'business_id' => $muda->business->id,
             'admin_id' => Auth::user()->id
         ]);
+        return redirect()->route('admin.program.muda', $muda->business->id);
+    }
+    public function ttd(Request $request, Muda $muda)
+    {
+        $complete_form = 'mangga-muda-' . time() . '-' . $request['complete_form']->getClientOriginalName();
+        $request->complete_form->move(public_path('uploads/mangga/complete_form'), $complete_form);
+
+        $muda->update([
+            'complete_form' => $complete_form
+        ]);
+
+        $muda->business->update([
+            'status' => 2,
+        ]);
+
         return redirect()->route('admin.program.muda', $muda->business->id);
     }
 }

@@ -19,12 +19,28 @@
                 <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
             </div>
             <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                <div class="rounded-full {{ $muda->business->status == 2 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
+                <div
+                    class="rounded-full {{ $muda->business->status == 1 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
                     <span class="fa fa-fw fa-user-check text-white text-xl"></span>
                 </div>
                 <div
                     class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
-                    Submit Form Pengajuan</div>
+                    Submit Form Proposal</div>
+            </div>
+            <div class="block xl:hidden">
+                <span class="fa fa-fw fa-arrow-down text-gray-400 text-xl"></span>
+            </div>
+            <div class="hidden xl:block">
+                <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
+            </div>
+            <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
+                <div
+                    class="rounded-full {{ $muda->business->status == 2 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
+                    <span class="fa fa-fw fa-print text-white text-xl"></span>
+                </div>
+                <div
+                    class="text-md text-gray-400 text-center w-56 xl:w-24 h-24 ml-4 xl:ml-0 flex items-center justify-start xl:items-baseline xl:justify-center">
+                    Submit Ulang Proposal</div>
             </div>
             @if (!$muda->business->rejected_at)
                 <div class="block xl:hidden">
@@ -74,6 +90,19 @@
                 </div>
             @endif
         </div>
+        <label for="complete-form" class="font-bold">Upload Form Yang
+            Sudah Di Tanda Tangani</label>
+        <form action="{{ route('admin.muda.ttd', $muda->id) }}" method="post" enctype="multipart/form-data"
+            class="flex items-center justify-center gap-y-2 bg-gray-300 rounded-xl shadow-xl p-4">
+            @csrf
+            @method('PATCH')
+            <a target="blank" href="{{ asset('uploads/mangga/complete_form/' . $muda->complete_form) }}">
+                <span class="fa fa-fw fa-file-pdf"></span>
+                <span class="underline">{{ $muda->complete_form }}</span>
+            </a>
+            <input type="file" name="complete_form" id="complete-form" required>
+            <button type="submit" class="mangga-button-green cursor-pointer">Submit</button>
+        </form>
         <div class="flex items-center justify-center gap-x-4">
             <a href="{{ route('admin.muda.approve_surveyor', $muda->id) }}"
                 class="mangga-button-green cursor-pointer">Setujui

@@ -12,6 +12,8 @@ class Muda extends Model
         'leader_name',
         'leader_email',
         'leader_phone',
+        'leader_ktp',
+        'leader_ktm',
         'member_count',
         'university',
         'faculty',
@@ -36,6 +38,7 @@ class Muda extends Model
         'type_id',
         'category_id',
         'subcategory',
+        'complete_form'
     ];
     public function business()
     {
