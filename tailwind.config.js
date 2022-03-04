@@ -42,7 +42,8 @@ module.exports = {
         },
         "mangga-orange": {
             300: "#ffc05c",
-            400: "#faa537"
+            400: "#faa537",
+            500: "#E58800"
         },
         "mangga-red":{
             300: "#ff6554"
