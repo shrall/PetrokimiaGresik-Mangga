@@ -105,6 +105,7 @@ class MudaController extends Controller
         if (Auth::user()->user_role == 2 || Auth::user()->user_role == 3) {
             $muda->business->update([
                 'status' => 3,
+                'business_status_id' => 3,
                 'approved_by_surveyor_at' => Carbon::now(),
                 'rejected_at' => null,
 
@@ -121,7 +122,8 @@ class MudaController extends Controller
     public function reject(Muda $muda)
     {
         $muda->business->update([
-            'status' => 0,
+            'status' => 5,
+            'business_status_id' => 5,
             'rejected_at' => Carbon::now(),
         ]);
         BusinessLog::create([
@@ -142,6 +144,7 @@ class MudaController extends Controller
 
         $muda->business->update([
             'status' => 2,
+            'business_status_id' => 2
         ]);
 
         return redirect()->route('admin.program.muda', $muda->business->id);

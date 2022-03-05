@@ -304,6 +304,7 @@ class UtamaController extends Controller
             "village_id" => $request->village,
             "postal_code" => $request->postal_code,
             "status" => 1,
+            'business_status_id' => 1,
             "user_id" => Auth::id()
         ]);
 
@@ -588,6 +589,7 @@ class UtamaController extends Controller
 
         $utama->business->update([
             'status' => 2,
+            'business_status_id' => 2
         ]);
 
         return redirect()->route('user.status_ajuan');

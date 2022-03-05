@@ -51,6 +51,10 @@ class Business extends Model
     {
         return $this->belongsTo(Sector::class, 'sector_id', 'id');
     }
+    public function businessstatus()
+    {
+        return $this->belongsTo(BusinessStatus::class, 'business_status_id', 'id');
+    }
     public function subsector()
     {
         return $this->belongsTo(Subsector::class, 'subsector_id', 'id');

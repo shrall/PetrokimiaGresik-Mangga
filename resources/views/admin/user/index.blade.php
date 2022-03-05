@@ -19,6 +19,21 @@
                             <a href="{{ route('admin.user.show', $user->id) }}" class="mangga-button-green cursor-pointer">
                                 <span class="fa fa-fw fa-eye"></span>
                             </a>
+                            @if (Auth::user()->user_role == 2)
+                                <a href="{{ route('admin.user.edit', $user->id) }}"
+                                    class="mangga-button-orange cursor-pointer">
+                                    <span class="fa fa-fw fa-edit"></span>
+                                </a>
+                                <a @if ($user->user_role != 2 && Auth::id() != $user->id) onclick="event.preventDefault(); document.getElementById('delete-user-form-{{ $user->id }}').submit();" @endif
+                                    class="mangga-button-red cursor-pointer">
+                                    <span class="fa fa-fw fa-times"></span>
+                                </a>
+                                <form action="{{ route('admin.user.destroy', $user->id) }}"
+                                    id="delete-user-form-{{ $user->id }}" method="post">
+                                    @csrf
+                                    <input name="_method" type="hidden" value="DELETE">
+                                </form>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

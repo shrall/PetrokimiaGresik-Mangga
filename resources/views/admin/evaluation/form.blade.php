@@ -294,7 +294,7 @@
             </tr>
             <tr>
                 <td>Hasil Survey</td>
-                <td>: {{$evaluation->utama->business->status == 0 ? 'DITOLAK' : 'DITERIMA'}}
+                <td>: {{$evaluation->utama->business->status == 5 ? 'DITOLAK' : 'DITERIMA'}}
                 </td>
             </tr>
             <tr>

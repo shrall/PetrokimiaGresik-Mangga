@@ -1,7 +1,7 @@
 <footer
-    class="bg-mangga-green-400 grid-cols-12 gap-y-12 items-center justify-center px-28 py-24 xl:pt-32 xl:pb-0 text-white hidden md:grid font-pn">
+    class="bg-mangga-green-400 grid-cols-12 gap-y-12 items-center justify-center px-4 xl:px-28 py-24 xl:pt-32 xl:pb-0 text-white hidden md:grid font-pn">
     <img src="{{ asset('assets/svg/mangga-logo-white.svg') }}" class="col-span-4 w-full pr-12">
-    <div class="flex flex-col text-xl col-span-2 lg:col-span-4">
+    <div class="flex flex-col text-xl col-span-4 xl:col-span-2 lg:col-span-4">
         <div class="text-2xl font-bold mb-2">Alamat</div>
         <div>Kantor Departemen CSR</div>
         <div>Gedung Graha Petrokimia Gresik</div>
@@ -11,13 +11,13 @@
         <div class="text-2xl font-bold my-2">E-Mail</div>
         <div>manggacsrpetrokimia@gmail.com</div>
     </div>
-    <div class="flex flex-col text-xl col-span-3 lg:col-span-2">
+    <div class="flex flex-col text-xl col-span-2 xl:col-span-3 lg:col-span-2">
         <div class="text-2xl font-bold mb-2">Quick Link</div>
         <a href="{{ route('profil.tentang') }}">Tentang Kami</a>
         <a href="{{ route('faq') }}">Bantuan</a>
         <a href="#">Kebijakan Privasi</a>
     </div>
-    <div class="flex flex-col text-xl col-span-3 lg:col-span-2">
+    <div class="flex flex-col text-xl col-span-2 xl:col-span-3 lg:col-span-2">
         <div class="text-2xl font-bold mb-2">Social Media</div>
         <a href="https://www.instagram.com/mangga_petrokimiagresik/">Instagram</a>
         <a href="https://vt.tiktok.com/ZSeqbcF46/">Tiktok</a>

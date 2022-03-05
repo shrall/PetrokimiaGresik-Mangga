@@ -19,15 +19,16 @@
                             Tempat Lahir. Anda juga bisa mengubah informasi personal Anda dengan menekan
                             tombol “Ubah Profile”</div>
                         <label class="text-gray-400">No. KTP</label>
-                        <input name="ktp_code" type="number" class="form-input bg-white mb-4" required maxlength=16 minlength=16
-                            value="{{ Auth::user()->ktp_code }}">
+                        <input name="ktp_code" type="number" class="form-input bg-white mb-4" required maxlength=16
+                            minlength=16 value="{{ Auth::user()->ktp_code }}">
                         <label class="text-gray-400">No. KK</label>
-                        <input name="kk_code" type="number" class="form-input bg-white mb-4" required maxlength=16 minlength=16
-                            value="{{ Auth::user()->kk_code }}">
+                        <input name="kk_code" type="number" class="form-input bg-white mb-4" required maxlength=16
+                            minlength=16 value="{{ Auth::user()->kk_code }}">
                         <label class="text-gray-400 self-start">Agama</label>
                         <select name="religion" class="form-input mb-4" required>
                             @foreach ($religions as $e)
-                                <option value="{{ $e->id }}" @if (Auth::user()->religion_id == $e->id) selected @endif>{{ $e->name }}</option>
+                                <option value="{{ $e->id }}" @if (Auth::user()->religion_id == $e->id) selected @endif>
+                                    {{ $e->name }}</option>
                             @endforeach
                         </select>
                         <div class="grid grid-cols-12 items-center gap-x-2">
@@ -39,9 +40,11 @@
                             <div class="col-span-4">
                                 <label class="text-gray-400">Pensiunan Perusahaan</label>
                                 <div class="flex items-center gap-x-2 mb-4">
-                                    <input type="radio" name="retired" value="0" id="tidak" @if (Auth::user()->retired == '0') checked @endif>
+                                    <input type="radio" name="retired" value="0" id="tidak"
+                                        @if (Auth::user()->retired == '0') checked @endif>
                                     <label for="tidak" class="text-gray-700">Tidak</label>
-                                    <input type="radio" name="retired" value="1" id="ya" @if (Auth::user()->retired == '1') checked @endif>
+                                    <input type="radio" name="retired" value="1" id="ya"
+                                        @if (Auth::user()->retired == '1') checked @endif>
                                     <label for="ya" class="text-gray-700">Ya</label>
                                 </div>
                             </div>
@@ -49,7 +52,8 @@
                         <label class="text-gray-400">Tingkat Pendidikan</label>
                         <select name="education" class="form-input mb-12" required>
                             @foreach ($educations as $e)
-                                <option value="{{ $e->id }}" @if (Auth::user()->education_id == $e->id) selected @endif>{{ $e->name }}</option>
+                                <option value="{{ $e->id }}" @if (Auth::user()->education_id == $e->id) selected @endif>
+                                    {{ $e->name }}</option>
                             @endforeach
                         </select>
                         <label class="text-gray-400">Ahli Waris</label>
@@ -58,7 +62,8 @@
                         <label class="text-gray-400">Status Rumah</label>
                         <select name="house_ownership" class="form-input mb-4" required>
                             @foreach ($establishment_statuses as $es)
-                                <option value="{{ $es->id }}" @if (Auth::user()->house_ownership == $es->id) selected @endif>{{ $es->name }}</option>
+                                <option value="{{ $es->id }}" @if (Auth::user()->house_ownership == $es->id) selected @endif>
+                                    {{ $es->name }}</option>
                             @endforeach
                         </select>
                         <label class="text-gray-400 self-start">NPWP</label>
@@ -101,7 +106,8 @@
                         </div>
                     </div>
                     <div class="col-span-6 flex flex-col items-center gap-y-2">
-                        <img class="rounded-full w-64 h-64" id="preview-image" @if (Auth::user()->picture) src="{{ asset('uploads/user/' . Auth::user()->picture) }}" @else src="{{ asset('assets/img/stock.jpg') }}" @endif>
+                        <img class="rounded-full w-64 h-64" id="preview-image"
+                            @if (Auth::user()->picture) src="{{ asset('uploads/user/' . Auth::user()->picture) }}" @else src="{{ asset('assets/img/stock.jpg') }}" @endif>
                         <label for="image" class="mangga-button-green">Ubah Foto Profil</label>
                         <input type="file" name="image" id="image" class="hidden"
                             onchange="loadFile(event, 'image')" accept="image/*">
@@ -109,18 +115,22 @@
                             <div class="col-span-1">
                                 <label class="text-gray-400">Jenis Kelamin</label>
                                 <div class="flex items-center gap-x-2 mb-4">
-                                    <input type="radio" name="gender" value="m" id="laki-laki" @if (Auth::user()->gender == 'm') checked @endif>
+                                    <input type="radio" name="gender" value="m" id="laki-laki"
+                                        @if (Auth::user()->gender == 'm') checked @endif>
                                     <label for="laki-laki" class="text-gray-700">Laki-laki</label>
-                                    <input type="radio" name="gender" value="f" id="wanita" @if (Auth::user()->gender == 'f') checked @endif>
+                                    <input type="radio" name="gender" value="f" id="wanita"
+                                        @if (Auth::user()->gender == 'f') checked @endif>
                                     <label for="wanita" class="text-gray-700">Wanita</label>
                                 </div>
                             </div>
                             <div class="col-span-1">
                                 <label class="text-gray-400">Status Perkawinan</label>
                                 <div class="flex items-center gap-x-2 mb-4">
-                                    <input type="radio" name="married" value="0" id="belum-kawin" @if (Auth::user()->married == '0') checked @endif>
+                                    <input type="radio" name="married" value="0" id="belum-kawin"
+                                        @if (Auth::user()->married == '0') checked @endif>
                                     <label for="belum-kawin" class="text-gray-700">Belum Kawin</label>
-                                    <input type="radio" name="married" value="1" id="kawin" @if (Auth::user()->married == '1') checked @endif>
+                                    <input type="radio" name="married" value="1" id="kawin"
+                                        @if (Auth::user()->married == '1') checked @endif>
                                     <label for="kawin" class="text-gray-700">Kawin</label>
                                 </div>
                             </div>
@@ -170,7 +180,8 @@
                                 <label class="text-gray-400">Provinsi</label>
                                 <select name="province" id="province" class="form-input bg-white mb-4" required>
                                     @foreach ($provinces as $province)
-                                        <option value={{ $province->id }} @if (Auth::user()->province_id == $province->id) selected @endif>
+                                        <option value={{ $province->id }}
+                                            @if (Auth::user()->province_id == $province->id) selected @endif>
                                             {{ $province->name }}</option>
                                     @endforeach
                                 </select>
@@ -178,12 +189,6 @@
                             <div class="col-span-1">
                                 <label class="text-gray-400">Kota/Kabupaten</label>
                                 <select name="city" id="city" class="form-input bg-white mb-4" required>
-                                    @if (Auth::user()->city_id)
-                                        @foreach ($cities as $city)
-                                            <option value={{ $city->id }} @if (Auth::user()->city_id == $city->id) selected @endif>
-                                                {{ $city->name }}</option>
-                                        @endforeach
-                                    @endif
                                 </select>
                             </div>
                         </div>
@@ -191,23 +196,11 @@
                             <div class="col-span-1">
                                 <label class="text-gray-400">Kecamatan</label>
                                 <select name="district" id="district" class="form-input bg-white mb-4" required>
-                                    @if (Auth::user()->district_id)
-                                        @foreach ($districts as $district)
-                                            <option value={{ $district->id }} @if (Auth::user()->district_id == $district->id) selected @endif>
-                                                {{ $district->name }}</option>
-                                        @endforeach
-                                    @endif
                                 </select>
                             </div>
                             <div class="col-span-1">
                                 <label class="text-gray-400">Desa/Kelurahan</label>
                                 <select name="village" id="village" class="form-input bg-white mb-4" required>
-                                    @if (Auth::user()->village_id)
-                                        @foreach ($villages as $village)
-                                            <option value={{ $village->id }} @if (Auth::user()->village_id == $village->id) selected @endif>
-                                                {{ $village->name }}</option>
-                                        @endforeach
-                                    @endif
                                 </select>
                             </div>
                         </div>
@@ -228,6 +221,9 @@
         var cities = @json($cities);
         var districts = @json($districts);
         var villages = @json($villages);
+        var ucity = @json(Auth::user()->city_id);
+        var udistrict = @json(Auth::user()->district_id);
+        var uvillage = @json(Auth::user()->village_id);
 
         $('#province').on('change', function(e) {
             $('#city').html(null);
@@ -283,21 +279,33 @@
             return obj.province_id === $('#province').val();
         });
         obj1.forEach(element => {
-            $('#city').append('<option value="' + element.id + '">' + element.name + '</option>')
+            if (ucity != element.id) {
+                $('#city').append('<option value="' + element.id + '">' + element.name + '</option>')
+            } else {
+                $('#city').append('<option value="' + element.id + '" selected>' + element.name + '</option>')
+            }
         });
         $("#city").prop("disabled", false);
         let obj2 = districts.filter(function(obj) {
             return obj.regency_id === $('#city').val();
         });
         obj2.forEach(element => {
-            $('#district').append('<option value="' + element.id + '">' + element.name + '</option>')
+            if (udistrict != element.id) {
+                $('#district').append('<option value="' + element.id + '">' + element.name + '</option>')
+            } else {
+                $('#district').append('<option value="' + element.id + '" selected>' + element.name + '</option>')
+            }
         });
         $("#district").prop("disabled", false);
         let obj3 = villages.filter(function(obj) {
             return obj.district_id === $('#district').val();
         });
         obj3.forEach(element => {
-            $('#village').append('<option value="' + element.id + '">' + element.name + '</option>')
+            if (uvillage != element.id) {
+                $('#village').append('<option value="' + element.id + '">' + element.name + '</option>')
+            } else {
+                $('#village').append('<option value="' + element.id + '" selected>' + element.name + '</option>')
+            }
         });
         $("#village").prop("disabled", false);
     </script>

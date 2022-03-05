@@ -115,7 +115,8 @@ class UtamaController extends Controller
         ]);
 
         $utama->business->update([
-            'status' => 2
+            'status' => 2,
+            'business_status_id' => 2
         ]);
 
         return redirect()->route('admin.program.utama', $utama->business->id);
@@ -126,6 +127,7 @@ class UtamaController extends Controller
         if (Auth::user()->user_role == 2 || Auth::user()->user_role == 4) {
             $utama->business->update([
                 'status' => 4,
+                'business_status_id' => 4,
                 'approved_by_pimpinan_at' => Carbon::now(),
                 'rejected_at' => null,
             ]);
@@ -141,7 +143,8 @@ class UtamaController extends Controller
     public function reject(Utama $utama)
     {
         $utama->business->update([
-            'status' => 0,
+            'status' => 5,
+            'business_status_id' => 5,
             'rejected_at' => Carbon::now(),
         ]);
         BusinessLog::create([

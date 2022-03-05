@@ -150,7 +150,7 @@
                             <td><span class="fa fa-fw fa-clock text-mangga-orange-400"></span>Belum Disetujui Pimpinan</td>
                         @elseif ($business->status == 4)
                             <td><span class="fa fa-fw fa-check text-mangga-green-400"></span> Sudah Disetujui Pimpinan</td>
-                        @elseif ($business->status == 0)
+                        @elseif ($business->status == 5)
                             <td><span class="fa fa-fw fa-times text-mangga-red-300"></span>Ditolak</td>
                         @endif
                         @if ($business->mangga_type == 1)

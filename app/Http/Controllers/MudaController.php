@@ -219,6 +219,7 @@ class MudaController extends Controller
             "village_id" => $request->village,
             "postal_code" => $request->postal_code,
             "status" => 1,
+            'business_status_id' => 1,
             "user_id" => Auth::id()
         ]);
         $muda = Muda::create([
@@ -526,7 +527,8 @@ class MudaController extends Controller
     {
         if ($muda->business->status == 3) {
             $muda->business->update([
-                'status' => 4
+                'status' => 4,
+                'business_status_id' => 4
             ]);
         }
         return view('user.proposal.muda', compact('muda'));
@@ -535,7 +537,8 @@ class MudaController extends Controller
     {
         if ($muda->business->status == 3) {
             $muda->business->update([
-                'status' => 4
+                'status' => 4,
+                'business_status_id' => 4
             ]);
         }
         $pdf = PDF::loadview('user.proposal.muda', compact('muda'))->setOption('margin-bottom', '0mm')
@@ -556,6 +559,7 @@ class MudaController extends Controller
 
         $muda->business->update([
             'status' => 2,
+            'business_status_id' => 2
         ]);
 
         return redirect()->route('user.status_ajuan');

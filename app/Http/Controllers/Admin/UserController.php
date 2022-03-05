@@ -3,7 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\District;
+use App\Models\Education;
+use App\Models\EstablishmentStatus;
+use App\Models\Province;
+use App\Models\Regency;
+use App\Models\Religion;
 use App\Models\User;
+use App\Models\Village;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -59,7 +66,14 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $provinces = Province::all();
+        $cities = Regency::all();
+        $districts = District::all();
+        $villages = Village::all();
+        $establishment_statuses = EstablishmentStatus::all();
+        $religions = Religion::all();
+        $educations = Education::all();
+        return view('admin.user.edit', compact('provinces', 'cities', 'districts', 'villages', 'establishment_statuses', 'educations', 'religions', 'user'));
     }
 
     /**
@@ -71,7 +85,45 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        if ($request->image) {
+            $image = 'user-' . time() . '-' . $request['image']->getClientOriginalName();
+            $request->image->move(public_path('uploads/user'), $image);
+        }else{
+            $image = $user->picture;
+        }
+        $user->update([
+            'picture' => $image,
+            'ktp_code' => $request->ktp_code,
+            'kk_code' => $request->kk_code,
+            'profession' => $request->profession,
+            'retired' => $request->retired,
+            'education' => $request->education,
+            'heir' => $request->heir,
+            'house_ownership' => $request->house_ownership,
+            'npwp' => $request->npwp,
+            'bank_number' => $request->bank_number,
+            'bank_owner' => $request->bank_owner,
+            'bank_name' => $request->bank_name,
+            'bank_branch' => $request->bank_branch,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'gender' => $request->gender,
+            'married' => $request->married,
+            'spouse' => $request->spouse,
+            'religion' => $request->religion,
+            'birth_place' => $request->birth_place,
+            'birth_date' => $request->birth_date,
+            'handphone' => $request->handphone,
+            'address' => $request->address,
+            'rt' => $request->rt,
+            'rw' => $request->rw,
+            'postal_code' => $request->postal_code,
+            'province_id' => $request->province,
+            'city_id' => $request->city,
+            'district_id' => $request->district,
+            'village_id' => $request->village
+        ]);
+        return redirect()->route('admin.user.edit', $user->id);
     }
 
     /**
@@ -82,6 +134,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('admin.user.index');
     }
 }

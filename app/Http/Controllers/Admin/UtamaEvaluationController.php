@@ -133,6 +133,7 @@ class UtamaEvaluationController extends Controller
         if ($request->status == 1) {
             $business->update([
                 'status' => 3,
+                'business_status_id' => 3,
                 'approved_by_surveyor_at' => Carbon::now(),
                 'rejected_at' => null,
 
@@ -144,7 +145,8 @@ class UtamaEvaluationController extends Controller
             ]);
         } else {
             $business->update([
-                'status' => 0,
+                'status' => 5,
+                'business_status_id' => 5,
                 'rejected_at' => Carbon::now(),
             ]);
             BusinessLog::create([
