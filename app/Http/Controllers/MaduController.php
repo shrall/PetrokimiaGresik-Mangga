@@ -39,11 +39,13 @@ class MaduController extends Controller
     {
         $image = 'mangga-madu-' . time() . '-' . $request['image']->getClientOriginalName();
         $request->image->move(public_path('uploads/mangga/establishment_picture'), $image);
+        $reg_number = $this->getRegistrationNumber(Auth::user()->nik_karyawan, 1);
 
         $madu = Madu::create([
             'name' => $request->name,
             'description' => $request->description,
             'status' => 1,
+            'registration_number' => $reg_number,
             'business_status_id' => 1,
             'image' => $image,
             'link' => $request->link,
@@ -90,6 +92,7 @@ class MaduController extends Controller
         }else{
             $image = $madu->image;
         }
+
 
         $madu->update([
             'name' => $request->name,

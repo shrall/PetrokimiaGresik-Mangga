@@ -17,7 +17,8 @@ class PageController extends Controller
     {
         $businesses = Business::all();
         $users = User::all();
-        return view('admin.dashboard', compact('businesses', 'users'));
+        $madus = Madu::all();
+        return view('admin.dashboard', compact('businesses', 'users', 'madus'));
     }
     public function program()
     {

@@ -86,36 +86,26 @@
         </div>
     @endif --}}
     <div class="card px-8 py-6 flex flex-col gap-y-4">
-        <form action="{{ route('user.madu.update', $madu->id) }}" method="post" enctype="multipart/form-data">
-            @csrf
-            <label class="font-bold text-3xl self-start">Nama Bisnis*</label>
-            <input type="text" name="name" class="form-pengajuan-input" required value="{{ $madu->name }}"
-                {{ $madu->status == 5 ? '' : 'disabled' }}>
-            <label class="font-bold text-3xl self-start">Deskripsi Bisnis*</label>
-            <textarea name="description" id="" cols="30" rows="7" class="form-pengajuan-input"
-                {{ $madu->status == 5 ? '' : 'disabled' }} required>{{ $madu->description }}</textarea>
-            <label class="font-bold text-3xl self-start">Link Video*</label><br>
-            <a target="_blank" href="{{ $madu->link }}" class="underline text-blue-400">{{ $madu->link }}</a><br>
-            <label class="font-bold text-3xl self-start">Foto Tempat Usaha/Tempat Tinggal*</label>
-            <div class="flex flex-col gap-y-4">
-                <img src="{{ asset('uploads/mangga/establishment_picture/' . $madu->image) }}"
-                    class="w-full h-72 rounded-lg" id="preview-foto-establishment">
-                <div class="flex flex-col gap-y-2">
-                    <input type="file" name="image" id="foto-establishment" class="invisible w-2"
-                        onchange="loadFile(event, 'foto-establishment')" accept="image/*">
-                    @if ($madu->status == 5)
-                        <label for="foto-establishment" class="mangga-button-green cursor-pointer">Ubah
-                            Foto</label>
-                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
-                    @endif
-                </div>
-            </div>
-            @if ($madu->status == 5)
-                <button type="submit" class="mangga-button-green cursor-pointer">
-                    Edit
-                </button>
-            @endif
-        </form>
+        <label class="font-bold text-3xl self-start">Nomor Registrasi</label>
+        @if ($madu->status == 4)
+            <input type="text" name="name" class="form-pengajuan-input" required disabled
+                value="{{ $madu->registration_number }}">
+        @else
+            <input type="text" name="name" class="form-pengajuan-input" required disabled value="Belum Diverifikasi">
+        @endif
+        <label class="font-bold text-3xl self-start">Nama Bisnis*</label>
+        <input type="text" name="name" class="form-pengajuan-input" required value="{{ $madu->name }}" disabled
+            {{ $madu->status == 5 ? '' : 'disabled' }}>
+        <label class="font-bold text-3xl self-start">Deskripsi Bisnis*</label>
+        <textarea name="description" id="" cols="30" rows="7" class="form-pengajuan-input" disabled
+            {{ $madu->status == 5 ? '' : 'disabled' }} required>{{ $madu->description }}</textarea>
+        <label class="font-bold text-3xl self-start">Link Video*</label>
+        <a target="_blank" href="{{ $madu->link }}" class="underline text-blue-400">{{ $madu->link }}</a>
+        <label class="font-bold text-3xl self-start">Foto Tempat Usaha/Tempat Tinggal*</label>
+        <div class="flex flex-col gap-y-4">
+            <img src="{{ asset('uploads/mangga/establishment_picture/' . $madu->image) }}" class="w-full h-72 rounded-lg"
+                id="preview-foto-establishment">
+        </div>
     </div>
 @endsection
 

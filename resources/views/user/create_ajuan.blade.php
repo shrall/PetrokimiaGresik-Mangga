@@ -94,8 +94,13 @@
                                 <span class="fa fa-fw fa-info-circle ml-2"></span>
                                 Terima kasih sudah mengajukan bisnis anda. Mohon tunggu proses verifikasi dari tim kami.
                             </div>
-                        @else(Auth::user()->madus[0]->status == 5)
-                            <div class="rounded-lg bg-mangga-orange-300 p-4 mb-4 w-full">
+                        @elseif(Auth::user()->madus[0]->status == 4)
+                            <div class="rounded-lg bg-mangga-green-300 p-4 mb-4 w-full">
+                                <span class="fa fa-fw fa-info-circle ml-2"></span>
+                                Selamat! Ajuan anda telah terverifikasi oleh tim kami.
+                            </div>
+                        @elseif(Auth::user()->madus[0]->status == 5)
+                            <div class="rounded-lg bg-mangga-red-300 p-4 mb-4 w-full">
                                 <span class="fa fa-fw fa-info-circle ml-2"></span>
                                 Terdapat kesalahan dalam ajuan anda. Mohon direvisi.
                             </div>
