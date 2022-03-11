@@ -1,4 +1,4 @@
-@extends('layouts.madu')
+@extends('layouts.muda')
 
 @section('content')
     <div
@@ -23,7 +23,7 @@
                     class="form-pengajuan-input mb-12" placeholder="Password">
                 <button type="submit" class="mangga-button-green w-full mb-4">Masuk</button>
             </form>
-            <div class="text-md md:text-lg">Belum memiliki akun? <a href="{{route('mangga_madu.register')}}" class="text-mangga-green-400">Daftar di sini</a></div>
+            <div class="text-md md:text-lg">Belum memiliki akun? <a href="{{route('mangga_muda.register')}}" class="text-mangga-green-400">Daftar di sini</a></div>
         </div>
     </div>
 @endsection
