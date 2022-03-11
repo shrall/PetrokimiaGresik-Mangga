@@ -6,14 +6,15 @@
     <div class="flex items-center justify-center gap-x-8 col-span-6">
         @if (Route::current()->getName() != 'profil.mangga_madu')
             <a href="{{ route('profil.mangga_madu') }}#"
-                class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Beranda</a>
+                class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400"><img
+                    src="{{ asset('assets/svg/mmbc-madu.svg') }}" class="h-12"></a>
         @else
-            <a href="#beranda"
+            {{-- <a href="#beranda"
                 class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Beranda</a>
             <a href="#tentang"
                 class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Tentang</a>
             <a href="#timeline"
-                class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Timeline</a>
+                class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Timeline</a> --}}
         @endif
     </div>
     @guest

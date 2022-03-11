@@ -6,11 +6,8 @@
     <div class="flex items-center justify-center gap-x-8 col-span-6">
         @if (Route::current()->getName() != 'mangga_muda.home')
             <a href="{{ route('mangga_muda.home') }}#"
-                class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Beranda</a>
-            <a href="{{ route('mangga_muda.home') }}"
-                class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Tentang</a>
-            <a href="{{ route('mangga_muda.home') }}"
-                class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Timeline</a>
+                class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400"><img
+                    src="{{ asset('assets/img/mmbc-logo.png') }}" class="h-12"></a>
         @else
             <a href="#beranda"
                 class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400">Beranda</a>
@@ -28,7 +25,7 @@
     @endguest
     @auth
         <div class="flex items-center justify-end gap-x-2 dropdown relative col-span-3">
-            <a href="{{route('user.index')}}">
+            <a href="{{ route('user.index') }}">
                 <div class="text-xl">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</div>
             </a>
             <img src="{{ asset('assets/img/asset-toko_mangga-1.png') }}" class="rounded-full w-12 h-12">
@@ -50,7 +47,7 @@
 <div class="font-pn px-8 py-4 bg-light-200 text-lg block xl:hidden" id="navbar-mobile">
     <div class="flex items-center gap-x-4 font-pn text-lg mb-4">
         <a href="{{ route('mangga_muda.home') }}" class="mr-auto">
-        <img src="{{ asset('assets/svg/mangga-logo-mini.svg') }}" width="40px">
+            <img src="{{ asset('assets/svg/mangga-logo-mini.svg') }}" width="40px">
         </a>
         <span class="fa fa-fw fa-bars text-3xl" onclick="toggleNavbarMobile();"></span>
     </div>
