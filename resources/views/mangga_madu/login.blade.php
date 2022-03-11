@@ -1,4 +1,4 @@
-@extends('layouts.muda')
+@extends('layouts.madu')
 
 @section('content')
     <div

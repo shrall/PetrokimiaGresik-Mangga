@@ -69,7 +69,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'married',
         'spouse',
         'house_ownership',
-        'birth_place'
+        'birth_place',
+        'employee_department_id',
+        'nik_karyawan'
     ];
 
     /**
@@ -158,6 +160,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function businesses()
     {
         return $this->hasMany(Business::class, 'user_id', 'id');
+    }
+    public function madus()
+    {
+        return $this->hasMany(Madu::class, 'user_id', 'id');
     }
     public function birthplace() {
         return $this->belongsTo(Regency::class, 'birth_place', 'id');

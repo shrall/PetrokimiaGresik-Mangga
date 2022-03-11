@@ -22,7 +22,7 @@
                     Password</a>
             </div>
         </div>
-        @if (Auth::user()->referral_code != 'mamud')
+        @if (Auth::user()->referral_code != 'mamud' && Auth::user()->referral_code != 'mamad')
             <div class="col-span-12 xl:col-span-5">
                 <div class="card flex flex-col px-6 py-8">
                     <div class="flex items-center justify-between">

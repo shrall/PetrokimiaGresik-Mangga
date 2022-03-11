@@ -28,7 +28,7 @@ class AddForeignKeysToUtamaEvaluations extends Migration
             $table->foreign('production_process')->references('id')->on('production_processes')->onDelete('cascade');
             $table->unsignedBigInteger('land_ownership')->index()->after('market_consignment')->nullable();
             $table->foreign('land_ownership')->references('id')->on('establishment_statuses')->onDelete('cascade');
-            $table->unsignedBigInteger('sector_id')->index()->after('year')->nullable()->nullable();
+            $table->unsignedBigInteger('sector_id')->index()->after('year')->nullable();
             $table->foreign('sector_id')->references('id')->on('sectors');
         });
     }

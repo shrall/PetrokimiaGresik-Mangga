@@ -36,6 +36,8 @@ class DatabaseSeeder extends Seeder
         $this->call(EstablishmentStatusSeeder::class);
         $this->call(MarketingSeeder::class);
         $this->call(MediaTypeSeeder::class);
+        $this->call(EmployeeDepartmentSeeder::class);
+        $this->call(BusinessStatusSeeder::class);
         $this->call(UserSeeder::class);
     }
 }

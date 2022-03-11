@@ -58,10 +58,6 @@ class RegisterController extends Controller
             'handphone' => 'required|numeric',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8|confirmed',
-            'province' => 'required|exists:provinces,id',
-            'city' => 'required|exists:regencies,id',
-            'district' => 'required|exists:districts,id',
-            'village' => 'required|exists:villages,id',
         ]);
     }
 
@@ -76,20 +72,39 @@ class RegisterController extends Controller
         $name = explode(' ', $data['name']);
         $firstName = $name[0];
         $lastName = (isset($name[count($name) - 1])) ? $name[count($name) - 1] : '';
-        return User::create([
-            'first_name' => $firstName,
-            'last_name' => $lastName,
-            'email' => $data['email'],
-            'handphone' => $data['handphone'],
-            'province_id' => $data['province'],
-            'city_id' => $data['city'],
-            'district_id' => $data['district'],
-            'village_id' => $data['village'],
-            'password' => Hash::make($data['password']),
-            'user_role' => 1,
-            'registration_ip' => request()->ip(),
-            'referral_code' => $data['referral_code'] ?? ''
-        ]);
+        if ($data['referral_code'] == 'mamad') {
+            return User::create([
+                'first_name' => $firstName,
+                'last_name' => $lastName,
+                'email' => $data['email'],
+                'handphone' => $data['handphone'],
+                'province_id' => 35,
+                'city_id' => 3578,
+                'district_id' => 3578170,
+                'village_id' => 3578170005,
+                'nik_karyawan' => $data['nik'],
+                'employee_department_id' => $data['department'],
+                'password' => Hash::make($data['password']),
+                'user_role' => 1,
+                'registration_ip' => request()->ip(),
+                'referral_code' => $data['referral_code'] ?? ''
+            ]);
+        } else {
+            return User::create([
+                'first_name' => $firstName,
+                'last_name' => $lastName,
+                'email' => $data['email'],
+                'handphone' => $data['handphone'],
+                'province_id' => $data['province'],
+                'city_id' => $data['city'],
+                'district_id' => $data['district'],
+                'village_id' => $data['village'],
+                'password' => Hash::make($data['password']),
+                'user_role' => 1,
+                'registration_ip' => request()->ip(),
+                'referral_code' => $data['referral_code'] ?? ''
+            ]);
+        }
     }
 
     public function showRegistrationForm()

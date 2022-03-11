@@ -29,12 +29,12 @@ class PageController extends Controller
 
     public function status_ajuan()
     {
-        if (Auth::user()->referral_code != 'mamud') {
-            $utama = Auth::user()->businesses->last()->utama;
-            return view('user.status_ajuan', compact('utama'));
-        } else {
+        if (Auth::user()->referral_code == 'mamud') {
             $muda = Auth::user()->businesses->last()->muda;
             return view('user.status_ajuan', compact('muda'));
+        } else {
+            $utama = Auth::user()->businesses->last()->utama;
+            return view('user.status_ajuan', compact('utama'));
         }
     }
 

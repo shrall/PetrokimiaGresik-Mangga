@@ -28,7 +28,8 @@ class Business extends Model
         'approved_by_surveyor_at',
         'approved_by_pimpinan_at',
         'rejected_at',
-        'user_id'
+        'user_id',
+        'business_status_id'
     ];
 
     public function province()

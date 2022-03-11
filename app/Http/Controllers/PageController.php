@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\District;
+use App\Models\EmployeeDepartment;
 use App\Models\Province;
 use App\Models\Regency;
 use App\Models\Sector;
@@ -80,10 +81,10 @@ class PageController extends Controller
     public function checkPDF()
     {
         $pdf = PDF::loadview('proposal')->setOption('margin-bottom', '0mm')
-        ->setOption('margin-top', '0mm')
-        ->setOption('margin-right', '0mm')
-        ->setOption('margin-left', '0mm')
-        ->setOption('page-size', 'A4');
+            ->setOption('margin-top', '0mm')
+            ->setOption('margin-right', '0mm')
+            ->setOption('margin-left', '0mm')
+            ->setOption('page-size', 'A4');
         return $pdf->stream('proposal.pdf');
     }
 
@@ -105,5 +106,16 @@ class PageController extends Controller
     public function mangga_muda_home()
     {
         return view('mangga_muda.landing_page');
+    }
+    //madu
+    public function mangga_madu_register()
+    {
+        $departments = EmployeeDepartment::all();
+        return view('mangga_madu.register', compact('departments'));
+    }
+
+    public function mangga_madu_login()
+    {
+        return view('mangga_madu.login');
     }
 }

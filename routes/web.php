@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BusinessController;
+use App\Http\Controllers\admin\MaduController as AdminMaduController;
 use App\Http\Controllers\Admin\MediaController as AdminMediaController;
 use App\Http\Controllers\Admin\MudaController as AdminMudaController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\Admin\PeopleController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\UtamaController as AdminUtamaController;
 use App\Http\Controllers\Admin\UtamaEvaluationController;
+use App\Http\Controllers\MaduController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\MudaController;
 use App\Http\Controllers\PageController;
@@ -43,6 +45,8 @@ Route::get('/proposal/download', [PageController::class, 'checkPDF']);
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/mangga-muda/register', [PageController::class, 'mangga_muda_register'])->name('mangga_muda.register');
 Route::get('/mangga-muda/login', [PageController::class, 'mangga_muda_login'])->name('mangga_muda.login');
+Route::get('/mangga-madu/register', [PageController::class, 'mangga_madu_register'])->name('mangga_madu.register');
+Route::get('/mangga-madu/login', [PageController::class, 'mangga_madu_login'])->name('mangga_madu.login');
 Route::get('/mangga-muda/home', [PageController::class, 'mangga_muda_home'])->name('mangga_muda.home');
 Route::get('/info', [PageController::class, 'info'])->name('info');
 Route::get('/prosedur', [PageController::class, 'prosedur'])->name('prosedur');
@@ -90,6 +94,7 @@ Route::group(['middleware' => ['user', 'verified'], 'as' => 'user.'], function (
     Route::patch('/utama/{utama}/ttd', [UtamaController::class, 'ttd'])->name('utama.ttd');
     Route::get('/utama/{utama}/preview', [UtamaController::class, 'preview'])->name('utama.preview');
     Route::get('/utama/{utama}/download', [UtamaController::class, 'download'])->name('utama.download');
+    Route::resource('madu', MaduController::class);
 });
 
 Route::group(['middleware' => ['user', 'verified']], function () {
@@ -116,6 +121,10 @@ Route::group(['middleware' => ['admin'], 'as' => 'admin.', 'prefix' => 'admin'],
     Route::get('/muda/{muda}/reject', [AdminMudaController::class, 'reject'])->name('muda.reject');
     Route::get('/muda/{muda}/download', [AdminMudaController::class, 'download'])->name('muda.download');
     Route::get('/muda/{muda}/preview', [AdminMudaController::class, 'preview'])->name('muda.preview');
+
+    Route::resource('madu', AdminMaduController::class);
+    Route::get('/madu/{madu}/approvesurveyor', [AdminMaduController::class, 'approve_surveyor'])->name('madu.approve_surveyor');
+    Route::get('/madu/{madu}/reject', [AdminMaduController::class, 'reject'])->name('madu.reject');
 
     Route::get('/media', [AdminMediaController::class, 'index'])->name('media.index');
     Route::get('/media/create', [AdminMediaController::class, 'create'])->name('media.create');

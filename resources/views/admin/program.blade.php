@@ -73,7 +73,7 @@
                     <img src="{{ asset('assets/img/mangga-madu.png') }}" class="w-full">
                     <div class="flex flex-col items-end">
                         <div class="text-4xl text-mangga-green-500 font-bold">
-                            #
+                            {{ count($madus) }}
                         </div>
                         Ajuan
                     </div>
@@ -168,6 +168,30 @@
                         @endif
                     </tr>
                 @endforeach
+                @foreach ($madus as $madu)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $madu->name }}</td>
+                        <td>{{ $madu->created_at->format('d/m/Y H:i:s') }}</td>
+                        <td>{{ $madu->user->first_name . ' ' . $madu->user->last_name }}</td>
+                        <td>Mangga Madu</td>
+                        @if ($madu->status == 1)
+                            <td><span class="fa fa-fw fa-clock text-mangga-orange-400"></span>Belum diverifikasi tim mitra
+                            </td>
+                        @elseif ($madu->status == 5)
+                            <td><span class="fa fa-fw fa-clock text-mangga-orange-400"></span>Perlu Direvisi</td>
+                        @elseif ($madu->status == 4)
+                            <td><span class="fa fa-fw fa-check text-mangga-green-400"></span> Sudah Disetujui</td>
+                        @elseif ($madu->status == 5)
+                            <td><span class="fa fa-fw fa-times text-mangga-red-300"></span>Ditolak</td>
+                        @endif
+                        <td class="flex items-center justify-center">
+                            <a href="{{ route('admin.madu.show', $madu->id) }}"
+                                class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span> Lihat
+                                Detail</a>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -183,7 +207,6 @@
                 .columns.adjust()
                 .responsive.recalc();
         });
-
     </script>
 @endsection
 

@@ -36,7 +36,7 @@
             </a>
         @endif
     @endif
-    @if (Auth::user()->referral_code != 'mamud')
+    @if (Auth::user()->referral_code != 'mamud' && Auth::user()->referral_code != 'mamad')
         @if (Route::current()->getName() == 'user.riwayat_angsuran')
             <a href="{{ route('user.riwayat_angsuran') }}" class="bg-mangga-green-300 text-white rounded-lg p-3">
                 <span class="fa fa-fw fa-history mr-2"></span>Riwayat Angsuran
