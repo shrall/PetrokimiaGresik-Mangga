@@ -1,11 +1,11 @@
 {{-- desktop --}}
 <div class="items-center gap-x-4 font-pn px-8 py-4 bg-light-200 text-lg hidden xl:grid grid-cols-12" id="navbar-desktop">
-    <a href="{{ route('mangga_muda.home') }}" class="col-span-3">
+    <a href="{{ route('profil.mangga_muda') }}" class="col-span-3">
         <img src="{{ asset('assets/svg/mangga-logo-mini.svg') }}" width="30px">
     </a>
     <div class="flex items-center justify-center gap-x-8 col-span-6">
         @if (Route::current()->getName() != 'mangga_muda.home')
-            <a href="{{ route('mangga_muda.home') }}#"
+            <a href="{{ route('profil.mangga_muda') }}#"
                 class="text-gray-500 hover:text-black border-b-2 border-light-200 hover:border-mangga-green-400"><img
                     src="{{ asset('assets/img/mmbc-logo.png') }}" class="h-12"></a>
         @else
@@ -46,7 +46,7 @@
 {{-- mobile --}}
 <div class="font-pn px-8 py-4 bg-light-200 text-lg block xl:hidden" id="navbar-mobile">
     <div class="flex items-center gap-x-4 font-pn text-lg mb-4">
-        <a href="{{ route('mangga_muda.home') }}" class="mr-auto">
+        <a href="{{ route('profil.mangga_muda') }}" class="mr-auto">
             <img src="{{ asset('assets/svg/mangga-logo-mini.svg') }}" width="40px">
         </a>
         <span class="fa fa-fw fa-bars text-3xl" onclick="toggleNavbarMobile();"></span>
