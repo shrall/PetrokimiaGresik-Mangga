@@ -13,6 +13,7 @@
             <div class="text-xl md:text-3xl font-lb text-mangga-green-600 mb-4">PENDANAAN UMK (PUMK)</div>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
+                <input type="hidden" name="referral_code">
                 <input type="email" name="email" class="form-input mb-8" placeholder="E-Mail">
                 <input type="text" name="name" class="form-input mb-8" placeholder="Nama Lengkap">
                 <input type="number" name="handphone" class="form-input mb-8" placeholder="Nomor HP">
