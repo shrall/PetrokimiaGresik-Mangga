@@ -166,7 +166,8 @@
                                         <br>
                                     @endif
                                 @endforeach
-                            @else -
+                            @else
+                                -
                             @endif
                     </td>
                 </tr>
@@ -264,7 +265,8 @@
                                 ,
                             @endif
                         @endforeach
-                    @else -
+                    @else
+                        -
                     @endif
                 </td>
             </tr>
@@ -576,7 +578,7 @@
             @endif
         </div>
     </div>
-    {{-- <div class="px-16 py-14" style="height: 1220px; margin-bottom: 24rem;">
+    <div class="px-16 py-14" style="height: 1220px; margin-bottom: 24rem;">
         <div style="height: 2rem;"></div>
         <table style="width: 100%;" class="mb-4">
             <tr>
@@ -587,11 +589,11 @@
             </tr>
         </table>
         <div class="font-bold text-center" style="font-size: 1.25rem;" class="mb-4">PEMERINTAHAN KAB. / KODYA
-            : ...............................</div>
+            : {{ $utama->user_city }}</div>
         <div class="font-bold text-center" style="font-size: 1.25rem;" class="mb-4">KECAMATAN :
-            ....................................</div>
+            {{ $utama->user_district }}</div>
         <div class="font-bold text-center" style="font-size: 1.25rem;" class="mb-4">DESA / KELURAHAN :
-            ................................</div>
+            {{ $utama->user_village }}</div>
         <div style="height: 2rem;"></div>
         <div class="font-bold text-center" style="font-size: 1.25rem; text-decoration: underline;">SURAT KETERANGAN
         </div>
@@ -617,13 +619,7 @@
             </tr>
             <tr>
                 <td width="25%">Agama</td>
-                @if (Auth::user()->religion == '0') <td>: Muslim</td> @endif
-                @if (Auth::user()->religion == '1') <td>: Kristen</td> @endif
-                @if (Auth::user()->religion == '2') <td>: Katolik</td> @endif
-                @if (Auth::user()->religion == '3') <td>: Hindu</td> @endif
-                @if (Auth::user()->religion == '4') <td>: Buddha</td> @endif
-                @if (Auth::user()->religion == '5') <td>: Kong Hu Chu</td> @endif
-                @if (Auth::user()->religion == '6') <td>: Lainnya</td> @endif
+                <td>: {{ $utama->business->user->religion->name }}</td>
             </tr>
             <tr>
                 <td width="25%">Pekerjaan</td>
@@ -669,7 +665,7 @@
             <div style="text-decoration: underline;" class="font-bold">Catatan :</div>
             <div>Dapat menggunakan form dari Desa / Kelurahan setempat</div>
         </div>
-    </div> --}}
+    </div>
     <div class="px-16 py-14" style="height: 1220px; margin-bottom: 24rem;">
         <div style="height: 2rem;"></div>
         <table style="width: 100%;" class="mb-4">
@@ -1418,7 +1414,8 @@
                     <table style="width: 100%;" class="mb-4">
                         <tr>
                             <td><img src="{{ asset('assets/img/petrokimia-logo.png') }}" style="width: 12rem;"></td>
-                            <td class="text-2xl font-bold text-center">FORMULIR PINJAMAN MODAL KERJA<br>USAHA PERKEBUNAN
+                            <td class="text-2xl font-bold text-center">FORMULIR PINJAMAN MODAL KERJA<br>USAHA
+                                PERKEBUNAN
                                 {{ $utama->business->name }}
                             </td>
                             <td style="text-align: end;"><img

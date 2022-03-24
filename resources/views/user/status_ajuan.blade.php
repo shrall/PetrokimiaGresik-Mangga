@@ -157,9 +157,12 @@
                         </div>
                     @endif
                 </div>
-                <div class="flex items-center mb-4">
-                    <a href="{{ route('user.muda.edit', $muda->id) }}" class="mangga-button-green cursor-pointer">Edit Form</a>
-                </div>
+                @if (Auth::user()->referral_code == 'mamud')
+                    <div class="flex items-center mb-4">
+                        <a href="{{ route('user.muda.edit', $muda->id) }}" class="mangga-button-green cursor-pointer">Edit
+                            Form</a>
+                    </div>
+                @endif
                 @if (Auth::user()->referral_code != 'mamud')
                     <label for="complete-form" class="font-bold">Upload Form Yang
                         Sudah Di Tanda Tangani</label>
