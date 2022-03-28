@@ -93,12 +93,16 @@
         @else
             <input type="text" name="name" class="form-pengajuan-input" required disabled value="Belum Diverifikasi">
         @endif
+        <label class="font-bold text-3xl self-start">NIK Suami</label>
+        <input type="text" name="nik_karyawan" class="form-pengajuan-input" required value="{{ $madu->user->nik_karyawan }}" disabled>
+        <label class="font-bold text-3xl self-start">Departemen Suami</label>
+        <input type="text" name="employee_department_id" class="form-pengajuan-input" required value="{{ $madu->user->department->name }}" disabled>
+        <label class="font-bold text-3xl self-start">Nomor Handphone</label>
+        <input type="text" name="employee_department_id" class="form-pengajuan-input" required value="{{ $madu->user->handphone }}" disabled>
         <label class="font-bold text-3xl self-start">Nama Bisnis*</label>
-        <input type="text" name="name" class="form-pengajuan-input" required value="{{ $madu->name }}" disabled
-            {{ $madu->status == 5 ? '' : 'disabled' }}>
+        <input type="text" name="name" class="form-pengajuan-input" required value="{{ $madu->name }}" disabled>
         <label class="font-bold text-3xl self-start">Deskripsi Bisnis*</label>
-        <textarea name="description" id="" cols="30" rows="7" class="form-pengajuan-input" disabled
-            {{ $madu->status == 5 ? '' : 'disabled' }} required>{{ $madu->description }}</textarea>
+        <textarea name="description" id="" cols="30" rows="7" class="form-pengajuan-input" disabled>{{ $madu->description }}</textarea>
         <label class="font-bold text-3xl self-start">Link Video*</label>
         <a target="_blank" href="{{ $madu->link }}" class="underline text-blue-400">{{ $madu->link }}</a>
         <label class="font-bold text-3xl self-start">Foto Tempat Usaha/Tempat Tinggal*</label>

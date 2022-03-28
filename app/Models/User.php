@@ -168,4 +168,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function birthplace() {
         return $this->belongsTo(Regency::class, 'birth_place', 'id');
     }
+    public function department() {
+        return $this->belongsTo(EmployeeDepartment::class, 'employee_department_id', 'id');
+    }
 }
