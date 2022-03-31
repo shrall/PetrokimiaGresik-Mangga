@@ -1,20 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\User;
 
+use App\Http\Controllers\Controller;
+use App\Http\Resources\SuccessResource;
 use App\Models\Business;
-use App\Models\BusinessAsset;
 use App\Models\BusinessCommodity;
 use App\Models\BusinessPlan;
 use App\Models\BusinessProduct;
 use App\Models\People;
 use App\Models\Utama;
 use App\Models\UtamaMember;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Validator;
 use \PDF;
 
 class UtamaController extends Controller
@@ -26,17 +24,14 @@ class UtamaController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $utama = Auth::user()->businesses->last()->utama;
+        $return = [
+            'api_code' => 200,
+            'api_status' => true,
+            'api_message' => 'Lorem ipsum',
+            'api_results' => $utama
+        ];
+        return SuccessResource::make($return);
     }
 
     /**
@@ -47,166 +42,6 @@ class UtamaController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
-        $messages = [
-            'name.required' => 'Nama Bisnis',
-            "sector.required" => 'Sektor Bisnis',
-            "subsector.required" => 'Sub Sektor Bisnis',
-            "type.required" => 'Jenis Usaha',
-            "asset_value.required" => 'Nilai Asset Usaha',
-            "address.required" => 'Alamat Usaha',
-            "province.required" => 'Provinsi Usaha',
-            "city.required" => 'Kota Usaha',
-            "district.required" => 'Kecamatan Usaha',
-            "village.required" => 'Desa Usaha',
-            "postal_code.required" => 'Kode Pos Usaha',
-            "request_amount.required" => 'Jumlah Pengajuan',
-            "unit_amount.required" => 'Jumlah Unit Usaha',
-            'land.required' => 'Tanah',
-            'building.required' => 'Bangunan',
-            'treasury.required' => 'Kas',
-            'credit.required' => 'Piutang',
-            'production_tools.required' => 'Peralatan Usaha/Produksi',
-            'savings.required' => 'Bank(Tabungan)',
-            'supply.required' => 'Persediaan',
-            'vehicle.required' => 'Kendaraan',
-            "collateral.required" => 'Agunan',
-            "distribution_type.required" => 'Tipe Penyaluran',
-            "business_form.required" => 'Bentuk Usaha',
-            "business_value.required" => 'Nilai Usaha',
-            "hr_value.required" => 'Jumlah SDM',
-            "turnover_value.required" => 'Nilai Omzet per Tahun',
-            "telephone.required" => 'No. Telp Usaha',
-            "handphone.required" => 'No. HP Usaha',
-            "establishment_status.required" => 'Status Tempat Usaha',
-            "ktp.required" => 'Foto KTP',
-            "ktp_selfie.required" => 'Foto KTP Selfie',
-            "kk.required" => 'Foto KK',
-            "kk_selfie.required" => 'Foto KK Selfie',
-            "siup.required" => 'SIUP',
-            "skdu.required" => 'Surat Keterangan',
-            "sales_value.required" => 'Nilai Penjualan',
-            "total_cost.required" => 'Biaya Total',
-            "business_problem.required" => 'Permasalahan Usaha',
-            "establishment_picture.required" => 'Foto Tempat Usaha/Rumah',
-            "product_picture.required" => 'Foto Produk/Komoditas',
-        ];
-        if ($request->member_name) {
-            foreach ($request->member_name as $key => $value) {
-                $messages["member_name.$key.required"] = "Nama Anggota {$key}";
-                $messages["member_phone.$key.required"] = "Nomor Telepon Anggota {$key}";
-                $messages["member_ktp_code.$key.required"] = "No. KTP Anggota {$key}";
-                $messages["member_ktp.$key.required"] = "Foto KTP Anggota {$key}";
-                $messages["member_ktp_selfie.$key.required"] = "Foto KTP Selfie Anggota {$key}";
-            };
-            $messages["member_ktp.required"] = "Foto KTP Anggota";
-            $messages["member_ktp_selfie.required"] = "Foto KTP Selfie Anggota";
-            $messages["member_ktp.min"] = "Foto KTP Anggota";
-            $messages["member_ktp_selfie.min"] = "Foto KTP Selfie Anggota";
-
-            $validator = Validator::make($request->all(), [
-                'name' => 'required',
-                "sector" => 'required',
-                "subsector" => 'required',
-                "type" => 'required',
-                "asset_value" => 'required',
-                "address" => 'required',
-                "province" => 'required',
-                "city" => 'required',
-                "district" => 'required',
-                "village" => 'required',
-                "postal_code" => 'required',
-                "request_amount" => 'required',
-                "collateral" => 'required',
-                "distribution_type" => 'required',
-                "business_form" => 'required',
-                "business_value" => 'required',
-                "hr_value" => 'required',
-                "turnover_value" => 'required',
-                "telephone" => 'required',
-                "handphone" => 'required',
-                "establishment_status" => 'required',
-                "unit_amount" => 'required',
-                'land' => 'required',
-                'building' => 'required',
-                'treasury' => 'required',
-                'credit' => 'required',
-                'production_tools' => 'required',
-                'savings' => 'required',
-                'supply' => 'required',
-                'vehicle' => 'required',
-                "ktp" => 'required',
-                "ktp_selfie" => 'required',
-                "kk" => 'required',
-                "kk_selfie" => 'required',
-                "siup" => 'required',
-                "skdu" => 'required',
-                "sales_value" => 'required',
-                "total_cost" => 'required',
-                "business_problem" => 'required',
-                "establishment_picture" => 'required',
-                "product_picture" => 'required',
-                "member_name" => 'required|array|min:' . $request->member_count,
-                "member_phone" => 'required|array|min:' . $request->member_count,
-                "member_ktp_code" => 'required|array|min:' . $request->member_count,
-                "member_ktp" => 'required|array|min:' . $request->member_count,
-                "member_ktp_selfie" => 'required|array|min:' . $request->member_count,
-                "member_name.*" => 'required',
-                "member_phone.*" => 'required',
-                "member_ktp_code.*" => 'required',
-                "member_ktp.*" => 'required',
-                "member_ktp_selfie.*" => 'required',
-            ], $messages);
-        } else {
-            $validator = Validator::make($request->all(), [
-                'name' => 'required',
-                "sector" => 'required',
-                "subsector" => 'required',
-                "type" => 'required',
-                "asset_value" => 'required',
-                "address" => 'required',
-                "province" => 'required',
-                "city" => 'required',
-                "district" => 'required',
-                "village" => 'required',
-                "postal_code" => 'required',
-                "request_amount" => 'required',
-                "collateral" => 'required',
-                "distribution_type" => 'required',
-                "business_form" => 'required',
-                "business_value" => 'required',
-                "hr_value" => 'required',
-                "turnover_value" => 'required',
-                "telephone" => 'required',
-                "handphone" => 'required',
-                "establishment_status" => 'required',
-                "unit_amount" => 'required',
-                'land' => 'required',
-                'building' => 'required',
-                'treasury' => 'required',
-                'credit' => 'required',
-                'production_tools' => 'required',
-                'savings' => 'required',
-                'supply' => 'required',
-                'vehicle' => 'required',
-                "ktp" => 'required',
-                "ktp_selfie" => 'required',
-                "kk" => 'required',
-                "kk_selfie" => 'required',
-                "siup" => 'required',
-                "skdu" => 'required',
-                "sales_value" => 'required',
-                "total_cost" => 'required',
-                "business_problem" => 'required',
-                "establishment_picture" => 'required',
-                "product_picture" => 'required',
-            ], $messages);
-        }
-
-        if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator);
-        }
-
         $ktp = 'mangga-utama-' . time() . '-' . $request['ktp']->getClientOriginalName();
         $request->ktp->move(public_path('uploads/mangga/ktp'), $ktp);
 
@@ -286,7 +121,6 @@ class UtamaController extends Controller
                 $mcsf = null;
             }
         }
-        // dd($mcf);
         $reg_number = $this->getRegistrationNumber($request->sector, $request->subsector);
 
         $business = Business::create([
@@ -505,7 +339,13 @@ class UtamaController extends Controller
             }
         }
 
-        return redirect()->route('user.status_ajuan');
+        $return = [
+            'api_code' => 200,
+            'api_status' => true,
+            'api_message' => 'Lorem ipsum',
+            'api_results' => $utama
+        ];
+        return SuccessResource::make($return);
     }
 
     /**
@@ -515,17 +355,6 @@ class UtamaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Utama $utama)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Utama  $utama
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Utama $utama)
     {
         //
     }
@@ -552,7 +381,6 @@ class UtamaController extends Controller
     {
         //
     }
-
     public function getRegistrationNumber(int $sector, int $subsector)
     {
         $temp = 'GG-' . str_pad(rand(0, pow(10, 8) - 1), 8, '0', STR_PAD_LEFT) . '-' . $sector . '-' . $subsector;
@@ -561,12 +389,6 @@ class UtamaController extends Controller
         } else {
             return $temp;
         }
-    }
-
-    public function preview(Utama $utama)
-    {
-        $people = People::first();
-        return view('user.proposal.utama', compact('utama', 'people'));
     }
     public function download(Utama $utama)
     {
@@ -592,6 +414,12 @@ class UtamaController extends Controller
             'business_status_id' => 2
         ]);
 
-        return redirect()->route('user.status_ajuan');
+        $return = [
+            'api_code' => 200,
+            'api_status' => true,
+            'api_message' => 'Lorem ipsum',
+            'api_results' => $utama
+        ];
+        return SuccessResource::make($return);
     }
 }

@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\User;
 
+use App\Http\Controllers\Controller;
+use App\Http\Resources\SuccessResource;
 use App\Models\Business;
 use App\Models\Madu;
 use Illuminate\Http\Request;
@@ -16,17 +18,14 @@ class MaduController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $madu = Auth::user()->madu;
+        $return = [
+            'api_code' => 200,
+            'api_status' => true,
+            'api_message' => 'Lorem ipsum',
+            'api_results' => $madu
+        ];
+        return SuccessResource::make($return);
     }
 
     /**
@@ -51,8 +50,13 @@ class MaduController extends Controller
             'link' => $request->link,
             'user_id' => Auth::id()
         ]);
-
-        return redirect()->route('user.create_ajuan');
+        $return = [
+            'api_code' => 200,
+            'api_status' => true,
+            'api_message' => 'Lorem ipsum',
+            'api_results' => $madu
+        ];
+        return SuccessResource::make($return);
     }
 
     /**
@@ -62,17 +66,6 @@ class MaduController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Madu $madu)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Madu  $madu
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Madu $madu)
     {
         //
     }
@@ -93,7 +86,6 @@ class MaduController extends Controller
             $image = $madu->image;
         }
 
-
         $madu->update([
             'name' => $request->name,
             'description' => $request->description,
@@ -102,8 +94,13 @@ class MaduController extends Controller
             'image' => $image,
             'link' => $request->link,
         ]);
-
-        return redirect()->route('user.create_ajuan');
+        $return = [
+            'api_code' => 200,
+            'api_status' => true,
+            'api_message' => 'Lorem ipsum',
+            'api_results' => $madu
+        ];
+        return SuccessResource::make($return);
     }
 
     /**

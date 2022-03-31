@@ -1,21 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\User;
 
+use App\Http\Controllers\Controller;
+use App\Http\Resources\SuccessResource;
 use App\Models\Business;
-use App\Models\District;
 use App\Models\Muda;
-use App\Models\MudaCategory;
 use App\Models\MudaMember;
 use App\Models\MudaReport;
-use App\Models\MudaType;
-use App\Models\Province;
-use App\Models\Regency;
-use App\Models\Village;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Validator;
 use \PDF;
 
 class MudaController extends Controller
@@ -27,17 +21,14 @@ class MudaController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $muda = Auth::user()->businesses->last()->muda;
+        $return = [
+            'api_code' => 200,
+            'api_status' => true,
+            'api_message' => 'Lorem ipsum',
+            'api_results' => $muda
+        ];
+        return SuccessResource::make($return);
     }
 
     /**
@@ -48,133 +39,6 @@ class MudaController extends Controller
      */
     public function store(Request $request)
     {
-        $messages = [
-            'name.required' => 'Nama Bisnis',
-            'logo.required' => 'Logo Bisnis',
-            "muda_type.required" => 'Jenis Mangga Muda',
-            "category.required" => 'Kategori',
-            "subcategory.required" => 'Subkategori',
-            "type.required" => 'Jenis Usaha',
-            "asset_value.required" => 'Nilai Asset Usaha',
-            "address.required" => 'Alamat Usaha',
-            "province.required" => 'Provinsi Usaha',
-            "city.required" => 'Kota Usaha',
-            "district.required" => 'Kecamatan Usaha',
-            "village.required" => 'Desa Usaha',
-            "postal_code.required" => 'Kode Pos Usaha',
-            "business_title.required" => 'Judul Usaha',
-            "leader_name.required" => 'Nama Ketua',
-            "leader_email.required" => 'E-Mail Ketua',
-            "leader_phone.required" => 'No. HP Ketua',
-            "university.required" => 'Asal Universitas',
-            "faculty.required" => 'Fakultas',
-            "recommender.required" => 'Perekomendasi',
-            "recommender_position.required" => 'Jabatan Perekomendasi',
-            "member_count.required" => 'Jumlah Anggota',
-            "prospect.required" => 'Prospek Pengembangan Usaha',
-            "target.required" => 'Nilai Target Penjualan',
-            "needs.required" => 'Kebutuhan dan Sumber Daya',
-            "growth_plan.required" => 'Rencana Pengembangan Usaha',
-            "utilization_plan.required" => 'Rencana Penggunaan Dana',
-            "return_plan.required" => 'Rencana Pengembalian Dana',
-            "description.required" => 'Deskripsi Usaha',
-            "market_share.required" => 'Pangsa Pasar Produk',
-            "market_position.required" => 'Peta Positioning',
-            "production_strategy.required" => 'Strategi Produksi',
-            "organization_structure.required" => 'Struktur Organisasi',
-            "finance_attachment.required" => 'Struktur Pendanaan',
-            "target_plan.required" => 'Rencana Untuk Mencapai Target',
-            "finance.required" => 'Analisis Investasi dan Rencana Cashflow',
-        ];
-
-        foreach ($request->member_name as $key => $value) {
-            $messages["member_name.$key.required"] = "Nama Anggota {$key}";
-        }
-        foreach ($request->inflow_sales as $key => $value) {
-            $messages["inflow_sales.$key.required"] = "Penerimaan Penjualan {$key}";
-            $messages["inflow_loan.$key.required"] = "Penerimaan Pinjaman {$key}";
-            $messages["inflow_subtotal.$key.required"] = "Subtotal Penerimaan {$key}";
-            $messages["outflow_investment.$key.required"] = "Pembelian Aset (Investasi) {$key}";
-            $messages["outflow_ingredient.$key.required"] = "Pembelian Bahan Baku {$key}";
-            $messages["outflow_production.$key.required"] = "Biaya Produksi {$key}";
-            $messages["outflow_maintenance.$key.required"] = "Biaya Pemeliharaan {$key}";
-            $messages["outflow_admin.$key.required"] = "Biaya Administrasi {$key}";
-            $messages["outflow_installments.$key.required"] = "Angsuran Pokok {$key}";
-            $messages["outflow_subtotal.$key.required"] = "Subtotal Pengeluaran {$key}";
-            $messages["difference.$key.required"] = "Selisih Kas {$key}";
-            $messages["difference_start.$key.required"] = "Selisih Kas Awal {$key}";
-            $messages["difference_end.$key.required"] = "Selisih Kas Akhir {$key}";
-        }
-
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'logo' => 'required',
-            "muda_type" => 'required',
-            "category" => 'required',
-            "subcategory" => 'required',
-            "type" => 'required',
-            "asset_value" => 'required',
-            "address" => 'required',
-            "province" => 'required',
-            "city" => 'required',
-            "district" => 'required',
-            "village" => 'required',
-            "postal_code" => 'required',
-            "business_title" => 'required',
-            "leader_name" => 'required',
-            "leader_email" => 'required',
-            "leader_phone" => 'required',
-            "university" => 'required',
-            "faculty" => 'required',
-            "recommender" => 'required',
-            "recommender_position" => 'required',
-            "member_count" => 'required',
-            "prospect" => 'required',
-            "target" => 'required',
-            "needs" => 'required',
-            "growth_plan" => 'required',
-            "utilization_plan" => 'required',
-            "return_plan" => 'required',
-            "description" => 'required',
-            "market_share" => 'required',
-            "market_position" => 'required',
-            "production_strategy" => 'required',
-            "organization_structure" => 'required',
-            "finance_attachment" => 'required',
-            "target_plan" => 'required',
-            "finance" => 'required',
-            "member_name" => 'required|array|min:' . $request->member_count,
-            "inflow_sales" => 'required|array|min:6',
-            'inflow_loan' => 'required|array|min:6',
-            'inflow_subtotal' => 'required|array|min:6',
-            'outflow_investment' => 'required|array|min:6',
-            'outflow_ingredient' => 'required|array|min:6',
-            'outflow_production' => 'required|array|min:6',
-            'outflow_maintenance' => 'required|array|min:6',
-            'outflow_admin' => 'required|array|min:6',
-            'outflow_installments' => 'required|array|min:6',
-            'outflow_subtotal' => 'required|array|min:6',
-            'difference' => 'required|array|min:6',
-            'difference_start' => 'required|array|min:6',
-            'difference_end' => 'required|array|min:6',
-            "member_name.*" => 'required',
-            "inflow_sales.*" => 'required',
-            'inflow_loan.*' => 'required',
-            'inflow_subtotal.*' => 'required',
-            'outflow_investment.*' => 'required',
-            'outflow_ingredient.*' => 'required',
-            'outflow_production.*' => 'required',
-            'outflow_maintenance.*' => 'required',
-            'outflow_admin.*' => 'required',
-            'outflow_installments.*' => 'required',
-            'outflow_subtotal.*' => 'required',
-            'difference.*' => 'required',
-            'difference_start.*' => 'required',
-            'difference_end.*' => 'required',
-        ], $messages);
-        if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator);
-        }
         $logo = 'mangga-muda-' . time() . '-' . $request['logo']->getClientOriginalName();
         $request->logo->move(public_path('uploads/mangga/logos'), $logo);
 
@@ -284,8 +148,13 @@ class MudaController extends Controller
                 "muda_id" => $muda->id,
             ]);
         }
-
-        return redirect()->route('user.status_ajuan');
+        $return = [
+            'api_code' => 200,
+            'api_status' => true,
+            'api_message' => 'Lorem ipsum',
+            'api_results' => $muda
+        ];
+        return SuccessResource::make($return);
     }
 
     /**
@@ -297,23 +166,6 @@ class MudaController extends Controller
     public function show(Muda $muda)
     {
         //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Muda  $muda
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Muda $muda)
-    {
-        $provinces = Province::all();
-        $cities = Regency::all();
-        $districts = District::all();
-        $villages = Village::all();
-        $types = MudaType::all();
-        $categories = MudaCategory::all();
-        return view('user.form.muda_edit', compact('muda', 'provinces', 'cities', 'districts', 'villages', 'types', 'categories'));
     }
 
     /**
@@ -395,7 +247,6 @@ class MudaController extends Controller
                 $mktmf[strval($key)] = $member->ktm;
             }
         }
-
         if ($request->member_count > 0) {
             if ($request->member_count == count($muda->members)) {
                 if ($request->member_ktp != null) {
@@ -431,7 +282,6 @@ class MudaController extends Controller
                 }
             }
         }
-
         $muda->business->update([
             'name' => $request->name,
             'logo' => $logo,
@@ -498,8 +348,13 @@ class MudaController extends Controller
                 "muda_id" => $muda->id,
             ]);
         }
-
-        return redirect()->route('user.status_ajuan');
+        $return = [
+            'api_code' => 200,
+            'api_status' => true,
+            'api_message' => 'Lorem ipsum',
+            'api_results' => $muda
+        ];
+        return SuccessResource::make($return);
     }
 
     /**
@@ -512,7 +367,6 @@ class MudaController extends Controller
     {
         //
     }
-
     public function getRegistrationNumber(int $sector, int $subsector)
     {
         $temp = 'GG-' . str_pad(rand(0, pow(10, 8) - 1), 8, '0', STR_PAD_LEFT) . '-' . $sector . '-' . $subsector;
@@ -521,17 +375,6 @@ class MudaController extends Controller
         } else {
             return $temp;
         }
-    }
-
-    public function preview(Muda $muda)
-    {
-        if ($muda->business->status == 3) {
-            $muda->business->update([
-                'status' => 4,
-                'business_status_id' => 4
-            ]);
-        }
-        return view('user.proposal.muda', compact('muda'));
     }
     public function download(Muda $muda)
     {
@@ -561,7 +404,12 @@ class MudaController extends Controller
             'status' => 2,
             'business_status_id' => 2
         ]);
-
-        return redirect()->route('user.status_ajuan');
+        $return = [
+            'api_code' => 200,
+            'api_status' => true,
+            'api_message' => 'Lorem ipsum',
+            'api_results' => $muda
+        ];
+        return SuccessResource::make($return);
     }
 }

@@ -161,9 +161,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Business::class, 'user_id', 'id');
     }
-    public function madus()
+    public function madu()
     {
-        return $this->hasMany(Madu::class, 'user_id', 'id');
+        return $this->hasOne(Madu::class, 'user_id', 'id');
     }
     public function birthplace() {
         return $this->belongsTo(Regency::class, 'birth_place', 'id');
