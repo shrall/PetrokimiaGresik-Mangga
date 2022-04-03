@@ -104,6 +104,7 @@ Route::group(['middleware' => ['user', 'verified']], function () {
 Route::group(['middleware' => ['admin'], 'as' => 'admin.', 'prefix' => 'admin'], function () {
     Route::get('/dashboard', [AdminPageController::class, 'dashboard'])->name('dashboard');
     Route::get('/program', [AdminPageController::class, 'program'])->name('program');
+    Route::get('/program/{map}', [AdminPageController::class, 'program_map'])->name('program.map');
     Route::get('/program/utama/{business}', [AdminPageController::class, 'mangga_utama'])->name('program.utama');
     Route::resource('utama', AdminUtamaController::class);
     Route::patch('/utama/{utama}/ttd', [AdminUtamaController::class, 'ttd'])->name('utama.ttd');

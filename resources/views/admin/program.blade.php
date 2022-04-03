@@ -136,7 +136,7 @@
                         <td>{{ $business->name }}</td>
                         <td>{{ $business->created_at->format('d/m/Y H:i:s') }}</td>
                         @if ($business->mangga_type == 1)
-                            <td>{{ $business->utama->user_name }}</td>
+                            <td>{{ $business->utama->user_name ?? $business->user->first_name }}</td>
                             <td>Mangga</td>
                         @elseif ($business->mangga_type == 2)
                             <td>{{ $business->muda->leader_name }}</td>
@@ -148,7 +148,7 @@
                             <td><span class="fa fa-fw fa-clock text-mangga-orange-400"></span>Belum Disetujui Surveyor</td>
                         @elseif ($business->status == 3)
                             <td><span class="fa fa-fw fa-clock text-mangga-orange-400"></span>Belum Disetujui Pimpinan</td>
-                        @elseif ($business->status == 4)
+                        @elseif ($business->status == 4 || $business->status == 6)
                             <td><span class="fa fa-fw fa-check text-mangga-green-400"></span> Sudah Disetujui Pimpinan</td>
                         @elseif ($business->status == 5)
                             <td><span class="fa fa-fw fa-times text-mangga-red-300"></span>Ditolak</td>

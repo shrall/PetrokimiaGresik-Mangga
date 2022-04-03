@@ -122,7 +122,8 @@ class UserController extends Controller
             'province_id' => $request->province,
             'city_id' => $request->city,
             'district_id' => $request->district,
-            'village_id' => $request->village
+            'village_id' => $request->village,
+            'google_maps' => $request->google_maps
         ]);
         return redirect()->route('user.edit', $id);
     }
