@@ -47,7 +47,6 @@ class UtamaController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         $messages = [
             'name.required' => 'Nama Bisnis',
             "sector.required" => 'Sektor Bisnis',

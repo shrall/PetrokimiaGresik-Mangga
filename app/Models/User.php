@@ -71,7 +71,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'house_ownership',
         'birth_place',
         'employee_department_id',
-        'nik_karyawan'
+        'nik_karyawan',
+        'google_maps'
     ];
 
     /**
