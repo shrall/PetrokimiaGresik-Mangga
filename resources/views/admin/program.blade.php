@@ -157,6 +157,7 @@
                             <td class="flex items-center justify-center gap-2">
                                 <a href="{{ route('admin.program.utama', $business->id) }}"
                                     class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span></a>
+                                <a class="mangga-button-orange cursor-pointer"><span class="fa fa-fw fa-edit"></span></a>
                                 <a onclick="openModal('delete-{{ $business->id }}');"
                                     class="mangga-button-red cursor-pointer"><span class="fa fa-fw fa-trash-alt"></span></a>
                             </td>
@@ -164,6 +165,7 @@
                             <td class="flex items-center justify-center gap-2">
                                 <a href="{{ route('admin.program.muda', $business->id) }}"
                                     class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span></a>
+                                <a class="mangga-button-orange cursor-pointer"><span class="fa fa-fw fa-edit"></span></a>
                                 <a onclick="openModal('delete-{{ $business->id }}');"
                                     class="mangga-button-red cursor-pointer"><span class="fa fa-fw fa-trash-alt"></span></a>
                             </td>
@@ -190,6 +192,8 @@
                         <td class="flex items-center justify-center gap-2">
                             <a href="{{ route('admin.madu.show', $madu->id) }}"
                                 class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span></a>
+                            <a {{-- href="{{ route('admin.madu.edit', $madu->id) }}" --}} class="mangga-button-orange cursor-pointer">
+                                <span class="fa fa-fw fa-edit"></span></a>
                             <a onclick="openModal('delete-madu-{{ $madu->id }}');"
                                 class="mangga-button-red cursor-pointer"><span class="fa fa-fw fa-trash-alt"></span></a>
                         </td>
@@ -227,12 +231,12 @@
         <div class="fixed w-screen h-screen hidden items-center justify-center modal z-50"
             id="delete-{{ $business->id }}-modal">
             <div class="bg-black opacity-50 w-screen h-screen absolute background-modal" onclick="closeModal();"></div>
-            <div class="rounded-lg bg-white px-8 pt-8 pb-6 absolute flex flex-col gap-y-4">
+            <div class="rounded-lg bg-white px-8 pt-8 pb-6 absolute flex flex-col gap-y-4 w-128">
                 <span class="fa fa-fw fa-times text-xl hover:text-red-600 absolute top-4 right-4 cursor-pointer"
                     onclick="closeModal();"></span>
-                <div class="flex items-center justify-center gap-x-4">
-                    <div class="flex flex-col gap-y-2">
-                        <span>Apakah kamu yakin ingin menghapus data ini?</span>
+                <div class="flex items-center justify-center px-8 py-4">
+                    <div class="flex flex-col gap-y-2 text-center">
+                        <span>Apakah kamu yakin ingin menghapus data dengan nama usaha {{ $business->name }}?</span>
                     </div>
                 </div>
                 <div class="mangga-button-red w-full cursor-pointer"
@@ -252,12 +256,12 @@
         <div class="fixed w-screen h-screen hidden items-center justify-center modal z-50"
             id="delete-madu-{{ $madu->id }}-modal">
             <div class="bg-black opacity-50 w-screen h-screen absolute background-modal" onclick="closeModal();"></div>
-            <div class="rounded-lg bg-white px-8 pt-8 pb-6 absolute flex flex-col gap-y-4">
+            <div class="rounded-lg bg-white px-8 pt-8 pb-6 absolute flex flex-col gap-y-4 w-128">
                 <span class="fa fa-fw fa-times text-xl hover:text-red-600 absolute top-4 right-4 cursor-pointer"
                     onclick="closeModal();"></span>
-                <div class="flex items-center justify-center gap-x-4">
-                    <div class="flex flex-col gap-y-2">
-                        <span>Apakah kamu yakin ingin menghapus data ini?</span>
+                <div class="flex items-center justify-center px-8 py-4">
+                    <div class="flex flex-col gap-y-2 text-center">
+                        <span>Apakah kamu yakin ingin menghapus data dengan nama usaha {{ $madu->name }}?</span>
                     </div>
                 </div>
                 <div class="mangga-button-red w-full cursor-pointer"
