@@ -92,6 +92,7 @@ class BusinessController extends Controller
      */
     public function destroy(Business $business)
     {
-        //
+        $business->delete();
+        return redirect()->route('admin.program');
     }
 }

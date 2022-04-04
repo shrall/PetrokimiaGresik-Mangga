@@ -92,7 +92,7 @@
                     </div>
                     {{ $people->one }}
                 </div>
-                <div class="flex items-center justify-center">
+                <div class="flex items-center justify-center gap-2">
                     <a href="{{ route('admin.people.one') }}" class="mangga-button-green cursor-pointer">
                         <span class="fa fa-fw fa-edit"></span>Edit
                     </a>
@@ -108,7 +108,7 @@
                     </div>
                     {{ $people->two }}
                 </div>
-                <div class="flex items-center justify-center">
+                <div class="flex items-center justify-center gap-2">
                     <a href="{{ route('admin.people.two') }}" class="mangga-button-green cursor-pointer">
                         <span class="fa fa-fw fa-edit"></span>Edit
                     </a>
@@ -154,23 +154,25 @@
                             <td><span class="fa fa-fw fa-times text-mangga-red-300"></span>Ditolak</td>
                         @endif
                         @if ($business->mangga_type == 1)
-                            <td class="flex items-center justify-center">
+                            <td class="flex items-center justify-center gap-2">
                                 <a href="{{ route('admin.program.utama', $business->id) }}"
-                                    class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span> Lihat
-                                    Detail</a>
+                                    class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span></a>
+                                <a onclick="openModal('delete-{{ $business->id }}');"
+                                    class="mangga-button-red cursor-pointer"><span class="fa fa-fw fa-trash-alt"></span></a>
                             </td>
                         @elseif ($business->mangga_type == 2)
-                            <td class="flex items-center justify-center">
+                            <td class="flex items-center justify-center gap-2">
                                 <a href="{{ route('admin.program.muda', $business->id) }}"
-                                    class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span> Lihat
-                                    Detail</a>
+                                    class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span></a>
+                                <a onclick="openModal('delete-{{ $business->id }}');"
+                                    class="mangga-button-red cursor-pointer"><span class="fa fa-fw fa-trash-alt"></span></a>
                             </td>
                         @endif
                     </tr>
                 @endforeach
                 @foreach ($madus as $madu)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $loop->iteration + count($businesses) }}</td>
                         <td>{{ $madu->name }}</td>
                         <td>{{ $madu->created_at->format('d/m/Y H:i:s') }}</td>
                         <td>{{ $madu->user->first_name . ' ' . $madu->user->last_name }}</td>
@@ -185,10 +187,11 @@
                         @elseif ($madu->status == 5)
                             <td><span class="fa fa-fw fa-times text-mangga-red-300"></span>Ditolak</td>
                         @endif
-                        <td class="flex items-center justify-center">
+                        <td class="flex items-center justify-center gap-2">
                             <a href="{{ route('admin.madu.show', $madu->id) }}"
-                                class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span> Lihat
-                                Detail</a>
+                                class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span></a>
+                            <a onclick="openModal('delete-madu-{{ $madu->id }}');"
+                                class="mangga-button-red cursor-pointer"><span class="fa fa-fw fa-trash-alt"></span></a>
                         </td>
                     </tr>
                 @endforeach
@@ -208,6 +211,68 @@
                 .responsive.recalc();
         });
     </script>
+    <script>
+        function openModal(type) {
+            $('#' + type + '-modal').removeClass('hidden').addClass('flex');
+        }
+
+        function closeModal() {
+            $('.modal').removeClass('flex').addClass('hidden');
+        }
+    </script>
+@endsection
+
+@section('modals')
+    @foreach ($businesses as $business)
+        <div class="fixed w-screen h-screen hidden items-center justify-center modal z-50"
+            id="delete-{{ $business->id }}-modal">
+            <div class="bg-black opacity-50 w-screen h-screen absolute background-modal" onclick="closeModal();"></div>
+            <div class="rounded-lg bg-white px-8 pt-8 pb-6 absolute flex flex-col gap-y-4">
+                <span class="fa fa-fw fa-times text-xl hover:text-red-600 absolute top-4 right-4 cursor-pointer"
+                    onclick="closeModal();"></span>
+                <div class="flex items-center justify-center gap-x-4">
+                    <div class="flex flex-col gap-y-2">
+                        <span>Apakah kamu yakin ingin menghapus data ini?</span>
+                    </div>
+                </div>
+                <div class="mangga-button-red w-full cursor-pointer"
+                    onclick="event.preventDefault(); document.getElementById('delete-business-form-{{ $business->id }}').submit();">
+                    Hapus
+                    <span class=" fa fa-fw fa-trash-alt ml-2"></span>
+                </div>
+                <form action="{{ route('admin.business.destroy', $business->id) }}"
+                    id="delete-business-form-{{ $business->id }}" method="post">
+                    @csrf
+                    <input name="_method" type="hidden" value="DELETE">
+                </form>
+            </div>
+        </div>
+    @endforeach
+    @foreach ($madus as $madu)
+        <div class="fixed w-screen h-screen hidden items-center justify-center modal z-50"
+            id="delete-madu-{{ $madu->id }}-modal">
+            <div class="bg-black opacity-50 w-screen h-screen absolute background-modal" onclick="closeModal();"></div>
+            <div class="rounded-lg bg-white px-8 pt-8 pb-6 absolute flex flex-col gap-y-4">
+                <span class="fa fa-fw fa-times text-xl hover:text-red-600 absolute top-4 right-4 cursor-pointer"
+                    onclick="closeModal();"></span>
+                <div class="flex items-center justify-center gap-x-4">
+                    <div class="flex flex-col gap-y-2">
+                        <span>Apakah kamu yakin ingin menghapus data ini?</span>
+                    </div>
+                </div>
+                <div class="mangga-button-red w-full cursor-pointer"
+                    onclick="event.preventDefault(); document.getElementById('delete-madu-form-{{ $madu->id }}').submit();">
+                    Hapus
+                    <span class=" fa fa-fw fa-trash-alt ml-2"></span>
+                </div>
+                <form action="{{ route('admin.madu.destroy', $madu->id) }}" id="delete-madu-form-{{ $madu->id }}"
+                    method="post">
+                    @csrf
+                    <input name="_method" type="hidden" value="DELETE">
+                </form>
+            </div>
+        </div>
+    @endforeach
 @endsection
 
 @section('head')

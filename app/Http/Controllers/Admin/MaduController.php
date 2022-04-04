@@ -82,7 +82,8 @@ class MaduController extends Controller
      */
     public function destroy(Madu $madu)
     {
-        //
+        $madu->delete();
+        return redirect()->route('admin.program');
     }
     public function approve_surveyor(Madu $madu)
     {
