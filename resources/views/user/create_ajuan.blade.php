@@ -21,7 +21,7 @@
                     <div class="flex flex-col xl:flex-row items-center justify-center gap-x-2">
                         <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                             <div
-                                class="rounded-full {{ Auth::user()->madus == 0 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
+                                class="rounded-full {{ !Auth::user()->madu ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
                                 <span class="fa fa-fw fa-video text-white text-xl"></span>
                             </div>
                             <div
@@ -36,7 +36,7 @@
                         </div>
                         <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                             <div
-                                class="rounded-full {{ Auth::user()->madus != 0? (Auth::user()->madus[0]->status == 1? 'bg-mangga-orange-300': 'bg-gray-400'): 'bg-gray-400' }} p-4">
+                                class="rounded-full {{ Auth::user()->madu ? (Auth::user()->madu->status == 1? 'bg-mangga-orange-300': 'bg-gray-400'): 'bg-gray-400' }} p-4">
                                 <span class="fa fa-fw fa-user-check text-white text-xl"></span>
                             </div>
                             <div
@@ -49,8 +49,8 @@
                         <div class="hidden xl:block">
                             <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                         </div>
-                        @if (Auth::user()->madus != 0)
-                            @if (Auth::user()->madus[0]->status == 5)
+                        @if (Auth::user()->madu)
+                            @if (Auth::user()->madu->status == 5)
                                 <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                                     <div class="rounded-full bg-mangga-red-300 p-4">
                                         <span class="fa fa-fw fa-times text-white text-xl"></span>
@@ -62,7 +62,7 @@
                             @else
                                 <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                                     <div
-                                        class="rounded-full {{ Auth::user()->madus[0]->status == 4 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
+                                        class="rounded-full {{ Auth::user()->madu->status == 4 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
                                         <span class="fa fa-fw fa-check-double text-white text-xl"></span>
                                     </div>
                                     <div
@@ -73,7 +73,7 @@
                         @else
                             <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                                 <div
-                                    class="rounded-full {{ Auth::user()->madus != 0? (Auth::user()->madus[0]->status == 4? 'bg-mangga-orange-300': 'bg-gray-400'): 'bg-gray-400' }} p-4">
+                                    class="rounded-full {{ Auth::user()->madu ? (Auth::user()->madu->status == 4? 'bg-mangga-orange-300': 'bg-gray-400'): 'bg-gray-400' }} p-4">
                                     <span class="fa fa-fw fa-check-double text-white text-xl"></span>
                                 </div>
                                 <div
@@ -82,31 +82,31 @@
                             </div>
                         @endif
                     </div>
-                    @if (Auth::user()->madus == 0)
+                    @if (!Auth::user()->madu)
                         <div class="rounded-lg bg-mangga-orange-300 p-4 mb-4 w-full">
                             <span class="fa fa-fw fa-info-circle ml-2"></span>
                             Silahkan lengkapi form ajuan bisnis anda dibawah ini.
                         </div>
                     @endif
-                    @if (Auth::user()->madus != 0)
-                        @if (Auth::user()->madus[0]->status == 1)
+                    @if (Auth::user()->madu)
+                        @if (Auth::user()->madu->status == 1)
                             <div class="rounded-lg bg-mangga-orange-300 p-4 mb-4 w-full">
                                 <span class="fa fa-fw fa-info-circle ml-2"></span>
                                 Terima kasih sudah mengajukan bisnis anda. Mohon tunggu proses verifikasi dari tim kami.
                             </div>
-                        @elseif(Auth::user()->madus[0]->status == 4)
+                        @elseif(Auth::user()->madu->status == 4)
                             <div class="rounded-lg bg-mangga-green-300 p-4 mb-4 w-full">
                                 <span class="fa fa-fw fa-info-circle ml-2"></span>
                                 Selamat! Ajuan anda telah terverifikasi oleh tim kami.
                             </div>
-                        @elseif(Auth::user()->madus[0]->status == 5)
+                        @elseif(Auth::user()->madu->status == 5)
                             <div class="rounded-lg bg-mangga-red-300 p-4 mb-4 w-full">
                                 <span class="fa fa-fw fa-info-circle ml-2"></span>
                                 Terdapat kesalahan dalam ajuan anda. Mohon direvisi.
                             </div>
                         @endif
                     @endif
-                    @if (Auth::user()->madus == 0)
+                    @if (!Auth::user()->madu)
                         <form action="{{ route('user.madu.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <label class="font-bold text-3xl self-start">Nama Bisnis*</label>
@@ -133,37 +133,37 @@
                             </button>
                         </form>
                     @else
-                        <form action="{{ route('user.madu.update', Auth::user()->madus[0]->id) }}" method="post"
+                        <form action="{{ route('user.madu.update', Auth::user()->madu->id) }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
                             <label class="font-bold text-3xl self-start">Nama Bisnis*</label>
                             <input type="text" name="name" class="form-pengajuan-input" required
-                                value="{{ Auth::user()->madus[0]->name }}"
-                                {{ Auth::user()->madus[0]->status == 5 ? '' : 'disabled' }}>
+                                value="{{ Auth::user()->madu->name }}"
+                                {{ Auth::user()->madu->status == 5 ? '' : 'disabled' }}>
                             <label class="font-bold text-3xl self-start">Deskripsi Bisnis*</label>
                             <textarea name="description" id="" cols="30" rows="7" class="form-pengajuan-input"
-                                {{ Auth::user()->madus[0]->status == 5 ? '' : 'disabled' }}
-                                required>{{ Auth::user()->madus[0]->description }}</textarea>
+                                {{ Auth::user()->madu->status == 5 ? '' : 'disabled' }}
+                                required>{{ Auth::user()->madu->description }}</textarea>
                             <label class="font-bold text-3xl self-start">Link Video*</label>
                             <input type="text" name="link" class="form-pengajuan-input"
-                                value="{{ Auth::user()->madus[0]->link }}"
-                                {{ Auth::user()->madus[0]->status == 5 ? '' : 'disabled' }} required>
+                                value="{{ Auth::user()->madu->link }}"
+                                {{ Auth::user()->madu->status == 5 ? '' : 'disabled' }} required>
                             <label class="font-bold text-3xl self-start">Foto Tempat Usaha/Tempat Tinggal*</label>
                             <div class="flex flex-col gap-y-4">
-                                <img src="{{ asset('uploads/mangga/establishment_picture/' . Auth::user()->madus[0]->image) }}"
+                                <img src="{{ asset('uploads/mangga/establishment_picture/' . Auth::user()->madu->image) }}"
                                     class="w-full h-72 rounded-lg" id="preview-foto-establishment">
                                 <div class="flex flex-col gap-y-2">
                                     <input type="file" name="image" id="foto-establishment" class="invisible w-2"
                                         onchange="loadFile(event, 'foto-establishment')" accept="image/*">
-                                    @if (Auth::user()->madus[0]->status == 5)
+                                    @if (Auth::user()->madu->status == 5)
                                         <label for="foto-establishment" class="mangga-button-green cursor-pointer">Ubah
                                             Foto</label>
                                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                                     @endif
                                 </div>
                             </div>
-                            @if (Auth::user()->madus[0]->status == 5)
+                            @if (Auth::user()->madu->status == 5)
                                 <button type="submit" class="mangga-button-green cursor-pointer">
                                     Edit
                                 </button>
