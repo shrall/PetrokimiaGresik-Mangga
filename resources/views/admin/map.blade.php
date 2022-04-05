@@ -22,8 +22,8 @@
                         <td>{{ $business->name }}</td>
                         <td>{{ $business->user->first_name . ' ' . $business->user->last_name }}</td>
                         <td>{{ $business->address }}</td>
-                        <td><a target="_blank" href="{{ $business->user->google_maps }}"
-                                class="underline text-blue-500">{{ $business->user->google_maps }}</a></td>
+                        <td><a target="_blank" href="{{ $business->user->google_maps ?? '#' }}"
+                                class="underline text-blue-500">{{ $business->user->google_maps ?? '' }}</a></td>
                         <td>{{ $business->sector->name }}</td>
                         <td>
                             @foreach ($business->commodities as $businesscommodity)

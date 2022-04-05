@@ -197,7 +197,7 @@
                         </div>
                     </div>
                     <label class="text-gray-400 self-start">Link Google Maps</label>
-                    <input name="google_maps" type="text" class="form-input bg-white mb-4" value="{{ $user->google_maps }}">
+                    <input name="google_maps" type="text" class="form-input bg-white mb-4" value="{{ $user->google_maps ?? '' }}">
                     <div class="flex items-center justify-center gap-x-2 mt-auto w-full">
                         <a href="{{ route('user.index') }}" class="mangga-button-gray w-full">Kembali</a>
                         <button type="submit" class="mangga-button-green w-full">Simpan</button>
