@@ -21,7 +21,7 @@
                     <div class="flex flex-col xl:flex-row items-center justify-center gap-x-2">
                         <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                             <div
-                                class="rounded-full {{ Auth::user()->madus->count() == 0 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
+                                class="rounded-full {{ Auth::user()->madus == 0 ? 'bg-mangga-orange-300' : 'bg-gray-400' }} p-4">
                                 <span class="fa fa-fw fa-video text-white text-xl"></span>
                             </div>
                             <div
@@ -36,7 +36,7 @@
                         </div>
                         <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                             <div
-                                class="rounded-full {{ Auth::user()->madus->count() != 0? (Auth::user()->madus[0]->status == 1? 'bg-mangga-orange-300': 'bg-gray-400'): 'bg-gray-400' }} p-4">
+                                class="rounded-full {{ Auth::user()->madus != 0? (Auth::user()->madus[0]->status == 1? 'bg-mangga-orange-300': 'bg-gray-400'): 'bg-gray-400' }} p-4">
                                 <span class="fa fa-fw fa-user-check text-white text-xl"></span>
                             </div>
                             <div
@@ -49,7 +49,7 @@
                         <div class="hidden xl:block">
                             <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                         </div>
-                        @if (Auth::user()->madus->count() != 0)
+                        @if (Auth::user()->madus != 0)
                             @if (Auth::user()->madus[0]->status == 5)
                                 <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                                     <div class="rounded-full bg-mangga-red-300 p-4">
@@ -73,7 +73,7 @@
                         @else
                             <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
                                 <div
-                                    class="rounded-full {{ Auth::user()->madus->count() != 0? (Auth::user()->madus[0]->status == 4? 'bg-mangga-orange-300': 'bg-gray-400'): 'bg-gray-400' }} p-4">
+                                    class="rounded-full {{ Auth::user()->madus != 0? (Auth::user()->madus[0]->status == 4? 'bg-mangga-orange-300': 'bg-gray-400'): 'bg-gray-400' }} p-4">
                                     <span class="fa fa-fw fa-check-double text-white text-xl"></span>
                                 </div>
                                 <div
@@ -82,13 +82,13 @@
                             </div>
                         @endif
                     </div>
-                    @if (Auth::user()->madus->count() == 0)
+                    @if (Auth::user()->madus == 0)
                         <div class="rounded-lg bg-mangga-orange-300 p-4 mb-4 w-full">
                             <span class="fa fa-fw fa-info-circle ml-2"></span>
                             Silahkan lengkapi form ajuan bisnis anda dibawah ini.
                         </div>
                     @endif
-                    @if (Auth::user()->madus->count() != 0)
+                    @if (Auth::user()->madus != 0)
                         @if (Auth::user()->madus[0]->status == 1)
                             <div class="rounded-lg bg-mangga-orange-300 p-4 mb-4 w-full">
                                 <span class="fa fa-fw fa-info-circle ml-2"></span>
@@ -106,7 +106,7 @@
                             </div>
                         @endif
                     @endif
-                    @if (Auth::user()->madus->count() == 0)
+                    @if (Auth::user()->madus == 0)
                         <form action="{{ route('user.madu.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <label class="font-bold text-3xl self-start">Nama Bisnis*</label>
