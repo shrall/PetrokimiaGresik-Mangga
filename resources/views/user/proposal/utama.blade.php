@@ -452,7 +452,7 @@
                 <td></td>
                 <td>Jumlah</td>
                 <td>: Rp.
-                    {{ number_format($utama->sales_value + $utama->total_cost, 0, ',', '.') }}
+                    {{ number_format($utama->sales_value - $utama->total_cost, 0, ',', '.') }}
                 </td>
             </tr>
         </table>

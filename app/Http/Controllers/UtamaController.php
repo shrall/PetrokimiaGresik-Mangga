@@ -385,7 +385,7 @@ class UtamaController extends Controller
             'companion_village' => $request->companion_village,
             'business_id' => $business->id
         ]);
-        if ($request->member_name) {
+        if ($request->member_count > 0) {
             foreach ($request->member_name as $key => $value) {
                 if (in_array(strval($key), $mcf)) {
                     $umember = UtamaMember::create([
