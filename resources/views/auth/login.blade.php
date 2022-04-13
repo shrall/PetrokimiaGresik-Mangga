@@ -15,6 +15,7 @@
                 <button type="submit" class="mangga-button-green w-full mb-4">Masuk</button>
             </form>
             <div class="text-md md:text-lg self-center">Belum memiliki akun? <a href="{{route('register')}}" class="text-mangga-green-400">Daftar di sini</a></div>
+            <div class="text-md md:text-lg self-center"><a href="{{route('password.request')}}" class="text-mangga-green-400">Lupa Password?</a></div>
         </div>
     </div>
 @endsection
