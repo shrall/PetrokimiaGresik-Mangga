@@ -113,6 +113,7 @@ Route::group(['middleware' => ['admin'], 'as' => 'admin.', 'prefix' => 'admin'],
     Route::get('/utama/{utama}/reject', [AdminUtamaController::class, 'reject'])->name('utama.reject');
     Route::get('/utama/{utama}/download', [AdminUtamaController::class, 'download'])->name('utama.download');
     Route::get('/utama/{utama}/preview', [AdminUtamaController::class, 'preview'])->name('utama.preview');
+    Route::post('/utama/refresh-kelompok', [AdminUtamaController::class, 'refresh_kelompok'])->name('utama.refreshkelompok');
 
     Route::get('/program/muda/{business}', [AdminPageController::class, 'mangga_muda'])->name('program.muda');
     Route::resource('muda', AdminMudaController::class);

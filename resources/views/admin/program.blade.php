@@ -157,7 +157,7 @@
                             <td class="flex items-center justify-center gap-2">
                                 <a href="{{ route('admin.program.utama', $business->id) }}"
                                     class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span></a>
-                                <a class="mangga-button-orange cursor-pointer"><span class="fa fa-fw fa-edit"></span></a>
+                                <a href="{{route('admin.utama.edit', $business->utama->id)}}" class="mangga-button-orange cursor-pointer"><span class="fa fa-fw fa-edit"></span></a>
                                 <a onclick="openModal('delete-{{ $business->id }}');"
                                     class="mangga-button-red cursor-pointer"><span class="fa fa-fw fa-trash-alt"></span></a>
                             </td>
@@ -165,7 +165,7 @@
                             <td class="flex items-center justify-center gap-2">
                                 <a href="{{ route('admin.program.muda', $business->id) }}"
                                     class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span></a>
-                                <a class="mangga-button-orange cursor-pointer"><span class="fa fa-fw fa-edit"></span></a>
+                                <a href="{{route('admin.muda.edit', $business->muda->id)}}" class="mangga-button-orange cursor-pointer"><span class="fa fa-fw fa-edit"></span></a>
                                 <a onclick="openModal('delete-{{ $business->id }}');"
                                     class="mangga-button-red cursor-pointer"><span class="fa fa-fw fa-trash-alt"></span></a>
                             </td>
