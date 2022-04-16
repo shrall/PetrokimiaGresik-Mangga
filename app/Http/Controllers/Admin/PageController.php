@@ -284,7 +284,7 @@ class PageController extends Controller
     public function program()
     {
         $people = People::first();
-        $businesses = Business::where('registration_number', 'not like', '%-9-1%')->where('mangga_type', 1)->get();
+        $businesses = Business::where('registration_number', 'not like', '%-9-1%')->get();
         $madus = Madu::all();
         return view('admin.program', compact('businesses', 'people', 'madus'));
     }

@@ -192,7 +192,9 @@
                         <td class="flex items-center justify-center gap-2">
                             <a href="{{ route('admin.madu.show', $madu->id) }}"
                                 class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span></a>
-                            <a {{-- href="{{ route('admin.madu.edit', $madu->id) }}" --}} class="mangga-button-orange cursor-pointer">
+                            <a
+                            href="{{ route('admin.madu.edit', $madu->id) }}"
+                             class="mangga-button-orange cursor-pointer">
                                 <span class="fa fa-fw fa-edit"></span></a>
                             <a onclick="openModal('delete-madu-{{ $madu->id }}');"
                                 class="mangga-button-red cursor-pointer"><span class="fa fa-fw fa-trash-alt"></span></a>

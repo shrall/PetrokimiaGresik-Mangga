@@ -60,6 +60,7 @@ class MaduController extends Controller
      */
     public function edit(Madu $madu)
     {
+        return view('admin.mangga.edit.madu', compact('madu'));
     }
 
     /**
@@ -71,7 +72,24 @@ class MaduController extends Controller
      */
     public function update(Request $request, Madu $madu)
     {
-        //
+        if ($request->image) {
+            $image = 'mangga-madu-' . time() . '-' . $request['image']->getClientOriginalName();
+            $request->image->move(public_path('uploads/mangga/establishment_picture'), $image);
+        }else{
+            $image = $madu->image;
+        }
+
+
+        $madu->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'status' => 1,
+            'business_status_id' => 1,
+            'image' => $image,
+            'link' => $request->link,
+        ]);
+
+        return redirect()->route('admin.program');
     }
 
     /**
