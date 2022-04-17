@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\EmployeeDepartment;
 use App\Models\Madu;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class MaduController extends Controller
 {
@@ -27,7 +30,8 @@ class MaduController extends Controller
      */
     public function create()
     {
-        //
+        $departments = EmployeeDepartment::all();
+        return view('admin.mangga.create.madu', compact('departments'));
     }
 
     /**
@@ -38,7 +42,38 @@ class MaduController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create([
+            'first_name' => $request->firstname,
+            'last_name' => $request->lastname,
+            'email' => $request->email,
+            'handphone' => $request->handphone,
+            'province_id' => 35,
+            'city_id' => 3578,
+            'district_id' => 3578170,
+            'village_id' => 3578170005,
+            'nik_karyawan' => $request->nik,
+            'employee_department_id' => $request->department,
+            'password' => Hash::make($request->password),
+            'user_role' => 1,
+            'registration_ip' => request()->ip(),
+            'referral_code' => 'mamad',
+            'email_verified_at' => Carbon::now()
+        ]);
+        $image = 'mangga-madu-' . time() . '-' . $request['image']->getClientOriginalName();
+        $request->image->move(public_path('uploads/mangga/establishment_picture'), $image);
+        $reg_number = $this->getRegistrationNumber(Auth::user()->nik_karyawan, 1);
+
+        $madu = Madu::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'status' => 1,
+            'registration_number' => $reg_number,
+            'business_status_id' => 1,
+            'image' => $image,
+            'link' => $request->link,
+            'user_id' => $user->id
+        ]);
+        return redirect()->route('admin.program');
     }
 
     /**
@@ -78,7 +113,6 @@ class MaduController extends Controller
         }else{
             $image = $madu->image;
         }
-
 
         $madu->update([
             'name' => $request->name,

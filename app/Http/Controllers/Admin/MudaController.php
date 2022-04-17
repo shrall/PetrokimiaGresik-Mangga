@@ -3,18 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Business;
 use App\Models\BusinessLog;
 use App\Models\District;
 use App\Models\Muda;
 use App\Models\MudaCategory;
 use App\Models\MudaMember;
+use App\Models\MudaReport;
 use App\Models\MudaType;
 use App\Models\Province;
 use App\Models\Regency;
+use App\Models\User;
 use App\Models\Village;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use \PDF;
 
 class MudaController extends Controller
@@ -36,7 +40,13 @@ class MudaController extends Controller
      */
     public function create()
     {
-        //
+        $provinces = Province::all();
+        $cities = Regency::all();
+        $districts = District::all();
+        $villages = Village::all();
+        $types = MudaType::all();
+        $categories = MudaCategory::all();
+        return view('admin.mangga.create.muda', compact('provinces', 'cities', 'districts', 'villages', 'types', 'categories'));
     }
 
     /**
@@ -47,7 +57,131 @@ class MudaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create([
+            'first_name' => $request->firstname,
+            'last_name' => $request->lastname,
+            'email' => $request->email,
+            'handphone' => $request->handphone,
+            'province_id' => $request->province,
+            'city_id' => $request->city,
+            'district_id' => $request->district,
+            'village_id' => $request->village,
+            'password' => Hash::make($request->password),
+            'user_role' => 1,
+            'registration_ip' => request()->ip(),
+            'referral_code' => 'mamud',
+            'email_verified_at' => Carbon::now()
+        ]);
+        $logo = 'mangga-muda-' . time() . '-' . $request['logo']->getClientOriginalName();
+        $request->logo->move(public_path('uploads/mangga/logos'), $logo);
+
+        $market_position = 'mangga-muda-' . time() . '-' . $request['market_position']->getClientOriginalName();
+        $request->market_position->move(public_path('uploads/mangga/marketpositions'), $market_position);
+
+        $organization_structure = 'mangga-muda-' . time() . '-' . $request['organization_structure']->getClientOriginalName();
+        $request->organization_structure->move(public_path('uploads/mangga/organizationstructures'), $organization_structure);
+
+        $finance_attachment = 'mangga-muda-' . time() . '-' . $request['finance_attachment']->getClientOriginalName();
+        $request->finance_attachment->move(public_path('uploads/mangga/financeattachments'), $finance_attachment);
+
+        $ktp = 'mangga-muda-' . time() . '-' . $request['leader_ktp']->getClientOriginalName();
+        $request->leader_ktp->move(public_path('uploads/mangga/ktp'), $ktp);
+        $ktm = 'mangga-muda-' . time() . '-' . $request['leader_ktm']->getClientOriginalName();
+        $request->leader_ktm->move(public_path('uploads/mangga/ktm'), $ktm);
+
+        foreach ($request->member_ktp as $key => $mktp) {
+            $mktpf[$key] = 'mangga-muda-member-' . ($key + 1) . '-' . time() . '-' . $request['member_ktp'][$key]->getClientOriginalName();
+            $request->member_ktp[$key]->move(public_path('uploads/mangga/ktp'), $mktpf[$key]);
+        }
+        foreach ($request->member_ktm as $key => $mktm) {
+            $mktmf[$key] = 'mangga-muda-member-' . ($key + 1) . '-' . time() . '-' . $request['member_ktm'][$key]->getClientOriginalName();
+            $request->member_ktm[$key]->move(public_path('uploads/mangga/ktm'), $mktpf[$key]);
+        }
+
+        $reg_number = $this->getRegistrationNumber($request->muda_type, $request->category);
+
+        $business = Business::create([
+            'name' => $request->name,
+            'registration_number' => $reg_number,
+            'logo' => $logo,
+            "sector_id" => $request->sector,
+            "subsector_id" => $request->subsector,
+            "type" => $request->type,
+            "asset_value" => $request->asset_value,
+            "address" => $request->address,
+            'mangga_type' => 2,
+            "province_id" => $request->province,
+            "city_id" => $request->city,
+            "district_id" => $request->district,
+            "village_id" => $request->village,
+            "postal_code" => $request->postal_code,
+            "status" => 1,
+            'business_status_id' => 1,
+            "user_id" => $user->id
+        ]);
+        $muda = Muda::create([
+            "business_title" => $request->business_title,
+            "leader_name" => $request->leader_name,
+            "leader_phone" => $request->leader_phone,
+            "leader_email" => $request->leader_email,
+            "leader_ktp" => $ktp,
+            "leader_ktm" => $ktm,
+            "university" => $request->university,
+            "type_id" => $request->muda_type,
+            "category_id" => $request->category,
+            "subcategory" => $request->subcategory,
+            "faculty" => $request->faculty,
+            "recommender" => $request->recommender,
+            "recommender_position" => $request->recommender_position,
+            "member_count" => $request->member_count,
+            "prospect" => $request->prospect,
+            "target" => $request->target,
+            "needs" => $request->needs,
+            "growth_plan" => $request->growth_plan,
+            "utilization_plan" => $request->utilization_plan,
+            "return_plan" => $request->return_plan,
+            "description" => $request->description,
+            "market_share" => $request->market_share,
+            "market_position" => $market_position,
+            "production_strategy" => $request->production_strategy,
+            "organization_structure" => $organization_structure,
+            "finance_attachment" => $finance_attachment,
+            "target_plan" => $request->target_plan,
+            "finance" => $request->finance,
+            "business_id" => $business->id,
+        ]);
+
+        if ($request->member_count > 0) {
+            foreach ($request->member_name as $key => $value) {
+                MudaMember::create([
+                    'name' => $value,
+                    'ktp' => $mktpf[$key],
+                    'ktm' => $mktmf[$key],
+                    "muda_id" => $muda->id,
+                ]);
+            }
+        }
+
+        foreach ($request->inflow_sales as $key => $value) {
+            MudaReport::create([
+                'month' => $key,
+                'inflow_sales' => $request->inflow_sales[$key],
+                'inflow_loan' => $request->inflow_loan[$key],
+                'inflow_subtotal' => $request->inflow_subtotal[$key],
+                'outflow_investment' => $request->outflow_investment[$key],
+                'outflow_ingredient' => $request->outflow_ingredient[$key],
+                'outflow_production' => $request->outflow_production[$key],
+                'outflow_maintenance' => $request->outflow_maintenance[$key],
+                'outflow_admin' => $request->outflow_admin[$key],
+                'outflow_installments' => $request->outflow_installments[$key],
+                'outflow_subtotal' => $request->outflow_subtotal[$key],
+                'difference' => $request->difference[$key],
+                'difference_start' => $request->difference_start[$key],
+                'difference_end' => $request->difference_end[$key],
+                "muda_id" => $muda->id,
+            ]);
+        }
+        return redirect()->route('admin.program');
     }
 
     /**

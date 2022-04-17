@@ -84,7 +84,7 @@
                 <label class="font-bold">Tipe Pengajuan</label>
                 <select name="distribution_type" id="" class="form-pengajuan-input-admin" required>
                     @foreach ($distribution_types as $dt)
-                        <option value={{ $dt->id }}>{{ $dt->name }}</option>
+                        <option value={{ $dt->id }} {{$utama->distribution_type_id == $dt->id ? 'selected' : ''}} >{{ $dt->name }}</option>
                     @endforeach
                 </select>
                 <label class="font-bold">Sektor</label>

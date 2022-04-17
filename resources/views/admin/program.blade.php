@@ -3,30 +3,36 @@
 @section('content')
     <div class="grid grid-cols-3 gap-x-4 gap-y-2 mb-4">
         <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
-            <a href="#">
-                <div class="grid grid-cols-2 items-center p-4">
-                    <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}" class="w-full">
-                    <div class="flex flex-col items-end">
-                        <div class="text-4xl text-mangga-green-500 font-bold">
-                            {{ count($businesses->where('mangga_type', 1)) }}
-                        </div>
-                        Ajuan
-                    </div>
+            <div class="grid grid-cols-2 items-center p-4">
+                <div class="flex flex-col gap-2 justify-between">
+                    <img src="{{ asset('assets/svg/mangga-logo-with-text.svg') }}" class="w-11/12">
+                    <a href="{{ route('admin.utama.create') }}" class="mangga-button-green cursor-pointer">
+                        <span>Buat Ajuan</span>
+                    </a>
                 </div>
-            </a>
+                <div class="flex flex-col items-end">
+                    <div class="text-4xl text-mangga-green-500 font-bold">
+                        {{ count($businesses->where('mangga_type', 1)) }}
+                    </div>
+                    Ajuan
+                </div>
+            </div>
         </div>
         <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
-            <a href="#">
-                <div class="grid grid-cols-2 items-center p-4">
-                    <img src="{{ asset('assets/img/mangga-muda.png') }}" alt="Mangga Muda" class="w-full">
-                    <div class="flex flex-col items-end">
-                        <div class="text-4xl text-mangga-green-500 font-bold">
-                            {{ count($businesses->where('mangga_type', 2)) }}
-                        </div>
-                        Ajuan
-                    </div>
+            <div class="grid grid-cols-2 items-center p-4">
+                <div class="flex flex-col gap-2 justify-between">
+                    <img src="{{ asset('assets/img/mangga-muda.png') }}" alt="Mangga Muda" class="w-11/12">
+                    <a href="{{ route('admin.muda.create') }}" class="mangga-button-green cursor-pointer">
+                        <span>Buat Ajuan</span>
+                    </a>
                 </div>
-            </a>
+                <div class="flex flex-col items-end">
+                    <div class="text-4xl text-mangga-green-500 font-bold">
+                        {{ count($businesses->where('mangga_type', 2)) }}
+                    </div>
+                    Ajuan
+                </div>
+            </div>
         </div>
         <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
             <a href="#">
@@ -68,17 +74,20 @@
             </a>
         </div>
         <div class="border-2 border-gray-400 bg-white cursor-pointer hover:bg-gray-100">
-            <a href="#">
-                <div class="grid grid-cols-2 items-center p-4">
-                    <img src="{{ asset('assets/img/mangga-madu.png') }}" class="w-full">
-                    <div class="flex flex-col items-end">
-                        <div class="text-4xl text-mangga-green-500 font-bold">
-                            {{ count($madus) }}
-                        </div>
-                        Ajuan
-                    </div>
+            <div class="grid grid-cols-2 items-center p-4">
+                <div class="flex flex-col gap-2 justify-between">
+                    <img src="{{ asset('assets/img/mangga-madu.png') }}" class="w-11/12">
+                    <a href="{{ route('admin.madu.create') }}" class="mangga-button-green cursor-pointer">
+                        <span>Buat Ajuan</span>
+                    </a>
                 </div>
-            </a>
+                <div class="flex flex-col items-end">
+                    <div class="text-4xl text-mangga-green-500 font-bold">
+                        {{ count($madus) }}
+                    </div>
+                    Ajuan
+                </div>
+            </div>
         </div>
     </div>
     <hr>
@@ -157,7 +166,8 @@
                             <td class="flex items-center justify-center gap-2">
                                 <a href="{{ route('admin.program.utama', $business->id) }}"
                                     class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span></a>
-                                <a href="{{route('admin.utama.edit', $business->utama->id)}}" class="mangga-button-orange cursor-pointer"><span class="fa fa-fw fa-edit"></span></a>
+                                <a href="{{ route('admin.utama.edit', $business->utama->id) }}"
+                                    class="mangga-button-orange cursor-pointer"><span class="fa fa-fw fa-edit"></span></a>
                                 <a onclick="openModal('delete-{{ $business->id }}');"
                                     class="mangga-button-red cursor-pointer"><span class="fa fa-fw fa-trash-alt"></span></a>
                             </td>
@@ -165,7 +175,8 @@
                             <td class="flex items-center justify-center gap-2">
                                 <a href="{{ route('admin.program.muda', $business->id) }}"
                                     class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span></a>
-                                <a href="{{route('admin.muda.edit', $business->muda->id)}}" class="mangga-button-orange cursor-pointer"><span class="fa fa-fw fa-edit"></span></a>
+                                <a href="{{ route('admin.muda.edit', $business->muda->id) }}"
+                                    class="mangga-button-orange cursor-pointer"><span class="fa fa-fw fa-edit"></span></a>
                                 <a onclick="openModal('delete-{{ $business->id }}');"
                                     class="mangga-button-red cursor-pointer"><span class="fa fa-fw fa-trash-alt"></span></a>
                             </td>
@@ -192,9 +203,8 @@
                         <td class="flex items-center justify-center gap-2">
                             <a href="{{ route('admin.madu.show', $madu->id) }}"
                                 class="mangga-button-green cursor-pointer"><span class="fa fa-fw fa-eye"></span></a>
-                            <a
-                            href="{{ route('admin.madu.edit', $madu->id) }}"
-                             class="mangga-button-orange cursor-pointer">
+                            <a href="{{ route('admin.madu.edit', $madu->id) }}"
+                                class="mangga-button-orange cursor-pointer">
                                 <span class="fa fa-fw fa-edit"></span></a>
                             <a onclick="openModal('delete-madu-{{ $madu->id }}');"
                                 class="mangga-button-red cursor-pointer"><span class="fa fa-fw fa-trash-alt"></span></a>
