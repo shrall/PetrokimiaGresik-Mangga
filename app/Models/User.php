@@ -36,7 +36,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'rt',
         'rw',
         'postal_code',
-        'religion',
+        'religion_id',
         'referral_code',
         'avatar',
         'status',

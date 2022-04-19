@@ -113,7 +113,7 @@ class UtamaController extends Controller
             'gender' => $request->gender,
             'married' => $request->married,
             'spouse' => $request->spouse,
-            'religion' => $request->religion,
+            'religion_id' => $request->religion,
             'birth_place' => $request->birth_place,
             'birth_date' => $request->birth_date,
             'address' => $request->address,
