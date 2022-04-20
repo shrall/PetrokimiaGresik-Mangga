@@ -41,7 +41,7 @@
     <div class="flex flex-col gap-2 items-center w-screen h-vh-90 py-8">
         <img src="{{ asset('assets/svg/error500.svg') }}" class="h-9/10">
         <span class="font-lb text-mangga-green-400 text-2xl">Sedang ada kendala pada website.</span>
-        <a href="https://wa.me/081366994994" class="mangga-button-green cursor-pointer" onclick="nextStep();">
+        <a target="_blank" href="https://wa.me/081366994994" class="mangga-button-green cursor-pointer" onclick="nextStep();">
             <span class="fab fa-fw fa-whatsapp"></span>
             <span>Kontak Admin WA</span>
         </a>
