@@ -65,13 +65,15 @@ class MudaController extends Controller
         $ktm = 'mangga-muda-' . time() . '-' . $request['leader_ktm']->getClientOriginalName();
         $request->leader_ktm->move(public_path('uploads/mangga/ktm'), $ktm);
 
-        foreach ($request->member_ktp as $key => $mktp) {
-            $mktpf[$key] = 'mangga-muda-member-' . ($key + 1) . '-' . time() . '-' . $request['member_ktp'][$key]->getClientOriginalName();
-            $request->member_ktp[$key]->move(public_path('uploads/mangga/ktp'), $mktpf[$key]);
-        }
-        foreach ($request->member_ktm as $key => $mktm) {
-            $mktmf[$key] = 'mangga-muda-member-' . ($key + 1) . '-' . time() . '-' . $request['member_ktm'][$key]->getClientOriginalName();
-            $request->member_ktm[$key]->move(public_path('uploads/mangga/ktm'), $mktpf[$key]);
+        if ($request->member_count > 0) {
+            foreach ($request->member_ktp as $key => $mktp) {
+                $mktpf[$key] = 'mangga-muda-member-' . ($key + 1) . '-' . time() . '-' . $request['member_ktp'][$key]->getClientOriginalName();
+                $request->member_ktp[$key]->move(public_path('uploads/mangga/ktp'), $mktpf[$key]);
+            }
+            foreach ($request->member_ktm as $key => $mktm) {
+                $mktmf[$key] = 'mangga-muda-member-' . ($key + 1) . '-' . time() . '-' . $request['member_ktm'][$key]->getClientOriginalName();
+                $request->member_ktm[$key]->move(public_path('uploads/mangga/ktm'), $mktpf[$key]);
+            }
         }
 
         $reg_number = $this->getRegistrationNumber($request->muda_type, $request->category);
