@@ -700,7 +700,7 @@
             </div>
         </div>
         <div class="font-bold text-2xl mb-4">Dokumen Mitra</div>
-        <div class="grid-cols-2 gap-8 form-step hidden dokumen-mitra" id="dokumen-mitra-10">
+        <div class="grid grid-cols-2 gap-x-8">
             <div class="">
                 <label class="font-bold">Foto KTP*</label>
                 <div class="flex items-end gap-x-4">

@@ -4,7 +4,6 @@
     <div class="text-4xl font-bold mb-2" id="form-title">Buat Ajuan - Mangga</div>
     <form action="{{ route('admin.utama.store') }}" method="post" enctype="multipart/form-data">
         @csrf
-        @method("PATCH")
         <div class="font-bold text-2xl mb-4">Data Akun</div>
         <div class="col-span-12 xl:col-span-9">
             <div class="grid grid-cols-12 gap-x-8">
@@ -150,7 +149,7 @@
                     <div class="grid grid-cols-2 items-center gap-x-2 w-full">
                         <div class="col-span-1">
                             <label class="text-gray-400">Provinsi</label>
-                            <select name="province" id="province" class="form-pengajuan-input bg-white mb-4" required>
+                            <select name="province" id="province-u" class="form-pengajuan-input bg-white mb-4" required>
                                 @foreach ($provinces as $province)
                                     <option value={{ $province->id }}>
                                         {{ $province->name }}</option>
@@ -159,19 +158,19 @@
                         </div>
                         <div class="col-span-1">
                             <label class="text-gray-400">Kota/Kabupaten</label>
-                            <select name="city" id="city" class="form-pengajuan-input bg-white mb-4" required>
+                            <select name="city" id="city-u" class="form-pengajuan-input bg-white mb-4" required>
                             </select>
                         </div>
                     </div>
                     <div class="grid grid-cols-2 items-center gap-x-2 w-full">
                         <div class="col-span-1">
                             <label class="text-gray-400">Kecamatan</label>
-                            <select name="district" id="district" class="form-pengajuan-input bg-white mb-4" required>
+                            <select name="district" id="district-u" class="form-pengajuan-input bg-white mb-4" required>
                             </select>
                         </div>
                         <div class="col-span-1">
                             <label class="text-gray-400">Desa/Kelurahan</label>
-                            <select name="village" id="village" class="form-pengajuan-input bg-white mb-4" required>
+                            <select name="village" id="village-u" class="form-pengajuan-input bg-white mb-4" required>
                             </select>
                         </div>
                     </div>
@@ -230,8 +229,8 @@
                     required>
                 <label class="font-bold">Handphone</label>
                 <input type="number" name="handphone" class="form-pengajuan-input" placeholder="No. HP Usaha*" required>
-                <label class="font-bold">E-Mail</label>
-                <input type="text" name="email" class="form-pengajuan-input" placeholder="E-Mail*" required>
+                <label class="font-bold">E-Mail Usaha</label>
+                <input type="email" name="email_usaha" class="form-pengajuan-input" placeholder="E-Mail*" required>
                 <label class="font-bold">Kode Siup</label>
                 <input type="number" name="siup_code" class="form-pengajuan-input" style="margin-bottom: 0.5rem;"
                     placeholder="No. SIUP*" required>
@@ -294,8 +293,9 @@
                             {{ $bf->name }}</option>
                     @endforeach
                 </select>
+                <label class="font-bold hidden kelompok">Jumlah Anggota</label>
                 <input type="number" name="member_count" class="form-pengajuan-input hidden kelompok" id="jumlah-anggota"
-                    placeholder="Jumlah Anggota*" required onkeyup="refreshMemberCount();">
+                    placeholder="Jumlah Anggota*" onkeyup="refreshMemberCount();">
                 <label class="font-bold">Nilai Usaha</label>
                 <input type="number" name="business_value" class="form-pengajuan-input" placeholder="Nilai Usaha*"
                     required>
@@ -386,7 +386,7 @@
                         id="preview-foto-establishment">
                     <div class="flex flex-col gap-y-2">
                         <input type="file" name="establishment_picture" id="foto-establishment" class="invisible w-2"
-                            onchange="loadFile(event, 'foto-establishment')" accept="image/*">
+                            onchange="loadFile(event, 'foto-establishment')" accept="image/*" required>
                         <label for="foto-establishment" class="mangga-button-green cursor-pointer">Unggah Foto</label>
                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                     </div>
@@ -398,7 +398,7 @@
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-full h-72 rounded-lg"
                         id="preview-foto-product">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="product_picture" id="foto-product" class="invisible w-2"
+                        <input type="file" name="product_picture" id="foto-product" class="invisible w-2" required
                             onchange="loadFile(event, 'foto-product')" accept="image/*">
                         <label for="foto-product" class="mangga-button-green cursor-pointer">Unggah Foto</label>
                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
@@ -414,7 +414,7 @@
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-full h-72 rounded-lg"
                         id="preview-foto-sketch-b">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="business_sketch" id="foto-sketch-b" class="invisible w-2"
+                        <input type="file" name="business_sketch" id="foto-sketch-b" class="invisible w-2" required
                             onchange="loadFile(event, 'foto-sketch-b')" accept="image/*">
                         <label for="foto-sketch-b" class="mangga-button-green cursor-pointer">Unggah Foto</label>
                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
@@ -427,7 +427,7 @@
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-full h-72 rounded-lg"
                         id="preview-foto-sketch-h">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="house_sketch" id="foto-sketch-h" class="invisible w-2"
+                        <input type="file" name="house_sketch" id="foto-sketch-h" class="invisible w-2" required
                             onchange="loadFile(event, 'foto-sketch-h')" accept="image/*">
                         <label for="foto-sketch-h" class="mangga-button-green cursor-pointer">Unggah Foto</label>
                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
@@ -564,14 +564,14 @@
             </div>
         </div>
         <div class="font-bold text-2xl mb-4">Dokumen Mitra</div>
-        <div class="grid-cols-2 gap-8 form-step hidden dokumen-mitra" id="dokumen-mitra-10">
+        <div class="grid grid-cols-2 gap-8">
             <div class="">
                 <label class="font-bold">Foto KTP*</label>
                 <div class="flex items-end gap-x-4">
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
                         id="preview-foto-ktp">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="ktp" id="foto-ktp" class="invisible w-2"
+                        <input type="file" name="ktp" id="foto-ktp" class="invisible w-2" required
                             onchange="loadFile(event, 'foto-ktp')" accept="image/*">
                         <label for="foto-ktp" class="mangga-button-green cursor-pointer">Unggah Foto KTP</label>
                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
@@ -584,7 +584,7 @@
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
                         id="preview-foto-kk">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="kk" id="foto-kk" class="invisible w-2"
+                        <input type="file" name="kk" id="foto-kk" class="invisible w-2" required
                             onchange="loadFile(event, 'foto-kk')" accept="image/*">
                         <label for="foto-kk" class="mangga-button-green cursor-pointer">Unggah Foto KK</label>
                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
@@ -597,7 +597,7 @@
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
                         id="preview-foto-selfie-ktp">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="ktp_selfie" id="foto-selfie-ktp" class="invisible w-2" accept="image/*"
+                        <input type="file" name="ktp_selfie" id="foto-selfie-ktp" class="invisible w-2" accept="image/*" required
                             onchange="loadFile(event, 'foto-selfie-ktp')">
                         <label for="foto-selfie-ktp" class="mangga-button-green cursor-pointer">Unggah Foto Selfie dengan
                             KTP</label>
@@ -611,7 +611,7 @@
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"
                         id="preview-foto-selfie-kk">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="kk_selfie" id="foto-selfie-kk" class="invisible w-2" accept="image/*"
+                        <input type="file" name="kk_selfie" id="foto-selfie-kk" class="invisible w-2" accept="image/*" required
                             onchange="loadFile(event, 'foto-selfie-kk')">
                         <label for="foto-selfie-kk" class="mangga-button-green cursor-pointer">Unggah Foto Selfie dengan
                             KK</label>
@@ -624,7 +624,7 @@
                 <div class="flex items-end gap-x-4">
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" id="preview-scan-siup">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="siup" id="scan-siup" class="invisible w-2"
+                        <input type="file" name="siup" id="scan-siup" class="invisible w-2" required
                             onchange="loadFile(event, 'scan-siup')" accept="image/*">
                         <label for="scan-siup" class="mangga-button-green cursor-pointer">Unggah Scan SIUP</label>
                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
@@ -636,7 +636,7 @@
                 <div class="flex items-end gap-x-4">
                     <img src="{{ asset('assets/svg/empty-image.svg') }}" id="preview-scan-sk">
                     <div class="flex flex-col gap-y-2">
-                        <input type="file" name="skdu" id="scan-sk" class="invisible w-2"
+                        <input type="file" name="skdu" id="scan-sk" class="invisible w-2" required
                             onchange="loadFile(event, 'scan-sk')" accept="image/*">
                         <label for="scan-sk" class="mangga-button-green cursor-pointer">Unggah Scan SK</label>
                         <span>*Ukuran File Unggahan Maksimal 2 MB</span>
@@ -1105,5 +1105,78 @@
             $('#village-p').append('<option value="' + element.id + '">' + element.name + '</option>')
         });
         $("#village-p").prop("disabled", false);
+    </script>
+    <script>
+        $('#province-u').on('change', function(e) {
+            $('#city-u').html(null);
+            $('#district-u').html(null);
+            $('#village-u').html(null);
+            let obj1u = cities.filter(function(obj) {
+                return obj.province_id === $('#province-u').val();
+            });
+            obj1u.forEach(element => {
+                $('#city-u').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+            let obj2u = districts.filter(function(obj) {
+                return obj.regency_id === $('#city-u').val();
+            });
+            obj2u.forEach(element => {
+                $('#district-u').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+            let obj3u = villages.filter(function(obj) {
+                return obj.district_id === $('#district-u').val();
+            });
+            obj3u.forEach(element => {
+                $('#village-u').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+        });
+        $('#city-u').on('change', function(e) {
+            $('#district-u').html(null);
+            $('#village-u').html(null);
+            let obj2u = districts.filter(function(obj) {
+                return obj.regency_id === $('#city-u').val();
+            });
+            obj2u.forEach(element => {
+                $('#district-u').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+            let obj3u = villages.filter(function(obj) {
+                return obj.district_id === $('#district-u').val();
+            });
+            obj3u.forEach(element => {
+                $('#village-u').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+        });
+        $('#district-u').on('change', function(e) {
+            $('#village-u').html(null);
+            let obj3u = villages.filter(function(obj) {
+                return obj.district_id === $('#district-u').val();
+            });
+            obj3u.forEach(element => {
+                $('#village-u').append('<option value="' + element.id + '">' + element.name + '</option>')
+            });
+        });
+    </script>
+    <script>
+        let obj1u = cities.filter(function(obj) {
+            return obj.province_id === $('#province-u').val();
+        });
+        obj1u.forEach(element => {
+            $('#city-u').append('<option value="' + element.id + '">' + element.name + '</option>')
+        });
+        $("#city-u").prop("disabled", false);
+        let obj2u = districts.filter(function(obj) {
+            return obj.regency_id === $('#city-u').val();
+        });
+        obj2u.forEach(element => {
+            $('#district-u').append('<option value="' + element.id + '">' + element.name + '</option>')
+        });
+        $("#district-u").prop("disabled", false);
+        let obj3u = villages.filter(function(obj) {
+            return obj.district_id === $('#district-u').val();
+        });
+        obj3u.forEach(element => {
+            $('#village-u').append('<option value="' + element.id + '">' + element.name + '</option>')
+        });
+        $("#village-u").prop("disabled", false);
     </script>
 @endsection

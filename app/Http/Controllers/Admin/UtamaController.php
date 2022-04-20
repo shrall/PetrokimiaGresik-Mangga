@@ -220,7 +220,7 @@ class UtamaController extends Controller
             "postal_code" => $request->postal_code,
             "status" => 1,
             'business_status_id' => 1,
-            "user_id" => Auth::id()
+            "user_id" => $user->id
         ]);
 
         $utama = Utama::create([
@@ -912,7 +912,7 @@ class UtamaController extends Controller
             BusinessLog::create([
                 'description' => 'Disetujui (Pimpinan) oleh ' . $utama->user_first_name . ' ' . $utama->user_last_name,
                 'business_id' => $utama->business->id,
-                'admin_id' => $utama->user_id
+                'admin_id' => Auth::id()
             ]);
         }
         return redirect()->route('admin.program.utama', $utama->business->id);
@@ -928,7 +928,7 @@ class UtamaController extends Controller
         BusinessLog::create([
             'description' => 'Ditolak oleh ' . $utama->user_first_name . ' ' . $utama->user_last_name,
             'business_id' => $utama->business->id,
-            'admin_id' => $utama->user_id
+            'admin_id' => Auth::id()
         ]);
         return redirect()->route('admin.program.utama', $utama->business->id);
     }
@@ -939,5 +939,15 @@ class UtamaController extends Controller
         $sector = $request->sector;
         $establishment_statuses = EstablishmentStatus::all();
         return view('admin.mangga.edit.inc.member_utama', compact('member', 'sector', 'establishment_statuses'));
+    }
+
+    public function getRegistrationNumber(int $sector, int $subsector)
+    {
+        $temp = 'GG-' . str_pad(rand(0, pow(10, 8) - 1), 8, '0', STR_PAD_LEFT) . '-' . $sector . '-' . $subsector;
+        if (Business::where('registration_number', $temp)->exists()) {
+            return $this->getRegistrationNumber($sector, $subsector);
+        } else {
+            return $temp;
+        }
     }
 }
