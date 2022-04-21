@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Business;
 use App\Models\District;
 use App\Models\EmployeeDepartment;
 use App\Models\Province;
@@ -32,7 +33,8 @@ class PageController extends Controller
     }
     public function toko_mangga()
     {
-        return view('landing_page.toko_mangga');
+        $businesses = Business::where('business_status_id', '>', 3)->where('business_status_id', '!=', 5)->whereHas('utama')->paginate(6);
+        return view('landing_page.toko_mangga', compact('businesses'));
     }
     public function faq()
     {

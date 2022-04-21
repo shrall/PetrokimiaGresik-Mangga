@@ -19,7 +19,8 @@
                 <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
             </div>
             <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                <div class="rounded-full @if ($utama->business->status == 1) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                <div
+                    class="rounded-full @if ($utama->business->status == 1) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
                     <span class="fa fa-fw fa-user-check text-white text-xl"></span>
                 </div>
                 <div
@@ -33,7 +34,8 @@
                 <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
             </div>
             <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                <div class="rounded-full @if ($utama->business->status == 2) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                <div
+                    class="rounded-full @if ($utama->business->status == 2) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
                     <span class="fa fa-fw fa-signature text-white text-xl"></span>
                 </div>
                 <div
@@ -49,7 +51,8 @@
                     <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                 </div>
                 <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                    <div class="rounded-full @if ($utama->business->status == 3) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                    <div
+                        class="rounded-full @if ($utama->business->status == 3) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
                         <span class="fa fa-fw fa-clipboard-check text-white text-xl"></span>
                     </div>
                     <div
@@ -63,7 +66,8 @@
                     <span class="fa fa-fw fa-arrow-right text-gray-400 text-xl"></span>
                 </div>
                 <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
-                    <div class="rounded-full @if ($utama->business->status == 4) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
+                    <div
+                        class="rounded-full @if ($utama->business->status == 4) bg-mangga-orange-300 @else bg-gray-400 @endif p-4">
                         <span class="fa fa-fw fa-check-double text-white text-xl"></span>
                     </div>
                     <div
@@ -171,6 +175,41 @@
             </table>
         </div>
     @endif
+    <form action="{{ route('admin.utama.toko', $utama->id) }}" method="post" enctype="multipart/form-data">
+        @csrf
+        @method("PATCH")
+        <div class="card px-8 py-6 flex flex-col gap-y-4 mb-4">
+            <div class="text-2xl font-bold underline">Informasi Toko Mangga</div>
+            <label class="font-bold text-xl self-start">Deskripsi Bisnis*</label>
+            <textarea name="description" id="" cols="30" rows="7" class="form-pengajuan-input"
+                required>{{ $utama->toko_description }}</textarea>
+            <label class="font-bold text-xl self-start">Username Instagram Usaha*</label>
+            <input type="text" name="instagram" class="form-input" required value="{{ $utama->instagram }}"
+                placeholder="Contoh: petrokimiagresik_official">
+            <label class="font-bold text-xl self-start">Link Google Maps*</label>
+            <input type="text" name="google_maps" class="form-input" required placeholder="https://goo.gl/..."
+                value="{{ $utama->business->user->google_maps }}">
+            <label class="font-bold text-xl self-start">Foto Usaha</label>
+            <div class="flex flex-col gap-y-4">
+                <div class="flex items-end gap-x-4">
+                    <img @if ($utama->business->logo) src="{{ asset('uploads/mangga/logos/' . $utama->business->logo) }}" @else src="{{ asset('assets/svg/empty-image.svg') }}" @endif
+                        class="w-48 h-48 rounded-lg" id="preview-logo-usaha">
+                    <div class="flex flex-col gap-y-2">
+                        <input type="file" name="logo" id="logo-usaha" class="invisible w-2"
+                            onchange="loadFile(event, 'logo-usaha')" accept="image/*">
+                        <label for="logo-usaha" class="mangga-button-green cursor-pointer">Unggah Foto
+                            Usaha</label>
+                        <span>*Ukuran File Unggahan Maksimal 2 MB</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex">
+                <button type="submit" class="mangga-button-green cursor-pointer">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </form>
     <div class="flex items-center justify-between mb-4">
         <div class="text-2xl font-bold">Detail Pengajuan</div>
         <a target="blank" href="{{ route('admin.utama.download', $utama->id) }}" class="text-lg hover:text-gray-700">
@@ -188,7 +227,8 @@
                 <span class="text-gray-600">Tanggal Penerimaan</span>
                 @if ($utama->accepted_by_surveyor_at)
                     <span>{{ $utama->accepted_by_surveyor_at->format('d/m/Y') }}</span>
-                @else -
+                @else
+                    -
                 @endif
             </div>
             <div class="flex flex-col">
@@ -268,7 +308,8 @@
                                 href="{{ asset('uploads/mangga/certificate/' . $member->certificate) }}">Download
                                 Sertifikat</a>
                         </span>
-                    @else -
+                    @else
+                        -
                     @endif
                 </div>
             </div>
@@ -370,10 +411,12 @@
                     <div class="flex items-center gap-x-2">
                         <span class="fa fa-fw fa-check-square"></span>
                         <span>
-                            <a target="blank" href="{{ asset('uploads/mangga/ktp/' . $utama->ktp) }}" class="underline">
+                            <a target="blank" href="{{ asset('uploads/mangga/ktp/' . $utama->ktp) }}"
+                                class="underline">
                                 KTP
                             </a> dan <a target="blank"
-                                href="{{ asset('uploads/mangga/ktpselfie/' . $utama->ktp_selfie) }}" class="underline">
+                                href="{{ asset('uploads/mangga/ktpselfie/' . $utama->ktp_selfie) }}"
+                                class="underline">
                                 Selfie KTP
                             </a>
                         </span>
@@ -381,7 +424,8 @@
                     <div class="flex items-center gap-x-2">
                         <span class="fa fa-fw fa-check-square"></span>
                         <span>
-                            <a target="blank" href="{{ asset('uploads/mangga/kk/' . $utama->kk) }}" class="underline">
+                            <a target="blank" href="{{ asset('uploads/mangga/kk/' . $utama->kk) }}"
+                                class="underline">
                                 KK
                             </a> dan <a target="blank" href="{{ asset('uploads/mangga/kkselfie/' . $utama->kk_selfie) }}"
                                 class="underline">
@@ -425,7 +469,8 @@
             <div class="flex flex-col">
                 <span class="text-gray-600">Pemasaran</span>
                 <span>{{ $utama->marketing->name }} @if ($utama->marketing_id == 3)
-                        Ekspor ke {{ $utama->export_to }} @endif </span>
+                        Ekspor ke {{ $utama->export_to }}
+                    @endif </span>
             </div>
             <div class="flex flex-col">
                 <span class="text-gray-600">Sektor</span>
@@ -452,10 +497,12 @@
                 <span>
                     @if ($utama->business->commodities)
                         @foreach ($utama->business->commodities as $c)
-                            @if ($loop->iteration != 1),
+                            @if ($loop->iteration != 1)
+                                ,
                             @endif{{ $c->name }}
                         @endforeach
-                    @else -
+                    @else
+                        -
                     @endif
                 </span>
             </div>
@@ -519,7 +566,7 @@
                     <tr class="font-bold">
                         <td>Jumlah</td>
                         <td>Rp.
-                            {{ number_format($utama->treasury + $utama->credit + $utama->production_tools + $utama->savings + $utama->supply + $utama->vehicle, 0, ',', '.') }}
+                            {{ number_format($utama->treasury + $utama->credit + $utama->production_tools + $utama->savings + $utama->supply + $utama->vehicle,0,',','.') }}
                         </td>
                     </tr>
                 </table>
@@ -649,130 +696,139 @@
 @endsection
 
 @section('scripts')
-<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready(function() {
-        var table = $('#example').DataTable({
-                responsive: true
-            })
-            .columns.adjust()
-            .responsive.recalc();
-    });
-
-</script>
+    <script>
+        var loadFile = function(event, id) {
+            if ($('#' + id)[0].files[0].size > 2097152) {
+                alert("Ukuran gambar tidak bisa melebihi 2 MB!");
+                $('#' + id).val(null);
+            } else {
+                $('#preview-' + id).attr('src', URL.createObjectURL(event.target.files[0]));
+            }
+        };
+    </script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var table = $('#example').DataTable({
+                    responsive: true
+                })
+                .columns.adjust()
+                .responsive.recalc();
+        });
+    </script>
 @endsection
 
 @section('head')
-<!--Regular Datatables CSS-->
-<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-<!--Responsive Extension Datatables CSS-->
-<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+    <!--Regular Datatables CSS-->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!--Responsive Extension Datatables CSS-->
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 
 
-<!--Datatables -->
-<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-<style>
-    /*Form fields*/
-    .dataTables_wrapper select,
-    .dataTables_wrapper .dataTables_filter input {
-        color: #4a5568;
-        /*text-gray-700*/
-        padding-left: 1rem;
-        /*pl-4*/
-        padding-right: 1rem;
-        /*pl-4*/
-        padding-top: .5rem;
-        /*pl-2*/
-        padding-bottom: .5rem;
-        /*pl-2*/
-        line-height: 1.25;
-        /*leading-tight*/
-        border-width: 2px;
-        /*border-2*/
-        border-radius: .25rem;
-        border-color: #edf2f7;
-        /*border-gray-200*/
-        background-color: #edf2f7;
-        /*bg-gray-200*/
-    }
+    <!--Datatables -->
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <style>
+        /*Form fields*/
+        .dataTables_wrapper select,
+        .dataTables_wrapper .dataTables_filter input {
+            color: #4a5568;
+            /*text-gray-700*/
+            padding-left: 1rem;
+            /*pl-4*/
+            padding-right: 1rem;
+            /*pl-4*/
+            padding-top: .5rem;
+            /*pl-2*/
+            padding-bottom: .5rem;
+            /*pl-2*/
+            line-height: 1.25;
+            /*leading-tight*/
+            border-width: 2px;
+            /*border-2*/
+            border-radius: .25rem;
+            border-color: #edf2f7;
+            /*border-gray-200*/
+            background-color: #edf2f7;
+            /*bg-gray-200*/
+        }
 
-    /*Row Hover*/
-    table.dataTable.hover tbody tr:hover,
-    table.dataTable.display tbody tr:hover {
-        background-color: #ebf4ff;
-        /*bg-indigo-100*/
-    }
+        /*Row Hover*/
+        table.dataTable.hover tbody tr:hover,
+        table.dataTable.display tbody tr:hover {
+            background-color: #ebf4ff;
+            /*bg-indigo-100*/
+        }
 
-    /*Pagination Buttons*/
-    .dataTables_wrapper .dataTables_paginate .paginate_button {
-        font-weight: 700;
-        /*font-bold*/
-        border-radius: .25rem;
-        /*rounded*/
-        border: 1px solid transparent;
-        /*border border-transparent*/
-    }
+        /*Pagination Buttons*/
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            font-weight: 700;
+            /*font-bold*/
+            border-radius: .25rem;
+            /*rounded*/
+            border: 1px solid transparent;
+            /*border border-transparent*/
+        }
 
-    /*Pagination Buttons - Current selected */
-    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-        color: #fff !important;
-        /*text-white*/
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-        /*shadow*/
-        font-weight: 700;
-        /*font-bold*/
-        border-radius: .25rem;
-        /*rounded*/
-        background: #0f7144 !important;
-        /*bg-indigo-500*/
-        border: 1px solid transparent;
-        /*border border-transparent*/
-    }
+        /*Pagination Buttons - Current selected */
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            color: #fff !important;
+            /*text-white*/
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+            /*shadow*/
+            font-weight: 700;
+            /*font-bold*/
+            border-radius: .25rem;
+            /*rounded*/
+            background: #0f7144 !important;
+            /*bg-indigo-500*/
+            border: 1px solid transparent;
+            /*border border-transparent*/
+        }
 
-    /*Pagination Buttons - Hover */
-    .dataTables_wrapper .dataTables_paginate .paginate_button:hover,
-    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
-        color: #fff !important;
-        /*text-white*/
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-        /*shadow*/
-        font-weight: 700;
-        /*font-bold*/
-        border-radius: .25rem;
-        background: #0f7144 !important;
-        border: 1px solid transparent;
-        /*border border-transparent*/
-        cursor: pointer;
-    }
+        /*Pagination Buttons - Hover */
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover,
+        .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
+            color: #fff !important;
+            /*text-white*/
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+            /*shadow*/
+            font-weight: 700;
+            /*font-bold*/
+            border-radius: .25rem;
+            background: #0f7144 !important;
+            border: 1px solid transparent;
+            /*border border-transparent*/
+            cursor: pointer;
+        }
 
-    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-        color: #fff !important;
-        cursor: default;
-    }
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+            color: #fff !important;
+            cursor: default;
+        }
 
-    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
-        cursor: pointer;
-    }
+        .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+            cursor: pointer;
+        }
 
-    /*Add padding to bottom border */
-    table.dataTable.no-footer {
-        border-bottom: 1px solid #e2e8f0;
-        /*border-b-1 border-gray-300*/
-        margin-top: 0.75em;
-        margin-bottom: 0.75em;
-    }
+        /*Add padding to bottom border */
+        table.dataTable.no-footer {
+            border-bottom: 1px solid #e2e8f0;
+            /*border-b-1 border-gray-300*/
+            margin-top: 0.75em;
+            margin-bottom: 0.75em;
+        }
 
-    /*Change colour of responsive icon*/
-    table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
-    table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-        background-color: #0f7144 !important;
-        /*bg-indigo-500*/
-    }
+        /*Change colour of responsive icon*/
+        table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+        table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+            background-color: #0f7144 !important;
+            /*bg-indigo-500*/
+        }
 
-    .paginate_button,
-    .paginate_button:hover {
-        color: #ffffff !important;
-    }
+        .paginate_button,
+        .paginate_button:hover {
+            color: #ffffff !important;
+        }
 
-</style>
+    </style>
 @endsection

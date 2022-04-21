@@ -91,6 +91,7 @@ Route::group(['middleware' => ['user', 'verified'], 'as' => 'user.'], function (
     Route::get('/muda/{muda}/preview', [MudaController::class, 'preview'])->name('muda.preview');
     Route::get('/muda/{muda}/download', [MudaController::class, 'download'])->name('muda.download');
     Route::resource('utama', UtamaController::class);
+    Route::patch('/utama/{utama}/toko', [UtamaController::class, 'toko'])->name('utama.toko');
     Route::patch('/utama/{utama}/ttd', [UtamaController::class, 'ttd'])->name('utama.ttd');
     Route::get('/utama/{utama}/preview', [UtamaController::class, 'preview'])->name('utama.preview');
     Route::get('/utama/{utama}/download', [UtamaController::class, 'download'])->name('utama.download');
@@ -114,6 +115,7 @@ Route::group(['middleware' => ['admin'], 'as' => 'admin.', 'prefix' => 'admin'],
     Route::get('/utama/{utama}/download', [AdminUtamaController::class, 'download'])->name('utama.download');
     Route::get('/utama/{utama}/preview', [AdminUtamaController::class, 'preview'])->name('utama.preview');
     Route::post('/utama/refresh-kelompok', [AdminUtamaController::class, 'refresh_kelompok'])->name('utama.refreshkelompok');
+    Route::patch('/utama/{utama}/toko', [AdminUtamaController::class, 'toko'])->name('utama.toko');
 
     Route::get('/program/muda/{business}', [AdminPageController::class, 'mangga_muda'])->name('program.muda');
     Route::resource('muda', AdminMudaController::class);

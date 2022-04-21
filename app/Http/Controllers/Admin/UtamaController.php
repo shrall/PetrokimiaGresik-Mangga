@@ -902,7 +902,7 @@ class UtamaController extends Controller
 
     public function approve_pimpinan(Utama $utama)
     {
-        if ($utama->user_user_role == 2 || $utama->user_user_role == 4) {
+        if (Auth::user()->user_role == 2 || Auth::user()->user_role == 4) {
             $utama->business->update([
                 'status' => 4,
                 'business_status_id' => 4,
@@ -910,7 +910,7 @@ class UtamaController extends Controller
                 'rejected_at' => null,
             ]);
             BusinessLog::create([
-                'description' => 'Disetujui (Pimpinan) oleh ' . $utama->user_first_name . ' ' . $utama->user_last_name,
+                'description' => 'Disetujui (Pimpinan) oleh ' . Auth::user()->first_name . ' ' . Auth::user()->last_name,
                 'business_id' => $utama->business->id,
                 'admin_id' => Auth::id()
             ]);
@@ -926,7 +926,7 @@ class UtamaController extends Controller
             'rejected_at' => Carbon::now(),
         ]);
         BusinessLog::create([
-            'description' => 'Ditolak oleh ' . $utama->user_first_name . ' ' . $utama->user_last_name,
+            'description' => 'Ditolak oleh ' . Auth::user()->first_name . ' ' . Auth::user()->last_name,
             'business_id' => $utama->business->id,
             'admin_id' => Auth::id()
         ]);
@@ -949,5 +949,25 @@ class UtamaController extends Controller
         } else {
             return $temp;
         }
+    }
+    public function toko(Request $request, Utama $utama)
+    {
+        if ($request->logo) {
+            $logo = 'mangga-muda-' . time() . '-' . $request['logo']->getClientOriginalName();
+            $request->logo->move(public_path('uploads/mangga/logos'), $logo);
+        } else {
+            $logo = $utama->business->logo;
+        }
+        $utama->business->user->update([
+            'google_maps' => $request->google_maps
+        ]);
+        $utama->update([
+            'instagram' => $request->instagram,
+            'toko_description' => $request->description
+        ]);
+        $utama->business->update([
+            'logo' => $logo
+        ]);
+        return redirect()->route('admin.program.utama', $utama->business->id);
     }
 }

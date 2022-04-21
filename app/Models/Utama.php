@@ -86,7 +86,9 @@ class Utama extends Model
         'business_form_id',
         'establishment_status_id',
         'distribution_type_id',
-        'marketing_id'
+        'marketing_id',
+        'instagram',
+        'toko_description'
     ];
     public function business()
     {

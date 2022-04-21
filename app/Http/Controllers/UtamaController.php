@@ -8,6 +8,7 @@ use App\Models\BusinessCommodity;
 use App\Models\BusinessPlan;
 use App\Models\BusinessProduct;
 use App\Models\People;
+use App\Models\User;
 use App\Models\Utama;
 use App\Models\UtamaMember;
 use Carbon\Carbon;
@@ -591,6 +592,27 @@ class UtamaController extends Controller
             'business_status_id' => 2
         ]);
 
+        return redirect()->route('user.status_ajuan');
+    }
+    public function toko(Request $request, Utama $utama)
+    {
+        if ($request->logo) {
+            $logo = 'mangga-muda-' . time() . '-' . $request['logo']->getClientOriginalName();
+            $request->logo->move(public_path('uploads/mangga/logos'), $logo);
+        } else {
+            $logo = $utama->business->logo;
+        }
+        $user = User::find(Auth::id());
+        $user->update([
+            'google_maps' => $request->google_maps
+        ]);
+        $utama->update([
+            'instagram' => $request->instagram,
+            'toko_description' => $request->description
+        ]);
+        $utama->business->update([
+            'logo' => $logo
+        ]);
         return redirect()->route('user.status_ajuan');
     }
 }

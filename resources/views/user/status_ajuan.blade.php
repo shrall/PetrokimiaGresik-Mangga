@@ -7,7 +7,7 @@
             @include('inc.user_sidebar')
         </div>
         <div class="col-span-12 xl:col-span-9 h-full">
-            <div class="flex flex-col card items-center justify-center gap-y-4 px-8 py-6">
+            <div class="flex flex-col card items-center justify-center gap-y-4 px-8 py-6 mb-4">
                 <div class="text-2xl font-bold mb-8">Status Pengajuan</div>
                 <div class="flex flex-col xl:flex-row items-center justify-center gap-x-2">
                     <div class="flex flex-row xl:flex-col items-center justify-center gap-y-2">
@@ -193,6 +193,43 @@
                     </form>
                 @endif
             </div>
+            @if (Auth::user()->referral_code != 'mamud')
+                <form action="{{ route('user.utama.toko', $utama->id) }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method("PATCH")
+                    <div class="card px-8 py-6 flex flex-col gap-y-4 mb-4">
+                        <div class="text-2xl font-bold underline">Informasi Toko Mangga</div>
+                        <label class="font-bold text-xl self-start">Deskripsi Bisnis*</label>
+                        <textarea name="description" id="" cols="30" rows="7" class="form-pengajuan-input"
+                            required>{{ $utama->toko_description }}</textarea>
+                        <label class="font-bold text-xl self-start">Username Instagram Usaha*</label>
+                        <input type="text" name="instagram" class="form-input" required value="{{ $utama->instagram }}"
+                            placeholder="Contoh: petrokimiagresik_official">
+                        <label class="font-bold text-xl self-start">Link Google Maps*</label>
+                        <input type="text" name="google_maps" class="form-input" required
+                            placeholder="https://goo.gl/..." value="{{ Auth::user()->google_maps }}">
+                        <label class="font-bold text-xl self-start">Foto Usaha</label>
+                        <div class="flex flex-col gap-y-4">
+                            <div class="flex items-end gap-x-4">
+                                <img @if ($utama->business->logo) src="{{ asset('uploads/mangga/logos/' . $utama->business->logo) }}" @else src="{{ asset('assets/svg/empty-image.svg') }}" @endif
+                                    class="w-48 h-48 rounded-lg" id="preview-logo-usaha">
+                                <div class="flex flex-col gap-y-2">
+                                    <input type="file" name="logo" id="logo-usaha" class="invisible w-2"
+                                        onchange="loadFile(event, 'logo-usaha')" accept="image/*">
+                                    <label for="logo-usaha" class="mangga-button-green cursor-pointer">Unggah Foto
+                                        Usaha</label>
+                                    <span>*Ukuran File Unggahan Maksimal 2 MB</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <button type="submit" class="mangga-button-green cursor-pointer">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            @endif
             @if (Auth::user()->referral_code == 'mamud')
                 <div class="flex items-center justify-between mb-4">
                     <div class="text-2xl font-bold">Detail Pengajuan</div>
@@ -990,5 +1027,13 @@
 
 @section('scripts')
     <script>
+        var loadFile = function(event, id) {
+            if ($('#' + id)[0].files[0].size > 2097152) {
+                alert("Ukuran gambar tidak bisa melebihi 2 MB!");
+                $('#' + id).val(null);
+            } else {
+                $('#preview-' + id).attr('src', URL.createObjectURL(event.target.files[0]));
+            }
+        };
     </script>
 @endsection
