@@ -95,6 +95,7 @@ Route::group(['middleware' => ['user', 'verified'], 'as' => 'user.'], function (
     Route::patch('/utama/{utama}/ttd', [UtamaController::class, 'ttd'])->name('utama.ttd');
     Route::get('/utama/{utama}/preview', [UtamaController::class, 'preview'])->name('utama.preview');
     Route::get('/utama/{utama}/download', [UtamaController::class, 'download'])->name('utama.download');
+    Route::get('/utama/{utama}/angsuran', [UtamaController::class, 'angsuran'])->name('utama.angsuran');
     Route::resource('madu', MaduController::class);
 });
 

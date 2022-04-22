@@ -96,7 +96,7 @@ class UtamaEvaluation extends Model
         return $this->belongsTo(Sector::class);
     }
 
-    public function installment_type()
+    public function installment_typed()
     {
         return $this->belongsTo(InstallmentType::class, 'installment_type', 'id');
     }

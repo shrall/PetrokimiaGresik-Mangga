@@ -52,7 +52,7 @@ class UtamaEvaluationController extends Controller
      */
     public function store(Request $request)
     {
-        $business = Business::where('id', 1)->first();
+        $business = Business::where('id', $request->business_id)->first();
         $evaluation = UtamaEvaluation::create([
             'utama_id' => $business->utama->id,
             'installment_type' => $request->installment_type,
@@ -155,7 +155,7 @@ class UtamaEvaluationController extends Controller
                 'admin_id' => Auth::user()->id
             ]);
         }
-        return redirect()->route('admin.program.utama', $business->utama->id);
+        return redirect()->route('admin.program.utama', $business->id);
     }
 
     /**

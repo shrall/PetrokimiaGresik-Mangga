@@ -51,7 +51,7 @@
                         <span class="text-3xl font-semibold mr-auto">
                             {{ $business->name }}
                         </span>
-                        <div class="flex items-center gap-x-2 text-xl bg-white rounded-b-lg">
+                        <div class="flex items-center gap-x-2 text-xl bg-white rounded-b-lg mb-2">
                             <a href="https://instagram.com/p/{{ $business->utama->instagram }}">
                                 <span class="fab fa-fw fa-instagram text-3xl cursor-pointer hover:text-gray-900"></span>
                             </a>
@@ -59,7 +59,7 @@
                                 <span class="fa fa-fw fa-compass text-3xl cursor-pointer hover:text-gray-900"></span>
                             </a>
                         </div>
-                        <div>{{ $business->utama->toko_description }}</div>
+                        <div>Deskripsi Usaha:<br>{{ $business->utama->toko_description }}</div>
                     </div>
                 </div>
             </div>

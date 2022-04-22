@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UtamaAngsuranExport;
 use App\Models\Business;
 use App\Models\BusinessAsset;
 use App\Models\BusinessCommodity;
@@ -16,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 use \PDF;
 
 class UtamaController extends Controller
@@ -614,5 +616,9 @@ class UtamaController extends Controller
             'logo' => $logo
         ]);
         return redirect()->route('user.status_ajuan');
+    }
+    function angsuran(Request $request, Utama $utama)
+    {
+        return Excel::download(new UtamaAngsuranExport($utama->id), 'utama_' . $utama->id . '_angsuran' . Carbon::now() . '.xlsx');
     }
 }
