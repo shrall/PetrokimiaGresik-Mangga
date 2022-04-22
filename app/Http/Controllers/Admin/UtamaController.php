@@ -611,8 +611,6 @@ class UtamaController extends Controller
             "district_id" => $request->district,
             "village_id" => $request->village,
             "postal_code" => $request->postal_code,
-            "status" => 1,
-            'business_status_id' => 1
         ]);
 
         $utama->update([

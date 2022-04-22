@@ -342,7 +342,6 @@ class MudaController extends Controller
             "district_id" => $request->district,
             "village_id" => $request->village,
             "postal_code" => $request->postal_code,
-            "status" => $muda->business->status,
         ]);
         $muda->update([
             "business_title" => $request->business_title,

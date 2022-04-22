@@ -117,8 +117,6 @@ class MaduController extends Controller
         $madu->update([
             'name' => $request->name,
             'description' => $request->description,
-            'status' => 1,
-            'business_status_id' => 1,
             'image' => $image,
             'link' => $request->link,
         ]);
