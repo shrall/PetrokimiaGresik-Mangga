@@ -7,6 +7,12 @@
             @include('inc.user_sidebar')
         </div>
         <div class="col-span-12 xl:col-span-9 h-screen">
+            <div class="flex items-center justify-between mb-4">
+                <div class="text-2xl font-bold">Riwayat Angsuran</div>
+                <a class="mangga-button-green cursor-pointer">
+                    <span class="fa fa-fw fa-file-upload mr-2"></span>Upload Bukti Pembayaran
+                </a>
+            </div>
             <div class="card px-8 py-6 w-full hidden md:block">
                 <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>

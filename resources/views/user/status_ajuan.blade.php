@@ -1088,51 +1088,54 @@ function rupiah($angka)
                                         <th>Pokok</th>
                                         <th>Jasa</th>
                                         <th>Total</th>
-                                        <th>Stat</th>
                                     </tr>
                                     <tr>
                                         <th colspan="2">Normal</th>
                                         <th>Rp. {{ rupiah($utama->request_amount) }}</th>
                                         @php
-                                            if ($utama->evaluation->loan_period < 12) {
-                                                $service = (($utama->evaluation->loan_period % 12) * 24) / 100;
-                                            } elseif ($utama->evaluation->loan_period >= 36) {
-                                                $service = 981 / 100 + (($utama->evaluation->loan_period % 36) * 24) / 100;
-                                            } elseif ($utama->evaluation->loan_period >= 24) {
-                                                $service = 654 / 100 + (($utama->evaluation->loan_period % 24) * 24) / 100;
-                                            } elseif ($utama->evaluation->loan_period >= 12) {
-                                                $service = 327 / 100 + (($utama->evaluation->loan_period % 12) * 24) / 100;
-                                            }
-                                            $jasa = $utama->request_amount * $service;
-                                            $jasa = $jasa / 100;
+                                            $totalpinjam = $utama->request_amount;
+                                            $sisa = 0;
+                                            $angsuran = ($utama->request_amount * (5 / 1000)) / (1 - 1 / pow(1 + 5 / 1000, $utama->evaluation->loan_period));
+                                            $angsuran_bulet = floor($angsuran / 100) * 100;
+                                            $totalangsuran = ceil($angsuran_bulet * $utama->evaluation->loan_period / 10000) * 10000;
                                         @endphp
-                                        <th>Rp. {{ rupiah($jasa) }}</th>
-                                        <th>Rp. {{ rupiah($jasa + $utama->request_amount) }}</th>
                                         <th></th>
+                                        <th>Rp. {{ rupiah($totalangsuran) }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @for ($i = 1; $i <= $utama->evaluation->loan_period; $i++)
+                                        @php
+                                            $sisa += $angsuran - $angsuran_bulet;
+                                            $jasa = ($totalpinjam * 5) / 1000;
+                                            $sisa += $jasa - round($jasa / 100) * 100;
+                                        @endphp
+                                        @if ($i == $utama->evaluation->loan_period)
+                                            @php
+                                                $angsuran_bulet += $totalangsuran - $angsuran_bulet * $utama->evaluation->loan_period;
+                                            @endphp
+                                        @endif
                                         <tr>
                                             <td>{{ $i }}</td>
                                             <td>{{ date('d-M-y',strtotime('+' . $i . ' month', strtotime('midnight first day of last month')) + 60 * 60 * 24 * 4) }}
                                             </td>
                                             <td>Rp.
-                                                {{ rupiah($utama->request_amount / $utama->evaluation->loan_period) }}
+                                                {{ rupiah($angsuran_bulet - round($jasa / 100) * 100) }}
                                             </td>
-                                            <td>Rp. {{ rupiah($jasa / $utama->evaluation->loan_period) }}
+                                            <td>Rp. {{ rupiah(round($jasa / 100) * 100) }}
                                             </td>
-                                            <td>Rp.
-                                                {{ rupiah(($jasa + $utama->request_amount) / $utama->evaluation->loan_period) }}
+                                            <td>Rp. {{ rupiah($angsuran_bulet) }}
                                             </td>
-                                            <td>N</td>
                                         </tr>
+                                        @php
+                                            $totalpinjam -= $angsuran_bulet - round($jasa / 100) * 100;
+                                        @endphp
                                     @endfor
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    @else
+                @else
                     <div id="menu-angsuran" class="hidden page-menu">
                         <div class="flex items-center justify-center mt-4">
                             <div class="text-3xl">Pengajuan Anda Belum Di Approve.</div>
