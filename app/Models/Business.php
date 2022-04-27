@@ -71,6 +71,10 @@ class Business extends Model
     {
         return $this->hasOne(Utama::class, 'business_id', 'id');
     }
+    public function angsurans()
+    {
+        return $this->hasMany(BusinessAngsuran::class, 'business_id', 'id');
+    }
     public function logs()
     {
         return $this->hasMany(BusinessLog::class, 'business_id', 'id');

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BusinessAngsuranController as AdminBusinessAngsuranController;
 use App\Http\Controllers\Admin\BusinessController;
 use App\Http\Controllers\admin\MaduController as AdminMaduController;
 use App\Http\Controllers\Admin\MediaController as AdminMediaController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Admin\PeopleController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\UtamaController as AdminUtamaController;
 use App\Http\Controllers\Admin\UtamaEvaluationController;
+use App\Http\Controllers\BusinessAngsuranController;
 use App\Http\Controllers\MaduController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\MudaController;
@@ -97,6 +99,8 @@ Route::group(['middleware' => ['user', 'verified'], 'as' => 'user.'], function (
     Route::get('/utama/{utama}/download', [UtamaController::class, 'download'])->name('utama.download');
     Route::get('/utama/{utama}/angsuran', [UtamaController::class, 'angsuran'])->name('utama.angsuran');
     Route::resource('madu', MaduController::class);
+
+    Route::resource('angsuran', BusinessAngsuranController::class);
 });
 
 Route::group(['middleware' => ['user', 'verified']], function () {
@@ -149,6 +153,9 @@ Route::group(['middleware' => ['admin'], 'as' => 'admin.', 'prefix' => 'admin'],
     Route::resource('business', BusinessController::class);
 
     Route::resource('user', AdminUserController::class);
+
+    Route::get('/angsuran/{business_angsuran}/approve', [AdminBusinessAngsuranController::class, 'approve'])->name('angsuran.approve');
+    Route::get('/angsuran/{business_angsuran}/reject', [AdminBusinessAngsuranController::class, 'reject'])->name('angsuran.reject');
 });
 
 Route::get('/eee', function () {
