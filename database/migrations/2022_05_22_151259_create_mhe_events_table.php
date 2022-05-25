@@ -17,7 +17,7 @@ class CreateMheEventsTable extends Migration
             $table->id();
             $table->string('name');
             $table->timestamp('start');
-            $table->timestamp('end');
+            $table->timestamp('end')->nullable();
             $table->text('desc')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
