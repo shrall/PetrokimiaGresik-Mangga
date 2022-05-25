@@ -1,22 +1,22 @@
 @extends('layouts.mhe')
 
 @section('content')
-    <div class="flex bg-transparent mb-36">
-        <div class="flex flex-col justify-center gap-y-4 pl-24">
+    <div class="flex flex-col xl:flex-row bg-transparent mb-36">
+        <div class="flex flex-col justify-center gap-y-4 px-8 xl:pl-24 xl:pr-0">
             <div class="font-lb text-5xl text-mangga-green-500">Mangga Hybrid Expo</div>
             <div class="">Lorem ipsum is simply dummy text of tthe printing and typesetting industry. Lorem
                 ipsum has been the industry's standard dummy text eversince the 1500s.</div>
             <a href="{{ route('mhe.register') }}" class="mangga-button-green text-xl mr-auto">Daftar</a>
         </div>
-        <img src="{{ asset('assets/svg/mhe-home.svg') }}" class="ml-auto z-20">
-        <div class="bg-mangga-yellow-400 w-screen h-36 absolute bottom-0 z-10 "></div>
+        <img src="{{ asset('assets/svg/mhe-home.svg') }}" class="xl:ml-auto z-20">
+        <div class="bg-mangga-yellow-400 w-screen h-36 absolute bottom-0 z-10 hidden xl:block"></div>
     </div>
     <div class="flex flex-col items-center gap-y-8">
-        <div class="flex flex-col items-center gap-y-2">
+        <div class="flex flex-col items-center gap-y-2 px-4 xl:px-0">
             <div class="font-lb text-5xl text-mangga-green-500">Tahap Pendaftaran</div>
             <div>Berikut adalah alur pendaftaran Mangga Hybrid Expo</div>
         </div>
-        <div class="border border-gray-400 bg-white mb-4 grid grid-cols-12 items-center px-2 py-8 gap-x-2 gap-y-8 w-1/2">
+        <div class="border border-gray-400 bg-white mb-4 grid grid-cols-12 items-center mx-4 xl:mx-0 px-2 py-8 gap-x-2 gap-y-8 xl:w-1/2">
             <div class="col-span-2 flex justify-center">
                 <img src="{{asset('assets/svg/mhe-1.svg')}}" class="w-16 h-16 rounded-full bg-gray-200 p-2">
             </div>

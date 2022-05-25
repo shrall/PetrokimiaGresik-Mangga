@@ -9,8 +9,8 @@
 <div class="font-pn px-8 py-4 bg-light-200 text-lg block xl:hidden" id="navbar-mobile">
     <div class="flex items-center gap-x-4 font-pn text-lg mb-4">
         <img src="{{ asset('assets/svg/mangga-logo-mini.svg') }}" width="40px" class="mr-auto">
+        <a href="{{ route('mhe.register') }}" class="mangga-button-green ml-auto">Daftar</a>
     </div>
-    <a href="{{ route('mhe.register') }}" class="mangga-button-green ml-auto">Daftar</a>
 </div>
 
 <script>

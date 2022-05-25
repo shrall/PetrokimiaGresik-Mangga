@@ -5,10 +5,10 @@
         <div class="font-lb text-5xl text-mangga-green-500 mb-24">Terima Kasih Telah Tertarik Untuk Mendaftar</div>
         <div class="text-2xl mb-4">Kode Referensi:</div>
         <div class="text-5xl mb-12 border-dashed border border-gray-400 bg-white px-24 py-2" id="ref-id">012030213</div>
-        <div class="text-2xl mx-48">Silahkan melakukan transfer ke rekening rek. 170823823 atas nama [nanti ini perlu
+        <div class="text-2xl xl:mx-48">Silahkan melakukan transfer ke rekening rek. 170823823 atas nama [nanti ini perlu
             diganti] dan masukkan kode referensi di atas pada berita acara.</div>
     </div>
-    <div class="flex flex-col items-center gap-y-4 py-12 bg-gray-200">
+    <div class="flex flex-col items-center gap-y-4 py-12 bg-gray-200 px-4 xl:px-0">
         <div class="font-lb text-5xl text-mangga-green-500">Form Pendaftaran</div>
         <form method="POST" action="{{ route('mhe_transaction.store') }}" enctype="multipart/form-data">
             @csrf
