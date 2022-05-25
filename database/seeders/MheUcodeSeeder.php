@@ -14,7 +14,7 @@ class MheUcodeSeeder extends Seeder
      */
     public function run()
     {
-        $csvFile = fopen(public_path("unique.csv"), "r");
+        $csvFile = fopen(base_path("public/unique.csv"), "r");
 
         $firstline = true;
         while (($data = fgetcsv($csvFile, 6000, ",")) !== FALSE) {
