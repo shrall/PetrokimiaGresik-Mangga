@@ -82,6 +82,12 @@
                         </a>
                     </div>
                     <div class="flex items-center gap-x-2 hover:text-gray-100 cursor-pointer">
+                        <span class="fa fa-fw fa-ticket text-3xl"></span>
+                        <a href="{{ route('admin.mhe_event.index') }}">
+                            <div class="text-xl">MHE</div>
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-x-2 hover:text-gray-100 cursor-pointer">
                         <span class="fa fa-fw fa-paste text-3xl"></span>
                         <a href="{{ route('admin.evaluation.index') }}">
                             <div class="text-xl">Evaluasi</div>

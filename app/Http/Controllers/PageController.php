@@ -33,7 +33,8 @@ class PageController extends Controller
     }
     public function toko_mangga()
     {
-        $businesses = Business::where('business_status_id', '>', 3)->where('business_status_id', '!=', 5)->whereHas('utama')->paginate(6);
+        $businesses = Business::where('business_status_id', '>', 3)
+            ->where('business_status_id', '!=', 5)->whereHas('utama')->paginate(6);
         return view('landing_page.toko_mangga', compact('businesses'));
     }
     public function faq()
@@ -119,5 +120,17 @@ class PageController extends Controller
     public function mangga_madu_login()
     {
         return view('mangga_madu.login');
+    }
+    public function mhe_home()
+    {
+        return view('mhe.home');
+    }
+    public function mhe_register()
+    {
+        return view('mhe.register');
+    }
+    public function mhe_success()
+    {
+        return view('mhe.success');
     }
 }

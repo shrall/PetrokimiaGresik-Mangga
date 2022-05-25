@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\BusinessAngsuranController as AdminBusinessAngsur
 use App\Http\Controllers\Admin\BusinessController;
 use App\Http\Controllers\admin\MaduController as AdminMaduController;
 use App\Http\Controllers\Admin\MediaController as AdminMediaController;
+use App\Http\Controllers\Admin\MheEventController as AdminMheEventController;
+use App\Http\Controllers\Admin\MheTransactionController as AdminMheTransactionController;
 use App\Http\Controllers\Admin\MudaController as AdminMudaController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\PeopleController;
@@ -13,6 +15,8 @@ use App\Http\Controllers\Admin\UtamaEvaluationController;
 use App\Http\Controllers\BusinessAngsuranController;
 use App\Http\Controllers\MaduController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\MheEventController;
+use App\Http\Controllers\MheTransactionController;
 use App\Http\Controllers\MudaController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\User\PageController as UserPageController;
@@ -45,6 +49,11 @@ Route::get('/proposal', function () {
 Route::get('/proposal/download', [PageController::class, 'checkPDF']);
 
 Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/mhe', [PageController::class, 'mhe_home'])->name('mhe.home');
+Route::get('/mhe-register', [PageController::class, 'mhe_register'])->name('mhe.register');
+Route::get('/mhe-success', [PageController::class, 'mhe_success'])->name('mhe.success');
+Route::resource('mhe_transaction', MheTransactionController::class);
+// Route::resource('mhe_event', MheEventController::class);
 Route::get('/mangga-muda/register', [PageController::class, 'mangga_muda_register'])->name('mangga_muda.register');
 Route::get('/mangga-muda/login', [PageController::class, 'mangga_muda_login'])->name('mangga_muda.login');
 Route::get('/mangga-madu/register', [PageController::class, 'mangga_madu_register'])->name('mangga_madu.register');
@@ -156,6 +165,9 @@ Route::group(['middleware' => ['admin'], 'as' => 'admin.', 'prefix' => 'admin'],
 
     Route::get('/angsuran/{business_angsuran}/approve', [AdminBusinessAngsuranController::class, 'approve'])->name('angsuran.approve');
     Route::get('/angsuran/{business_angsuran}/reject', [AdminBusinessAngsuranController::class, 'reject'])->name('angsuran.reject');
+
+    Route::resource('mhe_event', AdminMheEventController::class);
+    Route::resource('mhe_transaction', AdminMheTransactionController::class);
 });
 
 Route::get('/eee', function () {
