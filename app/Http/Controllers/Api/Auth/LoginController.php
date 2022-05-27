@@ -61,7 +61,7 @@ class LoginController extends Controller
                     $return = [
                         'api_code' => 200,
                         'api_status' => true,
-                        'api_message' => 'Lorem ipsum',
+                        'api_message' => 'Berhasil masuk aplikasi Mangga.',
                         'api_results' => $response->json()
                     ];
                     return SuccessResource::make($return);
@@ -69,7 +69,7 @@ class LoginController extends Controller
                     $return = [
                         'api_code' => Response::HTTP_FORBIDDEN,
                         'api_status' => false,
-                        'api_message' => 'Login Failed',
+                        'api_message' => 'Login gagal, password tidak sesuai.',
                     ];
                     return FailedResource::make($return);
                 }
@@ -77,7 +77,7 @@ class LoginController extends Controller
                 $return = [
                     'api_code' => Response::HTTP_UNAUTHORIZED,
                     'api_status' => false,
-                    'api_message' => 'E-Mail is not verified yet.'
+                    'api_message' => 'Email belum terverifikasi.'
                 ];
                 return FailedResource::make($return);
             }
@@ -85,7 +85,7 @@ class LoginController extends Controller
             $return = [
                 'api_code' => Response::HTTP_UNAUTHORIZED,
                 'api_status' => false,
-                'api_message' => 'E-Mail is not registered yet.'
+                'api_message' => 'Email belum terdaftar pada aplikasi Mangga'
             ];
             return FailedResource::make($return);
         }
@@ -107,7 +107,7 @@ class LoginController extends Controller
         $return = [
             'api_code' => 200,
             'api_status' => true,
-            'api_message' => 'Logged Out.',
+            'api_message' => 'Berhasil logout.',
             'api_results' => null
         ];
         return SuccessResource::make($return);

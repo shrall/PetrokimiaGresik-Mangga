@@ -20,7 +20,7 @@ class MudaTypeController extends Controller
         $return = [
             'api_code' => 200,
             'api_status' => true,
-            'api_message' => 'Lorem ipsum',
+            'api_message' => 'Sukses',
             'api_results' => $types
         ];
         return SuccessResource::make($return);

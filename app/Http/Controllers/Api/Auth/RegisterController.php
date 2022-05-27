@@ -27,6 +27,8 @@ class RegisterController extends Controller
             'city' => 'required|exists:regencies,id',
             'district' => 'required|exists:districts,id',
             'village' => 'required|exists:villages,id',
+        ],[
+            'email.unique' => 'E-Mail sudah terdaftar di database.'
         ]);
         if ($validator->fails()) {
             $return = [
@@ -42,7 +44,7 @@ class RegisterController extends Controller
             $return = [
                 'api_code' => Response::HTTP_BAD_REQUEST,
                 'api_status' => false,
-                'api_message' => 'Lorem ipsum',
+                'api_message' => 'Error.',
             ];
             return FailedResource::make($return);
         } else {
@@ -51,8 +53,8 @@ class RegisterController extends Controller
             $return = [
                 'api_code' => 200,
                 'api_status' => true,
-                'api_message' => 'Lorem ipsum',
-                'api_results' => UserResource::make($user)
+                'api_message' => 'Akun berhasil terbuat!',
+                'api_results' => $user
             ];
             return SuccessResource::make($return);
         }

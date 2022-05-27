@@ -23,7 +23,7 @@ class UserController extends Controller
         $return = [
             'api_code' => 200,
             'api_status' => true,
-            'api_message' => 'Lorem ipsum',
+            'api_message' => 'Sukses',
             'api_results' => UserResource::make(Auth::user())
         ];
         return SuccessResource::make($return);
@@ -36,8 +36,8 @@ class UserController extends Controller
         $return = [
             'api_code' => 200,
             'api_status' => true,
-            'api_message' => 'Lorem ipsum',
-            'api_results' => 'Verification link sent!'
+            'api_message' => 'Sukses',
+            'api_results' => 'Link verifikasi berhasil dikirim.'
         ];
         return SuccessResource::make($return);
     }
@@ -115,7 +115,7 @@ class UserController extends Controller
         $return = [
             'api_code' => 200,
             'api_status' => true,
-            'api_message' => 'Lorem ipsum',
+            'api_message' => 'Akun user berhasil diupdate.',
             'api_results' => $user
         ];
         return SuccessResource::make($return);

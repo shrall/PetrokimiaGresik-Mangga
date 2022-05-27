@@ -18,7 +18,7 @@ class LocationController extends Controller
         $return = [
             'api_code' => 200,
             'api_status' => true,
-            'api_message' => 'Lorem ipsum',
+            'api_message' => 'Sukses',
             'api_results' => $provinces
         ];
         return SuccessResource::make($return);
@@ -29,7 +29,7 @@ class LocationController extends Controller
         $return = [
             'api_code' => 200,
             'api_status' => true,
-            'api_message' => 'Lorem ipsum',
+            'api_message' => 'Sukses',
             'api_results' => $cities
         ];
         return SuccessResource::make($return);
@@ -40,7 +40,7 @@ class LocationController extends Controller
         $return = [
             'api_code' => 200,
             'api_status' => true,
-            'api_message' => 'Lorem ipsum',
+            'api_message' => 'Sukses',
             'api_results' => $districts
         ];
         return SuccessResource::make($return);
@@ -51,7 +51,7 @@ class LocationController extends Controller
         $return = [
             'api_code' => 200,
             'api_status' => true,
-            'api_message' => 'Lorem ipsum',
+            'api_message' => 'Sukses',
             'api_results' => $villages
         ];
         return SuccessResource::make($return);

@@ -22,7 +22,7 @@ class MaduController extends Controller
         $return = [
             'api_code' => 200,
             'api_status' => true,
-            'api_message' => 'Lorem ipsum',
+            'api_message' => 'Sukses',
             'api_results' => $madu
         ];
         return SuccessResource::make($return);
@@ -53,7 +53,7 @@ class MaduController extends Controller
         $return = [
             'api_code' => 200,
             'api_status' => true,
-            'api_message' => 'Lorem ipsum',
+            'api_message' => 'Pengajuan Mangga Madu berhasil disimpan.',
             'api_results' => $madu
         ];
         return SuccessResource::make($return);
@@ -97,7 +97,7 @@ class MaduController extends Controller
         $return = [
             'api_code' => 200,
             'api_status' => true,
-            'api_message' => 'Lorem ipsum',
+            'api_message' => 'Pengajuan Mangga Madu berhasil diperbarui.',
             'api_results' => $madu
         ];
         return SuccessResource::make($return);

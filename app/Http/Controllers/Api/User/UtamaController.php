@@ -28,7 +28,7 @@ class UtamaController extends Controller
         $return = [
             'api_code' => 200,
             'api_status' => true,
-            'api_message' => 'Lorem ipsum',
+            'api_message' => 'Sukses',
             'api_results' => $utama
         ];
         return SuccessResource::make($return);
@@ -342,7 +342,7 @@ class UtamaController extends Controller
         $return = [
             'api_code' => 200,
             'api_status' => true,
-            'api_message' => 'Lorem ipsum',
+            'api_message' => 'Pengajuan Mangga telah berhasil disimpan.',
             'api_results' => $utama
         ];
         return SuccessResource::make($return);
@@ -417,7 +417,7 @@ class UtamaController extends Controller
         $return = [
             'api_code' => 200,
             'api_status' => true,
-            'api_message' => 'Lorem ipsum',
+            'api_message' => 'Pengajuan Mangga telah berhasil diupload.',
             'api_results' => $utama
         ];
         return SuccessResource::make($return);
