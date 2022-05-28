@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\FailedResource;
 use App\Http\Resources\SuccessResource;
 use App\Models\Business;
 use App\Models\BusinessCommodity;
@@ -24,14 +25,23 @@ class UtamaController extends Controller
      */
     public function index()
     {
-        $utama = Auth::user()->businesses->last()->utama;
-        $return = [
-            'api_code' => 200,
-            'api_status' => true,
-            'api_message' => 'Sukses',
-            'api_results' => $utama
-        ];
-        return SuccessResource::make($return);
+        if (Auth::user()->businesses->last()) {
+            $utama = Auth::user()->businesses->last()->utama;
+            $return = [
+                'api_code' => 200,
+                'api_status' => true,
+                'api_message' => 'Sukses',
+                'api_results' => $utama
+            ];
+            return SuccessResource::make($return);
+        } else {
+            $return = [
+                'api_code' => 404,
+                'api_status' => false,
+                'api_message' => 'User belum pernah membuat pengajuan Mangga',
+            ];
+            return FailedResource::make($return);
+        }
     }
 
     /**
@@ -42,6 +52,19 @@ class UtamaController extends Controller
      */
     public function store(Request $request)
     {
+        if (
+            !Auth::user()->email || !Auth::user()->handphone || !Auth::user()->ktp_code || !Auth::user()->kk_code ||
+            !Auth::user()->postal_code || !Auth::user()->birth_date || !Auth::user()->birth_place || !Auth::user()->address ||
+            !Auth::user()->profession || !Auth::user()->heir || !Auth::user()->house_ownership || !Auth::user()->bank_number ||
+            !Auth::user()->bank_owner || !Auth::user()->bank_name || !Auth::user()->bank_branch || !Auth::user()->rt || !Auth::user()->rw
+        ) {
+            $return = [
+                'api_code' => 403,
+                'api_status' => false,
+                'api_message' => 'Data diri user masih ada yang belum lengkap. Mohon dilengkapi terlebih dahulu.',
+            ];
+            return FailedResource::make($return);
+        }
         $ktp = 'mangga-utama-' . time() . '-' . $request['ktp']->getClientOriginalName();
         $request->ktp->move(public_path('uploads/mangga/ktp'), $ktp);
 

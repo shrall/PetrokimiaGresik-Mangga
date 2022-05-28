@@ -926,7 +926,10 @@
 @endsection
 
 @section('modals')
-    @if (!Auth::user()->email || !Auth::user()->handphone || !Auth::user()->ktp_code || !Auth::user()->kk_code || !Auth::user()->postal_code || !Auth::user()->birth_date || !Auth::user()->birth_place || !Auth::user()->address || !Auth::user()->profession || !Auth::user()->heir || !Auth::user()->house_ownership || !Auth::user()->bank_number || !Auth::user()->bank_owner || !Auth::user()->bank_name || !Auth::user()->bank_branch || !Auth::user()->rt || !Auth::user()->rw)
+    @if (!Auth::user()->email || !Auth::user()->handphone || !Auth::user()->ktp_code || !Auth::user()->kk_code ||
+    !Auth::user()->postal_code || !Auth::user()->birth_date || !Auth::user()->birth_place || !Auth::user()->address ||
+    !Auth::user()->profession || !Auth::user()->heir || !Auth::user()->house_ownership || !Auth::user()->bank_number ||
+    !Auth::user()->bank_owner || !Auth::user()->bank_name || !Auth::user()->bank_branch || !Auth::user()->rt || !Auth::user()->rw)
         <div class="absolute w-screen h-screen flex items-center justify-center modal">
             <div class="bg-black opacity-50 w-screen h-screen absolute background-modal"></div>
             <div class="rounded-lg bg-white px-8 py-6 absolute flex flex-col gap-y-2">

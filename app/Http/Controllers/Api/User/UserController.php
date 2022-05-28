@@ -145,15 +145,15 @@ class UserController extends Controller
             $return = [
                 'api_code' => 200,
                 'api_status' => true,
-                'api_message' => 'Password Updated!',
+                'api_message' => 'Password berhasil diperbarui!',
                 'api_results' => $user
             ];
             return SuccessResource::make($return);
         }
         $return = [
-            'api_code' => 200,
+            'api_code' => 403,
             'api_status' => false,
-            'api_message' => 'Wrong Password.',
+            'api_message' => 'Password salah.',
             'api_results' => $user
         ];
         return SuccessResource::make($return);

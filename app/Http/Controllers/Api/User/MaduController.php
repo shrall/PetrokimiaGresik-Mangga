@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\FailedResource;
 use App\Http\Resources\SuccessResource;
 use App\Models\Business;
 use App\Models\Madu;
@@ -19,13 +20,22 @@ class MaduController extends Controller
     public function index()
     {
         $madu = Auth::user()->madu;
-        $return = [
-            'api_code' => 200,
-            'api_status' => true,
-            'api_message' => 'Sukses',
-            'api_results' => $madu
-        ];
-        return SuccessResource::make($return);
+        if ($madu) {
+            $return = [
+                'api_code' => 200,
+                'api_status' => true,
+                'api_message' => 'Sukses',
+                'api_results' => $madu
+            ];
+            return SuccessResource::make($return);
+        }else{
+            $return = [
+                'api_code' => 404,
+                'api_status' => false,
+                'api_message' => 'User belum pernah membuat pengajuan Mangga Madu',
+            ];
+            return FailedResource::make($return);
+        }
     }
 
     /**
@@ -82,7 +92,7 @@ class MaduController extends Controller
         if ($request->image) {
             $image = 'mangga-madu-' . time() . '-' . $request['image']->getClientOriginalName();
             $request->image->move(public_path('uploads/mangga/establishment_picture'), $image);
-        }else{
+        } else {
             $image = $madu->image;
         }
 

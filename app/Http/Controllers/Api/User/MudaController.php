@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\FailedResource;
 use App\Http\Resources\SuccessResource;
 use App\Models\Business;
 use App\Models\Muda;
@@ -21,14 +22,23 @@ class MudaController extends Controller
      */
     public function index()
     {
-        $muda = Auth::user()->businesses->last()->muda;
-        $return = [
-            'api_code' => 200,
-            'api_status' => true,
-            'api_message' => 'Sukses',
-            'api_results' => $muda
-        ];
-        return SuccessResource::make($return);
+        if (Auth::user()->businesses->last()) {
+            $muda = Auth::user()->businesses->last()->muda;
+            $return = [
+                'api_code' => 200,
+                'api_status' => true,
+                'api_message' => 'Sukses',
+                'api_results' => $muda
+            ];
+            return SuccessResource::make($return);
+        } else {
+            $return = [
+                'api_code' => 404,
+                'api_status' => false,
+                'api_message' => 'User belum pernah membuat pengajuan Mangga Muda',
+            ];
+            return FailedResource::make($return);
+        }
     }
 
     /**

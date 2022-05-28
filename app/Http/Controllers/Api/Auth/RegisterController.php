@@ -27,7 +27,7 @@ class RegisterController extends Controller
             'city' => 'required|exists:regencies,id',
             'district' => 'required|exists:districts,id',
             'village' => 'required|exists:villages,id',
-        ],[
+        ], [
             'email.unique' => 'E-Mail sudah terdaftar di database.'
         ]);
         if ($validator->fails()) {
@@ -37,6 +37,16 @@ class RegisterController extends Controller
                 'api_message' => $validator->errors(),
             ];
             return FailedResource::make($return);
+        }
+        if ($request->referral_code == 'mamad') {
+            if(!$request->nik || !$request->department){
+                $return = [
+                    'api_code' => Response::HTTP_BAD_REQUEST,
+                    'api_status' => false,
+                    'api_message' => 'Akun mangga madu harus menyertakan NIK Karyawan dan Departemen Karyawan',
+                ];
+                return FailedResource::make($return);
+            }
         }
 
         $user = $this->create($request->all());
@@ -76,7 +86,9 @@ class RegisterController extends Controller
             'village_id' => $data['village'],
             'password' => Hash::make($data['password']),
             'user_role' => 1,
-            'referral_code' => $data['referral_code'] ?? ''
+            'referral_code' => $data['referral_code'] ?? '',
+            'nik_karyawan' => $data['nik'],
+            'employee_department_id' => $data['department'],
             // 'registration_ip' => request()->ip()
         ]);
     }

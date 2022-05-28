@@ -155,7 +155,7 @@ class UserController extends Controller
             $user->update([
                 'password' => Hash::make($data['new_password']),
             ]);
-            return redirect()->route('user.change_password')->with('Message', 'Password Updated!');
+            return redirect()->route('user.change_password')->with('Message', 'Password berhasil diperbarui!');
         }
         return redirect()->route('user.change_password')->with('Message', 'Password Salah.');
     }
