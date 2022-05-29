@@ -7,7 +7,8 @@
                 <tr>
                     <th data-priority="1">Nama</th>
                     <th data-priority="2">E-Mail</th>
-                    <th data-priority="3">Action</th>
+                    <th data-priority="3">No. HP</th>
+                    <th data-priority="4">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -15,6 +16,7 @@
                     <tr>
                         <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                         <td>{{ $user->email }}</td>
+                        <td>{{ $user->handphone ?? "-" }}</td>
                         <td class="flex items-center justify-center gap-x-2">
                             <a href="{{ route('admin.user.show', $user->id) }}" class="mangga-button-green cursor-pointer">
                                 <span class="fa fa-fw fa-eye"></span>
