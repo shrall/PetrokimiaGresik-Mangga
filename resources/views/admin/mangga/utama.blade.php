@@ -196,7 +196,7 @@ function rupiah($angka)
     <div id="menu-pengajuan" class="page-menu">
         <form action="{{ route('admin.utama.toko', $utama->id) }}" method="post" enctype="multipart/form-data">
             @csrf
-            @method("PATCH")
+            @method('PATCH')
             <div class="card px-8 py-6 flex flex-col gap-y-4 mb-4">
                 <div class="text-2xl font-bold underline">Informasi Toko Mangga</div>
                 <label class="font-bold text-xl self-start">Deskripsi Bisnis*</label>
@@ -586,7 +586,7 @@ function rupiah($angka)
                         <tr class="font-bold">
                             <td>Jumlah</td>
                             <td>Rp.
-                                {{ number_format($utama->treasury + $utama->credit + $utama->production_tools + $utama->savings + $utama->supply + $utama->vehicle,0,',','.') }}
+                                {{ number_format($utama->treasury + $utama->credit + $utama->production_tools + $utama->savings + $utama->supply + $utama->vehicle, 0, ',', '.') }}
                             </td>
                         </tr>
                     </table>
@@ -745,10 +745,8 @@ function rupiah($angka)
                 <table id="examples" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                         <tr>
-                            <th data-priority="1">Nama Usaha</th>
                             <th data-priority="2">Tanggal Pembayaran</th>
                             <th data-priority="3">Jumlah Pembayaran</th>
-                            <th data-priority="4">Angsuran</th>
                             <th data-priority="5">Klasifikasi</th>
                             <th data-priority="6">Status</th>
                             <th data-priority="7">Bukti Pembayaran</th>
@@ -758,26 +756,32 @@ function rupiah($angka)
                     <tbody>
                         @foreach ($utama->business->angsurans as $business_angsuran)
                             <tr>
-                                <td>{{ $business_angsuran->business->name }}</td>
                                 <td>{{ $business_angsuran->created_at }}</td>
                                 <td>Rp. {{ rupiah($business_angsuran->amount) }}</td>
-                                <td>{{ $business_angsuran->installment_counter }}</td>
                                 <td>{{ $business_angsuran->business->utama->evaluation->installment_typed->name }}</td>
                                 <td>{{ $business_angsuran->status->name }}</td>
-                                <td class="text-center"><a target="_blank" href={{ asset('uploads/mangga/proof/' . $business_angsuran->proof) }}
+                                <td class="text-center"><a target="_blank"
+                                        href={{ asset('uploads/mangga/proof/' . $business_angsuran->proof) }}
                                         class="mangga-button-orange cursor-pointer"><span
                                             class="class fa fa-fw fa-image"></span></a></td>
                                 <td>
-                                    <div class="flex items-center justify-center gap-x-4">
-                                        <a href="{{ route('admin.angsuran.approve', $business_angsuran->id) }}"
-                                            class="mangga-button-green cursor-pointer"><span
+                                    @if ($business_angsuran->status_id == 1)
+                                        <div class="text-mangga-green-400"><span
+                                                class="fa fa-fw fa-check mr-2"></span>Tersetujui
+                                        </div>
+                                    @elseif($business_angsuran->status_id == 3)
+                                        <div class="text-red-500"><span class="fa fa-fw fa-times mr-2"></span>Tertolak
+                                        </div>
+                                    @else
+                                        <a onclick="openModal('accept-tx-{{ $business_angsuran->id }}');"
+                                            class="mangga-button-green cursor-pointer mr-2"><span
                                                 class="fa fa-fw fa-check"></span>
                                         </a>
-                                        <a href="{{ route('admin.angsuran.reject', $business_angsuran->id) }}"
+                                        <a onclick="openModal('reject-tx-{{ $business_angsuran->id }}');"
                                             class="mangga-button-red cursor-pointer"><span
                                                 class="fa fa-fw fa-times"></span>
                                         </a>
-                                    </div>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
@@ -792,6 +796,47 @@ function rupiah($angka)
             </div>
         </div>
     @endif
+@endsection
+
+@section('modals')
+    @foreach ($utama->business->angsurans as $business_angsuran)
+        <div class="fixed w-screen h-screen hidden items-center justify-center modal z-50"
+            id="accept-tx-{{ $business_angsuran->id }}-modal">
+            <div class="bg-black opacity-50 w-screen h-screen absolute background-modal" onclick="closeModal();"></div>
+            <div class="rounded-lg bg-white px-8 pt-8 pb-6 absolute flex flex-col gap-y-4 w-128">
+                <span class="fa fa-fw fa-times text-xl hover:text-red-600 absolute top-4 right-4 cursor-pointer"
+                    onclick="closeModal();"></span>
+                <div class="flex items-center justify-center px-8 py-4">
+                    <div class="flex flex-col gap-y-2 text-center">
+                        <span>Apakah kamu yakin ingin menyetujui pembayaran ini?</span>
+                    </div>
+                </div>
+                <a href="{{ route('admin.angsuran.approve', $business_angsuran->id) }}"
+                    class="mangga-button-green w-full cursor-pointer">
+                    Setujui
+                    <span class=" fa fa-fw fa-check ml-2"></span>
+                </a>
+            </div>
+        </div>
+        <div class="fixed w-screen h-screen hidden items-center justify-center modal z-50"
+            id="reject-tx-{{ $business_angsuran->id }}-modal">
+            <div class="bg-black opacity-50 w-screen h-screen absolute background-modal" onclick="closeModal();"></div>
+            <div class="rounded-lg bg-white px-8 pt-8 pb-6 absolute flex flex-col gap-y-4 w-128">
+                <span class="fa fa-fw fa-times text-xl hover:text-red-600 absolute top-4 right-4 cursor-pointer"
+                    onclick="closeModal();"></span>
+                <div class="flex items-center justify-center px-8 py-4">
+                    <div class="flex flex-col gap-y-2 text-center">
+                        <span>Apakah kamu yakin ingin menolak pembayaran ini?</span>
+                    </div>
+                </div>
+                <a href="{{ route('admin.angsuran.reject', $business_angsuran->id) }}"
+                    class="mangga-button-red w-full cursor-pointer">
+                    Tolak
+                    <span class=" fa fa-fw fa-times ml-2"></span>
+                </a>
+            </div>
+        </div>
+    @endforeach
 @endsection
 
 @section('scripts')
@@ -819,11 +864,24 @@ function rupiah($angka)
     <script>
         $(document).ready(function() {
             var table = $('.stripe').DataTable({
+                    pageLength: 5,
+                    order: [
+                        [0, 'desc']
+                    ],
                     responsive: true
                 })
                 .columns.adjust()
                 .responsive.recalc();
         });
+    </script>
+    <script>
+        function openModal(type) {
+            $('#' + type + '-modal').removeClass('hidden').addClass('flex');
+        }
+
+        function closeModal() {
+            $('.modal').removeClass('flex').addClass('hidden');
+        }
     </script>
 @endsection
 

@@ -1051,7 +1051,7 @@ function rupiah($angka)
                     </div>
                 @endif
             </div>
-            @if (Auth::user()->referral_code != 'mamud')
+            @if (Auth::user()->referral_code != 'mamud' && Auth::user()->referral_code != 'mamad')
                 @if ($utama->business->business_status_id == 4 || $utama->business->business_status_id >= 6)
                     <div id="menu-angsuran" class="hidden page-menu">
                         <div class="flex items-center justify-between mb-4">
