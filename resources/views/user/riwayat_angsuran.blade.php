@@ -14,138 +14,147 @@ function rupiah($angka)
         <div class="col-span-3 hidden xl:block border-r-2 border-gray-400">
             @include('inc.user_sidebar')
         </div>
-        <div class="col-span-12 xl:col-span-9 min-h-screen">
-            <div class="flex items-center justify-between mb-4">
-                <div class="text-2xl font-bold">Riwayat Angsuran</div>
-                <a class="mangga-button-green cursor-pointer" onclick="openModal('create')">
-                    <span class="fa fa-fw fa-file-upload mr-2"></span>Upload Bukti Pembayaran
-                </a>
-            </div>
-            <div class="card px-8 py-6 w-full hidden md:block mb-4">
-                <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-                    <thead>
-                        <tr>
-                            <th data-priority="1">Nama Usaha</th>
-                            <th data-priority="2">Tanggal Pembayaran</th>
-                            <th data-priority="3">Jumlah Pembayaran</th>
-                            <th data-priority="5">Klasifikasi</th>
-                            <th data-priority="6">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (Auth::user()->businesses[0]->angsurans as $business_angsuran)
+        @if (Auth::user()->businesses[0]->business_status_id == 4 || Auth::user()->businesses[0]->business_status_id >= 6)
+            <div class="col-span-12 xl:col-span-9 min-h-screen">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="text-2xl font-bold">Riwayat Angsuran</div>
+                    <a class="mangga-button-green cursor-pointer" onclick="openModal('create')">
+                        <span class="fa fa-fw fa-file-upload mr-2"></span>Upload Bukti Pembayaran
+                    </a>
+                </div>
+                <div class="card px-8 py-6 w-full hidden md:block mb-4">
+                    <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                        <thead>
                             <tr>
-                                <td>{{ $business_angsuran->business->name }}</td>
-                                <td>{{ $business_angsuran->created_at }}</td>
-                                <td>Rp. {{ rupiah($business_angsuran->amount) }}</td>
-                                <td>{{ $business_angsuran->business->utama->evaluation->installment_typed->name }}</td>
-                                <td>{{ $business_angsuran->status->name }}</td>
+                                <th data-priority="1">Nama Usaha</th>
+                                <th data-priority="2">Tanggal Pembayaran</th>
+                                <th data-priority="3">Jumlah Pembayaran</th>
+                                <th data-priority="5">Klasifikasi</th>
+                                <th data-priority="6">Status</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-            <div class="card bg-white px-8 py-2">
-                <table id="example" style="width: 100%;" class="text-center">
-                    <thead>
-                        <tr>
-                            <th>TAR</th>
-                            <th>Tanggal</th>
-                            <th>Pokok</th>
-                            <th>Jasa</th>
-                            <th>Total</th>
-                        </tr>
-                        <tr>
-                            <th colspan="2">Normal</th>
-                            <th class="text-bold">Rp.
-                                {{ rupiah(Auth::user()->businesses[0]->utama->request_amount) }}</th>
-                            @php
-                                $totalpinjam = Auth::user()->businesses[0]->utama->request_amount;
-                                $sisa = 0;
-                                $angsuran = (Auth::user()->businesses[0]->utama->request_amount * (Auth::user()->businesses[0]->utama->service_fee / 12 / 100)) / (1 - 1 / pow(1 + Auth::user()->businesses[0]->utama->service_fee / 12 / 100, Auth::user()->businesses[0]->utama->evaluation->loan_period));
-                                $angsuran_bulet = floor($angsuran / 100) * 100;
-                                $totalangsuran = ceil(($angsuran_bulet * Auth::user()->businesses[0]->utama->evaluation->loan_period) / 10000) * 10000;
-                                $total_terangsur = 0;
-                            @endphp
-                            @foreach (Auth::user()->businesses[0]->angsurans->where('status_id', 1) as $business_angsuran)
-                                @php
-                                    $total_terangsur += $business_angsuran->amount;
-                                @endphp
+                        </thead>
+                        <tbody>
+                            @foreach (Auth::user()->businesses[0]->angsurans as $business_angsuran)
+                                <tr>
+                                    <td>{{ $business_angsuran->business->name }}</td>
+                                    <td>{{ $business_angsuran->created_at }}</td>
+                                    <td>Rp. {{ rupiah($business_angsuran->amount) }}</td>
+                                    <td>{{ $business_angsuran->business->utama->evaluation->installment_typed->name }}
+                                    </td>
+                                    <td>{{ $business_angsuran->status->name }}</td>
+                                </tr>
                             @endforeach
-                            <th></th>
-                            <th class="text-bold">Rp. {{ rupiah($totalangsuran) }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @for ($i = 1; $i <= Auth::user()->businesses[0]->utama->evaluation->loan_period; $i++)
-                            @php
-                                $sisa += $angsuran - $angsuran_bulet;
-                                $jasa = ($totalpinjam * (Auth::user()->businesses[0]->utama->service_fee / 12)) / 100;
-                                $sisa += $jasa - round($jasa / 100) * 100;
-                            @endphp
-                            @if ($i == Auth::user()->businesses[0]->utama->evaluation->loan_period)
-                                @php
-                                    $angsuran_bulet += $totalangsuran - $angsuran_bulet * Auth::user()->businesses[0]->utama->evaluation->loan_period;
-                                @endphp
-                            @endif
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card bg-white px-8 py-2">
+                    <table id="example" style="width: 100%;" class="text-center">
+                        <thead>
                             <tr>
-                                <td>{{ $i }}</td>
-                                <td>{{ date('d-M-y', strtotime('+' . $i . ' month', strtotime('midnight first day of last month')) + 60 * 60 * 24 * 4) }}
-                                </td>
-                                @php
-                                    $total_terangsur -= $angsuran_bulet - round($jasa / 100) * 100;
-                                @endphp
-                                @if ($total_terangsur > 0)
-                                    <td>Rp.
-                                        {{ rupiah($angsuran_bulet - round($jasa / 100) * 100) }}
-                                    </td>
-                                @else
-                                    <td>
-                                        -
-                                    </td>
-                                @endif
-                                @php
-                                    $total_terangsur -= round($jasa / 100) * 100;
-                                @endphp
-                                @if ($total_terangsur > 0)
-                                    <td>Rp. {{ rupiah(round($jasa / 100) * 100) }}
-                                    </td>
-                                @else
-                                    <td>
-                                        -
-                                    </td>
-                                @endif
-                                <td>Rp. {{ rupiah($angsuran_bulet) }}
-                                </td>
+                                <th>TAR</th>
+                                <th>Tanggal</th>
+                                <th>Pokok</th>
+                                <th>Jasa</th>
+                                <th>Total</th>
                             </tr>
-                            @php
-                                $totalpinjam -= $angsuran_bulet - round($jasa / 100) * 100;
-                            @endphp
-                        @endfor
-                    </tbody>
-                </table>
-            </div>
-            <div class="flex md:hidden flex-col items-center justify-center gap-6">
-                {{-- <div class="relative w-full">
+                            <tr>
+                                <th colspan="2">Normal</th>
+                                <th class="text-bold">Rp.
+                                    {{ rupiah(Auth::user()->businesses[0]->utama->request_amount) }}</th>
+                                @php
+                                    $totalpinjam = Auth::user()->businesses[0]->utama->request_amount;
+                                    $sisa = 0;
+                                    $angsuran = (Auth::user()->businesses[0]->utama->request_amount * (Auth::user()->businesses[0]->utama->service_fee / 12 / 100)) / (1 - 1 / pow(1 + Auth::user()->businesses[0]->utama->service_fee / 12 / 100, Auth::user()->businesses[0]->utama->evaluation->loan_period));
+                                    $angsuran_bulet = floor($angsuran / 100) * 100;
+                                    $totalangsuran = ceil(($angsuran_bulet * Auth::user()->businesses[0]->utama->evaluation->loan_period) / 10000) * 10000;
+                                    $total_terangsur = 0;
+                                @endphp
+                                @foreach (Auth::user()->businesses[0]->angsurans->where('status_id', 1) as $business_angsuran)
+                                    @php
+                                        $total_terangsur += $business_angsuran->amount;
+                                    @endphp
+                                @endforeach
+                                <th></th>
+                                <th class="text-bold">Rp. {{ rupiah($totalangsuran) }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for ($i = 1; $i <= Auth::user()->businesses[0]->utama->evaluation->loan_period; $i++)
+                                @php
+                                    $sisa += $angsuran - $angsuran_bulet;
+                                    $jasa = ($totalpinjam * (Auth::user()->businesses[0]->utama->service_fee / 12)) / 100;
+                                    $sisa += $jasa - round($jasa / 100) * 100;
+                                @endphp
+                                @if ($i == Auth::user()->businesses[0]->utama->evaluation->loan_period)
+                                    @php
+                                        $angsuran_bulet += $totalangsuran - $angsuran_bulet * Auth::user()->businesses[0]->utama->evaluation->loan_period;
+                                    @endphp
+                                @endif
+                                <tr>
+                                    <td>{{ $i }}</td>
+                                    <td>{{ date('d-M-y', strtotime('+' . $i . ' month', strtotime('midnight first day of last month')) + 60 * 60 * 24 * 4) }}
+                                    </td>
+                                    @php
+                                        $total_terangsur -= $angsuran_bulet - round($jasa / 100) * 100;
+                                    @endphp
+                                    @if ($total_terangsur > 0)
+                                        <td>Rp.
+                                            {{ rupiah($angsuran_bulet - round($jasa / 100) * 100) }}
+                                        </td>
+                                    @else
+                                        <td>
+                                            -
+                                        </td>
+                                    @endif
+                                    @php
+                                        $total_terangsur -= round($jasa / 100) * 100;
+                                    @endphp
+                                    @if ($total_terangsur > 0)
+                                        <td>Rp. {{ rupiah(round($jasa / 100) * 100) }}
+                                        </td>
+                                    @else
+                                        <td>
+                                            -
+                                        </td>
+                                    @endif
+                                    <td>Rp. {{ rupiah($angsuran_bulet) }}
+                                    </td>
+                                </tr>
+                                @php
+                                    $totalpinjam -= $angsuran_bulet - round($jasa / 100) * 100;
+                                @endphp
+                            @endfor
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex md:hidden flex-col items-center justify-center gap-6">
+                    {{-- <div class="relative w-full">
                     <input type="text" class="rounded-full w-full border border-gray-400 pl-6 pr-9 py-2"
                         placeholder="Search">
                     <span class="fa fa-fw fa-search absolute right-4 inset-y-0 my-auto h-4"></span>
                 </div> --}}
-                @foreach (Auth::user()->businesses[0]->angsurans as $business_angsuran)
-                    <div class="card flex flex-col items-center justify-center gap-2 w-full p-3">
-                        <div class="flex items-center justify-between w-full">
-                            <div>{{ $business_angsuran->created_at }}</div>
-                            <div>{{ $business_angsuran->installment_counter }} -
-                                {{ $business_angsuran->business->utama->evaluation->installment_typed->name }}</div>
+                    @foreach (Auth::user()->businesses[0]->angsurans as $business_angsuran)
+                        <div class="card flex flex-col items-center justify-center gap-2 w-full p-3">
+                            <div class="flex items-center justify-between w-full">
+                                <div>{{ $business_angsuran->created_at }}</div>
+                                <div>{{ $business_angsuran->installment_counter }} -
+                                    {{ $business_angsuran->business->utama->evaluation->installment_typed->name }}</div>
+                            </div>
+                            <div class="flex items-center justify-between w-full">
+                                <div class="text-xl">Rp. {{ rupiah($business_angsuran->amount) }}</div>
+                                <div>{{ $business_angsuran->status->name }}</div>
+                            </div>
                         </div>
-                        <div class="flex items-center justify-between w-full">
-                            <div class="text-xl">Rp. {{ rupiah($business_angsuran->amount) }}</div>
-                            <div>{{ $business_angsuran->status->name }}</div>
-                        </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
-        </div>
+        @else
+            <div class="col-span-12 xl:col-span-9 min-h-screen">
+                <div class="flex items-center justify-center mt-4">
+                    <div class="text-3xl">Pengajuan Anda Belum Di Approve.</div>
+                </div>
+            </div>
+        @endif
     </div>
 @endsection
 @section('modals')
