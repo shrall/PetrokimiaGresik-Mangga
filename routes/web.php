@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AngsuranFeeController as AdminAngsuranFeeController;
 use App\Http\Controllers\Admin\BusinessAngsuranController as AdminBusinessAngsuranController;
 use App\Http\Controllers\Admin\BusinessController;
 use App\Http\Controllers\admin\MaduController as AdminMaduController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Admin\PeopleController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\UtamaController as AdminUtamaController;
 use App\Http\Controllers\Admin\UtamaEvaluationController;
+use App\Http\Controllers\AngsuranFeeController;
 use App\Http\Controllers\BusinessAngsuranController;
 use App\Http\Controllers\MaduController;
 use App\Http\Controllers\MediaController;
@@ -53,6 +55,7 @@ Route::get('/mhe', [PageController::class, 'mhe_home'])->name('mhe.home');
 Route::get('/mhe-register', [PageController::class, 'mhe_register'])->name('mhe.register');
 Route::get('/mhe-success', [PageController::class, 'mhe_success'])->name('mhe.success');
 Route::resource('mhe_transaction', MheTransactionController::class);
+Route::resource('angsuran_fee', AngsuranFeeController::class);
 // Route::resource('mhe_event', MheEventController::class);
 Route::get('/mangga-muda/register', [PageController::class, 'mangga_muda_register'])->name('mangga_muda.register');
 Route::get('/mangga-muda/login', [PageController::class, 'mangga_muda_login'])->name('mangga_muda.login');
@@ -168,6 +171,8 @@ Route::group(['middleware' => ['admin'], 'as' => 'admin.', 'prefix' => 'admin'],
 
     Route::resource('mhe_event', AdminMheEventController::class);
     Route::resource('mhe_transaction', AdminMheTransactionController::class);
+
+    Route::resource('angsuran_fee', AdminAngsuranFeeController::class);
 });
 
 Route::get('/eee', function () {

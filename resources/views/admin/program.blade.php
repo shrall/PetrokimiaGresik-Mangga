@@ -9,12 +9,19 @@
                     <a href="{{ route('admin.utama.create') }}" class="mangga-button-green cursor-pointer">
                         <span>Buat Ajuan</span>
                     </a>
+                    <a href="{{ route('admin.angsuran_fee.edit', $fee->id) }}" class="mangga-button-green cursor-pointer">
+                        <span>Edit Biaya Jasa</span>
+                    </a>
                 </div>
                 <div class="flex flex-col items-end">
                     <div class="text-4xl text-mangga-green-500 font-bold">
                         {{ count($businesses->where('mangga_type', 1)) }}
                     </div>
                     Ajuan
+                    <div class="text-4xl text-mangga-green-500 font-bold">
+                        {{ $fee->service_fee }}%
+                    </div>
+                    Biaya Jasa
                 </div>
             </div>
         </div>

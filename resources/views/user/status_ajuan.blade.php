@@ -218,7 +218,7 @@ function rupiah($angka)
                     <form action="{{ route('user.utama.toko', $utama->id) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
-                        @method("PATCH")
+                        @method('PATCH')
                         <div class="card px-8 py-6 flex flex-col gap-y-4 mb-4">
                             <div class="text-2xl font-bold underline">Informasi Toko Mangga</div>
                             <label class="font-bold text-xl self-start">Deskripsi Bisnis*</label>
@@ -921,7 +921,7 @@ function rupiah($angka)
                                     <tr class="font-bold">
                                         <td>Jumlah</td>
                                         <td>Rp.
-                                            {{ number_format($utama->treasury + $utama->credit + $utama->production_tools + $utama->savings + $utama->supply + $utama->vehicle,0,',','.') }}
+                                            {{ number_format($utama->treasury + $utama->credit + $utama->production_tools + $utama->savings + $utama->supply + $utama->vehicle, 0, ',', '.') }}
                                         </td>
                                     </tr>
                                 </table>
@@ -1095,9 +1095,9 @@ function rupiah($angka)
                                         @php
                                             $totalpinjam = $utama->request_amount;
                                             $sisa = 0;
-                                            $angsuran = ($utama->request_amount * (5 / 1000)) / (1 - 1 / pow(1 + 5 / 1000, $utama->evaluation->loan_period));
+                                            $angsuran = ($utama->request_amount * ($utama->service_fee / 12 / 100)) / (1 - 1 / pow(1 + $utama->service_fee / 12 / 100, $utama->evaluation->loan_period));
                                             $angsuran_bulet = floor($angsuran / 100) * 100;
-                                            $totalangsuran = ceil($angsuran_bulet * $utama->evaluation->loan_period / 10000) * 10000;
+                                            $totalangsuran = ceil(($angsuran_bulet * $utama->evaluation->loan_period) / 10000) * 10000;
                                         @endphp
                                         <th></th>
                                         <th>Rp. {{ rupiah($totalangsuran) }}</th>
@@ -1107,7 +1107,7 @@ function rupiah($angka)
                                     @for ($i = 1; $i <= $utama->evaluation->loan_period; $i++)
                                         @php
                                             $sisa += $angsuran - $angsuran_bulet;
-                                            $jasa = ($totalpinjam * 5) / 1000;
+                                            $jasa = ($totalpinjam * ($utama->service_fee / 12)) / 100;
                                             $sisa += $jasa - round($jasa / 100) * 100;
                                         @endphp
                                         @if ($i == $utama->evaluation->loan_period)
@@ -1117,7 +1117,7 @@ function rupiah($angka)
                                         @endif
                                         <tr>
                                             <td>{{ $i }}</td>
-                                            <td>{{ date('d-M-y',strtotime('+' . $i . ' month', strtotime('midnight first day of last month')) + 60 * 60 * 24 * 4) }}
+                                            <td>{{ date('d-M-y', strtotime('+' . $i . ' month', strtotime('midnight first day of last month')) + 60 * 60 * 24 * 4) }}
                                             </td>
                                             <td>Rp.
                                                 {{ rupiah($angsuran_bulet - round($jasa / 100) * 100) }}

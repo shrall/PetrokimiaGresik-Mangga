@@ -62,7 +62,7 @@ function rupiah($angka)
                             @php
                                 $totalpinjam = Auth::user()->businesses[0]->utama->request_amount;
                                 $sisa = 0;
-                                $angsuran = (Auth::user()->businesses[0]->utama->request_amount * (5 / 1000)) / (1 - 1 / pow(1 + 5 / 1000, Auth::user()->businesses[0]->utama->evaluation->loan_period));
+                                $angsuran = (Auth::user()->businesses[0]->utama->request_amount * (Auth::user()->businesses[0]->utama->service_fee / 12 / 100)) / (1 - 1 / pow(1 + Auth::user()->businesses[0]->utama->service_fee / 12 / 100, Auth::user()->businesses[0]->utama->evaluation->loan_period));
                                 $angsuran_bulet = floor($angsuran / 100) * 100;
                                 $totalangsuran = ceil(($angsuran_bulet * Auth::user()->businesses[0]->utama->evaluation->loan_period) / 10000) * 10000;
                                 $total_terangsur = 0;
@@ -80,7 +80,7 @@ function rupiah($angka)
                         @for ($i = 1; $i <= Auth::user()->businesses[0]->utama->evaluation->loan_period; $i++)
                             @php
                                 $sisa += $angsuran - $angsuran_bulet;
-                                $jasa = ($totalpinjam * 5) / 1000;
+                                $jasa = ($totalpinjam * (Auth::user()->businesses[0]->utama->service_fee / 12)) / 100;
                                 $sisa += $jasa - round($jasa / 100) * 100;
                             @endphp
                             @if ($i == Auth::user()->businesses[0]->utama->evaluation->loan_period)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AngsuranFee;
 use App\Models\Business;
 use App\Models\Madu;
 use App\Models\Muda;
@@ -286,7 +287,8 @@ class PageController extends Controller
         $people = People::first();
         $businesses = Business::where('registration_number', 'not like', '%-9-1%')->get();
         $madus = Madu::all();
-        return view('admin.program', compact('businesses', 'people', 'madus'));
+        $fee = AngsuranFee::first();
+        return view('admin.program', compact('businesses', 'people', 'madus', 'fee'));
     }
     public function mangga_muda(Business $business)
     {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AngsuranFee;
 use App\Models\Business;
 use App\Models\BusinessCommodity;
 use App\Models\BusinessForm;
@@ -223,7 +224,9 @@ class UtamaController extends Controller
             "user_id" => $user->id
         ]);
 
+        $fee = AngsuranFee::first();
         $utama = Utama::create([
+            'service_fee' => $fee->service_fee,
             'user_name' => $user->first_name . ' ' . $user->last_name,
             'user_npwp' => $user->npwp,
             'user_spouse' => $user->spouse,
