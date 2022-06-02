@@ -59,11 +59,12 @@ class RegisterController extends Controller
         } else {
             // note harus ada event ini biar ngetrigger email verifynya
             event(new Registered($user));
+            $newuser = User::where('email', $user->email)->first();
             $return = [
                 'api_code' => 200,
                 'api_status' => true,
                 'api_message' => 'Akun berhasil terbuat!',
-                'api_results' => $user
+                'api_results' => $newuser
             ];
             return SuccessResource::make($return);
         }
