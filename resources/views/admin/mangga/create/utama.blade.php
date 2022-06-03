@@ -249,38 +249,38 @@
         <div class="grid grid-cols-2 gap-x-8">
             <div>
                 <label class="font-bold">Jumlah Pengajuan</label>
-                <input type="text" name="request_amount" id="" class="form-pengajuan-input-admin" required>
+                <input type="text" name="request_amount" id="" class="form-pengajuan-input" required>
                 <label class="font-bold">Agunan</label>
-                <input type="text" name="collateral" id="" class="form-pengajuan-input-admin" required>
+                <input type="text" name="collateral" id="" class="form-pengajuan-input" required>
                 <label class="font-bold">Tipe Pengajuan</label>
-                <select name="distribution_type" id="" class="form-pengajuan-input-admin" required>
+                <select name="distribution_type" id="" class="form-pengajuan-input" required>
                     @foreach ($distribution_types as $dt)
                         <option value={{ $dt->id }}>{{ $dt->name }}</option>
                     @endforeach
                 </select>
                 <label class="font-bold">Sektor</label>
-                <select name="sector" id="sector" class="form-pengajuan-input-admin" required>
+                <select name="sector" id="sector" class="form-pengajuan-input" required>
                     @foreach ($sectors as $sector)
                         <option value={{ $sector->id }}>
                             {{ $sector->name }}</option>
                     @endforeach
                 </select>
                 <label class="font-bold">Subsektor</label>
-                <select name="subsector" id="subsector" class="form-pengajuan-input-admin" required>
+                <select name="subsector" id="subsector" class="form-pengajuan-input" required>
                     @foreach ($subsectors as $subsector)
                         <option value={{ $subsector->id }}>
                             {{ $subsector->name }}</option>
                     @endforeach
                 </select>
                 <label class="font-bold">Jenis Usaha</label>
-                <input type="text" name="type" class="form-pengajuan-input-admin" placeholder="Jenis Usaha*" required>
-                <select name="marketing" id="marketing" class="form-pengajuan-input-admin" required>
+                <input type="text" name="type" class="form-pengajuan-input" placeholder="Jenis Usaha*" required>
+                <select name="marketing" id="marketing" class="form-pengajuan-input" required>
                     @foreach ($marketings as $marketing)
                         <option value={{ $marketing->id }}>
                             {{ $marketing->name }}</option>
                     @endforeach
                 </select>
-                <input type="text" name="export_to" class="form-pengajuan-input-admin hidden" id="export"
+                <input type="text" name="export_to" class="form-pengajuan-input hidden" id="export"
                     placeholder="Ekspor ke...">
             </div>
             <div>
@@ -622,7 +622,7 @@
             <div>
                 <label class="font-bold">Scan SIUP*</label>
                 <div class="flex items-end gap-x-4">
-                    <img src="{{ asset('assets/svg/empty-image.svg') }}" id="preview-scan-siup">
+                    <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg" id="preview-scan-siup">
                     <div class="flex flex-col gap-y-2">
                         <input type="file" name="siup" id="scan-siup" class="invisible w-2" required
                             onchange="loadFile(event, 'scan-siup')" accept="image/*">
@@ -634,7 +634,7 @@
             <div>
                 <label class="font-bold">Scan Surat Keterangan Domisili Usaha*</label>
                 <div class="flex items-end gap-x-4">
-                    <img src="{{ asset('assets/svg/empty-image.svg') }}" id="preview-scan-sk">
+                    <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg" id="preview-scan-sk">
                     <div class="flex flex-col gap-y-2">
                         <input type="file" name="skdu" id="scan-sk" class="invisible w-2" required
                             onchange="loadFile(event, 'scan-sk')" accept="image/*">
