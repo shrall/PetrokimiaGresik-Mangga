@@ -18,6 +18,7 @@
             <input type="text" name="name" class="form-pengajuan-input mb-8" placeholder="Nama Lengkap" required>
             <input type="email" name="email" class="form-pengajuan-input mb-8" placeholder="E-Mail Aktif" required>
             <input type="text" name="phone" class="form-pengajuan-input mb-8" placeholder="No. Telepon (WA)" required>
+            <input type="number" name="ticket_amount" class="form-pengajuan-input mb-8" placeholder="Jumlah Pembelian Tiket" required>
             <label class="font-bold">Bukti Transfer</label>
             <div class="flex items-end gap-x-4 mb-4">
                 <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"

@@ -15,6 +15,7 @@ class MheTransaction extends Model
         'is_approved',
         'evidence',
         'reference_code',
+        'ticket_amount',
         'mhe_event_id',
         'mhe_ucode_id',
     ];

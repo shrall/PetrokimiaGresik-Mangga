@@ -41,18 +41,20 @@ class MheTransactionController extends Controller
         $evidence = 'mhe-' . time() . '-' . $request['evidence']->getClientOriginalName();
         $request->evidence->move(public_path('uploads/mhe'), $evidence);
 
-        $ucode = MheUcode::where('status', 0)->inRandomOrder()->first();
         $event = MheEvent::first();
-
-        MheTransaction::create([
-            'attendee_name' => $request->name,
-            'attendee_email' => $request->email,
-            'attendee_phone' => $request->phone,
-            'reference_code' => $request->reference_id,
-            'evidence' => $evidence,
-            'mhe_event_id' => $event->id,
-            'mhe_ucode_id' => $ucode->id
-        ]);
+        for ($i = 0; $i < $request->ticket_amount; $i++) {
+            $ucode = MheUcode::where('status', 0)->inRandomOrder()->first();
+            MheTransaction::create([
+                'attendee_name' => $request->name,
+                'attendee_email' => $request->email,
+                'attendee_phone' => $request->phone,
+                'reference_code' => $request->reference_id,
+                'ticket_amount' => $request->ticket_amount,
+                'evidence' => $evidence,
+                'mhe_event_id' => $event->id,
+                'mhe_ucode_id' => $ucode->id
+            ]);
+        }
 
         return redirect()->route('mhe.success');
     }
