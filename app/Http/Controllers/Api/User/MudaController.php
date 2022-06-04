@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FailedResource;
+use App\Http\Resources\MudaResource;
 use App\Http\Resources\SuccessResource;
 use App\Models\Business;
 use App\Models\Muda;
@@ -28,7 +29,7 @@ class MudaController extends Controller
                 'api_code' => 200,
                 'api_status' => true,
                 'api_message' => 'Sukses',
-                'api_results' => $muda
+                'api_results' => MudaResource::make($muda)
             ];
             return SuccessResource::make($return);
         } else {
@@ -162,7 +163,7 @@ class MudaController extends Controller
             'api_code' => 200,
             'api_status' => true,
             'api_message' => 'Pengajuan Mangga Muda berhasil disimpan.',
-            'api_results' => $muda
+            'api_results' => MudaResource::make($muda)
         ];
         return SuccessResource::make($return);
     }
@@ -293,76 +294,149 @@ class MudaController extends Controller
             }
         }
         $muda->business->update([
-            'name' => $request->name,
+            'name' => $request->name ?? $muda->business->name,
             'logo' => $logo,
-            "sector_id" => $request->sector,
-            "subsector_id" => $request->subsector,
-            "type" => $request->type,
-            "asset_value" => $request->asset_value,
-            "address" => $request->address,
+            "sector_id" => $request->sector ?? $muda->business->sector,
+            "subsector_id" => $request->subsector ?? $muda->business->subsector,
+            "type" => $request->type ?? $muda->business->type,
+            "asset_value" => $request->asset_value ?? $muda->business->asset_value,
+            "address" => $request->address ?? $muda->business->address,
             'mangga_type' => 2,
-            "province_id" => $request->province,
-            "city_id" => $request->city,
-            "district_id" => $request->district,
-            "village_id" => $request->village,
-            "postal_code" => $request->postal_code,
+            "province_id" => $request->province ?? $muda->business->province,
+            "city_id" => $request->city ?? $muda->business->city,
+            "district_id" => $request->district ?? $muda->business->district,
+            "village_id" => $request->village ?? $muda->business->village,
+            "postal_code" => $request->postal_code ?? $muda->business->postal_code,
             "status" => $muda->business->status,
         ]);
         $muda->update([
-            "business_title" => $request->business_title,
-            "leader_name" => $request->leader_name,
-            "leader_phone" => $request->leader_phone,
-            "leader_email" => $request->leader_email,
+            "business_title" => $request->business_title ?? $muda->business_title,
+            "leader_name" => $request->leader_name ?? $muda->leader_name,
+            "leader_phone" => $request->leader_phone ?? $muda->leader_phone,
+            "leader_email" => $request->leader_email ?? $muda->leader_email,
             "leader_ktp" => $ktp,
             "leader_ktm" => $ktm,
-            "university" => $request->university,
-            "type_id" => $request->muda_type,
-            "category_id" => $request->category,
-            "subcategory" => $request->subcategory,
-            "faculty" => $request->faculty,
-            "recommender" => $request->recommender,
-            "recommender_position" => $request->recommender_position,
-            "member_count" => $request->member_count,
-            "prospect" => $request->prospect,
-            "target" => $request->target,
-            "needs" => $request->needs,
-            "growth_plan" => $request->growth_plan,
-            "utilization_plan" => $request->utilization_plan,
-            "return_plan" => $request->return_plan,
-            "description" => $request->description,
-            "market_share" => $request->market_share,
+            "university" => $request->university ?? $muda->university,
+            "type_id" => $request->muda_type ?? $muda->muda_type,
+            "category_id" => $request->category ?? $muda->category,
+            "subcategory" => $request->subcategory ?? $muda->subcategory,
+            "faculty" => $request->faculty ?? $muda->faculty,
+            "recommender" => $request->recommender ?? $muda->recommender,
+            "recommender_position" => $request->recommender_position ?? $muda->recommender_position,
+            "member_count" => $request->member_count ?? $muda->member_count,
+            "prospect" => $request->prospect ?? $muda->prospect,
+            "target" => $request->target ?? $muda->target,
+            "needs" => $request->needs ?? $muda->needs,
+            "growth_plan" => $request->growth_plan ?? $muda->growth_plan,
+            "utilization_plan" => $request->utilization_plan ?? $muda->utilization_plan,
+            "return_plan" => $request->return_plan ?? $muda->return_plan,
+            "description" => $request->description ?? $muda->description,
+            "market_share" => $request->market_share ?? $muda->market_share,
             "market_position" => $market_position,
-            "production_strategy" => $request->production_strategy,
+            "production_strategy" => $request->production_strategy ?? $muda->production_strategy,
             "organization_structure" => $organization_structure,
             "finance_attachment" => $finance_attachment,
-            "target_plan" => $request->target_plan,
-            "finance" => $request->finance,
+            "target_plan" => $request->target_plan ?? $muda->target_plan,
+            "finance" => $request->finance ?? $muda->finance,
         ]);
 
-        foreach ($request->inflow_sales as $key => $value) {
-            $muda->reports[$key - 1]->update([
-                'month' => $key,
-                'inflow_sales' => $request->inflow_sales[$key],
-                'inflow_loan' => $request->inflow_loan[$key],
-                'inflow_subtotal' => $request->inflow_subtotal[$key],
-                'outflow_investment' => $request->outflow_investment[$key],
-                'outflow_ingredient' => $request->outflow_ingredient[$key],
-                'outflow_production' => $request->outflow_production[$key],
-                'outflow_maintenance' => $request->outflow_maintenance[$key],
-                'outflow_admin' => $request->outflow_admin[$key],
-                'outflow_installments' => $request->outflow_installments[$key],
-                'outflow_subtotal' => $request->outflow_subtotal[$key],
-                'difference' => $request->difference[$key],
-                'difference_start' => $request->difference_start[$key],
-                'difference_end' => $request->difference_end[$key],
-                "muda_id" => $muda->id,
-            ]);
+        if ($request->inflow_sales) {
+            foreach ($request->inflow_sales as $key => $value) {
+                $muda->reports[$key - 1]->update([
+                    'inflow_sales' => $request->inflow_sales[$key],
+                ]);
+            }
         }
+        if ($request->inflow_loan) {
+            foreach ($request->inflow_loan as $key => $value) {
+                $muda->reports[$key - 1]->update([
+                    'inflow_loan' => $request->inflow_loan[$key],
+                ]);
+            }
+        }
+        if ($request->inflow_subtotal) {
+            foreach ($request->inflow_subtotal as $key => $value) {
+                $muda->reports[$key - 1]->update([
+                    'inflow_subtotal' => $request->inflow_subtotal[$key],
+                ]);
+            }
+        }
+        if ($request->outflow_investment) {
+            foreach ($request->outflow_investment as $key => $value) {
+                $muda->reports[$key - 1]->update([
+                    'outflow_investment ' => $request->outflow_investment[$key],
+                ]);
+            }
+        }
+        if ($request->outflow_ingredient) {
+            foreach ($request->outflow_ingredient as $key => $value) {
+                $muda->reports[$key - 1]->update([
+                    'outflow_ingredient' => $request->outflow_ingredient[$key],
+                ]);
+            }
+        }
+        if ($request->outflow_production) {
+            foreach ($request->outflow_production as $key => $value) {
+                $muda->reports[$key - 1]->update([
+                    'outflow_production' => $request->outflow_production[$key],
+                ]);
+            }
+        }
+        if ($request->outflow_maintenance) {
+            foreach ($request->outflow_maintenance as $key => $value) {
+                $muda->reports[$key - 1]->update([
+                    'outflow_maintenance' => $request->outflow_maintenance[$key],
+                ]);
+            }
+        }
+        if ($request->outflow_admin) {
+            foreach ($request->outflow_admin as $key => $value) {
+                $muda->reports[$key - 1]->update([
+                    'outflow_admin' => $request->outflow_admin[$key],
+                ]);
+            }
+        }
+        if ($request->outflow_installments) {
+            foreach ($request->outflow_installments as $key => $value) {
+                $muda->reports[$key - 1]->update([
+                    'outflow_installments' => $request->outflow_installments[$key],
+                ]);
+            }
+        }
+        if ($request->outflow_subtotal) {
+            foreach ($request->outflow_subtotal as $key => $value) {
+                $muda->reports[$key - 1]->update([
+                    'outflow_subtotal' => $request->outflow_subtotal[$key],
+                ]);
+            }
+        }
+        if ($request->difference) {
+            foreach ($request->difference as $key => $value) {
+                $muda->reports[$key - 1]->update([
+                    'difference' => $request->difference[$key],
+                ]);
+            }
+        }
+        if ($request->difference_start) {
+            foreach ($request->difference_start as $key => $value) {
+                $muda->reports[$key - 1]->update([
+                    'difference_start' => $request->difference_start[$key],
+                ]);
+            }
+        }
+        if ($request->difference_end) {
+            foreach ($request->difference_end as $key => $value) {
+                $muda->reports[$key - 1]->update([
+                    'difference_end' => $request->difference_end[$key],
+                ]);
+            }
+        }
+
         $return = [
             'api_code' => 200,
             'api_status' => true,
             'api_message' => 'Pengajuan Mangga Muda berhasil diupdate.',
-            'api_results' => $muda
+            'api_results' => MudaResource::make($muda)
         ];
         return SuccessResource::make($return);
     }
@@ -418,7 +492,7 @@ class MudaController extends Controller
             'api_code' => 200,
             'api_status' => true,
             'api_message' => 'Pengajuan Mangga Madu berhasil diupload.',
-            'api_results' => $muda
+            'api_results' => MudaResource::make($muda)
         ];
         return SuccessResource::make($return);
     }

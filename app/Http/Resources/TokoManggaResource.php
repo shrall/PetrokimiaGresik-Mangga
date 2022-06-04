@@ -20,7 +20,9 @@ class TokoManggaResource extends JsonResource
             'logo' => $this->logo,
             'instagram' => $this->utama->instagram,
             'google_maps' => $this->user->google_maps,
-            'description' => $this->utama->toko_description
+            'description' => $this->utama->toko_description,
+            'sector_id' => $this->utama->business->sector_id,
+            'sector_name' => $this->utama->business->sector->name
         ];
     }
 }

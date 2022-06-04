@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\User;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FailedResource;
 use App\Http\Resources\SuccessResource;
+use App\Http\Resources\UtamaResource;
 use App\Models\AngsuranFee;
 use App\Models\Business;
 use App\Models\BusinessCommodity;
@@ -32,7 +33,7 @@ class UtamaController extends Controller
                 'api_code' => 200,
                 'api_status' => true,
                 'api_message' => 'Sukses',
-                'api_results' => $utama
+                'api_results' => UtamaResource::make($utama)
             ];
             return SuccessResource::make($return);
         } else {
@@ -369,7 +370,7 @@ class UtamaController extends Controller
             'api_code' => 200,
             'api_status' => true,
             'api_message' => 'Pengajuan Mangga telah berhasil disimpan.',
-            'api_results' => $utama
+            'api_results' => UtamaResource::make($utama)
         ];
         return SuccessResource::make($return);
     }
@@ -444,7 +445,7 @@ class UtamaController extends Controller
             'api_code' => 200,
             'api_status' => true,
             'api_message' => 'Pengajuan Mangga telah berhasil diupload.',
-            'api_results' => $utama
+            'api_results' => UtamaResource::make($utama)
         ];
         return SuccessResource::make($return);
     }

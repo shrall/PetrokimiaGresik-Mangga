@@ -97,12 +97,12 @@ class MaduController extends Controller
         }
 
         $madu->update([
-            'name' => $request->name,
-            'description' => $request->description,
+            'name' => $request->name ?? $madu->name,
+            'description' => $request->description ?? $madu->description,
             'status' => 1,
             'business_status_id' => 1,
             'image' => $image,
-            'link' => $request->link,
+            'link' => $request->link ?? $madu->link,
         ]);
         $return = [
             'api_code' => 200,
