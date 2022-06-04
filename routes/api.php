@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
+use App\Http\Controllers\Api\BusinessController;
 use App\Http\Controllers\Api\BusinessFormController;
 use App\Http\Controllers\Api\BusinessStatusController;
 use App\Http\Controllers\Api\CapitalSourceController;
@@ -60,6 +61,7 @@ Route::group(['prefix' => 'location'], function () {
 });
 Route::get('/media', [MediaController::class, 'index'])->name('media.index');
 Route::get('/media/{media}', [MediaController::class, 'show'])->name('media.show');
+Route::apiResource('business', BusinessController::class);
 Route::apiResource('businessform', BusinessFormController::class);
 Route::apiResource('businessstatus', BusinessStatusController::class);
 Route::apiResource('capitalsource', CapitalSourceController::class);
