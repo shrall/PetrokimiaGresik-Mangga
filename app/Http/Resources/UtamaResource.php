@@ -18,9 +18,10 @@ class UtamaResource extends JsonResource
             'utama' => $this->business->utama,
             'business' => $this->business,
             'members' => $this->members,
-            'plans' => $this->plans,
-            'commodities' => $this->commodities,
-            'products' => $this->products,
+            'plans' => $this->business->plans,
+            'commodities' => $this->business->commodities,
+            'products' => $this->business->products,
+            'angsurans' => $this->business->angsurans
         ];
     }
 }

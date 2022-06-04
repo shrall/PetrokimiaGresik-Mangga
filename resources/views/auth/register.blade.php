@@ -2,14 +2,14 @@
 
 @section('content')
     <div
-        class="w-full h-screen bg-sign-up bg-cover flex flex-col xl:grid xl:grid-cols-2 gap-x-4 xl:items-center xl:justify-center">
+        class="w-full bg-sign-up bg-cover flex flex-col xl:grid xl:grid-cols-2 gap-x-4 xl:items-center xl:justify-center">
         <div class="my-12 xl:col-span-1 self-start xl:mt-24 xl:mb-0 px-16">
             <div class="text-4xl xl:text-6xl text-mangga-green-600 font-lb">SELAMAT DATANG.</div>
             <div class="text-lg xl:text-2xl text-gray-600 font-pn">Silahkan lengkapi daftar diri untuk mendaftar ke Mangga.
             </div>
         </div>
         <div
-            class="col-span-1 mx-auto flex flex-col items-start justify-center bg-white rounded-lg w-vw-80 px-8 md:w-vw-60 h-vh-70 md:px-12 xl:w-vw-40 xl:h-vh-90 xl:px-16 py-8 shadow-xl">
+            class="col-span-1 mx-auto flex flex-col items-start justify-center bg-white rounded-lg w-vw-80 px-8 md:w-vw-60 md:px-12 xl:w-vw-40 xl:px-16 py-8 shadow-xl">
             <div class="text-xl md:text-3xl font-lb text-mangga-green-600 mb-4">PENDANAAN UMK (PUMK)</div>
             <form method="POST" action="{{ route('register') }}">
                 @csrf

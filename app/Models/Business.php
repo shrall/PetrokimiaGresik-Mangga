@@ -87,10 +87,6 @@ class Business extends Model
     {
         return $this->hasMany(BusinessPlan::class, 'business_id', 'id');
     }
-    public function assets()
-    {
-        return $this->hasMany(BusinessAsset::class, 'business_id', 'id');
-    }
     public function products()
     {
         return $this->hasMany(BusinessProduct::class, 'business_id', 'id');
