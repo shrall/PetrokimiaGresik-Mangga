@@ -127,6 +127,7 @@ class UserController extends Controller
             'city_id' => $request->city ?? $user->city,
             'district_id' => $request->district ?? $user->district,
             'village_id' => $request->village ?? $user->village,
+            'google_maps' => $request->google_maps ?? $user->google_maps
         ]);
         $return = [
             'api_code' => 200,
