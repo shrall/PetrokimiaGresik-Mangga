@@ -43,6 +43,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/login', [LoginController::class, 'login']);
+Route::post('/forgot-password', [LoginController::class, 'forgot_password']);
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/email/verify', [UserController::class, 'resend_email']);
 Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function () {

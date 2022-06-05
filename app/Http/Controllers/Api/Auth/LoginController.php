@@ -7,14 +7,18 @@ use App\Http\Resources\FailedResource;
 use App\Http\Resources\SuccessResource;
 use App\Models\User;
 use App\Models\UserLog;
+use Exception;
 use Illuminate\Http\Request;
 use Laravel\Passport\Client;
 use GuzzleHttp\Client as GuzzleHttpClient;
 use Illuminate\Http\Response;
+use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -111,5 +115,48 @@ class LoginController extends Controller
             'api_results' => null
         ];
         return SuccessResource::make($return);
+    }
+
+    public function forgot_password(Request $request)
+    {
+        $input = $request->all();
+        $rules = array(
+            'email' => "required|email",
+        );
+        $validator = Validator::make($input, $rules);
+        if ($validator->fails()) {
+            $arr = array("status" => 400, "message" => $validator->errors()->first(), "data" => array());
+        } else {
+            try {
+                $response = Password::sendResetLink($request->only('email'));
+                switch ($response) {
+                    case Password::RESET_LINK_SENT:
+                        $return = [
+                            'api_code' => 200,
+                            'api_status' => true,
+                            'api_message' => 'Sukses',
+                        ];
+                        return FailedResource::make($return);
+                        // return \Response::json(array("status" => 200, "message" => trans($response), "data" => array()));
+                    case Password::INVALID_USER:
+                        $return = [
+                            'api_code' => 404,
+                            'api_status' => false,
+                            'api_message' => 'Email belum terdaftar pada aplikasi Mangga'
+                        ];
+                        return FailedResource::make($return);
+                }
+            } catch (\Swift_TransportException $ex) {
+                $arr = array("status" => 400, "message" => $ex->getMessage(), "data" => []);
+            } catch (Exception $ex) {
+                $arr = array("status" => 400, "message" => $ex->getMessage(), "data" => []);
+            }
+        }
+        $return = [
+            'api_code' => 425,
+            'api_status' => false,
+            'api_message' => 'Mohon coba beberapa saat kembali untuk meminta ulang pengiriman E-Mail.',
+        ];
+        return FailedResource::make($return);
     }
 }
