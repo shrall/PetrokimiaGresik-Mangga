@@ -54,6 +54,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function () {
     Route::apiResource('utama', UtamaController::class);
     Route::patch('/utama/{utama}/ttd', [UtamaController::class, 'ttd'])->name('utama.ttd');
     Route::get('/utama/{utama}/download', [UtamaController::class, 'download'])->name('utama.download');
+    Route::patch('/utama/{utama}/toko', [UtamaController::class, 'toko'])->name('utama.toko');
     Route::apiResource('madu', MaduController::class);
 });
 Route::group(['prefix' => 'location'], function () {

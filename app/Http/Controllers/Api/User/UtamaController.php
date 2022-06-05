@@ -12,6 +12,7 @@ use App\Models\BusinessCommodity;
 use App\Models\BusinessPlan;
 use App\Models\BusinessProduct;
 use App\Models\People;
+use App\Models\User;
 use App\Models\Utama;
 use App\Models\UtamaMember;
 use Illuminate\Http\Request;
@@ -408,6 +409,33 @@ class UtamaController extends Controller
     public function destroy(Utama $utama)
     {
         //
+    }
+    public function toko(Request $request, Utama $utama)
+    {
+        if ($request->logo) {
+            $logo = 'mangga-muda-' . time() . '-' . $request['logo']->getClientOriginalName();
+            $request->logo->move(public_path('uploads/mangga/logos'), $logo);
+        } else {
+            $logo = $utama->business->logo;
+        }
+        $user = User::find(Auth::id());
+        $user->update([
+            'google_maps' => $request->google_maps
+        ]);
+        $utama->update([
+            'instagram' => $request->instagram,
+            'toko_description' => $request->description
+        ]);
+        $utama->business->update([
+            'logo' => $logo
+        ]);
+        $return = [
+            'api_code' => 200,
+            'api_status' => true,
+            'api_message' => 'Data Toko Mangga telah berhasil disimpan.',
+            'api_results' => UtamaResource::make($utama)
+        ];
+        return SuccessResource::make($return);
     }
     public function getRegistrationNumber(int $sector, int $subsector)
     {
