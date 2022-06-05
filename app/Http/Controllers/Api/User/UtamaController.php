@@ -64,8 +64,9 @@ class UtamaController extends Controller
                 'api_code' => 403,
                 'api_status' => false,
                 'api_message' => 'Data diri user masih ada yang belum lengkap. Mohon dilengkapi terlebih dahulu.',
+                'api_results' => Auth::user()
             ];
-            return FailedResource::make($return);
+            return SuccessResource::make($return);
         }
         $ktp = 'mangga-utama-' . time() . '-' . $request['ktp']->getClientOriginalName();
         $request->ktp->move(public_path('uploads/mangga/ktp'), $ktp);
