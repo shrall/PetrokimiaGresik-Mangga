@@ -58,15 +58,16 @@ class LoginController extends Controller
                         'password' => $request->password,
                         'scope' => '',
                     ]);
-                    // $check->update([
-                    //     'last_login_time' => Carbon::now(),
-                    //     'last_login_ip' => request()->ip()
-                    // ]);
+                    $var = json_decode((string) $response->getBody(), true);
+                    $var = collect($var);
+                    $var->put("user_id", $check->id);
+                    $var->put("role_id", $check->user_role);
+                    $var = json_decode((string) $var, true);
                     $return = [
                         'api_code' => 200,
                         'api_status' => true,
                         'api_message' => 'Berhasil masuk aplikasi Mangga.',
-                        'api_results' => $response->json()
+                        'api_results' => $var
                     ];
                     return SuccessResource::make($return);
                 } else {

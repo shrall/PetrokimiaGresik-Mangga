@@ -1,6 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
+    <div class="flex items-center justify-end mb-4">
+        <a href="{{ route('admin.user.create') }}" class="mangga-button-green cursor-pointer">
+            <span>Tambah Admin</span>
+        </a>
+    </div>
     <div class="card bg-white px-8 py-6">
         <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
             <thead>
@@ -16,7 +21,7 @@
                     <tr>
                         <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->handphone ?? "-" }}</td>
+                        <td>{{ $user->handphone ?? '-' }}</td>
                         <td class="flex items-center justify-center gap-x-2">
                             <a href="{{ route('admin.user.show', $user->id) }}" class="mangga-button-green cursor-pointer">
                                 <span class="fa fa-fw fa-eye"></span>

@@ -10,8 +10,11 @@ use App\Models\Province;
 use App\Models\Regency;
 use App\Models\Religion;
 use App\Models\User;
+use App\Models\UserRole;
 use App\Models\Village;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -33,7 +36,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = UserRole::all()->except([1, 2]);
+        return view('admin.user.create', compact('roles'));
     }
 
     /**
@@ -44,7 +48,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create([
+            'first_name' => "Admin",
+            'last_name' => "Mangga",
+            'email' => $request['email'],
+            'handphone' => '0',
+            'province_id' => 35,
+            'city_id' => 3578,
+            'district_id' => 3578170,
+            'village_id' => 3578170005,
+            'password' => Hash::make($request['password']),
+            'user_role' => $request->user_role,
+            'referral_code' => '',
+            'nik_karyawan' => '0',
+            'employee_department_id' => 1,
+            'email_verified_at' => Carbon::now()
+        ]);
+
+        return redirect()->route('admin.user.index');
     }
 
     /**
@@ -88,7 +109,7 @@ class UserController extends Controller
         if ($request->image) {
             $image = 'user-' . time() . '-' . $request['image']->getClientOriginalName();
             $request->image->move(public_path('uploads/user'), $image);
-        }else{
+        } else {
             $image = $user->picture;
         }
         $user->update([

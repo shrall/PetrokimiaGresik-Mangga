@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\Api\Admin\MaduController as AdminMaduController;
+use App\Http\Controllers\Api\Admin\MediaController as AdminMediaController;
+use App\Http\Controllers\Api\Admin\MudaController as AdminMudaController;
+use App\Http\Controllers\Api\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Api\Admin\UserRoleController;
+use App\Http\Controllers\Api\Admin\UtamaController as AdminUtamaController;
 use App\Http\Controllers\Api\AngsuranStatusController;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
@@ -56,6 +62,16 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function () {
     Route::get('/utama/{utama}/download', [UtamaController::class, 'download'])->name('utama.download');
     Route::patch('/utama/{utama}/toko', [UtamaController::class, 'toko'])->name('utama.toko');
     Route::apiResource('madu', MaduController::class);
+});
+Route::group(['middleware' => ['auth:api', 'admin'], 'prefix' => 'admin'], function () {
+    Route::apiResource('utama', AdminUtamaController::class);
+    Route::apiResource('muda', AdminMudaController::class);
+    Route::apiResource('madu', AdminMaduController::class);
+    Route::post('/media', [AdminMediaController::class, 'store'])->name('media.store');
+    Route::patch('/media/{media}', [AdminMediaController::class, 'update'])->name('media.update');
+    Route::delete('/media/{media}', [AdminMediaController::class, 'destroy'])->name('media.destroy');
+    Route::apiResource('user', AdminUserController::class);
+    Route::apiResource('user_role', UserRoleController::class);
 });
 Route::group(['prefix' => 'location'], function () {
     Route::get('/province', [LocationController::class, 'province']);
