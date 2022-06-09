@@ -602,7 +602,7 @@ class UtamaController extends Controller
     public function toko(Request $request, Utama $utama)
     {
         if ($request->logo) {
-            $logo = 'mangga-muda-' . time() . '-' . $request['logo']->getClientOriginalName();
+            $logo = 'mangga-utama-' . time() . '-' . $request['logo']->getClientOriginalName();
             $request->logo->move(public_path('uploads/mangga/logos'), $logo);
         } else {
             $logo = $utama->business->logo;

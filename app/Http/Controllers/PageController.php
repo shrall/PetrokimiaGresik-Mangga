@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Business;
 use App\Models\District;
 use App\Models\EmployeeDepartment;
+use App\Models\MheEvent;
 use App\Models\Province;
 use App\Models\Regency;
 use App\Models\Sector;
@@ -17,7 +18,8 @@ class PageController extends Controller
 {
     public function home()
     {
-        return view('landing_page.home');
+        $event = MheEvent::first();
+        return view('landing_page.home', compact('event'));
     }
     public function info()
     {

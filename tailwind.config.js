@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "mhe": "url('/assets/img/petrokimia-building.webp')",
+        "mhe": "url('/assets/img/manggaexpobg.png')",
         "home-1": "url('/assets/img/asset-home-1.png')",
         "landing-page-1": "url('/assets/svg/asset-landing-page-1.svg')",
         "prosedur-2": "url('/assets/img/asset-prosedur-2.png')",

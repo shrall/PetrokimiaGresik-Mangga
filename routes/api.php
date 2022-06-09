@@ -65,8 +65,19 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function () {
 });
 Route::group(['middleware' => ['auth:api', 'admin'], 'prefix' => 'admin'], function () {
     Route::apiResource('utama', AdminUtamaController::class);
+    Route::patch('/utama/{utama}/ttd', [AdminUtamaController::class, 'ttd'])->name('utama.ttd');
+    Route::get('/utama/{utama}/approve', [AdminUtamaController::class, 'approve'])->name('utama.approve');
+    Route::get('/utama/{utama}/reject', [AdminUtamaController::class, 'reject'])->name('utama.reject');
+    Route::get('/utama/{utama}/download', [AdminUtamaController::class, 'download'])->name('utama.download');
+    Route::patch('/utama/{utama}/toko', [AdminUtamaController::class, 'toko'])->name('utama.toko');
     Route::apiResource('muda', AdminMudaController::class);
+    Route::patch('/muda/{muda}/ttd', [AdminMudaController::class, 'ttd'])->name('muda.ttd');
+    Route::get('/muda/{muda}/approve', [AdminMudaController::class, 'approve'])->name('muda.approve');
+    Route::get('/muda/{muda}/reject', [AdminMudaController::class, 'reject'])->name('muda.reject');
+    Route::get('/muda/{muda}/download', [AdminMudaController::class, 'download'])->name('muda.download');
     Route::apiResource('madu', AdminMaduController::class);
+    Route::get('/madu/{madu}/approve', [AdminMaduController::class, 'approve'])->name('madu.approve');
+    Route::get('/madu/{madu}/reject', [AdminMaduController::class, 'reject'])->name('madu.reject');
     Route::post('/media', [AdminMediaController::class, 'store'])->name('media.store');
     Route::patch('/media/{media}', [AdminMediaController::class, 'update'])->name('media.update');
     Route::delete('/media/{media}', [AdminMediaController::class, 'destroy'])->name('media.destroy');

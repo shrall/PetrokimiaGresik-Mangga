@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="flex items-center justify-end mb-4">
+    {{-- <div class="flex items-center justify-end mb-4">
         <a href="{{ route('admin.mhe_event.create') }}" class="mangga-button-green cursor-pointer">
             <span>Tambah Acara</span>
         </a>
-    </div>
+    </div> --}}
     <div class="card bg-white px-8 py-6">
         <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
             <thead>

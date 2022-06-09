@@ -310,4 +310,38 @@
             $('.' + id).removeClass('hidden').addClass('flex');
         }
     </script>
+    <script>
+        function openModal(type) {
+            $('#' + type + '-modal').removeClass('hidden').addClass('flex');
+        }
+
+        function closeModal() {
+            $('.modal').removeClass('flex').addClass('hidden');
+        }
+    </script>
+@endsection
+
+@section('modals')
+    @if ($event->status == 1)
+        <div class="absolute w-screen h-screen flex items-center justify-center modal">
+            <div class="bg-black opacity-50 w-screen h-screen absolute background-modal"></div>
+            <div class="rounded-lg bg-white px-8 py-6 absolute flex flex-col items-center justify-center gap-y-2 w-4/5">
+                <span class="fa fa-fw fa-times text-xl hover:text-red-600 absolute top-4 right-4 cursor-pointer"
+                    onclick="closeModal();"></span>
+                <div class="flex items-center justify-center w-full">
+                    <div class="text-2xl font-bold">PENGUMUMAN</div>
+                </div>
+                <hr>
+                <img src="{{ asset('assets/img/mhe-logo.png') }}" class="w-3/5">
+                <div class="text-xl py-2 text-center">MHE (Manga Hybrid Expo) 2022 adalah ajang pameran yang dilaksanakan
+                    secara
+                    offline dan online bagi Mitra Kebanggaan Petrokimia Gresik yang terpilih untuk
+                    menunjukkan produk-produk unggulan mereka. MHE 2022 adalah rangkaian acara
+                    HUT ke 50 PT Petrokimia Gresik.</div>
+                <a href="{{route('mhe.home')}}" class="mangga-button-green w-full cursor-pointer">
+                    Check Sekarang
+                </a>
+            </div>
+        </div>
+    @endif
 @endsection

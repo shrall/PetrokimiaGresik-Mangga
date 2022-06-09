@@ -137,19 +137,13 @@ class MaduController extends Controller
     }
     public function approve_surveyor(Madu $madu)
     {
-        if (Auth::user()->user_role == 2 || Auth::user()->user_role == 3) {
+        if (Auth::user()->user_role == 2 || Auth::user()->user_role == 3|| Auth::user()->user_role == 4) {
             $madu->update([
                 'status' => 4,
                 'business_status_id' => 4,
                 'approved_by_surveyor_at' => Carbon::now(),
                 'rejected_at' => null,
-
             ]);
-            // BusinessLog::create([
-            //     'description' => 'Disetujui oleh ' . Auth::user()->first_name . ' ' . Auth::user()->last_name,
-            //     'business_id' => $madu->id,
-            //     'admin_id' => Auth::user()->id
-            // ]);
         }
         return redirect()->route('admin.madu.show', $madu->id);
     }
@@ -161,11 +155,6 @@ class MaduController extends Controller
             'business_status_id' => 5,
             'rejected_at' => Carbon::now(),
         ]);
-        // BusinessLog::create([
-        //     'description' => 'Ditolak oleh ' . Auth::user()->first_name . ' ' . Auth::user()->last_name,
-        //     'business_id' => $madu->id,
-        //     'admin_id' => Auth::user()->id
-        // ]);
         return redirect()->route('admin.madu.show', $madu->id);
     }
 }
