@@ -24,7 +24,8 @@
         <div class="flex flex-col items-center gap-y-2 px-4 xl:px-0">
             <div class="font-lb text-5xl text-mangga-green-500">Tahap Pendaftaran</div>
             <div>Berikut adalah alur pendaftaran Mangga Hybrid Expo</div>
-            <div>Harga Tiket: Rp. 5.000</div>
+            <div>Harga Tiket (Online): Rp. 5.000/orang</div>
+            <div>Harga Tiket (Offline): Rp. 50.000/orang</div>
         </div>
         <div
             class="border border-gray-400 bg-white mb-4 grid grid-cols-12 items-center mx-4 xl:mx-0 px-2 py-8 gap-x-2 gap-y-8 xl:w-1/2">
