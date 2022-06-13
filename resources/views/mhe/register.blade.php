@@ -4,13 +4,17 @@
     <div class="flex flex-col items-center mx-8 text-center py-12">
         <div class="font-lb text-5xl text-mangga-green-500 mb-24">Terima Kasih Telah Tertarik Untuk Mendaftar</div>
         <div class="text-2xl mb-4">Kode Referensi:</div>
-        <div class="text-5xl mb-12 border-dashed border border-gray-400 bg-white px-4 xl:px-24 py-2" id="ref-id">012030213</div>
-        <div>Harga Tiket: Rp. 5.000/orang</div>
-        <div class="text-2xl xl:mx-48">Silahkan melakukan transfer ke rekening rekening Bank BCA 7892051065 atas nama <b>Edwyk Sony Udaieby</b> dan masukkan kode referensi di atas pada berita acara.</div>
+        <div class="text-5xl mb-12 border-dashed border border-gray-400 bg-white px-4 xl:px-24 py-2" id="ref-id">012030213
+        </div>
+        <div>Harga Tiket (Online): Rp. 5.000/orang</div>
+        <div>Harga Tiket (Offline): Rp. 50.000/orang</div>
+        <div class="text-2xl xl:mx-48">Silahkan melakukan transfer ke rekening rekening Bank BCA 7892051065 atas nama
+            <b>Edwyk Sony Udaieby</b> dan masukkan kode referensi di atas pada berita acara.</div>
     </div>
     <div class="flex flex-col items-center gap-y-4 py-12 bg-gray-200 px-4 xl:px-0">
         <div class="font-lb text-5xl text-center text-mangga-green-500">Form Pendaftaran</div>
-        <div class="text-2xl text-center xl:mx-48">Silahkan masukkan data di bawah ini sebenar-benarnya, terutama data email dan nomor
+        <div class="text-2xl text-center xl:mx-48">Silahkan masukkan data di bawah ini sebenar-benarnya, terutama data email
+            dan nomor
             telepon Anda, karena kami akan mengirimkan instruksi kepada Anda mengenai akses portal MHE melalui email Anda
             setelah proses verifikasi data dan bukti transfer yang Anda masukkan. <br>Terima kasih.</div>
         <form method="POST" action="{{ route('mhe_transaction.store') }}" enctype="multipart/form-data">
@@ -19,7 +23,12 @@
             <input type="text" name="name" class="form-pengajuan-input mb-8" placeholder="Nama Lengkap" required>
             <input type="email" name="email" class="form-pengajuan-input mb-8" placeholder="E-Mail Aktif" required>
             <input type="text" name="phone" class="form-pengajuan-input mb-8" placeholder="No. Telepon (WA)" required>
-            <input type="number" name="ticket_amount" class="form-pengajuan-input mb-8" placeholder="Jumlah Pembelian Tiket" required>
+            <input type="number" name="ticket_amount" class="form-pengajuan-input mb-8" placeholder="Jumlah Pembelian Tiket"
+                required>
+            <select name="is_online" id="is_online" class="form-pengajuan-input mb-8">
+                <option value=0>Offline</option>
+                <option value=1>Online</option>
+            </select>
             <label class="font-bold">Bukti Transfer</label>
             <div class="flex items-end gap-x-4 mb-4">
                 <img src="{{ asset('assets/svg/empty-image.svg') }}" class="w-48 h-48 rounded-lg"

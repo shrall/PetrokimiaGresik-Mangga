@@ -12,6 +12,7 @@
                     <th data-priority="3">Phone</th>
                     <th data-priority="4">Kode Unik</th>
                     <th data-priority="5">Kode Referensi</th>
+                    <th>Tipe</th>
                     <th>Bukti</th>
                     <th>Action</th>
                 </tr>
@@ -25,6 +26,7 @@
                         <td>{{ $mheTransaction->attendee_phone }}</td>
                         <td>{{ $mheTransaction->ucode->string }}</td>
                         <td>{{ $mheTransaction->reference_code }}</td>
+                        <td>{{$mheTransaction->is_online == 0 ? 'Offline' : 'Online'}}</td>
                         <td>
                             <a target="_blank" href="{{ asset('uploads/mhe/' . $mheTransaction->evidence) }}"
                                 class="mangga-button-orange cursor-pointer"><span class="fa fa-fw fa-file"></span>

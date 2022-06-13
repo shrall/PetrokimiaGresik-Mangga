@@ -55,13 +55,19 @@ class MheTransactionController extends Controller
                 'mhe_ucode_id' => MheUcode::where('status', 0)->inRandomOrder()->first()->id,
             ]);
         }
-        $mheTransaction->ucode->update([
-            'status' => 1
-        ]);
+        if ($mheTransaction->is_online == 1) {
+            $mheTransaction->ucode->update([
+                'status' => 1
+            ]);
+        }
         $mheTransaction->update([
             'is_approved' => 1
         ]);
-        Mail::to($mheTransaction->attendee_email)->send(new MheApproveMail($mheTransaction->ucode->string));
+        if ($mheTransaction->is_online == 1) {
+            Mail::to($mheTransaction->attendee_email)->send(new MheApproveMail($mheTransaction->ucode->string));
+        }else{
+            Mail::to($mheTransaction->attendee_email)->send(new MheApproveMail($mheTransaction->reference_code));
+        }
         return redirect()->route('admin.mhe_event.show', $mheTransaction->mhe_event_id);
     }
 

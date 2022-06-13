@@ -1,7 +1,7 @@
 @extends('layouts.mhe')
 
 @section('content')
-    <div class="flex flex-col xl:flex-row bg-transparent mb-36 bg-mhe">
+    <div class="flex flex-col xl:flex-row bg-transparent mb-24 bg-mhe">
         <div class="flex flex-col justify-center gap-y-2 px-8 xl:pl-24 xl:pr-0">
             <img src="{{asset('assets/img/mhe-logo.png')}}" alt="" srcset="">
             <div class="pl-4 text-2xl text-mangga-green-500">29 Juni - 2 Juli 2022</div>

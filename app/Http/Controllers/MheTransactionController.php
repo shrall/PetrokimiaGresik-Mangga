@@ -50,6 +50,7 @@ class MheTransactionController extends Controller
                 'attendee_phone' => $request->phone,
                 'reference_code' => $request->reference_id,
                 'ticket_amount' => $request->ticket_amount,
+                'is_online' => $request->is_online,
                 'evidence' => $evidence,
                 'mhe_event_id' => $event->id,
                 'mhe_ucode_id' => $ucode->id

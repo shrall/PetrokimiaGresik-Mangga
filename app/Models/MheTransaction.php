@@ -16,6 +16,7 @@ class MheTransaction extends Model
         'evidence',
         'reference_code',
         'ticket_amount',
+        'is_online',
         'mhe_event_id',
         'mhe_ucode_id',
     ];
