@@ -64,9 +64,9 @@ class MheTransactionController extends Controller
             'is_approved' => 1
         ]);
         if ($mheTransaction->is_online == 1) {
-            Mail::to($mheTransaction->attendee_email)->send(new MheApproveMail($mheTransaction->ucode->string));
+            Mail::to($mheTransaction->attendee_email)->send(new MheApproveMail($mheTransaction->ucode->string, $mheTransaction->is_online));
         }else{
-            Mail::to($mheTransaction->attendee_email)->send(new MheApproveMail($mheTransaction->reference_code));
+            Mail::to($mheTransaction->attendee_email)->send(new MheApproveMail($mheTransaction->reference_code, $mheTransaction->is_online));
         }
         return redirect()->route('admin.mhe_event.show', $mheTransaction->mhe_event_id);
     }

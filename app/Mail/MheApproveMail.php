@@ -12,15 +12,17 @@ class MheApproveMail extends Mailable
     use Queueable, SerializesModels;
 
     public $ucode;
+    public $is_online;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($ucode)
+    public function __construct($ucode, $is_online)
     {
         $this->ucode = $ucode;
+        $this->is_online = $is_online;
     }
 
     /**
