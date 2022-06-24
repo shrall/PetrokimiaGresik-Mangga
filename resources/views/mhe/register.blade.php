@@ -8,8 +8,16 @@
         </div>
         <div>Harga Tiket (Online): Rp. 5.000/orang</div>
         <div>Harga Tiket (Offline): Rp. 50.000/orang</div>
-        <div class="text-2xl xl:mx-48">Silahkan melakukan transfer ke rekening rekening Bank BCA 7892051065 atas nama
-            <b>Edwyk Sony Udaieby</b> dan masukkan kode referensi di atas pada berita acara.</div>
+        <div class="text-2xl xl:mx-48">
+            Silahkan melakukan transfer ke rekening rekening Bank BCA 7892051065 atas nama
+            <b>Edwyk Sony Udaieby</b> dan masukkan kode referensi di atas pada berita acara.
+        </div>
+        <div>atau melalui e-wallet</div>
+        <li class="text-2xl xl:mx-48 list-none">
+            <ul>Shopeepay: 081366994994 (Si Mangga)</ul>
+            <ul>GoPay: 081366994994 (Si Mangga)</ul>
+            <ul>OVO: 081366994994 (Si Mangga)</ul>
+        </li>
     </div>
     <div class="flex flex-col items-center gap-y-4 py-12 bg-gray-200 px-4 xl:px-0">
         <div class="font-lb text-5xl text-center text-mangga-green-500">Form Pendaftaran</div>
@@ -23,8 +31,8 @@
             <input type="text" name="name" class="form-pengajuan-input mb-8" placeholder="Nama Lengkap" required>
             <input type="email" name="email" class="form-pengajuan-input mb-8" placeholder="E-Mail Aktif" required>
             <input type="text" name="phone" class="form-pengajuan-input mb-8" placeholder="No. Telepon (WA)" required>
-            <input type="number" name="ticket_amount" class="form-pengajuan-input mb-8" placeholder="Jumlah Pembelian Tiket"
-                required>
+            <input type="number" name="ticket_amount" class="form-pengajuan-input mb-8"
+                placeholder="Jumlah Pembelian Tiket" required>
             <select name="is_online" id="is_online" class="form-pengajuan-input mb-8">
                 <option value=0>Offline</option>
                 <option value=1>Online</option>

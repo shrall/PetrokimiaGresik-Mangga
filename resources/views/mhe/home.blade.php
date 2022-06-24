@@ -37,7 +37,7 @@
             <div class="col-span-2 flex justify-center">
                 <img src="{{ asset('assets/svg/mhe-2.svg') }}" class="w-16 h-16 rounded-full bg-gray-200 p-2">
             </div>
-            <div class="col-span-10">Transfer ke nomor rekening yang dituju dan masukkan kode referensi Anda di kolom
+            <div class="col-span-10">Transfer ke nomor rekening yang dituju atau nomor e-wallet dan masukkan kode referensi Anda di kolom
                 berita acara.</div>
             <div class="col-span-2 flex justify-center">
                 <img src="{{ asset('assets/svg/mhe-3.svg') }}" class="w-16 h-16 rounded-full bg-gray-200 p-2">
