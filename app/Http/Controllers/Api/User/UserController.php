@@ -102,7 +102,7 @@ class UserController extends Controller
             'kk_code' => $request->kk_code ?? $user->kk_code,
             'profession' => $request->profession ?? $user->profession,
             'retired' => $request->retired ?? $user->retired,
-            'education' => $request->education ?? $user->education,
+            'education_id' => $request->education ?? $user->education,
             'heir' => $request->heir ?? $user->heir,
             'house_ownership' => $request->house_ownership ?? $user->house_ownership,
             'npwp' => $request->npwp ?? $user->npwp,
