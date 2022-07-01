@@ -60,6 +60,10 @@ class Business extends Model
     {
         return $this->belongsTo(Subsector::class, 'subsector_id', 'id');
     }
+    public function statused()
+    {
+        return $this->belongsTo(BusinessStatus::class, 'business_status_id', 'id');
+    }
     public function user() {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }

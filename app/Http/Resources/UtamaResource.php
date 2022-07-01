@@ -15,8 +15,8 @@ class UtamaResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'utama' => $this->business->utama,
-            'business' => $this->business,
+            'utama' => UtamaDetailResource::make($this->business->utama),
+            'business' => BusinessDetailResource::make($this->business),
             'members' => $this->members,
             'plans' => $this->business->plans,
             'commodities' => $this->business->commodities,
