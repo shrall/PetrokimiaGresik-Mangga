@@ -104,7 +104,10 @@
         $(document).ready(function() {
             var table = $('#example').DataTable({
                     responsive: true,
-                    "pageLength": 50
+                    "pageLength": 50,
+                    order: [
+                        [8, 'asc']
+                    ],
                 })
                 .columns.adjust()
                 .responsive.recalc();
