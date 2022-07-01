@@ -32,7 +32,7 @@ class BusinessDetailResource extends JsonResource
             "district" => $this->district->name,
             "village" => $this->village->name,
             "mangga_type" => $this->mangga_type,
-            "business_status_id" => $this->business_status_id,
+            "business_status" => $this->business_status_id,
             "approved_by_surveyor_at" => $this->approved_by_surveyor_at,
             "approved_by_pimpinan_at" => $this->approved_by_pimpinan_at,
             "rejected_at" => $this->rejected_at,
