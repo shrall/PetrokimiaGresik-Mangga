@@ -15,6 +15,7 @@ class MheEvent extends Model
         'end',
         'desc',
         'status',
+        'image'
     ];
     public function transactions() {
         return $this->hasMany(MheTransaction::class, 'mhe_event_id', 'id');
