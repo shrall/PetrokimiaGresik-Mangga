@@ -104,7 +104,7 @@
         $(document).ready(function() {
             var table = $('#example').DataTable({
                     responsive: true,
-                    "pageLength": 100
+                    "pageLength": 50
                 })
                 .columns.adjust()
                 .responsive.recalc();
