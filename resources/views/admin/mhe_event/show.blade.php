@@ -26,7 +26,7 @@
                         <td>{{ $mheTransaction->attendee_phone }}</td>
                         <td>{{ $mheTransaction->ucode->string }}</td>
                         <td>{{ $mheTransaction->reference_code }}</td>
-                        <td>{{$mheTransaction->is_online == 0 ? 'Offline' : 'Online'}}</td>
+                        <td>{{ $mheTransaction->is_online == 0 ? 'Offline' : 'Online' }}</td>
                         <td>
                             <a target="_blank" href="{{ asset('uploads/mhe/' . $mheTransaction->evidence) }}"
                                 class="mangga-button-orange cursor-pointer"><span class="fa fa-fw fa-file"></span>
@@ -103,7 +103,8 @@
     <script>
         $(document).ready(function() {
             var table = $('#example').DataTable({
-                    responsive: true
+                    responsive: true,
+                    "pageLength": 100
                 })
                 .columns.adjust()
                 .responsive.recalc();
@@ -231,6 +232,5 @@
         .paginate_button:hover {
             color: #ffffff !important;
         }
-
     </style>
 @endsection
