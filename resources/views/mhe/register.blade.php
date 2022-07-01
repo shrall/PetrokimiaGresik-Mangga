@@ -48,7 +48,11 @@
                     <span>*Ukuran File Unggahan Maksimal 2 MB</span>
                 </div>
             </div>
-            <button type="submit" class="mangga-button-green w-full mb-4">Daftar</button>
+            @if ($event->status == 1)
+                <button type="submit" class="mangga-button-green w-full mb-4">Daftar</button>
+            @else
+                <button type="submit" disabled class="mangga-button-green w-full mb-4 opacity-60">Pendaftaran Telah Ditutup</button>
+            @endif
         </form>
     </div>
 @endsection

@@ -129,7 +129,8 @@ class PageController extends Controller
     }
     public function mhe_register()
     {
-        return view('mhe.register');
+        $event = MheEvent::first();
+        return view('mhe.register', compact('event'));
     }
     public function mhe_success()
     {
