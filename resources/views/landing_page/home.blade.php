@@ -102,6 +102,18 @@
                     5</div>
             </div>
         </div>
+        <div class="grid grid-cols-12 items-center gap-4 px-28 bg-mangga-green-300 my-32">
+            <div class="col-span-5 flex items-center justify-center">
+                <img src="{{ asset('assets/svg/android-mockup.svg') }}" class="absolute w-80">
+            </div>
+            <div class="col-span-7 text-white py-24 flex flex-col gap-y-4">
+                <div class="font-lb text-6xl">Segera Rilis</div>
+                <div class="text-2xl">Anda dapat bergabung menjadi Mitra Kebanggaan Mangga melalui aplikasi
+                    Mangga.<br>Aplikasi
+                    dapat diunduh melalui Google Play Store.<br>Yuk, jadilah bagian dari Mitra Kebanggaan kami!</div>
+                <img src="{{ asset('assets/svg/google-play-button.svg') }}" class="w-80">
+            </div>
+        </div>
     </div>
     <div class="hidden md:block xl:hidden">
         <div class="grid grid-cols-12 content-center px-16 font-pn mb-12">
@@ -158,7 +170,8 @@
                         <span class="fa fa-fw fa-times-circle text-4xl text-mangga-red-300 mr-2"></span>Tanpa Bunga
                     </div>
                     <div class="flex items-center text-lg">
-                        <span class="fa fa-fw fa-times-circle text-4xl text-mangga-red-300 mr-2"></span>Tanpa Biaya Asuransi
+                        <span class="fa fa-fw fa-times-circle text-4xl text-mangga-red-300 mr-2"></span>Tanpa Biaya
+                        Asuransi
                     </div>
                     <div class="flex items-center text-lg">
                         <span class="fa fa-fw fa-times-circle text-4xl text-mangga-red-300 mr-2"></span>Tanpa Komisi
@@ -203,6 +216,18 @@
                 <div
                     class="flex items-center justify-center py-8 border border-mangga-orange-300 text-4xl font-lb text-mangga-orange-400">
                     5</div>
+            </div>
+        </div>
+        <div class="grid grid-cols-12 items-center gap-4 px-28 bg-mangga-green-300 my-32">
+            <div class="col-span-5 flex items-center justify-center">
+                <img src="{{ asset('assets/svg/android-mockup.svg') }}" class="absolute w-56">
+            </div>
+            <div class="col-span-7 text-white py-24 flex flex-col gap-y-4">
+                <div class="font-lb text-6xl">Segera Rilis</div>
+                <div class="text-2xl">Anda dapat bergabung menjadi Mitra Kebanggaan Mangga melalui aplikasi
+                    Mangga.<br>Aplikasi
+                    dapat diunduh melalui Google Play Store.<br>Yuk, jadilah bagian dari Mitra Kebanggaan kami!</div>
+                <img src="{{ asset('assets/svg/google-play-button.svg') }}" class="w-64">
             </div>
         </div>
     </div>
@@ -298,6 +323,18 @@
                     5</div>
             </div>
         </div>
+        <div class="grid grid-cols-12 items-center px-4 py-4 bg-mangga-green-300 my-32">
+            <div class="col-span-12 flex items-center justify-center">
+                <img src="{{ asset('assets/svg/android-mockup.svg') }}" class="w-80">
+            </div>
+            <div class="col-span-12 text-white flex flex-col items-center text-center gap-y-4">
+                <div class="font-lb text-6xl">Segera Rilis</div>
+                <div class="text-2xl">Anda dapat bergabung menjadi Mitra Kebanggaan Mangga melalui aplikasi
+                    Mangga.<br>Aplikasi
+                    dapat diunduh melalui Google Play Store.<br>Yuk, jadilah bagian dari Mitra Kebanggaan kami!</div>
+                <img src="{{ asset('assets/svg/google-play-button.svg') }}" class="w-80">
+            </div>
+        </div>
     </div>
 @endsection
 
@@ -338,7 +375,7 @@
                     offline dan online bagi Mitra Kebanggaan Petrokimia Gresik yang terpilih untuk
                     menunjukkan produk-produk unggulan mereka. MHE 2022 adalah rangkaian acara
                     HUT ke 50 PT Petrokimia Gresik.</div>
-                <a href="{{route('mhe.home')}}" class="mangga-button-green w-full cursor-pointer">
+                <a href="{{ route('mhe.home') }}" class="mangga-button-green w-full cursor-pointer">
                     Check Sekarang
                 </a>
             </div>
