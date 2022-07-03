@@ -21,7 +21,7 @@ class UtamaResource extends JsonResource
             'plans' => $this->business->plans,
             'commodities' => $this->business->commodities,
             'products' => $this->business->products,
-            'angsurans' => $this->business->angsurans
+            'angsurans' => AngsuranDetailResource::collection($this->business->angsurans)
         ];
     }
 }
