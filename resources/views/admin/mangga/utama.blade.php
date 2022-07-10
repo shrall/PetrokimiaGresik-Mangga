@@ -124,9 +124,9 @@ function rupiah($angka)
                         class="mangga-button-green cursor-pointer">Buat Evaluasi (Surveyor)
                     </a>
                 @endif
-                <a href="{{ route('admin.utama.approve_pimpinan', $utama->id) }}"
+                {{-- <a href="{{ route('admin.utama.approve_pimpinan', $utama->id) }}"
                     class="mangga-button-green cursor-pointer">Setujui (Pimpinan)
-                </a>
+                </a> --}}
                 <a href="{{ route('admin.utama.reject', $utama->id) }}" class="mangga-button-red cursor-pointer">Tolak
                 </a>
             </div>
