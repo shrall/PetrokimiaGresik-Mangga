@@ -53,7 +53,7 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/forgot-password', [LoginController::class, 'forgot_password']);
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/email/verify', [UserController::class, 'resend_email']);
-Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function () {
+Route::group(['prefix' => 'user', 'middleware' => 'auth:api', 'as' => 'api.user.'], function () {
     Route::post('/update-password', [UserController::class, 'update_password']);
     Route::apiResource('muda', MudaController::class);
     Route::get('/muda/{muda}/download', [MudaController::class, 'download']);
@@ -64,7 +64,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function () {
     Route::patch('/utama/{utama}/toko', [UtamaController::class, 'toko']);
     Route::apiResource('madu', MaduController::class);
 });
-Route::group(['middleware' => ['auth:api', 'admin'], 'prefix' => 'admin'], function () {
+Route::group(['middleware' => ['auth:api', 'admin', 'as' => 'api.admin.'], 'prefix' => 'admin'], function () {
     Route::apiResource('utama', AdminUtamaController::class);
     Route::patch('/utama/{utama}/ttd', [AdminUtamaController::class, 'ttd']);
     Route::get('/utama/{utama}/approve', [AdminUtamaController::class, 'approve']);
