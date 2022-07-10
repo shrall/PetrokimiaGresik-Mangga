@@ -115,7 +115,7 @@ Route::apiResource('education', EducationController::class);
 Route::apiResource('religion', ReligionController::class);
 Route::apiResource('establishmentstatus', EstablishmentStatusController::class);
 
-Route::group(['middleware' => 'auth:api'], function () {
+Route::group(['middleware' => 'auth:api', 'as' => 'api.user.'], function () {
     Route::apiResource('user', UserController::class);
     Route::post('/logout', [LoginController::class, 'logout']);
 });
