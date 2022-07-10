@@ -58,10 +58,10 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function () {
     Route::apiResource('muda', MudaController::class);
     Route::get('/muda/{muda}/download', [MudaController::class, 'download'])->name('muda.download');
     Route::patch('/muda/{muda}/ttd', [MudaController::class, 'ttd'])->name('muda.ttd');
-    Route::apiResource('utama', UtamaController::class);
     Route::patch('/utama/{utama}/ttd', [UtamaController::class, 'ttd'])->name('utama.ttd');
     Route::get('/utama/{utama}/download', [UtamaController::class, 'download'])->name('utama.download');
     Route::patch('/utama/{utama}/toko', [UtamaController::class, 'toko'])->name('utama.toko');
+    Route::apiResource('utama', UtamaController::class);
     Route::apiResource('madu', MaduController::class);
 });
 Route::group(['middleware' => ['auth:api', 'admin'], 'prefix' => 'admin'], function () {
