@@ -64,7 +64,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api', 'as' => 'api.user.
     Route::patch('/utama/{utama}/toko', [UtamaController::class, 'toko']);
     Route::apiResource('madu', MaduController::class);
 });
-Route::group(['middleware' => ['auth:api', 'admin', 'as' => 'api.admin.'], 'prefix' => 'admin'], function () {
+Route::group(['middleware' => ['auth:api', 'admin'], 'prefix' => 'admin', 'as' => 'api.admin.'], function () {
     Route::apiResource('utama', AdminUtamaController::class);
     Route::patch('/utama/{utama}/ttd', [AdminUtamaController::class, 'ttd']);
     Route::get('/utama/{utama}/approve', [AdminUtamaController::class, 'approve']);
