@@ -418,8 +418,7 @@ class UtamaController extends Controller
         } else {
             $logo = $utama->business->logo;
         }
-        $user = User::find(Auth::id());
-        $user->update([
+        $utama->business->user->update([
             'google_maps' => $request->google_maps
         ]);
         $utama->update([
