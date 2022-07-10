@@ -15,7 +15,7 @@ class UtamaDetailResource extends JsonResource
     public function toArray($request)
     {
         return [
-            "id" => 1,
+            "id" => $this->id,
             "user_name" => $this->user_name,
             "user_npwp" => $this->user_npwp,
             "user_spouse" => $this->user_spouse,
