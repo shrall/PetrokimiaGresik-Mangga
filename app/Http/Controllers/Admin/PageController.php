@@ -298,7 +298,6 @@ class PageController extends Controller
     public function mangga_utama(Business $business)
     {
         $utama = $business->utama;
-        dd($utama);
         return view('admin.mangga.utama', compact('utama'));
     }
 }
