@@ -95,7 +95,7 @@ class UtamaDetailResource extends JsonResource
             "companion_email" => $this->companion_email,
             "instagram" => $this->instagram,
             "toko_description" => $this->toko_description,
-            "service_fee" =>$this->service_fee6
+            "service_fee" =>$this->service_fee6,
         ];
     }
 }
