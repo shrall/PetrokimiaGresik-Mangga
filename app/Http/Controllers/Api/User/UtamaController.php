@@ -412,7 +412,6 @@ class UtamaController extends Controller
     }
     public function toko(Request $request, Utama $utama)
     {
-        return $request;
         if ($request->logo) {
             $logo = 'mangga-muda-' . time() . '-' . $request['logo']->getClientOriginalName();
             $request->logo->move(public_path('uploads/mangga/logos'), $logo);
