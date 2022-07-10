@@ -397,7 +397,7 @@ class UtamaController extends Controller
      */
     public function update(Request $request, Utama $utama)
     {
-        //
+        return $request;
     }
 
     /**
